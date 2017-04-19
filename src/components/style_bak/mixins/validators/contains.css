@@ -1,0 +1,21 @@
+/**
+ * Check if a list contains a value(s)
+ *
+ * @param {list} $list [The list to check aganist]
+ * @param {list} $values [A single value or list of values to check for]
+ * @return {boolean}
+ */
+
+@function _contains(
+    $list,
+    $values...
+  ) {
+
+  @each $value in $values {
+    @if type-of(index($list, $value)) != 'number' {
+      @return false;
+    }
+  }
+
+  @return true;
+}

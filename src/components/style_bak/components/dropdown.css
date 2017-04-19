@@ -1,0 +1,65 @@
+/**
+ * Dropdown Style
+ */
+@import '../variables/index.css';
+
+.at-dropdown {
+  display: inline-block;
+
+  &__popover {
+    position: absolute;
+    overflow: visible;
+  }
+}
+
+.at-dropdown-menu {
+  position: relative;
+  width: inherit;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: var(--select-dropdown-font-size);
+  background-color: var(--select-dropdown-bg-color);
+  border-radius: var(--select-dropdown-border-radius);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+  z-index: var(--zindex-dropdown);
+  list-style: none;
+  padding: 0;
+  font-size: 0;
+
+  &__item {
+    @mixin ellipsis;
+    display: block;
+    padding: 8px 16px;
+    line-height: 1;
+    font-size: var(--select-dropdown-font-size);
+    white-space: nowrap;
+    overflow: hidden;
+    transition: all .3s;
+    cursor: pointer;
+    min-width: 100px;
+
+    &:hover {
+      background-color: var(--bg-color-light);
+    }
+    &--disabled {
+      cursor: var(--cursor-disabled);
+      color: var(--input-placeholder-color-disabled);
+
+      &:hover {
+        background-color: var(--select-dropdown-bg-color);
+      }
+    }
+    &--divided {
+      position: relative;
+      margin-top: 6px;
+      border-top: 1px solid var(--border-color-lightest);
+
+      &:before {
+        content: '';
+        display: block;
+        height: 6px;
+        margin: 0 -10px;
+      }
+    }
+  }
+}

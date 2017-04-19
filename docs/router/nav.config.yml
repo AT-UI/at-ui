@@ -1,0 +1,107 @@
+zh-CN:
+  - title: 综述
+    name: ''
+    children:
+      - title: 介绍
+        name: Introduction
+        path: /introduction
+      - title: 更新日志
+        name: Changelog
+        path: /changelog
+  - title: 组件
+    name: /components
+    groups:
+      - title: 品牌
+        children:
+          - title: 布局
+            name: Layout
+            path: /layout
+          - title: 颜色
+            name: Color
+            path: /color
+          - title: 字体
+            name: Typography
+            path: /typography
+          - title: 图标
+            name: Icon
+            path: /icon
+      - title: 基础组件
+        children:
+          - title: 按钮
+            name: Button
+            path: /button
+          - title: 标签
+            name: Tag
+            path: /tag
+      - title: 表单组件
+        children:
+          - title: 单选按钮
+            name: Radio
+            path: /radio
+          - title: 多选框
+            name: Checkbox
+            path: /checkbox
+          - title: 选择器
+            name: Select
+            path: /select
+          - title: 输入框
+            name: Input
+            path: /input
+          - title: 数字输入框
+            name: InputNumber
+            path: /inputnumber
+          - title: 开关
+            name: Switch
+            path: /switch
+          - title: 滑动输入条
+            name: Slider
+            path: /slider
+          - title: 多行文本框
+            name: Textarea
+            path: /textarea
+          - title: 表格
+            name: Table
+            path: /table
+          - title: 表单
+            name: Form
+            path: /form
+      - title: 视图组件
+        children:
+          - title: 警告提示
+            name: Alert
+            path: /alert
+          - title: 徽标
+            name: Badge
+            path: /badge
+          - title: 通知提醒
+            name: Notification
+            path: /notification
+          - title: 文字提示
+            name: Tooltip
+            path: /tooltip
+          - title: 弹出框
+            name: Popover
+            path: /popover
+          - title: 进度条
+            name: Progress
+            path: /progress
+          - title: 加载进度条
+            name: LoadingBar
+            path: /loadingbar
+          - title: 模态框
+            name: Modal
+            path: /modal
+          - title: 全局提示
+            name: Message
+            path: /message
+      - title: 导航组件
+        children:
+          - title: 下拉菜单
+            name: Dropdown
+            path: /dropdown
+          - title: 面包屑
+            name: Breadcrumb
+            path: /breadcrumb
+          - title: 分页
+            name: Pagination
+            path: /pagination

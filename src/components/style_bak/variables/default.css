@@ -1,0 +1,393 @@
+/**
+ * Default Variables
+ */
+:root {
+
+  /* Prefix */
+  --at-prefix                : at;
+
+  /* The Color of O2Team Brand */
+  --brand-color              : #6190E8;
+  --brand-light-color        : #78A4FA;
+  --brand-dark-color         : #346FC2;
+
+  /* Color */
+  --color-normal             : #6190E8;
+  --color-primary            : #6190E8;
+  --color-success            : #13CE66;
+  --color-error              : #FF4949;
+  --color-warning            : #FFC82C;
+  --color-info               : #78A4FA;
+
+  --text-color               : #3F536E;
+  --title-color              : #2C405A;
+  --border-color-gray        : #CCC;
+  --border-color-base        : #C5D9E8;
+  --border-color-lightest    : color(var(--border-color-base) tint(70%));
+  --border-color-lighter     : color(var(--border-color-base) tint(50%));
+  --border-color-light       : color(var(--border-color-base) tint(30%));
+  --border-color-split       : color(var(--border-color-base) tint(20%));
+
+  --color-white              : #FFF;
+
+  --bg-color                 : var(--color-white);
+  --bg-color-base            : #FAFBFC;
+  --bg-color-light           : #ECF5FD;
+  --bg-color-gray            : #f7f7f7;
+
+  /* Assistant Color */
+  --roof-color               : #C2ABC7;
+  --curtain-color            : #F0D0D5;
+  --door-color               : #F1E4ED;
+  --wall-color               : #EEF0F0;
+
+  /* Base */
+  --font-family              : "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial,sans-serif;
+  --code-family              : Consolas,Menlo,Courier,monospace;
+  --border-radius-base       : 4px;
+  --border-radius-sm         : 4px;
+
+  /* Font */
+  --font-size-smest          : 10px;
+  --font-size-smer           : 12px;
+  --font-size-sm             : 13px;
+  --font-size-base           : 14px;
+  --font-size-normal         : 16px;
+  --font-size-lg             : 18px;
+  --font-size-lger           : 20px;
+  --line-height-base         : 1.5;
+  --line-height-computed     : floor((var(--font-size-base) * var(--line-height-base)));
+
+  /* Link */
+  --link-color               : var(--brand-color);
+  --link-hover-color         : color(var(--link-color) tint(20%));
+  --link-active-color        : color(var(--link-color) shade(5%));
+  --link-disabled-color      : var(--roof-color);
+  --link-hover-decoration    : none;
+
+  /* Disabled cursor for form buttons and buttons */
+  --cursor-disabled          : not-allowed;
+
+  /* Shadow */
+  --shadow-color             : rgba(100, 100, 100, .2);
+  --shadow-1-up              : 0 -1px 6px var(--shadow-color);
+  --shadow-1-down            : 0 1px 6px var(--shadow-color);
+  --shadow-1-left            : -1px 0 6px var(--shadow-color);
+  --shadow-1-right           : 1px 0 6px var(--shadow-color);
+  --shadow-2                 : 0 1px 8px var(--shadow-color);
+
+  /* Buttons */
+  --btn-font-weight          : 500;
+
+  --btn-default-color        : var(--text-color);
+  --btn-default-bg           : var(--color-white);
+  --btn-default-border       : var(--border-color-base);
+
+  --btn-primary-bg           : var(--color-primary);
+  --btn-primary-border       : var(--color-primary);
+
+  --btn-success-bg           : var(--color-success);
+  --btn-success-border       : var(--color-success);
+
+  --btn-error-bg            : var(--color-error);
+  --btn-error-border        : var(--color-error);
+
+  --btn-warning-bg           : var(--color-warning);
+  --btn-warning-border       : var(--color-warning);
+
+  --btn-info-bg              : var(--color-info);
+  --btn-info-border          : var(--color-info);
+
+  --btn-disabled-color       : var(--border-color-base);
+  --btn-disabled-bg          : #F2F9FF;
+  --btn-disabled-border      : #D9EEFF;
+
+  --btn-padding-base         : 4px 16px;
+
+  --btn-font-size-smer       : 10px;
+  --btn-font-size-sm         : 12px;
+  --btn-font-size            : 14px;
+  --btn-font-size-md         : 14px;
+  --btn-font-size-lg         : 16px;
+
+  --btn-lg-padding           : 12px 16px;
+  --btn-md-padding           : 10px 14px;
+  --btn-sm-padding           : 8px 12px;
+  --btn-smer-padding         : 6px 10px;
+
+  /**
+   * Input
+   */
+  --input-font-size          : var(--font-size-base);
+  --input-font-color         : var(--text-color);
+  --input-font-color-disabled : var(--roof-color);
+  --input-width              : 140px;
+  --input-height             : 36px;
+  --input-border-color       : var(--border-color-base);
+  --input-border-color-hover : var(--brand-light-color);
+  --input-border-color-focus : var(--brand-light-color);
+  --input-border-color-disabled : color(var(--border-color-base) tint(20%));
+  --input-border-color-success : var(--color-success);
+  --input-border-color-error : var(--color-error);
+  --input-border-color-warning : var(--color-warning);
+  --input-border-color-info  : var(--color-info);
+  --input-border-radius      : var(--border-radius-base);
+  --input-bg-color           : var(--color-white);
+  /*--input-bg-color-disabled: #F2F9FF;*/
+  --input-bg-color-disabled  : color(var(--border-color-base) tint(70%));
+
+  --input-icon-color         : var(--border-color-base);
+  --input-icon-font-size     : var(--font-size-normal);
+
+  --input-placeholder-color  : #99a9bf;
+  --input-placeholder-color-disabled : color(var(--input-placeholder-color) tint(20%));
+
+  --input-font-size-large    : 16px;
+  --input-height-large       : 42px;
+
+  --input-font-size-small    : 13px;
+  --input-height-small       : 30px;
+
+  --input-group-font-color   : #99a9bf;
+  --input-group-bg-color     : #f9fafc;
+
+  /**
+   * Badge
+   */
+  --badge-bg-color: var(--color-error);
+  --badge-bg-color-success: var(--color-success);
+  --badge-bg-color-warning: var(--color-warning);
+  --badge-bg-color-info: var(--color-info);
+  --badge-border-radius: 10px;
+  --badge-font-size: var(--font-size-smer);
+  --badge-height: 18px;
+  --badge-padding: 6px;
+
+  /**
+   * Switch
+   */
+  --switch-height: 22px;
+  --switch-min-width: 44px;
+  --switch-height-small: 14px;
+  --switch-min-width-small: 28px;
+
+  --switch-border-radius: 20px;
+  --switch-border-color: var(--border-color-gray);
+  --switch-border-color-checked: var(--brand-light-color);
+  --switch-border-color-disabled: color(var(--border-color-gray) tint(70%));
+
+  --switch-bg-color: var(--border-color-gray);
+  --switch-bg-color-checked: var(--brand-light-color);
+  --switch-bg-color-disabled: color(var(--border-color-gray) tint(70%));
+
+  --switch-font-color: var(--color-white);
+  --switch-font-size: var(--font-size-smer);
+  --switch-font-size-small: var(--font-size-smest);
+
+  --switch-circle-size: 18px;
+  --switch-circle-size-small: 12px;
+  --switch-circle-bg-color: var(--color-white);
+  --switch-circle-bg-color-disabled: var(--border-color-gray);
+
+  /**
+   * InputNumber
+   */
+  --inputnumber-width: 100px;
+  --inputnumber-height: 36px;
+  --inputnumber-height-small: 32px;
+  --inputnumber-height-smaller: 28px;
+
+  --inputnumber-font-color: var(--input-font-color);
+  --inputnumber-bg-color: var(--input-bg-color);
+  --inputnumber-bg-color-disabled: var(--input-bg-color-disabled);
+  --inputnumber-border-color: var(--input-border-color);
+  --inputnumber-border-color-disabled: var(--input-border-color-disabled);
+  --inputnumber-border-radius: var(--input-border-radius);
+  --inputnumber-border-color-hover: var(--input-border-color-hover);
+
+  --inputnumber-padding: 0 10px;
+
+  --inputnumber-handler-width: 22px;
+  --inputnumber-handler-border-color: #d9d9d9;
+  --inputnumber-handler-font-color: #999;
+  --inputnumber-handler-font-size: 10px;
+  --inputnumber-handler-font-size-small: 9px;
+  --inputnumber-handler-font-size-smaller: 8px;
+  --inputnumber-handler-ele-height: 18px;
+  --inputnumber-handler-ele-height-small: 16px;
+  --inputnumber-handler-ele-height-smaller: 14px;
+  --inputnumber-handler-ele-height-hover: 20px;
+  --inputnumber-handler-ele-height-small-hover: 18px;
+  --inputnumber-handler-ele-height-smaller-hover: 16px;
+  --inputnumber-handler-ele-font-color-disabled: var(--input-border-color-disabled);
+
+  /**
+   * Select
+   */
+  --select-font-size: var(--font-size-smer);
+  --select-font-size-sm: var(--font-size-smest);
+  --select-font-size-lg: var(--font-size-sm);
+  --select-font-color: var(--input-font-color);
+  --select-bg-color: var(--color-white);
+  --select-border-color: var(--input-border-color);
+  --select-border-color-disabled: color(var(--border-color-base) tint(20%));
+  --select-border-radius: var(--input-border-radius);
+  --select-selection-bg-color: var(--color-white);
+  --select-selection-bg-color-disabled: color(var(--border-color-base) tint(70%));
+  --select-selection-height: 26px;
+  --select-selection-height-sm: 24px;
+  --select-selection-height-lg: 30px;
+
+  /**
+   * Select Dropdown
+   */
+  --select-dropdown-font-size: var(--font-size-smer);
+  --select-dropdown-font-size-sm: var(--font-size-smest);
+  --select-dropdown-font-size-lg: var(--font-size-sm);
+  --select-dropdown-bg-color: var(--color-white);
+  --select-dropdown-border-radius: var(--input-border-radius);
+
+  /**
+   * Slider
+   */
+  --slider-height: 4px;
+  --slider-track-bg-color: #e5e9f2;
+  --slider-bar-bg-color: var(--brand-light-color);
+  --slider-margin: 16px 0;
+  --slider-border-radius: 3px;
+  --slider-dot-color: var(--brand-light-color);
+  --slider-dot-color-hover: color(var(--brand-light-color) shade(10%));
+  --slider-dot-size: 12px;
+  --slider-dot-wrapper-size: 12px;
+  --slider-dot-wrapper-offset: -6px;
+
+  /**
+   * Progress
+   */
+  --progress-height: 10px;
+  --progress-track-bg-color: #e5e9f2;
+  --progress-bar-bg-color: var(--brand-light-color);
+  --progress-border-radius: 50px;
+  --progress-font-color: var(--text-color);
+  --progress-font-size: var(--font-size-smer);
+
+  /**
+   * Tooltip
+   */
+  --tooltip-font-color: var(--color-white);
+  --tooltip-font-size: var(--font-size-smer);
+  --tooltip-bg-color: #333;
+  --tooltip-border-color: #333;
+  --tooltip-padding: 5px 10px;
+  --tooltip-arrow-size: 6px;
+
+  /**
+   * Popover
+   */
+  --popover-font-size: var(--font-size-smer);
+  --popover-bg-color: #fff;
+  --popover-border-color: rgba(0,0,0,.1);
+  --popover-padding: 5px 10px;
+  --popover-arrow-size: 10px;
+  --popover-arrow-bg-color: #fff;
+  --popover-title-padding: 8px 12px;
+  --popover-content-padding: 10px 12px;
+
+  /**
+   * Alert
+   */
+  --alert-padding: 10px 16px;
+  --alert-border-radius: var(--border-radius-base);
+  --alert-message-font-size: var(--font-size-sm);
+  --alert-description-font-size: var(--font-size-smer);
+  --alert-close-font-size: var(--font-size-smest);
+  --alert-icon-color: var(--color-white);
+  --alert-icon-font-size: 16px;
+  --alert-icon-font-size-large: 28px;
+
+  --alert-bg-color-success: color(var(--color-success) tint(26%));
+  --alert-bg-color-error: color(var(--color-error) tint(26%));
+  --alert-bg-color-warning: color(var(--color-warning) tint(26%));
+  --alert-bg-color-info: color(var(--color-info) tint(26%));
+
+  /**
+   * Notification
+   */
+  --notification-width: 330px;
+  --notification-padding: 10px 16px;
+  --notification-border-radius: var(--border-radius-base);
+  --notification-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  --notification-title-font-size: var(--font-size-sm);
+  --notification-message-font-size: var(--font-size-smest);
+  --notification-icon-color: var(--color-white);
+  --notification-icon-font-size: 16px;
+  --notification-close-font-size: 12px;
+  --notification-font-size-large: 28px;
+
+  --notification-bg-color-success: color(var(--color-success) tint(26%));
+  --notification-bg-color-error: color(var(--color-error) tint(26%));
+  --notification-bg-color-warning: color(var(--color-warning) tint(26%));
+  --notification-bg-color-info: color(var(--color-info) tint(26%));
+
+  /**
+   * Loading Bar
+   */
+  --loading-bar-bg-color-success: var(--color-primary);
+  --loading-bar-bg-color-error: var(--color-error);
+
+  /**
+   * Pagination
+   */
+  --pagination-item-size: 28px;
+  --pagination-item-size-sm: 20px;
+  --pagination-item-text-color: color(var(--text-color) tint(20%));
+  --pagination-item-bg-color: var(--color-white);
+  --pagination-item-border-color: var(--border-color-base);
+  --pagination-item-border-radius: var(--border-radius-base);
+  --pagination-item-border-color-hover: var(--color-primary);
+
+  /**
+   * Media queries
+   */
+  /* Extra small screen / Mobile */
+  --screen-xs                : 480px;
+  --screen-xs-min            : var(--screen-xs);
+  --screen-xs-max            : calc(var(--screen-xs-min) - 1);
+
+  /* Small screen / Tablet */
+  --screen-sm                : 768px;
+  --screen-sm-min            : var(--screen-sm);
+  --screen-sm-max            : calc(var(--screen-sm-min) - 1);
+
+  /* Medium screen / Desktop */
+  --screen-md                : 992px;
+  --screen-md-min            : var(--screen-md);
+  --screen-md-max            : calc(var(--screen-md-min) - 1);
+
+  /* Large screen / Wide Desktop */
+  --screen-lg                : 1200px;
+  --screen-lg-min            : var(--screen-lg);
+  --screen-lg-max            : calc(var(--screen-lg-min) - 1);
+
+  /* Grid system */
+  --grid-columns             : 24;
+  --grid-gutter-width        : 0;
+
+  /* Container sizes */
+  --container-sm             : calc(720px + var(--grid-gutter-width));
+  --container-md             : calc(940px + var(--grid-gutter-width));
+  --container-lg             : calc(1140px + var(--grid-gutter-width));
+
+  /* z-index list */
+  --zindex-affix             : 10;
+  --zindex-modal-mask        : 1000;
+  --zindex-modal             : 1000;
+  --zindex-notification      : 1010;
+  --zindex-message           : 1010;
+  --zindex-popover           : 1030;
+  --zindex-picker            : 1050;
+  --zindex-dropdown          : 1050;
+  --zindex-tooltip           : 1060;
+  --zindex-loading-bar       : 1070;
+
+}

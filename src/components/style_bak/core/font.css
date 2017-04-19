@@ -1,0 +1,104 @@
+/**
+ * IconFont
+ */
+@font-face {
+  font-family: 'aticon';
+  src: url('../fonts/aticon.eot?oic5si');
+  src: url('../fonts/aticon.eot?oic5si#iefix') format('embedded-opentype'),
+      url('../fonts/aticon.ttf?oic5si') format('truetype'),
+      url('../fonts/aticon.woff?oic5si') format('woff'),
+      url('../fonts/aticon.svg?oic5si#aticon') format('svg');
+  font-weight: normal;
+  font-size: normal;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'aticon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-up:before {
+  content: "\e636";
+}
+
+.icon-add:before {
+  content: "\e637";
+}
+
+.icon-circle-correct:before {
+  content: "\e638";
+}
+
+.icon-cancel:before {
+  content: "\e639";
+}
+
+.icon-circle-left:before {
+  content: "\e63a";
+}
+
+.icon-circle-cancel:before {
+  content: "\e63b";
+}
+
+.icon-forward:before {
+  content: "\e63c";
+}
+
+.icon-down:before {
+  content: "\e63d";
+}
+
+.icon-info:before {
+  content: "\e63e";
+}
+
+.icon-circle-right:before {
+  content: "\e63f";
+}
+
+.icon-left:before {
+  content: "\e640";
+}
+
+.icon-pause:before {
+  content: "\e641";
+}
+
+.icon-remove:before {
+  content: "\e642";
+}
+
+.icon-play:before {
+  content: "\e643";
+}
+
+.icon-rewind:before {
+  content: "\e644";
+}
+
+.icon-right:before {
+  content: "\e645";
+}
+
+.icon-up:before {
+  content: "\e646";
+}
+
+.icon-zoom-in:before {
+  content: "\e647";
+}
+
+.icon-zoom-out:before {
+  content: "\e648";
+}

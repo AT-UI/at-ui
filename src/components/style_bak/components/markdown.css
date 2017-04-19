@@ -1,0 +1,48 @@
+/**
+ * Markdown Style
+ */
+@import '../variables/index.css';
+
+.at-markdown {
+  pre {
+    overflow: auto;
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin: 16px 0;
+
+    code {
+      background-color: transparent;
+    }
+  }
+  blockquote {
+    margin-bottom: 20px;
+  }
+  hr {
+    border: 0;
+    border-bottom: 1px solid var(--border-color-base);
+  }
+  code {
+    background-color: color(var(--bg-color-light) tint(30%));
+    padding: .3em .5em;
+    border-radius: var(--border-radius-base);
+    font-size: .9em;
+    margin: 0 2px;
+  }
+  ul:not([class^=at-]) {
+    list-style: disc;
+    padding: 10px 0 10px 20px;
+
+    li {
+      line-height: 1.8;
+    }
+  }
+  /*.at-component__container {
+    ul {
+      padding: 0;
+
+      li {
+        line-height: 1;
+      }
+    }
+  }*/
+}

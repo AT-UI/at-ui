@@ -1,0 +1,11 @@
+/**
+ * Set width and height in a single statement
+ *
+ * @param {number (with unit) | string} $width
+ * @param {number (with unit) | string} $height [default $width]
+ */
+
+@define-mixin size $width, $height {
+  width: $width;
+  height: $height;
+}

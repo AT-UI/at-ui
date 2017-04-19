@@ -1,0 +1,78 @@
+/**
+ * BEM Mixins
+ * From https://github.com/alphasights/paint/blob/812fb33c54a50277071f547a3e191cf5fe4fcb3f/styles/tools/_bem.scss
+ */
+
+$bem-element-separator: '__';
+$bem-modifier-separator: '--';
+
+@function _bem-selector-to-string($selector) {
+  $selector: inspect($selector);
+  $dot-index: str-index($selector, '.') + 1;
+  $selector: str-slice($selector, $dot-index, -1);
+
+  @return $selector;
+}
+
+@function _bem-selector-has-modifier($selector) {
+  $selector: _bem-selector-to-string($selector);
+
+  @if str-index($selector, $bem-modifier-separator) or str-index($selector, ':') {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@function _bem-get-block-name($selector) {
+  $selector: _bem-selector-to-string($selector);
+  $modifier-separator: $bem-modifier-separator;
+
+  @if str-index($selector, ':') {
+    $modifier-separator: ':';
+  }
+
+  $modifier-start: str-index($selector, $modifier-separator) - 1;
+
+  @return str-slice($selector, 0, $modifier-start);
+}
+
+@mixin b($block) {
+  .#{$block} {
+    @content;
+  }
+}
+
+@mixin e($elements) {
+  $selector: &;
+
+  @if _bem-selector-has-modifier($selector) {
+    $block: _bem-get-block-name($selector);
+
+    @at-root {
+      #{$selector} {
+        @each $element in $elements {
+          .#{$block + $bem-element-separator + $element} {
+            @content;
+          }
+        }
+      }
+    }
+  } @else {
+    @at-root {
+      @each $element in $elements {
+        #{$selector + $bem-element-separator + $element} {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+@mixin m($modifier) {
+  @at-root {
+    #{&}#{$bem-modifier-separator + $modifier} {
+      @content;
+    }
+  }
+}

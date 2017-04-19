@@ -1,0 +1,3 @@
+[submodule "src/stylesheet"]
+	path = src/stylesheet
+	url = git@git.jd.com:o2team/at-ui-style.git

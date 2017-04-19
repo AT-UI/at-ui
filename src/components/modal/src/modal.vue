@@ -1,0 +1,194 @@
+<template>
+  <div>
+    <transition name="fade">
+      <div class="at-modal__mask" v-show="visible" @click="handleMaskClick"></div>
+    </transition>
+    <!-- / mask -->
+    <div
+      class="at-modal__wrapper"
+      :class="[
+        !wrapShow ? 'at-modal--hidden' : ''
+      ]" @click.self="handleWrapperClick">
+      <transition name="fade">
+        <div class="at-modal" :style="modalStyle" v-show="visible">
+          <div class="at-modal__header" v-if="showHead && ($slots.header || this.title)">
+            <div class="at-modal__title">
+              <slot name="header">
+                {{ title }}
+              </slot>
+            </div>
+          </div>
+          <div class="at-modal__body">
+            <slot>
+              <p>{{ content }}</p>
+              <div class="at-modal__input" v-if="showInput">
+                <at-input v-model="inputValue" :placeholder="inputPlaceholder" @keyup.enter.native="handleAction('confirm')" ref="input"></at-input>
+              </div>
+            </slot>
+          </div>
+          <div class="at-modal__footer" v-if="showFooter">
+            <slot name="footer">
+              <at-button size="small" v-show="showCancelButton" @click.native="handleAction('cancel')">{{ cancelText }}</at-button>
+              <at-button type="primary" size="small" v-show="showConfirmButton" @click.native="handleAction('confirm')">{{ okText }}</at-button>
+            </slot>
+          </div>
+          <span v-if="showClose" class="at-modal__close" @click="handleAction('cancel')"><i class="icon icon-cancel"></i></span>
+        </div>
+      </transition>
+    </div>
+    <!-- / wrap -->
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'AtModal',
+    props: {
+      value: {
+        type: Boolean,
+        default: false
+      },
+      cancelText: {
+        type: String,
+        default: '\u53D6\u6D88'
+      },
+      okText: {
+        type: String,
+        default: '\u786E\u5B9A'
+      },
+      title: String,
+      content: String,
+      lockScroll: {
+        type: Boolean,
+        default: true
+      },
+      maskClosable: {
+        type: Boolean,
+        default: true
+      },
+      showHead: {
+        type: Boolean,
+        default: true
+      },
+      showClose: {
+        type: Boolean,
+        default: true
+      },
+      showFooter: {
+        type: Boolean,
+        default: true
+      },
+      showInput: {
+        type: Boolean,
+        default: false
+      },
+      width: {
+        type: [Number, String],
+        default: 520
+      },
+      closeOnPressEsc: {
+        type: Boolean,
+        default: true
+      },
+      styles: {
+        type: Object,
+        default () {
+          return {}
+        }
+      }
+    },
+    data () {
+      return {
+        wrapShow: false,
+        showCancelButton: true,
+        showConfirmButton: true,
+        action: '',
+        visible: this.value,
+        inputValue: null,
+        inputPlaceholder: '',
+        callback: null
+      }
+    },
+    computed: {
+      modalStyle () {
+        const style = {}
+        const styleWidth = {
+          width: `${this.width}px`
+        }
+
+        Object.assign(style, styleWidth, this.styles)
+
+        return style
+      }
+    },
+    watch: {
+      value (val) {
+        this.visible = val
+      },
+      visible (val) {
+        if (val) {
+          if (this.timer) {
+            clearTimeout(this.timer)
+          }
+          this.wrapShow = true
+        } else {
+          this.timer = setTimeout(() => {
+            this.wrapShow = false
+          }, 300)
+        }
+      }
+    },
+    methods: {
+      doClose () {
+        this.visible = false
+        this.$emit('input', false)
+        this.$emit('on-cancel')
+
+        if (this.action && this.callback) {
+          this.callback(this.action, this)
+        }
+      },
+      handleMaskClick (evt) {
+        if (this.maskClosable) {
+          this.doClose()
+        }
+      },
+      handleWrapperClick (evt) {
+        if (this.maskClosable) {
+          this.doClose()
+        }
+      },
+      handleAction (action) {
+        if (this.$type === 'prompt' && action === 'confirm') return
+
+        this.action = action
+
+        if (action === 'confirm') {
+          this.visible = false
+          this.$emit('input', false)
+          this.$emit('on-confirm')
+          return
+        }
+
+        this.doClose()
+      },
+      handleKeyCode (evt) {
+        if (this.visible && this.showClose) {
+          if (evt.keyCode === 27) { // Escape
+            this.doClose()
+          }
+        }
+      }
+    },
+    mounted () {
+      if (this.visible) {
+        this.wrapShow = true
+      }
+
+      document.addEventListener('keydown', this.handleKeyCode)
+    },
+    beforeDestory () {
+      document.removeEventListener('keydown', this.handleKeyCode)
+    }
+  }
+</script>

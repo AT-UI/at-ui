@@ -1,0 +1,47 @@
+/**
+ * A quick method for setting an element's position.
+ *
+ * @require {function} _is-length
+ * @require {function} _unpack
+ * @argument {string} $position [Default relative] [A CSS position value]
+ * @argument {arglist} $coordinates [Default null] [List of lengths]
+ *
+ * @example
+ *   .element {
+ *     @include position(absolute, 0 null null 10em);
+ *   }
+ *
+ *   // CSS Output
+ *   .element {
+ *     position: absolute;
+ *     top: 0;
+ *     left: 10em;
+ *   }
+ */
+
+@mixin position(
+    $position: relative,
+    $coordinates: null
+  ) {
+  @if type-of($position) == list {
+    $coordinates: $position;
+    $position: relative;
+  }
+
+  position: $position;
+
+  $coordinates: _unpack($coordinates);
+
+  $offsets: (
+    top:    nth($coordinates, 1),
+    right:  nth($coordinates, 2),
+    bottom: nth($coordinates, 3),
+    left:   nth($coordinates, 4),
+  );
+
+  @each $offset, $value in $offsets {
+    @if _is-length($value) {
+      #{$offset}: $value;
+    }
+  }
+}

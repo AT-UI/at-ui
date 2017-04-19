@@ -1,0 +1,83 @@
+/**
+ * Alert Style
+ */
+@import '../variables/index.css';
+
+.at-alert {
+  position: relative;
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: var(--alert-padding);
+  border-radius: var(--alert-border-radius);
+  overflow: hidden;
+  color: var(--color-white);
+  opacity: 1;
+  transition: opacity .3s;
+
+  /* element */
+  &__icon {
+    color: var(--alert-icon-color);
+    font-size: var(--alert-icon-font-size);
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  &__content {
+    padding-right: 8px;
+    flex: 1;
+
+    p {
+      padding: 0;
+    }
+  }
+  &__message {
+    font-size: var(--alert-message-font-size);
+    line-height: 1.2;
+    color: var(--color-white);
+  }
+  &__description {
+    font-size: var(--alert-description-font-size);
+    margin-top: 5px;
+    color: var(--color-white);
+  }
+  &__close {
+    color: var(--alert-icon-color);
+    font-size: var(--alert-close-font-size);
+    opacity: 1;
+    cursor: pointer;
+    margin-top: 2px;
+  }
+
+  /* modifier */
+  &--success {
+    background-color: var(--alert-bg-color-success);
+  }
+  &--error {
+    background-color: var(--alert-bg-color-error);
+  }
+  &--warning {
+    background-color: var(--alert-bg-color-warning);
+  }
+  &--info {
+    background-color: var(--alert-bg-color-info);
+  }
+  &--with-description {
+    padding: 14px 16px;
+
+    .at-alert__icon {
+      font-size: 24px;
+    }
+    .at-alert__message {
+      font-weight: bold;
+      line-height: 1.3;
+    }
+    .at-alert__description {
+      line-height: 1.5;
+    }
+  }
+
+  &.at-alert-fade-enter,
+  &.at-alert-fade-leave-active {
+    opacity: 0;
+  }
+}

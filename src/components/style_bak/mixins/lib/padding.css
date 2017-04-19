@@ -1,0 +1,21 @@
+/**
+ * A quick method for targeting `padding` on specific sides of a box
+ *
+ * @require {mixin} _directional-property
+ * @param {arglist} $values [List of padding values]
+ *
+ * @example
+ *   .element {
+ *     @include padding(null 1rem);
+ *   }
+ *
+ *   // CSS Output
+ *   .element {
+ *     padding-left: 1rem;
+ *     padding-right: 1rem;
+ *   }
+ */
+
+@mixin padding($values...) {
+  @include _directional-property(padding, false, $values...);
+}

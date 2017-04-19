@@ -1,0 +1,42 @@
+/**
+ * Textarea Style
+ */
+@import '../variables/index.css';
+
+.at-textarea {
+  &__original {
+    display: block;
+    width: 100%;
+    padding: 6px 8px;
+    outline: 0;
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--input-border-radius);
+    line-height: 1.5;
+    color: var(--input-font-color);
+    font-size: var(--input-font-size);
+    background-color: var(--input-bg-color);
+    transition: border .2s;
+
+    &::placeholder {
+      color: var(--input-placeholder-color);
+    }
+    &:hover {
+      border-color: var(--input-border-color-hover);
+    }
+    &:focus {
+      border-color: var(--input-border-color-focus);
+    }
+  }
+  &--disabled {
+    .at-textarea__original {
+      color: var(--input-font-color-disabled);
+      border-color: var(--input-border-color-disabled);
+      background-color: var(--input-bg-color-disabled);
+      cursor: var(--cursor-disabled);
+
+      &::placeholder {
+        color: var(--input-placeholder-color-disabled);
+      }
+    }
+  }
+}

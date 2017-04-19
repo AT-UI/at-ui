@@ -1,0 +1,12 @@
+/**
+ * Check for a valid CSS size
+ *
+ * @require {function} _contains
+ * @require {function} _is-length
+ * @argument {string} $value
+ * @return {boolean}
+ */
+
+@function _is-size($value) {
+  @return _is-length($value) or _contains('fill' 'fit-content' 'min-content' 'max-content', $value);
+}

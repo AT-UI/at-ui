@@ -1,0 +1,11 @@
+/**
+ * Strips the unit from a number.
+ * It's used as a helper in the Pixel to Ems and Pixel to Rems funcitons
+ *
+ * @param {number} $value [Number with unit]
+ * @return {number (unitless)}
+ */
+
+@function strip-unit($value) {
+  @return ($value / ($value * 0 + 1));
+}

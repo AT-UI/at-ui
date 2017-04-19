@@ -1,0 +1,21 @@
+/**
+ * Hides text to show a background image(a logo, for example)
+ *
+ * @example
+ *   .element {
+ *     @include hide-text;
+ *   }
+ *
+ *   // CSS Output
+ *   .element {
+ *     overflow: hidden;
+ *     text-indent: 101%;
+ *     white-space: nowrap;
+ *   }
+ */
+
+@mixin hide-text {
+  overflow: hidden;
+  text-indent: 101%;
+  white-space: nowrap;
+}

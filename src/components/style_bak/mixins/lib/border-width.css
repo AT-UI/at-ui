@@ -1,0 +1,9 @@
+/**
+ * A quick method for targeting `border-width` on specific sides of a box
+ *
+ * @parm {arglist} $values [List of border widths]
+ */
+
+@mixin border-width($values...) {
+  @include _directional-property(border, width, $values...);
+}
