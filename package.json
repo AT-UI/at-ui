@@ -1,16 +1,18 @@
 {
-  "name": "desktop-ui",
-  "version": "0.0.1",
-  "description": "O2Team Desktop UI",
-  "main": "dist/components/index.js",
+  "name": "at-ui",
+  "version": "0.1.0",
+  "description": "O2Team AT UI",
+  "main": "dist/at.js",
   "engines": {
     "node": ">=6"
   },
   "scripts": {
     "dev": "node build/dev-server",
-    "build": "NODE_ENV=production webpack --config build/webpack.prod.conf.js -p",
+    "build": "webpack --config build/webpack.prod.conf.js -p",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "start": "cross-env node app"
+    "build:dist-dev": "webpack --config build/webpack.dist.dev.conf.js",
+    "build:dist-prod": "webpack --config build/webpack.dist.prod.conf.js",
+    "build:dist": "npm run build:dist-dev && npm run build:dist-prod"
   },
   "repository": {
     "type": "git",
@@ -18,18 +20,17 @@
   },
   "keywords": [
     "Desktop",
-    "UI"
+    "UI",
+    "AT"
   ],
   "author": "koppt <hemingjin@jd.com>",
   "license": "MIT",
   "dependencies": {
     "async-validator": "^1.6.8",
     "babel-runtime": "^6.11.6",
-    "tether": "^1.4.0",
     "vue": "^2.2.4",
     "vue-router": "^2.3.0",
-    "vue-template-compiler": "^2.2.4",
-    "vuex": "^2.0.0"
+    "vue-template-compiler": "^2.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.1",
@@ -43,19 +44,18 @@
     "cheerio": "^0.22.0",
     "config": "^1.21.0",
     "connect-history-api-fallback": "^1.3.0",
-    "cross-env": "^3.0.0",
-    "css-loader": "^0.25.0",
+    "cross-env": "^4.0.0",
+    "css-loader": "^0.28.0",
     "eslint": "^3.18.0",
     "eslint-config-o2team": "^0.1.6",
-    "eslint-config-standard": "^6.2.0",
     "eslint-friendly-formatter": "^2.0.6",
     "eslint-loader": "^1.5.0",
-    "eslint-plugin-html": "^1.5.3",
-    "eslint-plugin-promise": "^2.0.1",
-    "eslint-plugin-standard": "^2.0.1",
+    "eslint-plugin-html": "^2.0.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.14.0",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "highlight.js": "^9.7.0",
     "html-webpack-plugin": "^2.22.0",
@@ -65,25 +65,21 @@
     "markdown-it-container": "^2.0.0",
     "node-dev": "^3.1.3",
     "node-sass": "^4.5.2",
-    "postcss-cssnext": "^2.9.0",
-    "postcss-loader": "^0.13.0",
-    "postcss-partial-import": "^2.1.0",
-    "postcss-scss": "^0.4.0",
-    "postcss-url": "^5.1.2",
-    "precss": "^1.4.0",
+    "postcss-loader": "^1.3.3",
+    "postcss-url": "^6.0.4",
     "resolve-url-loader": "^2.0.2",
     "sass-loader": "^6.0.3",
-    "style-loader": "^0.13.1",
+    "style-loader": "^0.16.1",
     "url-loader": "^0.5.7",
     "vue-html-loader": "^1.2.3",
-    "vue-loader": "^9.5.0",
-    "vue-markdown-loader": "^0.5.1",
+    "vue-loader": "^11.3.4",
+    "vue-markdown-loader": "^0.6.2",
     "vue-style-loader": "^3.0.0",
-    "webpack": "^1.13.2",
-    "webpack-dashboard": "^0.2.0",
+    "webpack": "^2.4.1",
+    "webpack-dashboard": "^0.3.0",
     "webpack-dev-middleware": "^1.8.3",
     "webpack-hot-middleware": "^2.12.2",
-    "webpack-merge": "^0.14.1",
+    "webpack-merge": "^4.1.0",
     "yaml-loader": "^0.4.0"
   }
 }

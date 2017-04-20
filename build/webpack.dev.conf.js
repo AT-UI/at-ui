@@ -15,10 +15,9 @@ Object.keys(baseWebpackConfig.entry).forEach((name) => {
 
 module.exports = merge(baseWebpackConfig, {
   // eval-source-map if faster for development
-  devtools: '#eval-source-map',
+  devtool: 'eval-source-map',
   plugins: [
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin

@@ -95,7 +95,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
 .at-switch + .at-switch {
   margin-left: 20px;
 }

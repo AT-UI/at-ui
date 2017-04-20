@@ -4,7 +4,8 @@ import App from './App'
 import router from './router'
 import DemoBox from './components/demobox'
 import IconList from './components/iconlist'
-import ATComponents from 'components'
+// import ATComponents from '../src'
+import ATComponents from '../dist/at.js'
 import 'stylesheet/css/at.css'
 
 window.Vue = Vue

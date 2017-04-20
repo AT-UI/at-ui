@@ -52,7 +52,7 @@
 | status | 进度条状态 | String | `success`, `error` | Infinity |
 | stroke-width | 进度条的线宽 | Number | - | 10 |
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
 .at-progress:not(:last-child) {
   margin-bottom: 8px;
 }

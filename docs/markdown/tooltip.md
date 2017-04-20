@@ -63,7 +63,7 @@
 | content | 提示文字 | String | - | - |
 | placement | 气泡框位置 | String | `top`, `top-left`, `top-right`, `left`, `left-top`, `left-bottom`, `right`, `right-top`, `right-bottom`, `bottom`, `bottom-left`, `bottom-right` | top |
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
 .show-box {
   max-width: 600px;
 }

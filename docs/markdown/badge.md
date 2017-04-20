@@ -152,7 +152,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
   .badge-example {
     display: inline-block;
     width: 42px;

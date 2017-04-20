@@ -69,7 +69,7 @@
 
 :::
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
   .at-btn-group {
     margin-top: 15px;
   }

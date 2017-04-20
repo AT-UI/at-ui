@@ -204,7 +204,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
   .modal-vertical {
     .at-modal__wrapper {
       display: flex;

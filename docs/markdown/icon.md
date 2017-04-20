@@ -23,7 +23,7 @@
 
 <icon-list></icon-list>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
 .icon {
   font-size: 20px;
   margin-right: 10px;

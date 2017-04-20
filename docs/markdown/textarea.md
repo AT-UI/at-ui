@@ -72,7 +72,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
 .at-textarea {
   width: 400px;
 

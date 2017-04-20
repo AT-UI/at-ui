@@ -75,7 +75,7 @@
     </li>
     <div v-if="showSizer" class="at-pagination__sizer">
       <at-select v-model="currentPageSize" :size="size" @on-change="changeSize">
-        <at-option v-for="item in pageSizeOpts" :value="item">{{ item }} 条/页</at-option>
+        <at-option v-for="item in pageSizeOpts" :key="item" :value="item">{{ item }} 条/页</at-option>
       </at-select>
     </div>
     <div class="at-pagination__quickjump" v-if="showQuickjump">

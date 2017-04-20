@@ -1,13 +1,37 @@
 const path = require('path')
 const webpack = require('webpack')
 const MarkdownItContainer = require('markdown-it-container')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const striptags = require('./strip-tags')
 
 const config = require('./config')
 const utils = require('./utils')
 
-const projectRoot = config.projectRoot
+const vueMarkdown = {
+  preprocess: (MarkdownIt, source) => {
+    MarkdownIt.renderer.rules.table_open = function () {
+      return '<table class="table">'
+    }
+    MarkdownIt.renderer.rules.fence = wrapCustomClass(MarkdownIt.renderer.rules.fence)
+    return source
+  },
+  use: [
+    [MarkdownItContainer, 'demo', {
+      validate: params => params.trim().match(/^demo\s*(.*)$/),
+      render: (tokens, idx) => {
+        if (tokens[idx].nesting === 1) {
+          const html = convert(striptags(tokens[idx + 1].content, 'script'))
+
+          return `<demo-box>
+                    <div slot="demo">${html}</div>
+                    <div slot="source-code">`
+        }
+
+        // closing tag
+        return '</div></demo-box>'
+      }
+    }]
+  ]
+}
 
 module.exports = {
   entry: {
@@ -20,8 +44,8 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['', '.js', '.vue'],
-    fallback: [path.join(__dirname, '../node_modules')],
+    extensions: ['.js', '.vue'],
+    // fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
@@ -30,56 +54,75 @@ module.exports = {
       'vue': 'vue/dist/vue.js'
     }
   },
-  resolveLoader: {
-    fallback: [path.join(__dirname, '../node_modules')]
-  },
+  // resolveLoader: {
+  //   fallback: [path.join(__dirname, '../node_modules')]
+  // },
   module: {
-    preLoaders: [
-      {
-        test: /\.vue$/,
-        loader: 'eslint',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.js$/,
-        loader: 'eslint',
-        exclude: /node_modules/
-      }
-    ],
-    loaders: [
+    // preLoaders: [
+    //   {
+    //     test: /\.vue$/,
+    //     loader: 'eslint',
+    //     exclude: /node_modules/
+    //   },
+    //   {
+    //     test: /\.js$/,
+    //     loader: 'eslint',
+    //     exclude: /node_modules/
+    //   }
+    // ],
+    rules: [
       {
         test: /\.md$/,
-        loader: 'vue-markdown-loader'
+        loader: 'vue-markdown-loader',
+        options: vueMarkdown
       },
       {
         test: /\.yml$/,
-        loader: 'json!yaml'
+        loader: 'json-loader!yaml-loader'
       },
       {
         test: /\.css$/,
-        loader: 'style!css!postcss'
+        loaders: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('autoprefixer')({
+                  browsers: ['last 2 versions', 'ie > 8']
+                })
+              ]
+            }
+          }
+        ]
       },
       {
         test: /\.vue$/,
-        loader: 'vue'
+        loader: 'vue-loader',
+        options: {
+          loaders: utils.cssLoaders({
+            extract: false
+          }),
+          postcss: [
+            require('autoprefixer')({
+              browsers: ['last 2 versions', 'ie > 8']
+            })
+          ]
+        }
       },
       {
         test: /\.js$/,
-        loader: 'babel',
-        include: projectRoot,
+        loader: 'babel-loader',
         exclude: /node_modules/
       },
       {
-        test: /\.json$/,
-        loader: 'json'
-      },
-      {
         test: /\.html$/,
-        loader: 'vue-html'
+        loader: 'vue-html-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url',
+        loader: 'url-loader',
         query: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
@@ -87,7 +130,7 @@ module.exports = {
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url',
+        loader: 'url-loader',
         query: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
@@ -100,55 +143,11 @@ module.exports = {
       'process.env.serverConfig': {
         portalPrefix: JSON.stringify(config.portalPrefix)
       }
-    }),
-    new ExtractTextPlugin('styles.css')
+    })
   ],
   // eslint: {
   //   formatter: require('eslint-friendly-formatter')
   // },
-  postcss: webpack => [
-    require('autoprefixer')({
-      browsers: ['last 2 versions', 'ie > 8']
-    })
-    // require('postcss-url')()
-  ],
-  vue: {
-    loaders: utils.cssLoaders({
-      extract: false
-    }),
-    postcss: [
-      require('autoprefixer')({
-        browsers: ['last 2 versions', 'ie > 8']
-      })
-      // require('postcss-url')()
-    ]
-  },
-  vueMarkdown: {
-    preprocess: (MarkdownIt, source) => {
-      MarkdownIt.renderer.rules.table_open = function () {
-        return '<table class="table">'
-      }
-      MarkdownIt.renderer.rules.fence = wrapCustomClass(MarkdownIt.renderer.rules.fence)
-      return source
-    },
-    use: [
-      [MarkdownItContainer, 'demo', {
-        validate: params => params.trim().match(/^demo\s*(.*)$/),
-        render: (tokens, idx) => {
-          if (tokens[idx].nesting === 1) {
-            const html = convert(striptags(tokens[idx + 1].content, 'script'))
-
-            return `<demo-box>
-                      <div slot="demo">${html}</div>
-                      <div slot="source-code">`
-          }
-
-          // closing tag
-          return '</div></demo-box>'
-        }
-      }]
-    ]
-  }
 }
 
 /**
