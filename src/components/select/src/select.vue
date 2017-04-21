@@ -22,8 +22,8 @@
         @keydown.delete="handleInputDelete"
         ref="input"
       >
-      <i class="icon icon-cancel-1 at-select__clear" v-show="showCloseIcon" @click.stop="clearSingleSelect"></i>
-      <i class="icon icon-down-arrow at-select__arrow"></i>
+      <i class="icon icon-cancel at-select__clear" v-show="showCloseIcon" @click.stop="clearSingleSelect"></i>
+      <i class="icon icon-down at-select__arrow"></i>
     </div>
     <transition name="slide-up" @after-leave="doDestory">
       <div class="at-select__dropdown"

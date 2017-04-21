@@ -37,7 +37,7 @@
     <!-- E input -->
 
     <!-- S icon -->
-    <i class="at-input__icon" :class="'icon icon-' + icon" v-if="icon"></i>
+    <i class="at-input__icon icon" :class="iconClass" v-if="icon"></i>
     <!-- E icon -->
 
     <!-- S append element -->
@@ -77,6 +77,12 @@
       validateEvent: {
         type: Boolean,
         default: true
+      }
+    },
+    computed: {
+      iconClass () {
+        const name = this.icon || this.status
+        return name ? `icon-${name}` : ''
       }
     },
     data () {

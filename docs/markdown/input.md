@@ -31,8 +31,8 @@
 :::demo
 
 ```html
-<at-input v-model="inputValue2" placeholder="success" status="success" icon="correct"></at-input>
-<at-input v-model="inputValue2" placeholder="error" status="error" icon="cancel-1"></at-input>
+<at-input v-model="inputValue2" placeholder="success" status="success" icon="circle-correct"></at-input>
+<at-input v-model="inputValue2" placeholder="error" status="error" icon="circle-cancel"></at-input>
 <at-input v-model="inputValue2" placeholder="warning" status="warning"></at-input>
 <at-input v-model="inputValue2" placeholder="info" status="info" icon="info"></at-input>
 ```
