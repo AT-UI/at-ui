@@ -1,6 +1,0 @@
-port: 7200
-
-# Proxy Table
-
-# URL Prefix
-portalPrefix: /

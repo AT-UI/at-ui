@@ -11,7 +11,7 @@ const vueMarkdown = {
     MarkdownIt.renderer.rules.table_open = function () {
       return '<table class="table">'
     }
-    MarkdownIt.renderer.rules.fence = wrapCustomClass(MarkdownIt.renderer.rules.fence)
+    MarkdownIt.renderer.rules.fence = utils.wrapCustomClass(MarkdownIt.renderer.rules.fence)
     return source
   },
   use: [
@@ -19,7 +19,7 @@ const vueMarkdown = {
       validate: params => params.trim().match(/^demo\s*(.*)$/),
       render: (tokens, idx) => {
         if (tokens[idx].nesting === 1) {
-          const html = convert(striptags(tokens[idx + 1].content, 'script'))
+          const html = utils.convertHtml(striptags(tokens[idx + 1].content, 'script'))
 
           return `<demo-box>
                     <div slot="demo">${html}</div>
@@ -34,29 +34,23 @@ const vueMarkdown = {
 }
 
 module.exports = {
-  entry: {
-    // dist: './src/main.js',
-    docs: './docs/main.js'
-  },
+  entry: './docs/main.js',
   output: {
     path: config.build.assetsRoot,
     publicPath: config.build.assetsPublicPath,
-    filename: '[name].js'
+    filename: 'js/[name].js'
   },
   resolve: {
     extensions: ['.js', '.vue'],
-    // fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
       'components': path.resolve(__dirname, '../src/components'),
       'stylesheet': path.resolve(__dirname, '../src/stylesheet'),
+      'at': path.resolve(__dirname, '../dist/at.js'),
       'vue': 'vue/dist/vue.js'
     }
   },
-  // resolveLoader: {
-  //   fallback: [path.join(__dirname, '../node_modules')]
-  // },
   module: {
     // preLoaders: [
     //   {
@@ -125,7 +119,7 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          name: utils.assetsPath('img/[name].[ext]')
         }
       },
       {
@@ -133,7 +127,7 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          name: utils.assetsPath('fonts/[name].[ext]')
         }
       }
     ]
@@ -148,23 +142,4 @@ module.exports = {
   // eslint: {
   //   formatter: require('eslint-friendly-formatter')
   // },
-}
-
-/**
- * 增加 hljs 的 className
- */
-function wrapCustomClass (render) {
-  return function (...args) {
-    return render(...args)
-      .replace('<code class="', '<code class="hljs ')
-      .replace('<code>', '<code class="hljs">')
-  }
-}
-
-/**
- * Format html string
- */
-function convert (str) {
-  str = str.replace(/(&#x)(\w{4});/gi, $0 => String.fromCharCode(parseInt(encodeURIComponent($0).replace(/(%26%23x)(\w{4})(%3B)/g, '$2'), 16)))
-  return str
 }

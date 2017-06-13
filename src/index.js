@@ -60,27 +60,16 @@ const components = {
   Message
 }
 
-Notification.install = Vue => {
-  Vue.prototype.$notify = Notification
-}
-
-for (const item in components) {
-  if (!components[item].install && components[item].name) {
-    components[item].install = function (Vue) {
-      Vue.component(components[item].name, components[item])
-    }
-  }
-}
-
 function install (Vue) {
   if (install.installed) return
 
   for (const item in components) {
-    if (components[item].install) {
-      Vue.use(components[item])
+    if (components[item].name) {
+      Vue.component(components[item].name, components[item])
     }
   }
 
+  Vue.prototype.$notify = Notification
   Vue.prototype.$Loading = LoadingBar
   Vue.prototype.$Modal = Dialog
   Vue.prototype.$Message = Message

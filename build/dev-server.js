@@ -28,9 +28,7 @@ const devMiddleware = webpackDevMiddleware(compiler, {
   }
 })
 
-const hotMiddleware = webpackHotMiddleware(compiler, {
-  log: console.log
-})
+const hotMiddleware = webpackHotMiddleware(compiler)
 
 // Fore page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', compilation => {
