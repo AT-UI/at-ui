@@ -1,3 +1,6 @@
+/**
+ * https://github.com/yuche/vue-strap/blob/master/src/utils/NodeList.js
+ */
 const ArrayProto = Array.prototype
 const nodeError = new Error('Passed arguments must be of Node')
 let blurEvent
