@@ -47,7 +47,7 @@ module.exports = {
       'assets': path.resolve(__dirname, '../src/assets'),
       'components': path.resolve(__dirname, '../src/components'),
       'stylesheet': path.resolve(__dirname, '../src/stylesheet'),
-      'at': path.resolve(__dirname, '../dist/at.js'),
+      'at': path.resolve(__dirname, '../src/index.js'),
       'vue': 'vue/dist/vue.js'
     }
   },

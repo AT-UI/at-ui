@@ -4,19 +4,18 @@ import App from './App'
 import router from './router'
 import DemoBox from './components/demobox'
 import IconList from './components/iconlist'
-// import ATComponents from 'at'
-import ATComponents from '../src'
-// import ATComponents from '../dist/at.js'
+import ATComponents from 'at'
 import 'stylesheet/css/at.css'
 
 window.Vue = Vue
-Vue.use(ATComponents)
+
 // 注册组件
 // for (var key of Object.keys(ATComponents)) {
 //   let lowerKey = key.toLocaleLowerCase()
 //   Vue.component(`at-${lowerKey}`, ATComponents[key])
 // }
 
+Vue.use(ATComponents)
 Vue.component('demo-box', DemoBox)
 Vue.component('icon-list', IconList)
 
