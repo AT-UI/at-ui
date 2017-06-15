@@ -31,34 +31,82 @@
 使用单一的 `row` 和多个 `col` 组合，创建基础的栅格布局
 
 :::demo
-
 ```html
 <div class="row at-row no-gutter" v-for="n in 24/2">
   <div :class="`col-md-${n}`"><div class="at-box-row bg-c-brand-dark"></div></div>
-  <div :class="`col-md-${24 - n}`"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div :class="`col-md-${24 - n}`"><div class="at-box-row bg-c-brand-light"></div></div>
 </div>
 ```
 :::
 
 ### 分隔布局
 
-区块之间增加间隔
+`col` 块之间增加间隔，默认添加间隔，如不需要间隔，可添加 `class="no-gutter"`
 
 :::demo
-
 ```html
 <div class="row at-row" v-for="n in 24/2">
   <div :class="`col-md-${n}`"><div class="at-box-row bg-c-brand-dark"></div></div>
-  <div :class="`col-md-${24 - n}`"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div :class="`col-md-${24 - n}`"><div class="at-box-row bg-c-brand-light"></div></div>
 </div>
 ```
 :::
 
 ### 左右偏移
 
-列与列之间可以通过设置 `offset` 来设定偏移值
+列与列之间可以通过设置 `offset` 来设定偏移值，例如：`col-md-offset-3`，意思是向左偏移 3 个单元格
 
-### 栅格排序
+:::demo
+```html
+<div class="row at-row" v-for="n in 6">
+  <div class="col-md-2"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div :class="`col-md-2 col-md-offset-${n}`"><div class="at-box-row bg-c-brand-dark"></div></div>
+</div>
+```
+:::
+
+### Flex 布局
+
+`AT-UI` 的 `Grid System` 就是使用 `Flexbox` 实现的，如果要针对某些元素设置 `Flex` 布局，可使用 `class="flex"`。子元素通过添加不同的值 `flex-start`，`flex-center`，`flex-end`，`flex-top`，`flex-middle`，`flex-around`，`flex-between` ，分别定义其在父元素中的排列方式。
+
+:::demo
+```html
+<div class="row at-row no-gutter">
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
+</div>
+
+<div class="row at-row no-gutter flex-center">
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
+</div>
+
+<div class="row at-row no-gutter flex-end">
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
+</div>
+
+<div class="row at-row no-gutter flex-around">
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
+</div>
+
+<div class="row at-row no-gutter flex-between">
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
+</div>
+```
+:::
 
 ### 栅格列的对其方式
 
