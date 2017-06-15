@@ -7,7 +7,7 @@
     "node": ">=6"
   },
   "scripts": {
-    "dev": "node build/dev-server",
+    "dev": "node-dev build/dev-server",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "build:doc": "webpack --config build/webpack.prod.conf.js -p",
     "build:dev": "webpack --config build/webpack.build.dev.conf.js",

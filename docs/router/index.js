@@ -14,12 +14,12 @@ function regeisterRoute (navConfig) {
       const parentName = nav.name
       if (nav.groups) {
         nav.groups.forEach(group => {
-          group.children.forEach(item => {
+          group.items.forEach(item => {
             addRoute(parentName, item)
           })
         })
-      } else if (nav.children) {
-        nav.children.forEach(item => {
+      } else if (nav.items) {
+        nav.items.forEach(item => {
           addRoute(parentName, item)
         })
       }
@@ -28,9 +28,9 @@ function regeisterRoute (navConfig) {
 
   function addRoute (parentName, item) {
     routes.push({
-      path: parentName + item.path,
+      path: `${parentName}/${item.name.toLowerCase()}`,
       name: item.name,
-      component: require(`../markdown${item.path}.md`)
+      component: require(`../markdown/${item.name.toLowerCase()}.md`)
     })
   }
 
@@ -39,16 +39,24 @@ function regeisterRoute (navConfig) {
 
 const routes = regeisterRoute(NavConfig)
 
-// routes.push({
-//   path: '*',
-//   redirect: '/'
-// })
+routes.push({
+  path: '*',
+  redirect: { name: 'Introduction' }
+})
 
 const router = new Router({
+  routes,
   mode: 'history',
-  saveScrollPosition: true,
   root: process.env.serverConfig.portalPrefix,
-  routes
+  scrollBehavior (to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash
+      }
+    }
+
+    return { x: 0, y: 0 }
+  }
 })
 
 export default router

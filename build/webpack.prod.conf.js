@@ -17,7 +17,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   resolve: {
     alias: {
-      'at': path.resolve(__dirname, '../dist/at.js')
+      'at': path.resolve(__dirname, '../dist/at.js'),
+      'at-css': 'stylesheet/css/at.css'
     }
   },
   plugins: [

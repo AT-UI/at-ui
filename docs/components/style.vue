@@ -348,4 +348,10 @@ $large-viewport-max-width: 1199px;
     }
   }
 }
+.at-markdown blockquote {
+  margin: 20px 0;
+  padding: 0 15px;
+  color: #858585;
+  border-left: 4px solid #e5e5e5;
+}
 </style>
