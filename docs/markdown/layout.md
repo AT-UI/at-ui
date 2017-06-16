@@ -71,34 +71,35 @@
 
 :::demo
 ```html
+flex-start
 <div class="row at-row no-gutter">
   <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
   <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
   <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
   <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
 </div>
-
+flex-center
 <div class="row at-row no-gutter flex-center">
   <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
   <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
   <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
   <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
 </div>
-
+flex-end
 <div class="row at-row no-gutter flex-end">
   <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
   <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
   <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
   <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
 </div>
-
+flex-around
 <div class="row at-row no-gutter flex-around">
   <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
   <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
   <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
   <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
 </div>
-
+flex-between
 <div class="row at-row no-gutter flex-between">
   <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
   <div class="col-md-4"><div class="at-box-row bg-c-brand-light"></div></div>
@@ -108,5 +109,49 @@
 ```
 :::
 
-### 栅格列的对其方式
+### 栅格列的对齐方式
 
+`row` 中的子元素 `col` 的对齐方式，支持三种对齐方式：`flex-top`，`flex-middle`，`flex-bottom`
+
+:::demo
+```html
+flex-top
+<div class="row at-row flex-center">
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light" style="height: 100px"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark" style="height: 70px"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light" style="height: 120px"></div></div>
+</div>
+flex-middle
+<div class="row at-row flex-center flex-middle">
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light" style="height: 100px"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark" style="height: 70px"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light" style="height: 120px"></div></div>
+</div>
+flex-bottom
+<div class="row at-row flex-center flex-bottom">
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light" style="height: 100px"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-dark" style="height: 70px"></div></div>
+  <div class="col-md-4"><div class="at-box-row bg-c-brand-light" style="height: 120px"></div></div>
+</div>
+```
+:::
+
+### 类名说明
+
+| classname | 说明 |
+| :------- | :--- |
+| .container | Grid 容器，相对父容器居中对齐 |
+| .container-fluid | 容器左右两边预留 `24px` 的间隙 |
+| .no-gutter | 默认 `col` 之间会设置 `8px` 的间隔，添加此类名可去除默认的间隔 |
+| .row | 包裹 `col` 的容器 |
+| .row.reverse | 反向排列子元素 |
+| .flex | 使用 `flexbox` 布局 |
+
+<style scoped>
+  .row {
+    background-color: #f2f8fe;
+  }
+</style>
