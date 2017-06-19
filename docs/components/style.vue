@@ -25,8 +25,13 @@ $large-viewport-max-width: 1199px;
  * Base
  */
 .at-content {
-  padding: 36px 48px 36px 312px;
+  // padding: 36px 48px 36px 312px;
+  margin: 36px 48px 36px 312px;
 
+  section {
+    margin: 0 auto;
+    max-width: 1000px;
+  }
   h1, h2, h3 {
     margin: 20px 0 15px;
   }

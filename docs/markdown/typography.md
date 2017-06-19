@@ -46,16 +46,16 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
 
 <div class="type-demo-container">
   <div class="row flex-middle typo-pingfang">
-    <div class="col-md-3 type">苹方 / PingFang SC</div>
-    <div class="col-md-12 content">凹凸实验室(Aotu.io，英文简称O2) 始建于2015年10月，是一个年轻基情的技术团队</div>
+    <div class="col-md-5 type">苹方 / PingFang SC</div>
+    <div class=" content">凹凸实验室(Aotu.io，英文简称O2) 始建于2015年10月，是一个年轻基情的技术团队</div>
   </div>
   <div class="row flex-middle typo-dongqing">
-    <div class="col-md-3 type">冬青黑体 / Hiragino Sans GB</div>
-    <div class="col-md-12 content">凹凸实验室(Aotu.io，英文简称O2) 始建于2015年10月，是一个年轻基情的技术团队</div>
+    <div class="col-md-5 type">冬青黑体 / Hiragino Sans GB</div>
+    <div class=" content">凹凸实验室(Aotu.io，英文简称O2) 始建于2015年10月，是一个年轻基情的技术团队</div>
   </div>
   <div class="row flex-middle typo-yahei">
-    <div class="col-md-3 type">微软雅黑 / Microsoft YaHei</div>
-    <div class="col-md-12 content">凹凸实验室(Aotu.io，英文简称O2) 始建于2015年10月，是一个年轻基情的技术团队</div>
+    <div class="col-md-5 type">微软雅黑 / Microsoft YaHei</div>
+    <div class=" content">凹凸实验室(Aotu.io，英文简称O2) 始建于2015年10月，是一个年轻基情的技术团队</div>
   </div>
 </div>
 
@@ -181,7 +181,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
     }
     .content {
       font-size: 15px;
-      margin-left: 24px;
+      padding-left: 24px;
     }
   }
 </style>
