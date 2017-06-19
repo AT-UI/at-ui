@@ -1,33 +1,46 @@
 ## Button 按钮
 
+----
+
+按钮用于传递用户触摸时会触发的操作
+
 ### 基础按钮
 
-不同的色彩代表不同的提示
+基础按钮分三种：`主按钮（实心）` 、 `次按钮（空心）` 、 `文字按钮`
 
 :::demo
 
 ```html
-<at-button>默认按钮</at-button>
 <at-button type="primary">主要按钮</at-button>
-<at-button type="success">成功按钮</at-button>
-<at-button type="error">危险按钮</at-button>
-<at-button type="warning">警告按钮</at-button>
-<at-button type="info">信息按钮</at-button>
+<at-button>次要按钮</at-button>
+<at-button type="text">文字按钮</at-button>
 ```
 
 :::
 
-### 基础按钮带颜色倾向
+### 带颜色倾向的按钮
+
+带有色彩倾向的按钮能给用户带来操作提示
 
 :::demo
 
 ```html
-<at-button :hollow="true">默认按钮</at-button>
-<at-button type="primary" :hollow="true">主要按钮</at-button>
-<at-button type="success" :hollow="true">成功按钮</at-button>
-<at-button type="error" :hollow="true">危险按钮</at-button>
-<at-button type="warning" :hollow="true">警告按钮</at-button>
-<at-button type="info" :hollow="true">信息按钮</at-button>
+<div class="row">
+  <at-button :hollow="true">默认按钮</at-button>
+  <at-button type="primary" :hollow="true">主要按钮</at-button>
+  <at-button type="success" :hollow="true">成功按钮</at-button>
+  <at-button type="error" :hollow="true">危险按钮</at-button>
+  <at-button type="warning" :hollow="true">警告按钮</at-button>
+  <at-button type="info" :hollow="true">信息按钮</at-button>
+</div>
+<div class="row">
+  <at-button>默认按钮</at-button>
+  <at-button type="primary">主要按钮</at-button>
+  <at-button type="success">成功按钮</at-button>
+  <at-button type="error">危险按钮</at-button>
+  <at-button type="warning">警告按钮</at-button>
+  <at-button type="info">信息按钮</at-button>
+</div>
 ```
 
 :::
@@ -70,6 +83,15 @@
 :::
 
 <style lang="sass" scoped>
+  .row {
+    .at-btn + .at-btn {
+      margin-left: 8px;
+    }
+
+    & + .row {
+      margin-top: 8px;
+    }
+  }
   .at-btn-group {
     margin-top: 15px;
   }
