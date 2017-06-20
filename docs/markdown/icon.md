@@ -51,7 +51,7 @@
 
 #### LOGO
 
-<icon-list type="logo"></icon-list>
+<icon-list type="logos"></icon-list>
 
 
 <style lang="sass" scoped>

@@ -4,23 +4,25 @@
 
 ### 基本单选框
 
-每个都是独立的单选按钮，只是需要每个都单独绑定一个 `model`
+每个都是独立的单选按钮，各自需要单独绑定一个 `model`
 
 :::demo
-
 ```html
-
 <at-radio v-model="radio" label="选项一">选项一</at-radio>
 <at-radio v-model="radio" label="选项二">选项二</at-radio>
-<at-radio v-model="radio2" label="选项三" disabled>不可点且未选中</at-radio>
-<at-radio v-model="radio2" label="选项四" disabled>不可点且选中</at-radio>
-
 ```
-
 :::
 
 ### 不可用状态
 
+添加属性 `disabled`，设置按钮不可用
+
+:::demo
+```html
+<at-radio v-model="radio2" label="选项三" disabled>不可点且未选中</at-radio>
+<at-radio v-model="radio2" label="选项四" disabled>不可点且选中</at-radio>
+```
+:::
 
 ### 单选框组合
 
