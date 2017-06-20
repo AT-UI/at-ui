@@ -2,7 +2,7 @@
   <div
     class="at-btn-group"
     :class="[
-      size ? 'at-btn-group--' + size : ''
+      size ? `at-btn-group--${size}` : ''
     ]"
   >
     <slot></slot>

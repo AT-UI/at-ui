@@ -2,10 +2,10 @@
   <button
     class="at-btn"
     :class="[
-      type ? 'at-btn--' + type : '',
-      size ? 'at-btn--' + size : '',
-      $parent && $parent.size ? 'at-btn--' + $parent.size : '',
-      hollow ? 'at-btn--' + type + '--hollow' : '',
+      type ? `at-btn--${type}` : '',
+      size ? `at-btn--${size}` : '',
+      $parent && $parent.size ? `at-btn--${$parent.size}` : '',
+      hollow ? `at-btn--${type}--hollow` : '',
       circle && !$slots.default ? 'at-btn--circle' : ''
     ]"
     :style="styleList"

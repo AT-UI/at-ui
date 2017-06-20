@@ -160,6 +160,13 @@
 | loading | 设置按钮的载入状态 | boolean | - | false |
 | circle | 设置圆形图标按钮 | boolean | - | false |
 
+### Button Group 参数
+
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| size | 按钮的大小 | string | `large`, `small` | 正常大小 |
+| gap | 按钮间隔 | number | - | -1 |
+
 <style lang="sass" scoped>
   .row {
     .at-btn + .at-btn {
