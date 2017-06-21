@@ -51,16 +51,15 @@
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| label | 选中状态的值 | string | - | - |
-| name | 原生的 name 属性 | string | - | - |
-| disabled | 按钮禁用 | boolean | - | false |
-| checked | 是否已勾选 | boolean | - | false |
+| label | 选中状态的值 | String | - | - |
+| disabled | 是否禁用按钮 | Boolean | - | false |
+| checked | 是否已勾选 | Boolean | - | false |
 
-### Checkbox-Group 事件
+### Checkbox Group 事件
 
 | 事件名称      | 说明          | 返回值  |
 |---------- |-------------- |---------- |
-| change | 绑定的值有变化时触发 | 选择的按钮的 label 值 |
+| checkbox-group-change | 绑定的值变化时触发 | 选中的按钮的 label 值 |
 
 <style lang="sass" scoped>
   .demo-desc {

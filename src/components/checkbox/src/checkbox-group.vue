@@ -21,7 +21,7 @@ export default {
   },
   watch: {
     value (value) {
-      this.$emit('change', value)
+      this.$emit('checkbox-group-change', value)
       this.broadcast('AtCheckbox', 'init-data', [value])
     }
   },

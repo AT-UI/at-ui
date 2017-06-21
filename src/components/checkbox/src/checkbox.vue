@@ -48,7 +48,7 @@ export default {
     return {
       focus: false,
       isGroup: false,
-      groupStore: this.value
+      store: this.value
     }
   },
   computed: {
@@ -58,21 +58,17 @@ export default {
       } else if (Array.isArray(this.store)) {
         return this.store.indexOf(this.label) > -1
       }
-
       return false
     },
-    store: {
-      get () {
-        return this.isGroup ? this.groupStore : this.value
-      },
-      set (value) {
-        if (this.isGroup) {
-          this.dispatch('AtCheckboxGroup', 'input', [value])
-        } else {
-          this.$emit('input', value)
-        }
+  },
+  watch: {
+    store (value) {
+      this.$emit('input', value)
+
+      if (this.isGroup) {
+        this.dispatch('AtCheckboxGroup', 'input', [value])
       }
-    }
+    },
   },
   methods: {
     addToStore () {
@@ -84,7 +80,7 @@ export default {
   mounted () {
     this.checked && this.addToStore()
     this.$on('init-data', data => {
-      this.groupStore = data
+      this.store = data
       this.isGroup = true
     })
   }
