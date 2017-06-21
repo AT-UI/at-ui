@@ -1,4 +1,4 @@
-## Typography 字体
+# Typography 字体
 
 ----
 

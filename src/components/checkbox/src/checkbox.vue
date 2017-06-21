@@ -1,22 +1,22 @@
 <template>
-  <label class="at-checkbox">
+  <label
+  class="at-checkbox"
+  :class="{
+    'at-checkbox--focus': focus,
+    'at-checkbox--checked': isChecked,
+    'at-checkbox--disabled': disabled
+  }">
     <span class="at-checkbox__input">
-      <span class="at-checkbox__inner"
-        :class="{
-          'at-checkbox--focus': focus,
-          'at-checkbox--checked': isChecked,
-          'at-checkbox--disabled': disabled
-        }"
-      ></span>
-      <input type="checkbox"
+      <span class="at-checkbox__inner"></span>
+      <input
+        type="checkbox"
         class="at-checkbox__original"
-        v-model="model"
+        v-model="store"
         :name="name"
         :value="label"
         :disabled="disabled"
         @focus="focus = true"
-        @blur="focus = false"
-      >
+        @blur="focus = false">
     </span>
     <span class="at-checkbox__label">
       <slot></slot>
@@ -33,44 +33,37 @@ export default {
   mixins: [Emitter],
   props: {
     value: {},
-    label: {},
+    label: [String, Number],
     name: String,
-    checked: Boolean,
-    disabled: Boolean
+    checked: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
   },
   data () {
     return {
-      focus: false
+      focus: false,
+      isGroup: false,
+      groupStore: this.value
     }
   },
   computed: {
-    isGroup () {
-      let parent = this.$parent
-      while (parent) {
-        if (parent.$options.componentName !== 'AtCheckboxGroup') {
-          parent = parent.$parent
-        } else {
-          this.checkboxGroup = parent
-          return true
-        }
-      }
-      return false
-    },
-    store () {
-      return this.checkboxGroup.value
-    },
     isChecked () {
-      if ({}.toString.call(this.model) === '[object Boolean]') {
-        return this.model
-      } else if (Array.isArray(this.model)) {
-        return this.model.indexOf(this.label) > -1
+      if ({}.toString.call(this.store) === '[object Boolean]') {
+        return this.store
+      } else if (Array.isArray(this.store)) {
+        return this.store.indexOf(this.label) > -1
       }
 
       return false
     },
-    model: {
+    store: {
       get () {
-        return this.isGroup ? this.store : this.value
+        return this.isGroup ? this.groupStore : this.value
       },
       set (value) {
         if (this.isGroup) {
@@ -83,13 +76,17 @@ export default {
   },
   methods: {
     addToStore () {
-      if (Array.isArray(this.model)) {
-        this.model.indexOf(this.label) === -1 && this.model.push(this.label)
+      if (Array.isArray(this.store)) {
+        this.store.indexOf(this.label) === -1 && this.store.push(this.label)
       }
     }
   },
-  created () {
+  mounted () {
     this.checked && this.addToStore()
+    this.$on('init-data', data => {
+      this.groupStore = data
+      this.isGroup = true
+    })
   }
 }
 </script>

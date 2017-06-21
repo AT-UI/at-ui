@@ -5,54 +5,47 @@
 
 ### 基本多选框
 
-独立使用时，需要独自绑定到 `model`
+独立使用时，需要单独绑定 `model`
 
 :::demo
-
 ```html
 <at-checkbox v-model="checkboxValue" label="深圳">深圳</at-checkbox>
 <at-checkbox v-model="checkboxValue" label="北京">北京</at-checkbox>
 <at-checkbox v-model="checkboxValue" label="广州">广州</at-checkbox>
-<at-checkbox v-model="checkboxValue" label="上海" disabled>上海</at-checkbox>
-<at-checkbox v-model="checkboxValue" label="凹凸实验室" disabled checked>凹凸实验室</at-checkbox>
 ```
-
 :::
 
-### 禁用的多选框
+### 不可用的多选框
 
-添加 `disabled` 属性
+添加 `disabled` 属性禁用多选框
 
 :::demo
-
 ```html
-<at-checkbox v-model="checkboxValue2" label="上海" disabled>上海</at-checkbox>
-<at-checkbox v-model="checkboxValue2" label="凹凸实验室" disabled checked>凹凸实验室</at-checkbox>
+<at-checkbox v-model="checkboxValue2" label="深圳" disabled>深圳</at-checkbox>
+<at-checkbox v-model="checkboxValue3" label="凹凸实验室" disabled checked>凹凸实验室</at-checkbox>
 ```
-
 :::
 
 ### 多选框组
 
-适用于多个多选框绑定到同一个 `model` 的情景
+适用于多个多选框绑定同一个 `model` 的情景
 
 :::demo
-
 ```html
-
-<at-checkbox-group v-model="checkboxValue3">
+<at-checkbox-group v-model="checkboxValue4">
   <at-checkbox label="深圳">深圳</at-checkbox>
   <at-checkbox label="北京">北京</at-checkbox>
   <at-checkbox label="上海">上海</at-checkbox>
   <at-checkbox label="广州" disabled>广州</at-checkbox>
   <at-checkbox label="凹凸实验室" disabled>凹凸实验室</at-checkbox>
 </at-checkbox-group>
-
+<p class="demo-desc">{{ checkboxValue4 }}</p>
 ```
-
 :::
 
 ### 全选
+
+在实现全选效果时，可能会用到 `indeterminate` 属性
 
 ### Checkbox 参数
 
@@ -69,13 +62,22 @@
 |---------- |-------------- |---------- |
 | change | 绑定的值有变化时触发 | 选择的按钮的 label 值 |
 
+<style lang="sass" scoped>
+  .demo-desc {
+    margin: 8px 0;
+    color: #8DABC4;
+    font-size: 12px;
+  }
+</style>
+
 <script>
 export default {
   data() {
     return {
       checkboxValue: ['深圳'],
-      checkboxValue2: ['深圳'],
-      checkboxValue3: ['深圳', '凹凸实验室']
+      checkboxValue2: [],
+      checkboxValue3: ['深圳'],
+      checkboxValue4: ['深圳', '凹凸实验室']
     }
   }
 }
