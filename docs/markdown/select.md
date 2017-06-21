@@ -5,8 +5,9 @@
 
 ### 基础用法
 
-:::demo
+基本用法，可添加 `disabled` 属性禁用选择器
 
+:::demo
 ```html
 <at-select v-model="model1" style="width:100px">
   <at-option value="1">深圳</at-option>
@@ -26,10 +27,11 @@
   <at-option value="2">广州</at-option>
 </at-select>
 ```
-
 :::
 
 ### 不同尺寸
+
+可设置 `size` 属性控制选择器大小，提供三种尺寸：`large`，`normal`，`small`
 
 :::demo
 
