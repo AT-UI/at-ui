@@ -35,7 +35,7 @@
 :::demo
 ```html
 <div class="row">
-  <at-button hollow disabled>默认按钮</at-button>
+  <at-button hollow>默认按钮</at-button>
   <at-button type="primary" hollow>主要按钮</at-button>
   <at-button type="success" hollow>成功按钮</at-button>
   <at-button type="error" hollow>危险按钮</at-button>

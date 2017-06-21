@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     closeAction (evt) {
-      this.$emit('on-close', evt)
+      this.$emit('close', evt)
     }
   }
 }

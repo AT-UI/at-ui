@@ -1,16 +1,19 @@
 <template>
-  <label class="at-radio-button"
+  <label
+    class="at-radio-button"
     :class="[
-      size ? 'at-radio-button--' + size : '',
+      size ? `at-radio-button--${size}` : '',
       { 'at-radio--checked': store === label }
     ]">
-    <input type="radio"
+    <input
+      type="radio"
       class="at-radio-button__original"
       v-model="store"
       :value="label"
       :name="name"
       :disabled="disabled">
-    <span class="at-radio-button__inner"
+    <span
+      class="at-radio-button__inner"
       :style="store === label ? activeStyle : null">
       <slot></slot>
     </span>
@@ -20,13 +23,17 @@
 <script>
 export default {
   name: 'AtRadioButton',
+  componentName: 'AtRadioButton',
   props: {
+    name: String,
     label: {
       type: [String, Number],
       required: true
     },
-    name: String,
-    disabled: Boolean
+    disabled: {
+      type: Boolean,
+      default: false
+    }
   },
   data () {
     return {
@@ -43,11 +50,17 @@ export default {
       }
     },
     activeStyle () {
-      return {
-        backgroundColor: this.$parent.fill,
-        borderColor: this.$parent.fill,
-        color: this.$parent.textColor
+      const styles = {}
+
+      if (this.$parent.fill) {
+        styles.backgroundColor = this.$parent.fill
+        styles.borderColor = this.$parent.fill
       }
+      if (this.$parent.textColor) {
+        styles.color = this.$parent.textColor
+      }
+
+      return styles
     }
   }
 }

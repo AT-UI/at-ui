@@ -11,7 +11,7 @@
 <at-tag>标签一</at-tag>
 <at-tag>标签二</at-tag>
 <at-tag>标签三</at-tag>
-<at-tag closable v-if="show" @on-close="handleClose">标签四</at-tag>
+<at-tag closable v-if="show" @close="handleClose">标签四</at-tag>
 ```
 :::
 
