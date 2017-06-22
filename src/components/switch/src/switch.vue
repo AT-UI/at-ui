@@ -1,14 +1,14 @@
 <template>
-  <span class="at-switch"
-    @click="toggleSwitch"
+  <span
+    class="at-switch"
     :class="[
-      size ? 'at-switch--' + size : '',
+      size ? `at-switch--${size}` : '',
       {
         'at-switch--disabled': disabled,
         'at-switch--checked': checkStatus
       }
     ]"
-  >
+    @click="toggleSwitch">
     <span class="at-switch__text">
       <slot v-if="checkStatus" name="checkedText"></slot>
       <slot v-if="!checkStatus" name="unCheckedText"></slot>
@@ -19,6 +19,7 @@
 <script>
 export default {
   name: 'AtSwitch',
+  componentName: 'AtSwitch',
   props: {
     value: {
       type: Boolean,
