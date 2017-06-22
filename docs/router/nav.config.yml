@@ -43,10 +43,10 @@ zh-CN:
             name: Slider
           - title: 多行文本框
             name: Textarea
-          - title: 表格
-            name: Table
-          - title: 表单
-            name: Form
+          # - title: 表格
+          #   name: Table
+          # - title: 表单
+          #   name: Form
       - title: 视图组件
         items:
           - title: 警告提示
