@@ -110,10 +110,10 @@
     },
     methods: {
       handleFocus (evt) {
-        this.$emit('on-focus', evt)
+        this.$emit('focus', evt)
       },
       handleBlur (evt) {
-        this.$emit('on-blur', evt)
+        this.$emit('blur', evt)
         this.dispatch('AtFormItem', 'on-form-item-blur', this.currentValue)
       },
       handleInput (evt) {
