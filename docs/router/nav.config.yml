@@ -41,7 +41,7 @@ zh-CN:
             name: Switch
           - title: 滑动输入条
             name: Slider
-          - title: 多行文本框
+          - title: 文本域
             name: Textarea
           # - title: 表格
           #   name: Table

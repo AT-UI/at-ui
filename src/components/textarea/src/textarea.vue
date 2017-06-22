@@ -1,13 +1,11 @@
 <template>
-  <div class="at-textarea"
-    :class="[
-      status ? 'at-textarea--' + status : '',
-      {
-        'at-textarea--disabled': disabled,
-      }
-    ]"
-  >
-    <textarea class="at-textarea__original"
+  <div
+    class="at-textarea"
+    :class="{
+      'at-textarea--disabled': disabled,
+    }">
+    <textarea
+      class="at-textarea__original"
       v-model="store"
       :name="name"
       :placeholder="placeholder"
@@ -34,17 +32,10 @@ export default {
   name: 'AtTextarea',
   componentName: 'AtTextarea',
   mixins: [Emitter],
-  data () {
-    return {
-      store: this.value,
-      calculateStyle: {}
-    }
-  },
   props: {
     value: String,
     name: String,
     placeholder: String,
-    status: String,
     readonly: Boolean,
     disabled: Boolean,
     rows: {
@@ -55,8 +46,16 @@ export default {
     maxlength: Number,
     autofocus: Boolean,
     autosize: {
-      type: [Boolean, Object],
+      type: Boolean,
       default: false
+    },
+    minRows: [Number, String],
+    maxRows: [Number, String]
+  },
+  data () {
+    return {
+      store: this.value,
+      calculateStyle: {}
     }
   },
   watch: {
@@ -82,12 +81,9 @@ export default {
       this.store = evt.target.value
     },
     resizeTextarea () {
-      if (!this.autosize) return
+      if (!this.autosize && !this.minRows && !this.maxRows) return
 
-      const minRows = this.autosize.minRows
-      const maxRows = this.autosize.maxRows
-
-      this.calculateStyle = calcTextareaHeight(this.$refs.textarea, minRows, maxRows)
+      this.calculateStyle = calcTextareaHeight(this.$refs.textarea, this.minRows, this.maxRows)
     }
   },
   mounted () {
