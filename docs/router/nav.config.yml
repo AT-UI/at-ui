@@ -27,16 +27,16 @@ zh-CN:
             name: Tag
       - title: 表单组件
         items:
-          - title: 单选按钮
-            name: Radio
           - title: 多选框
             name: Checkbox
-          - title: 选择器
-            name: Select
           - title: 输入框
             name: Input
           - title: 数字输入框
             name: InputNumber
+          - title: 单选按钮
+            name: Radio
+          - title: 选择器
+            name: Select
           - title: 开关
             name: Switch
           - title: 滑动输入条
@@ -53,25 +53,25 @@ zh-CN:
             name: Alert
           - title: 徽标
             name: Badge
-          - title: 通知提醒
-            name: Notification
-          - title: 文字提示
-            name: Tooltip
-          - title: 弹出框
-            name: Popover
-          - title: 进度条
-            name: Progress
           - title: 加载进度条
             name: LoadingBar
           - title: 模态框
             name: Modal
           - title: 全局提示
             name: Message
+          - title: 通知提醒
+            name: Notification
+          - title: 弹出框
+            name: Popover
+          - title: 进度条
+            name: Progress
+          - title: 文字提示
+            name: Tooltip
       - title: 导航组件
         items:
-          - title: 下拉菜单
-            name: Dropdown
           - title: 面包屑
             name: Breadcrumb
+          - title: 下拉菜单
+            name: Dropdown
           - title: 分页
             name: Pagination

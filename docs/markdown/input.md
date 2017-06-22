@@ -5,35 +5,26 @@
 
 ### 单行输入框
 
-:::demo
+基本输出框，默认宽度 `100%`
 
+:::demo
 ```html
 <at-input v-model="inputValue" placeholder="输入提示"></at-input>
 <at-input v-model="inputValue" placeholder="禁用状态" disabled></at-input>
+<at-input v-model="password" type="password" placeholder="密码"></at-input>
 ```
-
-:::
-
-### 密码类型的输入框
-
-:::demo
-
-```html
-<at-input v-model="password" type="password"></at-input>
-```
-
 :::
 
 ### 带状态的单行输入框
 
-通过添加状态表示不同含义的输入框
+添加属性 `status` ，表示不同含义的输入框，只是颜色上的变化，不影响按钮逻辑。默认提供四种状态：`success`，`error`，`warning`，`info`
 
 :::demo
 
 ```html
-<at-input v-model="inputValue2" placeholder="success" status="success" icon="circle-correct"></at-input>
-<at-input v-model="inputValue2" placeholder="error" status="error" icon="circle-cancel"></at-input>
-<at-input v-model="inputValue2" placeholder="warning" status="warning"></at-input>
+<at-input v-model="inputValue2" placeholder="success" status="success" icon="check-circle"></at-input>
+<at-input v-model="inputValue2" placeholder="error" status="error" icon="x-circle"></at-input>
+<at-input v-model="inputValue2" placeholder="warning" status="warning" icon="alert-circle"></at-input>
 <at-input v-model="inputValue2" placeholder="info" status="info" icon="info"></at-input>
 ```
 
@@ -41,22 +32,19 @@
 
 ### 带图标的输入框
 
-纯粹在输入框后面添加提示性的图标
+添加属性 `icon` ，在输入框后面显示提示性的图标。`icon` 属性值为图标的类名，具体请查阅 `品牌/图标` 章节
 
 :::demo
-
 ```html
 <at-input v-model="inputValue3" placeholder="请输入链接" icon="link"></at-input>
 ```
-
 :::
 
-### 前置/后置标签型输入框
+### 前置 / 后置标签型输入框
 
-可设置前置还是后置元素，只能传递文本标签
+设置 `slot="prepend"` 或者 `slot="append"` ，可自定义复合型输入框
 
 :::demo
-
 ```html
 <at-input v-model="inputValue4" placeholder="请输入内容">
   <template slot="prepend">
@@ -73,46 +61,39 @@
     <i class="icon icon-link"></i>
   </template>
 </at-input>
-<at-input v-model="inputValue4" placeholder="请输入内容" button>
+<at-input v-model="inputValue4" placeholder="请输入内容" prepend-button>
   <template slot="prepend">
     <span>搜索</span>
   </template>
 </at-input>
-<at-input v-model="inputValue4" placeholder="请输入内容" button>
+<at-input v-model="inputValue4" placeholder="请输入内容" append-button>
   <template slot="append">
     <span>搜索</span>
   </template>
 </at-input>
-<at-input v-model="inputValue4" placeholder="请输入内容" button>
+<at-input v-model="inputValue4" placeholder="请输入内容" prepend-button>
   <template slot="prepend">
     <i class="icon icon-search"></i>
   </template>
 </at-input>
-<at-input v-model="inputValue4" placeholder="请输入内容" button>
+<at-input v-model="inputValue4" placeholder="请输入内容" append-button>
   <template slot="append">
     <i class="icon icon-search"></i>
   </template>
 </at-input>
 ```
-
-### 组合型输入框
-
-### 搜索框
-
-### 前缀/后缀内嵌型输入框
-
 :::
 
 ### 不同尺寸
 
-:::demo
+设置属性 `size` 指定输入框的尺寸，支持三种尺寸：`large`，`normal`，`small`
 
+:::demo
 ```html
 <at-input v-model="inputValue" size="large" placeholder="大尺寸"></at-input>
 <at-input v-model="inputValue" placeholder="正常尺寸"></at-input>
 <at-input v-model="inputValue" size="small" placeholder="小尺寸"></at-input>
 ```
-
 :::
 
 ### Input 参数
