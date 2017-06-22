@@ -5,7 +5,7 @@
       ref="trigger"
       @click="toggleMenu">
       <span class="at-tag" v-for="(item, index) in selectedMultiple">
-        {{ item.label }}
+        <span class="at-tag__text">{{ item.label }}</span>
         <i class="icon icon-x at-tag__close" @click.stop="removeTag(index)"></i>
       </span>
       <span class="at-select__placeholder" v-show="showPlaceholder && !filterable">{{ placeholder }}</span>
@@ -14,11 +14,9 @@
         type="text"
         class="at-select__input"
         :placeholder="showPlaceholder ? placeholder : ''"
-        :style="inputStyle"
         v-if="filterable"
         v-model="query"
         @blur="handleBlur"
-        @keydown="resetInputState"
         @keydown.delete="handleInputDelete"
         ref="input">
       <i class="icon icon-x at-select__clear" v-show="showCloseIcon" @click.stop="clearSingleSelect"></i>
@@ -82,9 +80,6 @@ export default {
       type: Boolean,
       default: false
     },
-    filterMethod: {
-      type: Function
-    },
     size: {
       type: String,
       default: 'normal',
@@ -112,7 +107,6 @@ export default {
       selectedMultiple: [],
       focusIndex: 0,
       query: '',
-      inputWidth: 20,
       notFound: false,
       model: this.value
     }
@@ -134,7 +128,7 @@ export default {
     showPlaceholder () {
       let status = false
 
-      if (typeof this.model === 'string' && this.model === '') {
+      if (this.model === '') {
         status = true
       } else if (Array.isArray(this.model) && !this.model.length) {
         status = true
@@ -144,19 +138,6 @@ export default {
     },
     showCloseIcon () {
       return !this.multiple && this.clearable && !this.showPlaceholder
-    },
-    inputStyle () {
-      const style = {}
-
-      if (this.multiple) {
-        if (this.showPlaceholder) {
-          style.width = '100%'
-        } else {
-          style.width = `${this.inputWidth}px`
-        }
-      }
-
-      return style
     }
   },
   watch: {
@@ -488,17 +469,10 @@ export default {
         }
       }, 300)
     },
-    resetInputState () {
-      this.inputWidth = (this.$refs.input.value.length * 12) + 20
-    },
     handleInputDelete () {
       if (this.multiple && this.model.length && this.query === '') {
         this.removeTag(this.model.length - 1)
       }
-    },
-    slotChange () {
-      this.options = []
-      this.optionInstances = []
     },
     setQuery (query) {
       if (!this.filterable) return
