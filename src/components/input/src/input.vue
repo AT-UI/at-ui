@@ -87,10 +87,6 @@
         type: Boolean,
         default: false
       },
-      validateEvent: {
-        type: Boolean,
-        default: true
-      },
       maxlength: Number,
       minlength: Number,
       max: Number,
@@ -118,9 +114,7 @@
       },
       handleBlur (evt) {
         this.$emit('on-blur', evt)
-        if (this.validateEvent) {
-          this.dispatch('AtFormItem', 'on-form-item-blur', this.currentValue)
-        }
+        this.dispatch('AtFormItem', 'on-form-item-blur', this.currentValue)
       },
       handleInput (evt) {
         const value = evt.target.value
@@ -130,9 +124,7 @@
       setCurrentValue (val) {
         if (val === this.currentValue) return
         this.currentValue = val
-        if (this.validateEvent) {
-          this.dispatch('AtFormItem', 'on-form-item-change', this.currentValue)
-        }
+        this.dispatch('AtFormItem', 'on-form-item-change', this.currentValue)
       }
     }
   }

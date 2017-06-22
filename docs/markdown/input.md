@@ -100,24 +100,28 @@
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| name | 原生属性 | string | - | - |
-| value | 绑定的值 | string, number | - | - |
-| button | 是否包含可点击的按钮，用于复合型输入框 | boolean | - | false |
-| size | 输入框尺寸 | string | small, normal, large | normal |
-| type | 输入框类型（原生属性） | string | - | text |
-| placeholder | 占位文本（原生属性） | string | - | - |
-| disabled | 是否禁用（原生属性） | boolean | - | false |
-| max | 最大值（原生属性） | number | - | - |
-| min | 最小值（原生属性） | number | - | - |
-| autofocus | 是否自动获取焦点（原生属性） | boolean | - | false |
-| status | 输入框类型 | string | success, error, warning, info | - |
+| type | 输入框类型，原生属性 | String | - | - |
+| name | 原生属性 | String | - | - |
+| value | 绑定的值 | String, Number | - | - |
+| placeholder | 占位文本（原生属性） | String | - | - |
+| disabled | 是否禁用（原生属性） | Boolean | - | false |
+| readonly | 是否只读（原生属性） | Boolean | - | false |
+| maxlength | 最大长度（原生属性） | Number | - | - |
+| minlength | 最小长度（原生属性） | Number | - | - |
+| max | 最大值（原生属性） | Number | - | - |
+| min | 最小值（原生属性） | Number | - | - |
+| autofocus | 是否自动获取焦点（原生属性） | Boolean | - | false |
+| size | 输入框尺寸 | String | `small`, `normal`, `large` | normal |
+| status | 输入框类型 | String | success, error, warning, info | - |
+| prependButton | 前置元素是否包含可点击的按钮，用于复合型输入框 | Boolean | - | false |
+| appendButton | 后置元素是否包含可点击的按钮，用于复合型输入框 | Boolean | - | false |
 
 ### Input 事件
 
 | 事件名称 | 说明          | 返回参数  |
 |---------- |-------------- |---------- |
-| focus | 获得焦点时触发 | event |
-| blur | 失去焦点时触发 | event |
+| on-focus | 获得焦点时触发 | event |
+| on-blur | 失去焦点时触发 | event |
 
 <script>
 export default {
