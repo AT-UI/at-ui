@@ -1,20 +1,19 @@
 <template>
-  <span class="at-badge"
+  <span
+    class="at-badge"
     :class="[
-      status ? 'at-badge--' + status : '',
+      status ? `at-badge--${status}` : '',
       { 'at-badge--alone': !$slots.default }
-    ]"
-  >
+    ]">
     <slot></slot>
-    <sup class="at-badge__content"
-      v-show="show"
-      v-text="content"
+    <sup
+      class="at-badge__content"
       :class="{
         'at-badge--corner': $slots.default,
         'at-badge--dot': dot
       }"
-    >
-    </sup>
+      v-show="show"
+      v-text="content"></sup>
   </span>
 </template>
 
@@ -22,7 +21,10 @@
 export default {
   name: 'AtBadge',
   props: {
-    value: '',
+    value: {
+      type: [String, Number],
+      default: ''
+    },
     maxNum: {
       type: Number,
       default: 99
@@ -35,7 +37,10 @@ export default {
       type: Boolean,
       default: true
     },
-    status: String
+    status: {
+      type: String,
+      default: 'error'
+    }
   },
   computed: {
     content () {
@@ -45,7 +50,7 @@ export default {
       const maxNum = this.maxNum
 
       if (typeof value === 'number' && typeof maxNum === 'number') {
-        return maxNum < value ? `${maxNum}+` : value
+        return value > maxNum ? `${maxNum}+` : value
       }
 
       return value
