@@ -1,10 +1,11 @@
 <template>
   <transition name="fade">
-    <div class="at-loading-bar"
+    <div
+      class="at-loading-bar"
       :class="[
-        status ? 'at-loading-bar--' + status : ''
+        status ? `at-loading-bar--${status}` : ''
       ]"
-      :style="{ height: width + 'px' }"
+      :style="barStyle"
       v-show="show"
     >
       <div class="at-loading-bar__inner"
@@ -32,6 +33,13 @@ export default {
     return {
       show: false,
       percent: 0
+    }
+  },
+  computed: {
+    barStyle () {
+      return {
+        height: `${((this.width | 0) || 2)}px`
+      }
     }
   }
 }

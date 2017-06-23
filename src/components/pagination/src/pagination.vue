@@ -1,10 +1,10 @@
 <template>
+  <!-- / S 极简分页 -->
   <ul
     class="at-pagination at-pagination--simple"
     :class="[
-      size === 'small' ? 'at-pagination--small' : ''
+      size ? `at-pagination--${size}` : ''
     ]"
-    :style="styles"
     v-if="simple">
     <li
       title="上一页"
@@ -13,7 +13,7 @@
         this.currentPage === 1 ? 'at-pagination--disabled' : ''
       ]"
       @click="handlePrev">
-      <i class="icon icon-left-arrow"></i>
+      <i class="icon icon-chevron-left"></i>
     </li>
     <div class="at-pagination__simple-paper">
       <input type="text" class="at-input__original" :value="currentPage" @keydown="handleKeydown" @keyup="handleKeyup" @change="handleKeyup">
@@ -27,16 +27,16 @@
         this.currentPage === this.totalPage ? 'at-pagination--disabled' : ''
       ]"
       @click="handleNext">
-      <i class="icon icon-right-arrow"></i>
+      <i class="icon icon-chevron-right"></i>
     </li>
   </ul>
-  <!-- / 极简分页 -->
+  <!-- / E 极简分页 -->
+  <!-- / S 基础分页 -->
   <ul
     class="at-pagination"
     :class="[
-      size === 'small' ? 'at-pagination--small' : ''
+      size ? `at-pagination--${size}` : ''
     ]"
-    :style="styles"
     v-else>
     <span class="at-pagination__total" v-show="showTotal">
       <slot name="total">共 {{ total }} 条</slot>
@@ -48,7 +48,7 @@
         this.currentPage === 1 ? 'at-pagination--disabled' : ''
       ]"
       @click="handlePrev">
-      <i class="icon icon-left-arrow"></i>
+      <i class="icon icon-chevron-left"></i>
     </li>
     <template v-if="totalPage < 9">
       <li v-for="num in pageRange" class="at-pagination__item" :class="[ currentPage === num ? 'at-pagination__item--active' : '' ]" @click="changePage(num)">{{ num }}</li>
@@ -71,7 +71,7 @@
         this.currentPage === this.totalPage ? 'at-pagination--disabled' : ''
       ]"
       @click="handleNext">
-      <i class="icon icon-right-arrow"></i>
+      <i class="icon icon-chevron-right"></i>
     </li>
     <div v-if="showSizer" class="at-pagination__sizer">
       <at-select v-model="currentPageSize" :size="size" @on-change="changeSize">
@@ -84,6 +84,7 @@
       <span>页</span>
     </div>
   </ul>
+  <!-- / E 基础分页 -->
 </template>
 
 <script>
@@ -112,7 +113,6 @@
         type: Boolean,
         default: false
       },
-      styles: Object,
       showTotal: {
         type: Boolean,
         default: false
@@ -182,7 +182,7 @@
         if (this.currentPage !== num) {
           this.jumpPage = num
           this.currentPage = num
-          this.$emit('change', num)
+          this.$emit('page-change', num)
         }
       },
       handlePrev () {

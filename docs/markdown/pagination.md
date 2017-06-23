@@ -91,7 +91,7 @@
 ### Pagination 参数
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
-|---------- |-------------- |---------- |--------------------------------  |-------- |
+|---------- |-------------- |---------- |-----------------------------  |-------- |
 | current | 当前页码 | Number | - | 1 |
 | total | 总的数据条目数 | Number | - | 0 |
 | page-size | 每页最多展示的条目数 | Number | - | 10 |
@@ -99,14 +99,14 @@
 | show-total | 是否显示总条目数 | Boolean | - | false |
 | show-sizer | 是否显示每页展示数量的 `select` 选择框 | Boolean | - | false |
 | show-quickjump | 是否显示快速跳转 | Boolean | - | false |
-| size | 分页组件的大小 | String | 'small' | - |
+| size | 分页组件的大小 | String | `small` | - |
 | simple | 是否为极简风格 | Boolean | - | false |
 
 ### Pagination 事件
 
 | 事件名称      | 说明          | 返回值  |
 |---------- |-------------- |---------- |
-| change | 页码改变时触发的回调 | 页码 |
+| page-change | 页码改变时触发的回调 | 页码 |
 | pagesize-change | 切换每页显示的条数时触发的回调 | 每页的条目数 |
 
 <style lang="sass" scoped>

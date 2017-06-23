@@ -22,10 +22,10 @@
 :::demo
 
 ```html
-<at-button size="small" @click="handleClick('info')">Info</at-button>
-<at-button size="small" @click="handleClick('success')">Success</at-button>
-<at-button size="small" @click="handleClick('warning')">Warning</at-button>
-<at-button size="small" @click="handleClick('error')">Error</at-button>
+<at-button @click="handleClick('info')">Info</at-button>
+<at-button @click="handleClick('success')">Success</at-button>
+<at-button @click="handleClick('warning')">Warning</at-button>
+<at-button @click="handleClick('error')">Error</at-button>
 ```
 
 :::
@@ -37,7 +37,7 @@
 :::demo
 
 ```html
-<at-button size="small" @click="changeDuration">修改延时</at-button>
+<at-button @click="changeDuration">修改延时</at-button>
 ```
 
 :::
@@ -47,7 +47,7 @@
 :::demo
 
 ```html
-<at-button size="small" @click="showLoading">显示加载中...</at-button>
+<at-button @click="showLoading">显示加载中...</at-button>
 ```
 
 :::

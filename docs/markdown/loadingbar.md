@@ -3,22 +3,20 @@
 
 ----
 
-全局创建了一个用于显示页面加载、异步请求的加载进度。
+全局创建了一个用于显示页面加载、异步请求的加载进度条。
 
-因为可复用性的关系，LoadingBar 只会全局创建一个实例，而且我们在 `Vue.prototype` 中添加了全局对象 `$Loading`，我们可以直接通过 `this.$Loading` 操作实例
+因为可复用性的关系，`LoadingBar` 只会全局创建一个实例，而且在 `Vue.prototype` 中添加了全局对象 `$Loading`，可以直接通过 `this.$Loading` 操作实例
 
 ### 基础用法
 
 通过调用 `$Loading` 提供的三种方法来控制全局的加载进度条 `start()`、`finish()`、`error()`
 
 :::demo
-
 ```html
 <at-button size="small" @click="start">Start</at-button>
 <at-button size="small" @click="finish">Finish</at-button>
 <at-button size="small" @click="error">Error</at-button>
 ```
-
 :::
 
 ### LoadingBar 函数方法

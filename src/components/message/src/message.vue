@@ -27,7 +27,10 @@
         default: 'info',
         validator: val => ['info', 'success', 'warning', 'error'].indexOf(val) > -1
       },
-      icon: String
+      icon: {
+        type: String,
+        default: ''
+      }
     },
     data () {
       return {
@@ -41,13 +44,14 @@
     computed: {
       iconClass () {
         const classArr = {
-          'success': 'icon-success',
-          'error': 'icon-error',
-          'warning': 'icon-warning',
+          'success': 'icon-check-circle',
+          'error': 'icon-x-circle',
+          'warning': 'icon-alert-circle',
           'info': 'icon-info',
-          'loading': 'icon-info'
+          'loading': 'icon-loader'
         }
-        return classArr[this.icon] || this.icon || classArr[this.type]
+
+        return this.icon || classArr[this.type]
       }
     },
     watch: {
