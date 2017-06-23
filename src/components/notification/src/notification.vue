@@ -1,14 +1,15 @@
 <template>
-  <transition name="at-notification-fade">
-    <div class="at-notification"
+  <transition name="notification-fade">
+    <div
+      class="at-notification"
       :class="[
-        type ? 'at-notification--' + type : '',
+        type ? `at-notification--${type}` : '',
         message ? 'at-notification--with-message' : '',
         !showClose ? 'at-notification--hover' : ''
       ]"
-      v-show="isShow"
       :style="{ top: top ? top + 'px' : 'auto' }"
-      @click="!showClose && close()"
+      v-show="isShow"
+      @click="!showClose && handleClose()"
       @mouseleave="startTimer"
       @mouseenter="clearTimer"
     >
@@ -17,25 +18,42 @@
         <p class="at-notification__title" v-if="title" v-text="title"></p>
         <p class="at-notification__message" v-if="message" v-text="message"></p>
       </div>
-      <i class="icon icon-cancel at-notification__close" v-show="showClose" @click="close"></i>
+      <i class="icon icon-x at-notification__close" v-show="showClose" @click="handleClose"></i>
     </div>
   </transition>
 </template>
 
 <script>
 export default {
+  props: {
+    type: {
+      type: String,
+      default: 'info'
+    },
+    title: String,
+    message: String,
+    isShow: {
+      type: Boolean,
+      default: false
+    },
+    duration: {
+      type: Number,
+      default: 4000
+    },
+    icon: String,
+    showIcon: {
+      type: Boolean,
+      default: false
+    },
+    showClose: {
+      type: Boolean,
+      default: true
+    },
+    onClose: Function,
+  },
   data () {
     return {
-      type: 'info',
-      title: '',
-      message: '',
-      isShow: false,
       top: null,
-      duration: 4000,
-      icon: 'info',
-      showIcon: false,
-      showClose: true,
-      onClose: null,
       timer: null,
       closed: false
     }
@@ -44,28 +62,28 @@ export default {
     closed (val) {
       if (val) {
         this.isShow = false
-        this.$el.addEventListener('transitionend', this.destoryElement)
+        this.$el.addEventListener('animationend', this.destoryElement)
       }
     }
   },
   computed: {
     iconClass () {
       const classArr = {
-        'success': 'icon-success',
-        'error': 'icon-error',
-        'warning': 'icon-warning',
+        'success': 'icon-check-circle',
+        'error': 'icon-x-circle',
+        'warning': 'icon-alert-circle',
         'info': 'icon-info'
       }
-      return classArr[this.icon] || this.icon
+      return classArr[this.type] || this.icon
     }
   },
   methods: {
     destoryElement () {
-      this.$el.removeEventListener('transitionend', this.destoryElement)
+      this.$el.removeEventListener('animationend', this.destoryElement)
       this.$destroy(true)
       this.$el.parentNode.removeChild(this.$el)
     },
-    close () {
+    handleClose () {
       this.closed = true
       if (typeof this.onClose === 'function') {
         this.onClose()
@@ -75,7 +93,7 @@ export default {
       if (this.duration > 0) {
         this.timer = setTimeout(() => {
           if (!this.closed) {
-            this.close()
+            this.handleClose()
           }
         }, this.duration)
       }

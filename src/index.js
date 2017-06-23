@@ -69,7 +69,7 @@ function install (Vue) {
     }
   }
 
-  Vue.prototype.$notify = Notification
+  Vue.prototype.$Notify = Notification
   Vue.prototype.$Loading = LoadingBar
   Vue.prototype.$Modal = Dialog
   Vue.prototype.$Message = Message
