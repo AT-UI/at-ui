@@ -1,75 +1,81 @@
 <template>
-  <!-- / S 极简分页 -->
+  <!-- S 极简分页 -->
   <ul
+    v-if="simple"
     class="at-pagination at-pagination--simple"
-    :class="[
-      size ? `at-pagination--${size}` : ''
-    ]"
-    v-if="simple">
+    :class="{
+      [`at-pagination--${size}`]: size
+    }">
     <li
       title="上一页"
       class="at-pagination__prev"
-      :class="[
-        this.currentPage === 1 ? 'at-pagination--disabled' : ''
-      ]"
+      :class="{
+        'at-pagination--disabled': this.currentPage === 1
+      }"
       @click="handlePrev">
       <i class="icon icon-chevron-left"></i>
     </li>
-    <div class="at-pagination__simple-paper">
+    <div class="at-pagination__simple-paging">
       <input type="text" class="at-input__original" :value="currentPage" @keydown="handleKeydown" @keyup="handleKeyup" @change="handleKeyup">
       <span>/</span>
-      {{ totalPage }}
+      <span class="at-pagination__paging-total">{{ totalPage }}</span>
     </div>
     <li
       title="下一页"
       class="at-pagination__next"
-      :class="[
-        this.currentPage === this.totalPage ? 'at-pagination--disabled' : ''
-      ]"
+      :class="{
+        'at-pagination--disabled': this.currentPage === this.totalPage
+      }"
       @click="handleNext">
       <i class="icon icon-chevron-right"></i>
     </li>
   </ul>
-  <!-- / E 极简分页 -->
-  <!-- / S 基础分页 -->
+  <!-- E 极简分页 -->
+  <!-- S 基础分页 -->
   <ul
+    v-else
     class="at-pagination"
-    :class="[
-      size ? `at-pagination--${size}` : ''
-    ]"
-    v-else>
+    :class="{
+      [`at-pagination--${size}`]: size
+    }">
     <span class="at-pagination__total" v-show="showTotal">
       <slot name="total">共 {{ total }} 条</slot>
     </span>
     <li
       title="上一页"
       class="at-pagination__prev"
-      :class="[
-        this.currentPage === 1 ? 'at-pagination--disabled' : ''
-      ]"
+      :class="{
+        'at-pagination--disabled': this.currentPage === 1
+      }"
       @click="handlePrev">
       <i class="icon icon-chevron-left"></i>
     </li>
     <template v-if="totalPage < 9">
-      <li v-for="num in pageRange" class="at-pagination__item" :class="[ currentPage === num ? 'at-pagination__item--active' : '' ]" @click="changePage(num)">{{ num }}</li>
+      <li
+        v-for="num in pageRange"
+        class="at-pagination__item"
+        :class="{
+          'at-pagination__item--active': currentPage === num
+        }"
+        @click="changePage(num)">{{ num }}</li>
     </template>
     <template v-else>
-      <li class="at-pagination__item" :class="[ currentPage === 1 ? 'at-pagination__item--active' : '' ]" @click="changePage(1)">1</li>
-      <li class="at-pagination__item at-pagination__item--jump-prev" title="向前5页" v-if="currentPage > 4" @click="handleJumpPrev"><i class="icon icon-left-arrow"></i></li>
+      <li class="at-pagination__item" :class="{ 'at-pagination__item--active': currentPage === 1 }" @click="changePage(1)">1</li>
+      <li class="at-pagination__item at-pagination__item--jump-prev" title="向前5页" v-if="currentPage > 4" @click="handleJumpPrev"><i class="icon icon-chevrons-left"></i></li>
       <li class="at-pagination__item" v-if="currentPage > 3" @click="changePage(currentPage - 2)">{{ currentPage - 2 }}</li>
       <li class="at-pagination__item" v-if="currentPage > 2" @click="changePage(currentPage - 1)">{{ currentPage - 1 }}</li>
       <li class="at-pagination__item at-pagination__item--active" v-if="currentPage !== 1 && currentPage !== totalPage">{{ currentPage }}</li>
       <li class="at-pagination__item" v-if="currentPage < totalPage - 1" @click="changePage(currentPage + 1)">{{ currentPage + 1 }}</li>
       <li class="at-pagination__item" v-if="currentPage < totalPage - 2" @click="changePage(currentPage + 2)">{{ currentPage + 2 }}</li>
-      <li class="at-pagination__item at-pagination__item--jump-next" title="向后5页" v-if="currentPage < totalPage - 3" @click="handleJumpNext"><i class="icon icon-right-arrow"></i></li>
-      <li class="at-pagination__item" v-if="totalPage > 1" :class="[ currentPage === totalPage ? 'at-pagination__item--active' : '' ]" @click="changePage(totalPage)">{{ totalPage }}</li>
+      <li class="at-pagination__item at-pagination__item--jump-next" title="向后5页" v-if="currentPage < totalPage - 3" @click="handleJumpNext"><i class="icon icon-chevrons-right"></i></li>
+      <li class="at-pagination__item" v-if="totalPage > 1" :class="{ 'at-pagination__item--active' : currentPage === totalPage }" @click="changePage(totalPage)">{{ totalPage }}</li>
     </template>
     <li
       title="下一页"
       class="at-pagination__next"
-      :class="[
-        this.currentPage === this.totalPage ? 'at-pagination--disabled' : ''
-      ]"
+      :class="{
+        'at-pagination--disabled': this.currentPage === this.totalPage
+      }"
       @click="handleNext">
       <i class="icon icon-chevron-right"></i>
     </li>
@@ -80,11 +86,11 @@
     </div>
     <div class="at-pagination__quickjump" v-if="showQuickjump">
       <span>前往</span>
-      <input type="text" class="at-input__original" v-model="jumpPage" @keydown="handleKeydown" @keyup.enter="changePage()">
+      <input type="text" class="at-input__original" v-model="jumpPageNum" @keydown="handleKeydown" @keyup.enter="changePage()">
       <span>页</span>
     </div>
   </ul>
-  <!-- / E 基础分页 -->
+  <!-- E 基础分页 -->
 </template>
 
 <script>
@@ -136,7 +142,7 @@
       return {
         currentPage: this.current,
         currentPageSize: this.pageSize,
-        jumpPage: this.current
+        jumpPageNum: this.current
       }
     },
     watch: {
@@ -175,12 +181,12 @@
     },
     methods: {
       changePage (page) {
-        let num = (page || this.jumpPage || 1) | 0
+        let num = (page || this.jumpPageNum || 1) | 0
         num = num > this.totalPage ? this.totalPage : num
         num = num < 1 ? 1 : num
 
         if (this.currentPage !== num) {
-          this.jumpPage = num
+          this.jumpPageNum = num
           this.currentPage = num
           this.$emit('page-change', num)
         }
@@ -215,9 +221,9 @@
         const key = evt.keyCode
         const numVal = evt.target.value | 0
 
-        if (key === 38) { // Up Arrow
+        if (key === 40) { // Up Arrow
           this.handlePrev()
-        } else if (key === 40) { // Down Arrow
+        } else if (key === 38) { // Down Arrow
           this.handleNext()
         } else if (key === 13) { // Return
           let page = 1

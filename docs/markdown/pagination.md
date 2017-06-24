@@ -3,16 +3,16 @@
 
 ----
 
+当表格的数据量过多时，可以使用分页组件，每次只加载一页数据
+
 ### 基础分页
 
 当页数小于 8 页时
 
 :::demo
-
 ```html
 <at-pagination :total="60"></at-pagination>
 ```
-
 :::
 
 ### 更多的分页
@@ -20,72 +20,70 @@
 当页数大于 8 页时，会显示更多可点击项
 
 :::demo
-
 ```html
 <at-pagination :total="100"></at-pagination>
 ```
-
 :::
 
 ### 显示总数
 
-:::demo
+设置属性 `show-total` 显示数据总数
 
+:::demo
 ```html
 <at-pagination :total="80" show-total></at-pagination>
 ```
-
 :::
 
 ### 快速跳转
 
-:::demo
+设置属性 `show-quickjump` 显示 `快速跳转` 操作框
 
+:::demo
 ```html
 <at-pagination :total="100" show-quickjump></at-pagination>
 ```
-
 :::
 
 ### 改变每页显示的数量
 
-:::demo
+设置属性 `show-sizer` 显示 `改变每页显示数` 操作框
 
+:::demo
 ```html
 <at-pagination :total="100" show-sizer></at-pagination>
 ```
-
 :::
 
 ### 完整功能的分页
 
-:::demo
+一个完整功能的分页组件
 
+:::demo
 ```html
 <at-pagination :total="100" show-total show-sizer show-quickjump></at-pagination>
 ```
-
 :::
 
 ### 小型分页
 
-:::demo
+设置属性 `size` 更改分页组件的尺寸，仅支持传入 `small`
 
+:::demo
 ```html
 <at-pagination size="small" :total="100" show-total show-sizer show-quickjump></at-pagination>
 ```
-
 :::
 
 ### 极简风格的分页
 
-:::demo
+设置属性 `simple` 使用极简风格的分页组件，功能比较简单，适用于某些特殊场景
 
+:::demo
 ```html
 <at-pagination :total="100" simple></at-pagination>
 <at-pagination :total="100" size="small" simple></at-pagination>
 ```
-
 :::
 
 ### Pagination 参数
