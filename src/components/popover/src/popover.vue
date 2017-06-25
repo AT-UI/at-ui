@@ -1,5 +1,5 @@
 <template>
-  <div class="at-popover" ref="parent" v-clickoutside="handleClose">
+  <div class="at-popover" v-clickoutside="handleClose" ref="parent">
     <span class="at-popover__trigger" ref="trigger">
       <slot></slot>
     </span>

@@ -1,5 +1,5 @@
 <template>
-  <div class="at-dropdown" ref="trigger">
+  <div class="at-dropdown" v-clickoutside="handleClose" ref="trigger">
     <div class="at-dropdown__trigger"><slot></slot></div>
 
     <transition name="slide-up" @after-leave="doDestory">
@@ -35,6 +35,9 @@
       this.$on('menu-item-click', this.handleMenuItemClick)
     },
     methods: {
+      handleClose () {
+        this.show = false
+      },
       handleMenuItemClick (name) {
         this.show = false
         this.$emit('on-dropdown-command', name)
