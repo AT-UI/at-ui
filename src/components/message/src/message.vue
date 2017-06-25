@@ -1,11 +1,11 @@
 <template>
   <div class="at-message__wrapper" :style="{ top: top ? `${top}px` : 'auto' }">
-    <transition name="move-up">
+    <transition name="move-up" @after-leave="doDestory">
       <div
         class="at-message"
-        :class="[
-          type ? `at-message--${type}` : ''
-        ]"
+        :class="{
+          [`at-message--${type}`]: type
+        }"
         v-show="visible">
         <i class="at-message__icon icon" :class="iconClass"></i>
         <span class="at-message__content">{{ message }}</span>
@@ -58,13 +58,11 @@
       closed (val) {
         if (val) {
           this.visible = false
-          this.$el.addEventListener('transitionend', this.destroyElement)
         }
       }
     },
     methods: {
-      destroyElement () {
-        this.$el.removeEventListener('transitionend', this.destroyElement)
+      doDestory () {
         this.$destroy(true)
         this.$el.parentNode.removeChild(this.$el)
       },

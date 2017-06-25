@@ -1,6 +1,7 @@
 <template>
   <div class="at-dropdown" ref="trigger">
     <div class="at-dropdown__trigger"><slot></slot></div>
+
     <transition name="slide-up" @after-leave="doDestory">
       <div class="at-dropdown__popover" ref="popover" v-show="show">
         <slot name="menu"></slot>
@@ -10,11 +11,13 @@
 </template>
 
 <script>
+  import Clickoutside from 'src/directives/clickoutside'
   import PopoverMixin from 'src/mixins/popover'
 
   export default {
     name: 'AtDropdown',
     componentName: 'AtDropdown',
+    directives: { Clickoutside },
     mixins: [PopoverMixin],
     props: {
       trigger: {
@@ -25,17 +28,7 @@
       placement: {
         type: String,
         default: 'bottom',
-        validator: val => ['top', 'top-left', 'top-right', 'left', 'left-top', 'left-bottom', 'right', 'right-top', 'right-bottom', 'bottom', 'bottom-left', 'bottom-right']
-      }
-    },
-    data () {
-      return {
-        visible: false
-      }
-    },
-    watch: {
-      visible (val) {
-        this.show = val
+        validator: val => ['top', 'top-left', 'top-right', 'left', 'left-top', 'left-bottom', 'right', 'right-top', 'right-bottom', 'bottom', 'bottom-left', 'bottom-right'].indexOf(val) > -1
       }
     },
     mounted () {
@@ -44,7 +37,7 @@
     methods: {
       handleMenuItemClick (name) {
         this.show = false
-        this.$emit('command', name)
+        this.$emit('on-dropdown-command', name)
       }
     }
   }

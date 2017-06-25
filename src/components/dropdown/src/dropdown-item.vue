@@ -1,11 +1,11 @@
 <template>
-  <li class="at-dropdown-menu__item"
+  <li
+    class="at-dropdown-menu__item"
     :class="{
       'at-dropdown-menu__item--disabled': disabled,
       'at-dropdown-menu__item--divided': divided
     }"
-    @click="handleClick"
-  >
+    @click="handleClick">
     <slot></slot>
   </li>
 </template>

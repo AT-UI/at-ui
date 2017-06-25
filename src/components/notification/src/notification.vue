@@ -1,18 +1,17 @@
 <template>
-  <transition name="notification-fade">
+  <transition name="notification-fade" @after-leave="doDestory">
     <div
       class="at-notification"
-      :class="[
-        type ? `at-notification--${type}` : '',
-        message ? 'at-notification--with-message' : '',
-        !showClose ? 'at-notification--hover' : ''
-      ]"
+      :class="{
+        [`at-notification--${type}`]: type,
+        'at-notification--with-message': message,
+        'at-notification--hover': !showClose
+      }"
       :style="{ top: top ? top + 'px' : 'auto' }"
       v-show="isShow"
       @click="!showClose && handleClose()"
       @mouseleave="startTimer"
-      @mouseenter="clearTimer"
-    >
+      @mouseenter="clearTimer">
       <i class="icon at-notification__icon" :class="iconClass" v-if="showIcon"></i>
       <div class="at-notification__content">
         <p class="at-notification__title" v-if="title" v-text="title"></p>
@@ -62,7 +61,6 @@ export default {
     closed (val) {
       if (val) {
         this.isShow = false
-        this.$el.addEventListener('animationend', this.destoryElement)
       }
     }
   },
@@ -78,8 +76,7 @@ export default {
     }
   },
   methods: {
-    destoryElement () {
-      this.$el.removeEventListener('animationend', this.destoryElement)
+    doDestory () {
       this.$destroy(true)
       this.$el.parentNode.removeChild(this.$el)
     },
