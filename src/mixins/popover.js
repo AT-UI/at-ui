@@ -7,10 +7,6 @@ import $ from '../utils/NodeList.js'
 export default {
   props: {
     trigger: String,
-    effect: {
-      type: String,
-      default: 'fade'
-    },
     title: String,
     content: {
       type: String,
