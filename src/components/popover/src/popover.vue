@@ -1,17 +1,17 @@
 <template>
-  <div class="at-popover" ref="parent">
+  <div class="at-popover" ref="parent" v-clickoutside="handleClose">
     <span class="at-popover__trigger" ref="trigger">
       <slot></slot>
     </span>
 
     <transition :name="transition" @after-leave="doDestory">
-      <div class="at-popover__popper"
+      <div
+        class="at-popover__popper"
         :class="[
           placement ? 'at-popover--' + placement : 'at-popover--top'
         ]"
         v-if="show"
-        ref="popover"
-      >
+        ref="popover">
         <div class="at-popover__arrow"></div>
         <div class="at-popover__title" v-if="title">
           <slot name="title"><div v-html="title"></div></slot>
@@ -25,11 +25,13 @@
 </template>
 
 <script>
+import Clickoutside from 'src/directives/clickoutside'
 import PopoverMixin from 'src/mixins/popover'
 
 export default {
   name: 'AtPopover',
   mixins: [PopoverMixin],
+  directives: { Clickoutside },
   props: {
     trigger: {
       type: String,
@@ -43,6 +45,11 @@ export default {
   watch: {
     value (value) {
       this.show = value
+    }
+  },
+  methods: {
+    handleClose () {
+      this.show = false
     }
   }
 }
