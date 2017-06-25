@@ -5,7 +5,7 @@
 
 模态对话框，当需要询问用户处理事务，又不希望跳转页面时，可以使用模态框 `Modal` 在当前页面打开一个浮层并承载相应的操作。
 
-当需要弹出一个简洁的确认框时，我们可以使用默认的精简版模态框。我们在 `Vue.prototype` 中添加了全局对象 `$Modal`，我们可以直接通过 `this.$Modal` 操作实例
+当需要弹出一个简洁的确认框时，也可以使用默认的精简版模态框。`AT-UI` 在 `Vue.prototype` 中添加了全局对象 `$Modal`，可以直接通过 `this.$Modal` 对象操作实例方法
 
 ### Modal 实例方法
 
@@ -23,23 +23,21 @@
 弹出会中断用户的对话框，直到用户知晓该信息之后才可以关闭，属于交互比较重的操作。（类似于 `window.alert`）
 
 :::demo
-
 ```html
-<at-button size="small" @click="handleClick('alert')">Alert</at-button>
+<p class="demo-desc">this.$Modal.alert()</p>
+<at-button @click="handleClick('alert')">Alert</at-button>
 ```
-
 :::
 
 ### 确认消息
 
-对用户操作的一个反馈，用于确定使用是否需要继续操作。（类似于 `window.confirm`）
+对用户操作的一个反馈，用于确定是否需要继续操作。（类似于 `window.confirm`）
 
 :::demo
-
 ```html
-<at-button size="small" @click="handleClick('confirm')">Confirm</at-button>
+<p class="demo-desc">this.$Modal.confirm()</p>
+<at-button @click="handleClick('confirm')">Confirm</at-button>
 ```
-
 :::
 
 ### 提交信息
@@ -47,11 +45,10 @@
 弹出输入对话框，提醒用户输入相应内容。（类似于 `window.prompt`）
 
 :::demo
-
 ```html
-<at-button size="small" @click="handleClick('prompt')">Prompt</at-button>
+<p class="demo-desc">this.$Modal.prompt()</p>
+<at-button @click="handleClick('prompt')">Prompt</at-button>
 ```
-
 :::
 
 ### 消息类的对话框
@@ -59,14 +56,12 @@
 除了上述的类 `window` 对话框，`AT-UI` 还提供了四种消息类的对话框，主要用来展示一些重要信息。该类的对话框仅允许点击「确定」按钮关闭，不支持其他关闭方式
 
 :::demo
-
 ```html
-<at-button size="small" @click="handleClick('info')">消息</at-button>
-<at-button size="small" @click="handleClick('success')">成功</at-button>
-<at-button size="small" @click="handleClick('warning')">警告</at-button>
-<at-button size="small" @click="handleClick('error')">错误</at-button>
+<at-button @click="handleClick('info')">消息</at-button>
+<at-button @click="handleClick('success')">成功</at-button>
+<at-button @click="handleClick('warning')">警告</at-button>
+<at-button @click="handleClick('error')">错误</at-button>
 ```
-
 :::
 
 ### 组件化方式调用
@@ -74,15 +69,13 @@
 前面提到的是通过 `this.$Modal` 的方法来使用，如果要自定义对话框，可使用组件化的方式
 
 :::demo
-
 ```html
-<at-button size="small" @click="modal1=true">显示自定义模态框</at-button>
+<at-button @click="modal1=true">显示自定义模态框</at-button>
 <at-modal v-model="modal1" title="这里是标题" @on-confirm="handleConfirm" @on-cancel="handleCancel">
   <p>这里是模态框的文本内容!</p>
   <p>这里是模态框的文本内容!</p>
 </at-modal>
 ```
-
 :::
 
 ### 自定义样式
@@ -90,10 +83,9 @@
 `Modal` 组件提供了自定义页头、页脚的 `slot`，可灵活的控制对话框的样式结构。通过与其他组件的交互，可实现复杂的功能需求。
 
 :::demo
-
 ```html
-<at-button size="small" @click="modal2=true">自定义页头和页脚</at-button>
-<at-button size="small" @click="modal3=true">不带标题</at-button>
+<at-button @click="modal2=true">自定义页头和页脚</at-button>
+<at-button @click="modal3=true">不带标题</at-button>
 <at-modal v-model="modal2">
   <div slot="header" style="text-align:center;">
     <span>这里是标题</span>
@@ -102,40 +94,38 @@
     <p>能看到这里的内容吗？</p>
   </div>
   <div slot="footer">
-    <at-button size="small" style="width:100%;" type="error" @click="closeModal2">这里是按钮</at-button>
+    <at-button style="width:100%;" type="error" @click="closeModal2">这里是按钮</at-button>
   </div>
 </at-modal>
 <at-modal v-model="modal3">
   <p>这里是模态框的文本内容!</p>
 </at-modal>
 ```
-
 :::
 
 ### 禁用关闭
 
-:::demo
+- 设置属性 `show-close` 为 `false` 可取消右上角的关闭按钮以及键盘的 `ESC` 键；
+- 设置属性 `mask-closable` 为 `false` 可取消遮罩层的点击关闭事件
 
+:::demo
 ```html
-<at-button size="small" @click="modal4=true">禁用右上角关闭按钮（含 ESC）</at-button>
-<at-button size="small" @click="modal5=true">取消遮罩层关闭</at-button>
+<at-button @click="modal4=true">禁用右上角关闭按钮（含 ESC）</at-button>
+<at-button @click="modal5=true">取消遮罩层关闭</at-button>
 <at-modal v-model="modal4" title="标题" :show-close="false">这里是文本</at-modal>
 <at-modal v-model="modal5" title="标题" :show-close="false" :mask-closable="false">这里是文本</at-modal>
 ```
-
 :::
 
 ### 自定义窗口位置
 
 :::demo
-
 ```html
-<at-button size="small" @click="modal6=true">仅改变距离顶部的位置</at-button>
-<at-button size="small" @click="modal7=true">垂直居中（添加自定义的 class）</at-button>
+<at-button @click="modal6=true">仅改变距离顶部的位置</at-button>
+<at-button @click="modal7=true">垂直居中（添加自定义的 class）</at-button>
 <at-modal v-model="modal6" title="标题" :styles="{top: '10px'}">这里是文本内容</at-modal>
 <at-modal v-model="modal7" title="标题" class="modal-vertical">这里是文本内容</at-modal>
 ```
-
 :::
 
 <script>
@@ -205,14 +195,19 @@
 </script>
 
 <style lang="sass" scoped>
-  .modal-vertical {
-    .at-modal__wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .at-modal {
-      top: 0;
-    }
+.modal-vertical {
+  .at-modal__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  .at-modal {
+    top: 0;
+  }
+}
+.demo-desc {
+  margin: 8px 0;
+  color: #8DABC4;
+  font-size: 12px;
+}
 </style>
