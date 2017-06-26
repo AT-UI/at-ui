@@ -46,7 +46,7 @@
 
 :::demo
 ```html
-<p class="demo-desc">this.$Modal.prompt()</p>
+<p class="demo-desc">this.$Modal.prompt({ title: '提示', content: '请输入邮件地址：' })</p>
 <at-button @click="handleClick('prompt')">Prompt</at-button>
 ```
 :::
@@ -57,10 +57,11 @@
 
 :::demo
 ```html
-<at-button @click="handleClick('info')">消息</at-button>
+<p class="demo-desc">this.$Modal.success()</p>
 <at-button @click="handleClick('success')">成功</at-button>
-<at-button @click="handleClick('warning')">警告</at-button>
 <at-button @click="handleClick('error')">错误</at-button>
+<at-button @click="handleClick('warning')">警告</at-button>
+<at-button @click="handleClick('info')">消息</at-button>
 ```
 :::
 
@@ -106,7 +107,7 @@
 ### 禁用关闭
 
 - 设置属性 `show-close` 为 `false` 可取消右上角的关闭按钮以及键盘的 `ESC` 键；
-- 设置属性 `mask-closable` 为 `false` 可取消遮罩层的点击关闭事件
+- 设置属性 `mask-closable` 为 `false` 可取消遮罩层的点击关闭事件；
 
 :::demo
 ```html
@@ -119,14 +120,55 @@
 
 ### 自定义窗口位置
 
+通过属性 `styles` 传入 `CSS Style Object`，可更改弹框的样式
+
 :::demo
 ```html
 <at-button @click="modal6=true">仅改变距离顶部的位置</at-button>
-<at-button @click="modal7=true">垂直居中（添加自定义的 class）</at-button>
-<at-modal v-model="modal6" title="标题" :styles="{top: '10px'}">这里是文本内容</at-modal>
-<at-modal v-model="modal7" title="标题" class="modal-vertical">这里是文本内容</at-modal>
+<at-modal v-model="modal6" title="标题" :styles="{top: '20px'}">这里是文本内容</at-modal>
 ```
 :::
+
+### Modal 参数
+
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| value | 是否显示模态框，可通过 `v-model` 绑定 | Boolean | - | false |
+| title | 模态框的标题 | String | - | - |
+| content | 模态框的内容 | String | - | - |
+| cancelText | 取消按钮的文本 | String | - | 取消 |
+| okText | 确定按钮的文本 | String | - | 确定 |
+| maskClosable | 点击遮罩层是否可以关闭模态框 | Boolean | - | true |
+| showHead | 是否显示标题 | Boolean | - | true |
+| showClose | 是否显示关闭按钮 | Boolean | - | true |
+| showFooter | 是否显示底部按钮 | Boolean | - | true |
+| showInput | 是否显示输入框 | Boolean | - | false |
+| width | 模态框的宽度 | Number / String | - | `520` |
+| closeOnPressEsc | 点击 `ESC` 是否可以关闭模态框 | Boolean | - | true |
+| styles | 模态框的自定义样式 | Object | - | - |
+
+### Modal 事件
+
+| 事件名称 | 说明          | 返回参数  |
+|---------- |-------------- |---------- |
+| on-cancel | 点击取消的回调事件 | - |
+| on-confirm | 点击确定的回调事件 | - |
+
+### Modal Slot
+
+| 名称     | 说明          |
+|-------- |------------------- |
+| header | 自定义模态框的头部 |
+| footer | 自定义模态框的底部，即底部按钮部分 |
+| - | 自定义模态框的主体内容 |
+
+<style lang="sass" scoped>
+  .demo-desc {
+    margin: 8px 0;
+    color: #8DABC4;
+    font-size: 12px;
+  }
+</style>
 
 <script>
   export default {
@@ -137,8 +179,7 @@
         modal3: false,
         modal4: false,
         modal5: false,
-        modal6: false,
-        modal7: false
+        modal6: false
       }
     },
     methods: {
@@ -153,15 +194,19 @@
             title: '提示',
             content: '此操作需要非常谨慎，您确定要这么做吗？'
           }).then(() => {
-            console.log('confirm')
+            this.$Message('点击了「确认」按钮')
           }).catch(() => {
-            console.log('cancel')
+            this.$Message('点击了「取消」按钮')
           })
 
         } else if (type === 'prompt') {
           this.$Modal.prompt({
             title: '提示',
             content: '请输入邮件地址：'
+          }).then((data) => {
+            this.$Message(`点击了「确认」按钮，输入框的值为 ${data.value}`)
+          }).catch(() => {
+            this.$Message('点击了「取消」按钮')
           })
         } else if (type === 'info') {
           this.$Modal.info({
@@ -193,21 +238,3 @@
     }
   }
 </script>
-
-<style lang="sass" scoped>
-.modal-vertical {
-  .at-modal__wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .at-modal {
-    top: 0;
-  }
-}
-.demo-desc {
-  margin: 8px 0;
-  color: #8DABC4;
-  font-size: 12px;
-}
-</style>

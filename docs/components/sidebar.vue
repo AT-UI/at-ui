@@ -33,7 +33,7 @@
     <div class="at-copyright at-c-brand-ca">
       <p>
         © 2017 <a href="http://aotu.io" target="_blank">AOTU Library</a>.
-        <br>UI KIT created by <a href="http://aotu.io" target="_blank">O2Team</a>.
+        <br>UI KIT created by <a href="http://aotu.io" target="_blank">AOTULabs</a>.
       </p>
       <p>AT v0.10.0</p>
     </div>

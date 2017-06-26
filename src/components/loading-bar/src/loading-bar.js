@@ -1,41 +1,34 @@
 import Vue from 'vue'
-import LoadingBar from './loading-bar.vue'
+import LoadingBarVue from './loading-bar.vue'
 
-LoadingBar.newInstance = properties => {
-  const _props = properties || {}
+const LoadingBarConstructor = Vue.extend(LoadingBarVue)
+let instance
 
-  let props = ''
-  Object.keys(_props).forEach(prop => {
-    props += ` :${prop}=${prop}`
+const LoadingBar = options => {
+  options = options || {}
+
+  instance = new LoadingBarConstructor({
+    data: options
   })
 
-  const div = document.createElement('div')
-  div.innerHTML = `<loading-bar${props}></loading-bar>`
-  document.body.appendChild(div)
+  instance.vm = instance.$mount()
+  document.body.appendChild(instance.vm.$el)
+}
 
-  const loadingBar = new Vue({
-    el: div,
-    data: _props,
-    components: { LoadingBar }
-  }).$children[0]
-
-  return {
-    component: loadingBar,
-    update (options) {
-      if (options.percent) {
-        loadingBar.percent = options.percent
-      }
-      if (options.status) {
-        loadingBar.status = options.status
-      }
-      if (options.show) {
-        loadingBar.show = options.show
-      }
-    },
-    destroy () {
-      document.body.removeChild(div)
-    }
+LoadingBar.prototype.update = options => {
+  if (options.percent) {
+    instance.percent = options.percent
   }
+  if (options.status) {
+    instance.status = options.status
+  }
+  if (options.show) {
+    instance.show = options.show
+  }
+}
+
+LoadingBar.prototype.destroy = () => {
+  document.body.removeChild(instance.vm.$el)
 }
 
 export default LoadingBar

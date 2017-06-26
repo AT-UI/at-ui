@@ -13,9 +13,10 @@
 
 :::demo
 ```html
-<at-button size="small" @click="start">Start</at-button>
-<at-button size="small" @click="finish">Finish</at-button>
-<at-button size="small" @click="error">Error</at-button>
+<at-button @click="start">Start</at-button>
+<at-button @click="finish">Finish</at-button>
+<at-button @click="error">Error</at-button>
+<at-button @click="update">Update</at-button>
 ```
 :::
 
@@ -38,12 +39,24 @@ this.$Loading.config({
 })
 ```
 
+:::demo
+```html
+<at-button @click="setWidth">{{ btnText }}</at-button>
+```
+:::
+
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | width | 进度条的线宽 | Number | - | 2 |
 
 <script>
 export default {
+  data () {
+    return {
+      isSetWidth: false,
+      btnText: '设置线宽为 4px'
+    }
+  },
   methods: {
     start () {
       this.$Loading.start()
@@ -53,6 +66,24 @@ export default {
     },
     error () {
       this.$Loading.error()
+    },
+    update () {
+      this.$Loading.update(50)
+    },
+    setWidth () {
+      if (this.isSetWidth) {
+        this.isSetWidth = false
+        this.btnText = '设置线宽为 4px'
+        this.$Loading.config({
+          width: 2
+        })
+      } else {
+        this.isSetWidth = true
+        this.btnText = '取消设置线宽'
+        this.$Loading.config({
+          width: 4
+        })
+      }
     }
   }
 }
