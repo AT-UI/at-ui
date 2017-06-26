@@ -4,17 +4,17 @@ import App from './App'
 import router from './router'
 import DemoBox from './components/demobox'
 import IconList from './components/iconlist'
-import ATComponents from 'at'
-import 'at-css'
+import AtComponents from 'at-ui'
+import 'at-ui-style'
 // import 'stylesheet/css/at.css'
 
 // 注册组件
-// for (var key of Object.keys(ATComponents)) {
+// for (var key of Object.keys(AtComponents)) {
 //   let lowerKey = key.toLocaleLowerCase()
-//   Vue.component(`at-${lowerKey}`, ATComponents[key])
+//   Vue.component(`at-${lowerKey}`, AtComponents[key])
 // }
 
-Vue.use(ATComponents)
+Vue.use(AtComponents)
 Vue.component('demo-box', DemoBox)
 Vue.component('icon-list', IconList)
 
