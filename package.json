@@ -78,6 +78,7 @@
     "vue-markdown-loader": "^1.0.0",
     "vue-style-loader": "^3.0.1",
     "webpack": "^2.4.1",
+    "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dashboard": "^0.4.0",
     "webpack-dev-middleware": "^1.11.0",
     "webpack-hot-middleware": "^2.18.0",

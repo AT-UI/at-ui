@@ -39,7 +39,7 @@ module.exports = {
   },
   output: {
     path: config.build.assetsRoot,
-    publicPath: config.build.assetsPublicPath,
+    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
     filename: 'js/[name].js'
   },
   resolve: {
@@ -80,47 +80,48 @@ module.exports = {
         test: /\.yml$/,
         loader: 'json-loader!yaml-loader'
       },
-      {
-        test: /\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [
-                require('autoprefixer')({
-                  browsers: ['last 2 versions', 'ie > 8']
-                })
-              ]
-            }
-          }
-        ]
-      },
-      {
-        test: /\.scss$/,
-        loaders: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [
-                require('autoprefixer')({
-                  browsers: ['last 2 versions', 'ie > 8']
-                })
-              ]
-            }
-          },
-          'sass-loader'
-        ]
-      },
+      // {
+      //   test: /\.css$/,
+      //   loaders: [
+      //     'style-loader',
+      //     'css-loader',
+      //     {
+      //       loader: 'postcss-loader',
+      //       options: {
+      //         plugins: () => [
+      //           require('autoprefixer')({
+      //             browsers: ['last 2 versions', 'ie > 8']
+      //           })
+      //         ]
+      //       }
+      //     }
+      //   ]
+      // },
+      // {
+      //   test: /\.scss$/,
+      //   loaders: [
+      //     'style-loader',
+      //     'css-loader',
+      //     {
+      //       loader: 'postcss-loader',
+      //       options: {
+      //         plugins: () => [
+      //           require('autoprefixer')({
+      //             browsers: ['last 2 versions', 'ie > 8']
+      //           })
+      //         ]
+      //       }
+      //     },
+      //     'sass-loader'
+      //   ]
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
           loaders: utils.cssLoaders({
-            extract: false
+            sourceMap: process.env.NODE_ENV === 'production' ? config.build.productionSourceMap : config.dev.cssSourceMap,
+            extract: process.env.NODE_ENV === 'production'
           }),
           postcss: [
             require('autoprefixer')({

@@ -3,17 +3,27 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const config = require('./config')
 const utils = require('./utils')
 const baseWebpackConfig = require('./webpack.base.conf')
 
+process.env.NODE_ENV = 'production'
+
 const webpackConfig = merge(baseWebpackConfig, {
+  module: {
+    rules: utils.styleLoaders({
+      sourceMap: config.build.productionSourceMap,
+      extract: true
+    })
+  },
   devtool: config.build.productionSourceMap ? 'source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    publicPath: config.build.assetsPublicPath,
+    filename: utils.assetsPath('js/[name].js'),
+    chunkFilename: utils.assetsPath('js/[id].js')
   },
   resolve: {
     alias: {
@@ -22,9 +32,12 @@ const webpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+    // new BundleAnalyzerPlugin({
+    //   generateStatsFile: true
+    // }),
     // http://vuejs.github.io/vue-loader/workflow/production.html
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': 'production'
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -32,7 +45,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       }
     }),
     // extract css into its own file
-    new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
+    new ExtractTextPlugin(utils.assetsPath('css/[name].css')),
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
