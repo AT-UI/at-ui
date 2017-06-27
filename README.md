@@ -4,7 +4,7 @@
 
 ## 特性
 
-- 基于 `Vue` 开发的 UI 组件
+- 基于 `Vue` 开发的 UI 组件
 - 基于 npm + webpack + babel 的工作流，支持 ES2015
 - CSS 样式独立，保证不同的框架实现都能保持统一的 UI 风格（ 详见：[AT-UI Style](https://github.com/o2team/at-ui-style) ）
 - 提供友好的 API，可灵活的使用组件
@@ -16,7 +16,7 @@
 
 ## 安装
 
-- 推荐使用 npm 安装
+- 推荐使用 npm 安装
 
 ```bash
 npm install at-ui
@@ -66,7 +66,7 @@ this.$Modal.alert(config)
 
 ### 单个组件使用
 
-可以在单独的页面中局部注册所需的组件，适用于与其他框架组合使用的场景
+可以在单独的页面中局部注册所需的组件，适用于与其他框架组合使用的场景
 
 ```js
 import {AtInput} from 'at-ui'
@@ -103,6 +103,6 @@ $ npm run dev
 
 ### 贡献
 
-如果你在使用 `AT-UI` 时遇到问题，或者有好的建议，欢迎给我们提 `Issue` 或 `Pull Request`
+如果你在使用 `AT-UI` 时遇到问题，或者有好的建议，欢迎给我们提 `Issue` 或 `Pull Request`
 
 ## [License](LICENSE)
