@@ -23,8 +23,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
     publicPath: config.build.assetsPublicPath,
-    filename: utils.assetsPath('js/[name].js'),
-    chunkFilename: utils.assetsPath('js/[id].js')
+    filename: utils.assetsPath('js/[name].[chunkhash:6].js'),
+    chunkFilename: utils.assetsPath('js/[id].[chunkhash:6].js')
   },
   resolve: {
     alias: {
@@ -46,9 +46,9 @@ const webpackConfig = merge(baseWebpackConfig, {
       }
     }),
     // extract css into its own file
-    new ExtractTextPlugin(utils.assetsPath('css/[name].css')),
+    new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash:6].css')),
     new RewriteFontUrl({
-      fileReg: new RegExp('static/css/main.css'),
+      fileReg: new RegExp('static/css/'),
       processor: source => source.replace(/static\/fonts/g, '../fonts')
     }),
     // generate dist index.html with correct asset hash for caching.

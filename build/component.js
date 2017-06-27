@@ -42,17 +42,29 @@ function getConfig (options) {
         commonjs2: 'vue',
         amd: 'vue'
       }
-    }
+    },
+    plugins: [
+      new webpack.LoaderOptionsPlugin({
+        minimize: true,
+        progress: true,
+        hide_modules: true
+      }),
+      new webpack.BannerPlugin({
+        banner: `/*! AT-UI v${require('../package.json').version} | https://at.aotu.io | (c) 2017 O2Team | MIT License */`,
+        raw: true,
+        entryOnly: true
+      })
+    ]
   })
 
   if (options.env === 'production') {
-    config.plugins = [
+    config.plugins.push(
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false
         }
       })
-    ]
+    )
   }
 
   return config
