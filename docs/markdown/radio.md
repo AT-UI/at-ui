@@ -148,10 +148,6 @@
   .row + .row {
     margin-top: 8px;
   }
-  .demo-desc {
-    margin: 8px 0;
-    color: #8DABC4;
-  }
 </style>
 
 <script>

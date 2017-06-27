@@ -77,9 +77,4 @@ export default {
       margin-top: 15px;
     }
   }
-  .demo-desc {
-    margin: 8px 0;
-    color: #8DABC4;
-    font-size: 12px;
-  }
 </style>

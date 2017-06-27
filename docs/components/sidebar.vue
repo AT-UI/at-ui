@@ -5,7 +5,7 @@
     <header class="at-sidebar__header">
       <img class="at-sidebar__logo" src="../assets/o2logo.png" alt="O2Team">
       <h1 class="at-sidebar__title clearfix">
-        <small>AT UI KIT</small>
+        <a href="https://github.com/o2team/at-ui"><small>AT UI KIT</small></a>
       </h1>
     </header>
 
@@ -35,7 +35,7 @@
         © 2017 <a href="http://aotu.io" target="_blank">AOTU Library</a>.
         <br>UI KIT created by <a href="http://aotu.io" target="_blank">AOTULabs</a>.
       </p>
-      <p>AT v0.10.0</p>
+      <p><a href="https://github.com/o2team/at-ui">AT-UI v1.0.0</a></p>
     </div>
   </div>
 </div>
@@ -108,8 +108,9 @@ export default {
 
   small {
     display: block;
+    color: #fff;
     font-size: 16px;
-    font-weight: normal;
+    font-weight: bold;
   }
 }
 .at-sidebar__logo {

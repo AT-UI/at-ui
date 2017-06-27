@@ -96,14 +96,6 @@
 | icon | 自定义消息提醒的 ICON | String | - | - |
 | onClose | 关闭通知提醒框时的回调函数 | Function | - | - |
 
-<style lang="scss" scoped>
-  .demo-desc {
-    margin: 8px 0;
-    color: #8DABC4;
-    font-size: 12px;
-  }
-</style>
-
 <script>
 export default {
   methods: {

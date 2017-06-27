@@ -69,7 +69,7 @@ this.$Modal.alert(config)
 可以在单独的页面中局部注册所需的组件，适用于与其他框架组合使用的场景
 
 ```js
-import {AtInput} from 'at-ui'
+import { AtInput } from 'at-ui'
 
 export default {
   components: {

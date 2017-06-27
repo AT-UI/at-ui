@@ -6,7 +6,7 @@
  * Vue transitions
  */
 .fade-enter-active {
-  transition: opacity .5s ease-out;
+  transition: opacity .3s ease-out;
 }
 .fade-leave-active {
   transition: opacity .2s ease-out;
@@ -24,18 +24,24 @@ $large-viewport-max-width: 1199px;
  * Base
  */
 .at-content {
-  // padding: 36px 48px 36px 312px;
   margin: 36px 48px 36px 312px;
 
-  section {
+  > section {
     margin: 0 auto;
     max-width: 1000px;
-  }
-  h1, h2, h3 {
-    margin: 20px 0 15px;
-  }
-  p {
-    padding: 0;
+
+    > h1,
+    > h2,
+    > h3 {
+      margin: 24px 0 16px;
+    }
+    > h4 {
+      margin: 16px 0;
+    }
+    > p {
+      padding: 4px 0;
+      line-height: 1.5;
+    }
   }
   table.table {
     width: 100%;
@@ -43,7 +49,7 @@ $large-viewport-max-width: 1199px;
     background-color: #fff;
     color: #5e6d82;
     font-size: 14px;
-    margin-bottom: 45px;
+    // margin-bottom: 45px;
     border-collapse: collapse;
 
     th {
@@ -259,6 +265,11 @@ $large-viewport-max-width: 1199px;
     padding: 36px;
     border: 1px solid $border-color-lighter;
     border-radius: 6px 6px 0 0;
+
+    .demo-desc {
+      margin: 8px 0;
+      color: #8DABC4;
+    }
   }
   &__code {
     border: 1px solid $border-color-lighter;
@@ -352,7 +363,7 @@ $large-viewport-max-width: 1199px;
     }
   }
 }
-.at-markdown {
+.at-markdown section {
   pre {
     overflow: auto;
     background-color: #f8f8f8;
@@ -360,32 +371,36 @@ $large-viewport-max-width: 1199px;
     margin: 16px 0;
 
     code {
+      padding: 0;
       background-color: transparent;
     }
   }
-  blockquote {
+  > blockquote {
     margin: 20px 0;
     padding: 0 15px;
     color: #858585;
     border-left: 4px solid #e5e5e5;
   }
-  hr {
+  > hr {
     border: 0;
     border-bottom: 1px solid $border-color-base;
   }
-  code {
+  > code {
     background-color: tint($bg-color-light, 30%);
     padding: .3em .5em;
     border-radius: $border-radius-base;
     font-size: .9em;
     margin: 0 2px;
   }
-  ul:not([class^=at-]) {
+  > ul {
     list-style: disc;
-    padding: 10px 0 10px 20px;
+    padding: 4px 0 4px 24px;
 
     li {
       line-height: 1.8;
     }
+  }
+  > table {
+    margin: 24px 0;
   }
 }

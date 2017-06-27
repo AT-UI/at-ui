@@ -177,7 +177,8 @@
       margin-top: 8px;
     }
   }
-  .at-btn-group:not(:first-child) {
-    margin-top: 15px;
+  .at-btn-group {
+    margin-left: 8px;
+    margin-top: 16px;
   }
 </style>

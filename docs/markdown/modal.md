@@ -162,14 +162,6 @@
 | footer | 自定义模态框的底部，即底部按钮部分 |
 | - | 自定义模态框的主体内容 |
 
-<style lang="scss" scoped>
-  .demo-desc {
-    margin: 8px 0;
-    color: #8DABC4;
-    font-size: 12px;
-  }
-</style>
-
 <script>
   export default {
     data () {

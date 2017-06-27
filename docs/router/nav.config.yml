@@ -4,6 +4,8 @@ zh-CN:
     items:
       - title: 介绍
         name: Introduction
+      - title: 快速上手
+        name: Quickstart
       - title: 更新日志
         name: Changelog
   - title: 组件
