@@ -29,7 +29,8 @@
     "component"
   ],
   "files": [
-    "dist",
+    "dist/at.js",
+    "dist/at.min.js",
     "src"
   ],
   "author": "Koppt Ho <kopptsoft@gmail.com>",
