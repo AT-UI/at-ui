@@ -42,10 +42,10 @@ const Message = options => {
   let topDist = offset
 
   for (let i = 0; i < len; i++) {
-    topDist += instances[i].$el.offsetHeight + 16
+    topDist += instances[i].$el.offsetHeight + 8
   }
 
-  topDist += 16
+  topDist += 8
   instance.top = topDist
 
   instances.push(instance)
@@ -75,7 +75,7 @@ Message.close = (id, customCloseFunc) => {
 
   if (len > 1) {
     for (let i = index; i < len - 1; i++) {
-      instances[i].dom.style.top = `${parseInt(instances[i].dom.style.top) - removedHeight - 16}px`
+      instances[i].dom.style.top = `${parseInt(instances[i].dom.style.top) - removedHeight - 8}px`
     }
   }
 }
@@ -94,7 +94,7 @@ messageType.forEach(type => {
       }
     }
     options.type = type
-    options.icon = options.icon || type
+    options.icon = options.icon
     return new Message(options)
   }
 })

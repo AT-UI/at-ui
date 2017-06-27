@@ -13,24 +13,18 @@ export default {
   props: {
     value: [String, Number],
     size: String,
-    fill: {
-      type: String,
-      default: '#20a0ff'
-    },
-    textColor: {
-      type: String,
-      default: '#fff'
-    }
+    fill: String,
+    textColor: String
   },
   mixins: [Emitter],
   watch: {
     value (value) {
-      this.$emit('change', value)
-      this.broadcast('AtRadio', 'initData', value)
+      this.$emit('radio-group-change', value)
+      this.broadcast('AtRadio', 'init-data', value)
     }
   },
   mounted () {
-    this.broadcast('AtRadio', 'initData', this.value)
+    this.broadcast('AtRadio', 'init-data', this.value)
   }
 }
 </script>

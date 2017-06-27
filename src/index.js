@@ -17,8 +17,6 @@ import LoadingBar from './components/loading-bar'
 import { Modal, Dialog } from './components/modal'
 import { Select, Option, OptionGroup } from './components/select'
 import { Dropdown, DropdownMenu, DropdownItem } from './components/dropdown'
-import Table from './components/table'
-import { Form, FormItem } from './components/form'
 import { Breadcrumb, BreadcrumbItem } from './components/breadcrumb'
 import Pagination from './components/pagination'
 import Message from './components/message'
@@ -51,9 +49,6 @@ const components = {
   Dropdown,
   DropdownMenu,
   DropdownItem,
-  Table,
-  Form,
-  FormItem,
   Breadcrumb,
   BreadcrumbItem,
   Pagination,
@@ -69,7 +64,7 @@ function install (Vue) {
     }
   }
 
-  Vue.prototype.$notify = Notification
+  Vue.prototype.$Notify = Notification
   Vue.prototype.$Loading = LoadingBar
   Vue.prototype.$Modal = Dialog
   Vue.prototype.$Message = Message

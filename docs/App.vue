@@ -9,10 +9,15 @@
   </div>
 </template>
 
+<style lang="scss">
+  @import './assets/style/index';
+</style>
+
+
 <script>
-import './components/style'
+// import './components/style'
 import Sidebar from './components/sidebar'
-import navsData from './router/nav.config.yml'
+import navsConfig from './router/nav.config.yml'
 
 export default {
   components: {
@@ -20,7 +25,7 @@ export default {
   },
   data () {
     return {
-      navs: navsData['zh-CN']
+      navs: navsConfig['zh-CN']
     }
   }
 }

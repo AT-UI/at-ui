@@ -1,5 +1,4 @@
-<style lang="scss">
-@import '../../node_modules/highlight.js/styles/atom-one-light.css';
+@import '../node_modules/highlight.js/styles/atom-one-light.css';
 @import '~stylesheet/src/variables/index.scss';
 @import '~stylesheet/src/mixins/index.scss';
 
@@ -390,4 +389,3 @@ $large-viewport-max-width: 1199px;
     }
   }
 }
-</style>

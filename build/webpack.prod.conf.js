@@ -15,6 +15,12 @@ const webpackConfig = merge(baseWebpackConfig, {
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
+  resolve: {
+    alias: {
+      'at-ui': path.resolve(__dirname, '../dist/at.js'),
+      'at-ui-style': 'stylesheet/css/at.css'
+    }
+  },
   plugins: [
     // http://vuejs.github.io/vue-loader/workflow/production.html
     new webpack.DefinePlugin({
@@ -32,7 +38,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: config.build.index,
-      template: 'index.html',
+      template: 'docs/index.html',
       inject: true,
       minify: {
         removeComments: true,

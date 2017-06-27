@@ -1,20 +1,22 @@
 <template>
-<button
-  class="at-btn"
-  :class="[
-    type ? 'at-btn--' + type : '',
-    size ? 'at-btn--' + size : '',
-    hollow ? 'at-btn--' + type + '--hollow' : ''
-  ]"
-  :style="styleList"
-  :disabled="disabled"
-  :type="type"
-  @click="handleClick"
->
-  <i class="at-icon-loading" v-if="loading"></i>
-  <i :class="iconClass" v-if="iconClass"></i>
-  <slot></slot>
-</button>
+  <button
+    class="at-btn"
+    :class="[
+      type ? `at-btn--${type}` : '',
+      size ? `at-btn--${size}` : '',
+      $parent && $parent.size ? `at-btn--${$parent.size}` : '',
+      hollow ? `at-btn--${type}--hollow` : '',
+      circle && !$slots.default ? 'at-btn--circle' : ''
+    ]"
+    :style="styleList"
+    :disabled="disabled"
+    :type="type"
+    @click="handleClick"
+  >
+    <i class="at-btn__loading icon icon-loader" v-if="loading"></i>
+    <i class="at-btn__icon icon" :class="icon" v-if="icon"></i>
+    <span class="at-btn__text" v-if="$slots.default"><slot></slot></span>
+  </button>
 </template>
 
 <script>
@@ -26,10 +28,7 @@ export default {
       default: 'default'
     },
     size: String,
-    style: {
-      type: Object
-    },
-    iconClass: String,
+    icon: String,
     disabled: {
       type: Boolean,
       default: false
@@ -39,6 +38,10 @@ export default {
       default: false
     },
     hollow: {
+      type: Boolean,
+      default: false
+    },
+    circle: {
       type: Boolean,
       default: false
     }

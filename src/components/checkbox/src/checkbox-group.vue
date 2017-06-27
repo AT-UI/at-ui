@@ -12,12 +12,21 @@ export default {
   componentName: 'AtCheckboxGroup',
   mixins: [Emitter],
   props: {
-    value: {}
+    value: {
+      type: Array,
+      default () {
+        return []
+      }
+    }
   },
   watch: {
     value (value) {
-      this.$emit('change', value)
+      this.$emit('checkbox-group-change', value)
+      this.broadcast('AtCheckbox', 'init-data', [value])
     }
+  },
+  mounted () {
+    this.broadcast('AtCheckbox', 'init-data', [this.value])
   }
 }
 </script>

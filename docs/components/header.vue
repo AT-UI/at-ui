@@ -46,35 +46,32 @@ $small-viewport: 767px;
   margin: 0 0 36px;
   padding: 12px;
   background-color: #fff;
-  /*border-bottom: 1px solid #ddd;*/
-  /*box-shadow: 0 0 1px rgba(0,0,0,.1);*/
   background-color: #6191E8;
 
   &:after {
     display: none;
   }
-}
-.at-header__logo {
-  float: left;
-  height: 28px;
-  margin: 0 6px 0 0;
-}
-.at-header__title {
-  float: left;
-  /*color: #303637;*/
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 28px;
-
-  a {
-    display: none;
-    display: block;
+  &__logo {
+    float: left;
+    height: 28px;
+    margin: 0 6px 0 0;
   }
-  small {
-    margin-left: 10px;
-    font-size: 80%;
-    font-weight: normal;
+  &__title {
+    float: left;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 28px;
+
+    a {
+      display: none;
+      display: block;
+    }
+    small {
+      margin-left: 10px;
+      font-size: 80%;
+      font-weight: normal;
+    }
   }
 }
 

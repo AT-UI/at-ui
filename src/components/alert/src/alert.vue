@@ -1,20 +1,25 @@
 <template>
-  <transition name="at-alert-fade">
-    <div class="at-alert"
+  <transition name="fade">
+    <div
+      class="at-alert"
       :class="[
-        type ? 'at-alert--' + type : '',
+        type ? `at-alert--${type}` : '',
         description ? 'at-alert--with-description' : ''
       ]"
-      v-show="isShow"
-    >
+      v-show="isShow">
       <i class="icon at-alert__icon" :class="[ iconClass ]" v-if="showIcon"></i>
       <div class="at-alert__content">
         <p class="at-alert__message" v-if="message" v-text="message"></p>
         <p class="at-alert__description" v-if="description" v-text="description"></p>
       </div>
-      <i class="icon at-alert__close" :class="[
-        closeText ? 'at-alert__close--custom' : 'icon-cancel'
-      ]" v-show="closable" @click="close" v-text="closeText"></i>
+      <i
+        class="icon at-alert__close"
+        :class="[
+          closeText ? 'at-alert__close--custom' : 'icon-x'
+        ]"
+        v-show="closable || closeText"
+        @click="handleClose"
+        v-text="closeText"></i>
     </div>
   </transition>
 </template>
@@ -35,17 +40,17 @@ export default {
     description: String,
     closable: {
       type: Boolean,
-      default: true
+      default: false
     },
     showIcon: {
       type: Boolean,
       default: false
     },
-    closeText: String,
     icon: {
       type: String,
       default: 'info'
-    }
+    },
+    closeText: String
   },
   data () {
     return {
@@ -55,18 +60,18 @@ export default {
   computed: {
     iconClass () {
       const classArr = {
-        'success': 'icon-success',
-        'error': 'icon-error',
-        'warning': 'icon-warning',
+        'success': 'icon-check-circle',
+        'error': 'icon-x-circle',
+        'warning': 'icon-alert-circle',
         'info': 'icon-info'
       }
-      return classArr[this.icon] || this.icon
+      return classArr[this.type] || this.icon
     }
   },
   methods: {
-    close () {
+    handleClose () {
       this.isShow = false
-      this.$emit('close')
+      this.$emit('on-close')
     }
   }
 }

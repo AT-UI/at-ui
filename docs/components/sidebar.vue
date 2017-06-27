@@ -13,15 +13,15 @@
       <template v-for="item in data">
         <h2 class="at-nav__title">{{ item.title }}</h2>
         <ul class="at-nav__items">
-          <template v-if="item.children">
-            <li class="at-nav__item" v-for="navItem in item.children">
+          <template v-if="item.items">
+            <li class="at-nav__item" v-for="navItem in item.items">
               <router-link class="at-nav__page at-nsc" :to="{ name: navItem.name }">{{ navItem.title }}</router-link>
             </li>
           </template>
           <li class="at-nav__item active" v-for="group in item.groups">
             <a class="at-nav__group at-nsc" @click="toggleMenu">{{ group.title }}</a>
             <ul class="at-nav__child-items">
-              <li class="at-nav__child-item" v-for="navItem in group.children">
+              <li class="at-nav__child-item" v-for="navItem in group.items">
                 <router-link class="at-nav__component at-nsc" :to="{ name: navItem.name }">{{ navItem.name }}<span>{{ navItem.title }}</span></router-link>
               </li>
             </ul>
@@ -32,10 +32,10 @@
 
     <div class="at-copyright at-c-brand-ca">
       <p>
-        © 2016 <a href="http://aotu.io" target="_blank">AOTU Library</a>.
-        <br>UI KIT created by <a href="http://aotu.io" target="_blank">O2Team</a>.
+        © 2017 <a href="http://aotu.io" target="_blank">AOTU Library</a>.
+        <br>UI KIT created by <a href="http://aotu.io" target="_blank">AOTULabs</a>.
       </p>
-      <p>AT v0.0.1</p>
+      <p>AT v0.10.0</p>
     </div>
   </div>
 </div>
@@ -56,11 +56,7 @@ export default {
   },
   data () {
     return {
-      isOpenMenu: false,
-      isOpen1: true,
-      isOpen2: true,
-      isOpen3: true,
-      isOpen4: true
+      isOpenMenu: false
     }
   },
   methods: {

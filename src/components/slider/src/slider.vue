@@ -1,7 +1,8 @@
 <template>
   <div class="at-slider">
     <!-- S InputNumber -->
-    <at-input-number class="at-slider__input"
+    <at-input-number
+      class="at-slider__input"
       v-model="inputValue"
       v-show="false"
       :step="step"
@@ -13,25 +14,29 @@
     <!-- E InputNumber -->
 
     <!-- S slider track -->
-    <div class="at-slider__track"
+    <div
+      class="at-slider__track"
       :class="{
         'at-slider--disabled': disabled
       }"
       @click="onSliderClick"
-      ref="slider"
-    >
+      ref="slider">
       <div class="at-slider__bar" :style="{ 'width': currentPosition }"></div>
 
       <!-- S tooltip and dot -->
-      <div class="at-slider__dot-wrapper"
-        :class="{ 'at-slider__dot-wrapper--hover': isHover, 'at-slider__dot-wrapper--drag': isDrag }"
+      <div
+        class="at-slider__dot-wrapper"
+        :class="{
+          'at-slider__dot-wrapper--hover': isHover,
+          'at-slider__dot-wrapper--drag': isDrag
+        }"
         :style="{ 'left': currentPosition }"
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave"
-        @mousedown="handleMouseDown"
-      >
-        <at-tooltip placement="top" content="Top value" ref="tooltip">
-          <div class="at-slider__dot"
+        @mousedown="handleMouseDown">
+        <at-tooltip placement="top" trigger="click" content="Top value" ref="tooltip">
+          <div
+            class="at-slider__dot"
             :class="{
               'at-slider__dot--hover': isHover,
               'at-slider__dot--drag': isDrag
@@ -46,15 +51,15 @@
 </template>
 
 <script>
-import ATTooltip from 'components/tooltip'
-import ATInputNumber from 'components/input-number'
+import AtTooltip from 'components/tooltip'
+import AtInputNumber from 'components/input-number'
 import { getStyle } from 'src/utils/util'
 
 export default {
   name: 'AtSlider',
   components: {
-    ATInputNumber,
-    ATTooltip
+    AtInputNumber,
+    AtTooltip
   },
   props: {
     value: {
@@ -96,10 +101,6 @@ export default {
       this.$emit('input', Number(val))
     },
     value (val) {
-      this.$nextTick(() => {
-        // this.updatePopper()
-      })
-
       if (typeof val !== 'number' || isNaN(val) || val < this.min) {
         this.$emit('input', this.min)
         return
@@ -123,8 +124,10 @@ export default {
     handleMouseEnter () {
       clearTimeout(this._timer)
       this.isHover = true
+      this.$refs.tooltip.showPopover()
     },
     handleMouseLeave () {
+      if (this.isDrag) return
       this.isHover = false
       this._timer = setTimeout(() => {
         this.$refs.tooltip.show = false
@@ -136,6 +139,32 @@ export default {
 
       window.addEventListener('mousemove', this.onDragging)
       window.addEventListener('mouseup', this.onDragEnd)
+    },
+    onDragStart (evt) {
+      this.isDrag = true
+      this.startX = evt.clientX
+      this.startPos = parseInt(this.currentPosition)
+    },
+    onDragging (evt) {
+      if (this.isDrag) {
+        let diff = 0
+
+        this.$refs.tooltip.showPopover()
+        this.currentX = evt.clientX
+        diff = (this.currentX - this.startX) * 100 / this.sliderWidth
+        this.newPos = this.startPos + diff
+        this.setPosition(this.newPos)
+      }
+    },
+    onDragEnd () {
+      if (this.isDrag) {
+        this.$refs.tooltip.show = false
+        this.isDrag = false
+        this.setPosition(this.newPos)
+
+        window.removeEventListener('mousemove', this.onDragging)
+        window.removeEventListener('mouseup', this.onDragEnd)
+      }
     },
     setPosition (pos) {
       if (pos < 0) {
@@ -151,7 +180,7 @@ export default {
       value = parseFloat(value.toFixed(0))
 
       this.$emit('input', value)
-      this.currentPosition = `$(this.value - this.min) * 100 / (this.max - this.min)}%`
+      this.currentPosition = `${(this.value - this.min) * 100 / (this.max - this.min)}%`
 
       if (!this.isDrag && this.value !== this.oldValue) {
         this.$emit('change', this.value)
@@ -167,32 +196,6 @@ export default {
       if (this.value === '') return
       if (!isNaN(this.value)) {
         this.setPosition((this.value - this.min) * 100 / (this.max - this.min))
-      }
-    },
-    onDragStart (evt) {
-      this.isDrag = true
-      this.startX = evt.clientX
-      this.startPos = parseInt(this.currentPosition)
-    },
-    onDragging (evt) {
-      if (this.isDrag) {
-        this.$refs.tooltip.showPopover()
-        let diff = 0
-
-        this.currentX = evt.clientX
-        diff = (this.currentX - this.startX) * 100 / this.sliderWidth
-        this.newPos = this.startPos + diff
-        this.setPosition(this.newPos)
-      }
-    },
-    onDragEnd () {
-      if (this.isDrag) {
-        this.$refs.tooltip.show = false
-        this.isDrag = false
-        this.setPosition(this.newPos)
-
-        window.removeEventListener('mousemove', this.onDragging)
-        window.removeEventListener('mouseup', this.onDragEnd)
       }
     }
   },

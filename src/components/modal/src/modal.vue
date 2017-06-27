@@ -6,15 +6,18 @@
     <!-- / mask -->
     <div
       class="at-modal__wrapper"
-      :class="[
-        !wrapShow ? 'at-modal--hidden' : ''
-      ]" @click.self="handleWrapperClick">
+      :class="{
+        'at-modal--hidden': !wrapShow,
+        'at-modal--confirm': isIconType,
+        [`at-modal--confirm-${type}`]: isIconType
+      }"
+      @click.self="handleWrapperClick">
       <transition name="fade">
         <div class="at-modal" :style="modalStyle" v-show="visible">
           <div class="at-modal__header" v-if="showHead && ($slots.header || this.title)">
             <div class="at-modal__title">
               <slot name="header">
-                {{ title }}
+                <p>{{ title }}</p>
               </slot>
             </div>
           </div>
@@ -28,11 +31,12 @@
           </div>
           <div class="at-modal__footer" v-if="showFooter">
             <slot name="footer">
-              <at-button size="small" v-show="showCancelButton" @click.native="handleAction('cancel')">{{ cancelText }}</at-button>
-              <at-button type="primary" size="small" v-show="showConfirmButton" @click.native="handleAction('confirm')">{{ okText }}</at-button>
+              <at-button v-show="showCancelButton" @click.native="handleAction('cancel')">{{ cancelText }}</at-button>
+              <at-button type="primary" v-show="showConfirmButton" @click.native="handleAction('confirm')">{{ okText }}</at-button>
             </slot>
           </div>
-          <span v-if="showClose" class="at-modal__close" @click="handleAction('cancel')"><i class="icon icon-cancel"></i></span>
+          <i v-if="isIconType" class="icon at-modal__icon" :class="iconClass"></i>
+          <span v-if="showClose" class="at-modal__close" @click="handleAction('cancel')"><i class="icon icon-x"></i></span>
         </div>
       </transition>
     </div>
@@ -44,6 +48,8 @@
   export default {
     name: 'AtModal',
     props: {
+      title: String,
+      content: String,
       value: {
         type: Boolean,
         default: false
@@ -55,12 +61,6 @@
       okText: {
         type: String,
         default: '\u786E\u5B9A'
-      },
-      title: String,
-      content: String,
-      lockScroll: {
-        type: Boolean,
-        default: true
       },
       maskClosable: {
         type: Boolean,
@@ -95,7 +95,8 @@
         default () {
           return {}
         }
-      }
+      },
+      type: String
     },
     data () {
       return {
@@ -110,6 +111,19 @@
       }
     },
     computed: {
+      iconClass () {
+        const classArr = {
+          'success': 'icon-check-circle',
+          'error': 'icon-x-circle',
+          'warning': 'icon-alert-circle',
+          'info': 'icon-info'
+        }
+
+        return classArr[this.type] || ''
+      },
+      isIconType () {
+        return ['success', 'error', 'warning', 'info'].indexOf(this.type) > -1
+      },
       modalStyle () {
         const style = {}
         const styleWidth = {
@@ -159,15 +173,11 @@
         }
       },
       handleAction (action) {
-        if (this.$type === 'prompt' && action === 'confirm') return
-
         this.action = action
 
         if (action === 'confirm') {
-          this.visible = false
           this.$emit('input', false)
           this.$emit('on-confirm')
-          return
         }
 
         this.doClose()

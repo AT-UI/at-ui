@@ -4,7 +4,6 @@
 
 <script>
   export default {
-    name: 'AtDropdownMenu',
-    componentName: 'AtDropdownMenu'
+    name: 'AtDropdownMenu'
   }
 </script>

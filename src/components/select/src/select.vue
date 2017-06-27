@@ -3,36 +3,33 @@
     <div
       class="at-select__selection"
       ref="trigger"
-      @click="toggleMenu"
-    >
+      @click="toggleMenu">
       <span class="at-tag" v-for="(item, index) in selectedMultiple">
-        {{ item.label }}
-        <i class="icon icon-cancel at-tag__close" @click.stop="removeTag(index)"></i>
+        <span class="at-tag__text">{{ item.label }}</span>
+        <i class="icon icon-x at-tag__close" @click.stop="removeTag(index)"></i>
       </span>
       <span class="at-select__placeholder" v-show="showPlaceholder && !filterable">{{ placeholder }}</span>
       <span class="at-select__selected" v-show="!showPlaceholder && !multiple && !filterable">{{ selectedSingle }}</span>
-      <input type="text"
-        v-if="filterable"
-        v-model="query"
+      <input
+        type="text"
         class="at-select__input"
         :placeholder="showPlaceholder ? placeholder : ''"
-        :style="inputStyle"
+        v-if="filterable"
+        v-model="query"
         @blur="handleBlur"
-        @keydown="resetInputState"
         @keydown.delete="handleInputDelete"
-        ref="input"
-      >
-      <i class="icon icon-cancel at-select__clear" v-show="showCloseIcon" @click.stop="clearSingleSelect"></i>
-      <i class="icon icon-down at-select__arrow"></i>
+        ref="input">
+      <i class="icon icon-x at-select__clear" v-show="showCloseIcon" @click.stop="clearSingleSelect"></i>
+      <i class="icon icon-chevron-down at-select__arrow"></i>
     </div>
     <transition name="slide-up" @after-leave="doDestory">
-      <div class="at-select__dropdown"
+      <div
+        class="at-select__dropdown"
         :class="[
-          placement ? 'at-select__dropdown--' + placement : 'at-select__dropdown--bottom'
+          placement ? `at-select__dropdown--${placement}` : 'at-select__dropdown--bottom'
         ]"
         v-show="visible"
-        ref="popover"
-      >
+        ref="popover">
         <ul v-show="notFound" class="at-select__not-found">
           <li>{{ notFoundText }}</li>
         </ul>
@@ -45,7 +42,7 @@
 </template>
 
 <script>
-import clickoutside from 'src/directives/clickoutside'
+import Clickoutside from 'src/directives/clickoutside'
 import Emitter from 'src/mixins/emitter'
 import PopoverMixin from 'src/mixins/popover'
 
@@ -53,7 +50,7 @@ export default {
   name: 'AtSelect',
   componentName: 'AtSelect',
   mixins: [Emitter, PopoverMixin],
-  directives: { clickoutside },
+  directives: { Clickoutside },
   props: {
     value: {
       type: [String, Number, Array],
@@ -83,9 +80,6 @@ export default {
       type: Boolean,
       default: false
     },
-    filterMethod: {
-      type: Function
-    },
     size: {
       type: String,
       default: 'normal',
@@ -113,7 +107,6 @@ export default {
       selectedMultiple: [],
       focusIndex: 0,
       query: '',
-      inputLength: 20,
       notFound: false,
       model: this.value
     }
@@ -135,7 +128,7 @@ export default {
     showPlaceholder () {
       let status = false
 
-      if (typeof this.model === 'string' && this.model === '') {
+      if (this.model === '') {
         status = true
       } else if (Array.isArray(this.model) && !this.model.length) {
         status = true
@@ -145,19 +138,6 @@ export default {
     },
     showCloseIcon () {
       return !this.multiple && this.clearable && !this.showPlaceholder
-    },
-    inputStyle () {
-      const style = {}
-
-      if (this.multiple) {
-        if (this.showPlaceholder) {
-          style.width = '100%'
-        } else {
-          style.width = `${this.inputLength}px`
-        }
-      }
-
-      return style
     }
   },
   watch: {
@@ -489,17 +469,10 @@ export default {
         }
       }, 300)
     },
-    resetInputState () {
-      this.inputLength = (this.$refs.input.value.length * 12) + 20
-    },
     handleInputDelete () {
       if (this.multiple && this.model.length && this.query === '') {
         this.removeTag(this.model.length - 1)
       }
-    },
-    slotChange () {
-      this.options = []
-      this.optionInstances = []
     },
     setQuery (query) {
       if (!this.filterable) return

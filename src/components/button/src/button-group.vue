@@ -1,5 +1,10 @@
 <template>
-  <div class="at-btn-group">
+  <div
+    class="at-btn-group"
+    :class="[
+      size ? `at-btn-group--${size}` : ''
+    ]"
+  >
     <slot></slot>
   </div>
 </template>
@@ -8,6 +13,7 @@
 export default {
   name: 'AtButtonGroup',
   props: {
+    size: String,
     gap: {
       type: Number,
       default: -1

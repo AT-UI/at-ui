@@ -5,8 +5,9 @@
 
 ### 基础用法
 
-:::demo
+基本用法，可添加 `disabled` 属性禁用选择器
 
+:::demo
 ```html
 <at-select v-model="model1" style="width:100px">
   <at-option value="1">深圳</at-option>
@@ -26,13 +27,38 @@
   <at-option value="2">广州</at-option>
 </at-select>
 ```
+:::
 
+### 不同方向的选择器
+
+设置属性 `placement` 可指定 `dropdown` 出现的位置，提供四种取值：`top`，`right`，`bottom`，`left`
+
+:::demo
+```html
+<at-select v-model="model2" style="width:100px" placement="bottom">
+  <at-option value="1">深圳</at-option>
+  <at-option value="2">广州</at-option>
+</at-select>
+<at-select v-model="model2" style="width:100px" placement="top">
+  <at-option value="1">深圳</at-option>
+  <at-option value="2">广州</at-option>
+</at-select>
+<at-select v-model="model2" style="width:100px" placement="left">
+  <at-option value="1">深圳</at-option>
+  <at-option value="2">广州</at-option>
+</at-select>
+<at-select v-model="model2" style="width:100px" placement="right">
+  <at-option value="1">深圳</at-option>
+  <at-option value="2">广州</at-option>
+</at-select>
+```
 :::
 
 ### 不同尺寸
 
-:::demo
+可设置 `size` 属性控制选择器大小，提供三种尺寸：`large`，`normal`，`small`
 
+:::demo
 ```html
 <at-select v-model="model3" size="small" style="width: 100px">
   <at-option value="1">深圳</at-option>
@@ -56,14 +82,14 @@
   <at-option value="5">成都</at-option>
 </at-select>
 ```
-
 :::
 
 
 ### 可清空选择
 
-:::demo
+设置 `clearable` 属性可清空已选项，仅适用于单选选择器
 
+:::demo
 ```html
 <at-select v-model="model4" clearable style="width: 100px">
   <at-option value="1">深圳</at-option>
@@ -73,14 +99,14 @@
   <at-option value="5">成都</at-option>
 </at-select>
 ```
-
 :::
 
 
 ### 分组选项
 
-:::demo
+选项可通过使用 `AtOptionGroup` 组件进行分组，分组的名称可使用属性 `label` 设置
 
+:::demo
 ```html
 <at-select v-model="model5" style="width: 100px">
   <at-option-group label="广东省">
@@ -97,31 +123,31 @@
   </at-option-group>
 </at-select>
 ```
-
 :::
 
 
 ### 自定义模板
 
-:::demo
+可自定义 `AtOption` 显示的内容，但是请给 `AtOption` 添加 `label` 属性，这可以让选择器优先显示选项的 `label` 值，而不是内容本身
 
+:::demo
 ```html
 <at-select v-model="model6" style="width: 140px">
-  <at-option value="1"><span>深圳</span><span style="float: right;opacity: .6;font-size: 0.8em;">Shenzhen</span></at-option>
-  <at-option value="2"><span>广州</span><span style="float: right;opacity: .6;font-size: 0.8em;">Guangzhou</span></at-option>
-  <at-option value="3"><span>上海</span><span style="float: right;opacity: .6;font-size: 0.8em;">Shanghai</span></at-option>
-  <at-option value="4"><span>北京</span><span style="float: right;opacity: .6;font-size: 0.8em;">Beijin</span></at-option>
-  <at-option value="5"><span>成都</span><span style="float: right;opacity: .6;font-size: 0.8em;">Chengdu</span></at-option>
+  <at-option value="1" label="深圳"><span>深圳</span><span style="float: right;opacity: .6;font-size: 0.8em;">Shenzhen</span></at-option>
+  <at-option value="2" label="广州"><span>广州</span><span style="float: right;opacity: .6;font-size: 0.8em;">Guangzhou</span></at-option>
+  <at-option value="3" label="上海"><span>上海</span><span style="float: right;opacity: .6;font-size: 0.8em;">Shanghai</span></at-option>
+  <at-option value="4" label="北京"><span>北京</span><span style="float: right;opacity: .6;font-size: 0.8em;">Beijin</span></at-option>
+  <at-option value="5" label="成都"><span>成都</span><span style="float: right;opacity: .6;font-size: 0.8em;">Chengdu</span></at-option>
 </at-select>
 ```
-
 :::
 
 
 ### 多选列表
 
-:::demo
+设置 `multiple` 属性可开启多项选择器，此时绑定的 `model` 将接受数组类型的数据
 
+:::demo
 ```html
 <at-select v-model="model7" multiple style="width: 240px">
   <at-option value="1">深圳</at-option>
@@ -131,16 +157,16 @@
   <at-option value="5">成都</at-option>
 </at-select>
 ```
-
 :::
 
 
 ### 可搜索列表
 
-:::demo
+添加 `filterable` 属性开启选择列表的可搜索功能
 
+:::demo
 ```html
-<at-select v-model="model7" filterable style="width: 240px">
+<at-select v-model="model8" filterable style="width: 240px">
   <at-option value="1">深圳</at-option>
   <at-option value="2">广州</at-option>
   <at-option value="3">上海</at-option>
@@ -151,14 +177,27 @@
   <at-option value="8">杭州</at-option>
 </at-select>
 ```
-
 :::
 
-### 可搜索的标签列表
+### Select 参数
 
-可添加随意输入的内容
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| :---------- | :-------------- | :---------- | :-----------------------------  | :-------- |
+| value | 指定当前组件的 value 值，可通过 `v-model` 绑定 | String / Number / Array | - | - |
+| multiple | 是否支持多选 | Boolean | - | false |
+| disabled | 是否禁用选择器 | Boolean | - | false |
+| clearable | 是否支持清空功能 | Boolean | - | false |
+| filterable | 是否支持搜索功能 | Boolean | - | false |
+| placeholder | 选择器的占位文案 | String | - | 请选择 |
+| size | 设置选择器的尺寸 | String | `large`, `normal`, `small` | normal |
+| notFoundText | 搜索无结果的提示 | String | - | 无匹配数据 |
+| placement | `dropdown` 出现的位置 | String | `up`, `down`, `left`, `right` | down |
 
-### 联动列表
+### Select 事件
+
+| 事件名称      | 说明          | 返回值  |
+|---------- |-------------- |---------- |
+| on-change | 绑定的值变化时触发 | 选中的选项值，类型为 `String`，`Number` 或者 `Array` |
 
 <script>
   export default {
@@ -171,6 +210,7 @@
         model5: '',
         model6: '',
         model7: [],
+        model8: '',
       }
     }
   }

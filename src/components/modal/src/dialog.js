@@ -25,8 +25,8 @@ const defultCallback = action => {
     }
 
     if (currentModal.resolve) {
-      const $type = currentModal.options.$type
-      if ($type === 'confirm' || $type === 'prompt') {
+      const type = currentModal.options.type
+      if (type === 'confirm' || type === 'prompt') {
         if (action === 'confirm') {
           if (instance.showInput) {
             currentModal.resolve({ value: instance.inputValue, action })
@@ -82,7 +82,6 @@ const showNextModal = () => {
     }
 
     // ['maskClosable', 'showCancelButton', 'showClose', 'showCancelButton'].forEach(prop => {
-    //   console.log(prop, instance[prop])
     //   if (typeof instance[prop] === 'undefined') {
     //     instance[prop] = true
     //   }
@@ -143,7 +142,7 @@ Dialog.alert = (content, title, options) => {
   return new Dialog(Object.assign({
     title,
     content,
-    $type: 'alert',
+    type: 'alert',
     maskClosable: false,
     showCancelButton: false
   }, options))
@@ -162,7 +161,7 @@ Dialog.confirm = (content, title, options) => {
   return new Dialog(Object.assign({
     title,
     content,
-    $type: 'confirm'
+    type: 'confirm'
   }, options))
 }
 
@@ -179,7 +178,7 @@ Dialog.prompt = (content, title, options) => {
   return new Dialog(Object.assign({
     title,
     content,
-    $type: 'prompt',
+    type: 'prompt',
     showInput: true
   }, options))
 }
@@ -204,7 +203,7 @@ function createStatusDialog (type) {
     return new Dialog(Object.assign({
       title,
       content,
-      $type: type,
+      type,
       maskClosable: false,
       showCancelButton: false,
       showClose: false

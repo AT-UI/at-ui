@@ -5,10 +5,7 @@ let width = 2
 let timer
 
 function getLoadingBarInstance () {
-  loadingBarInstance = loadingBarInstance || LoadingBar.newInstance({
-    width
-  })
-
+  loadingBarInstance = loadingBarInstance || new LoadingBar({ width })
   return loadingBarInstance
 }
 
@@ -21,14 +18,18 @@ function update (options) {
 function hide () {
   setTimeout(() => {
     update({
+      percent: 0,
       show: false
     })
-    setTimeout(() => {
-      update({
-        percent: 0
-      })
-    }, 200)
+    destroy()
   }, 800)
+}
+
+function destroy () {
+  const instance = getLoadingBarInstance()
+  clearTimer()
+  loadingBarInstance = null
+  instance.destroy()
 }
 
 function clearTimer () {
@@ -77,6 +78,7 @@ export default {
       status: 'success',
       show: true
     })
+    hide()
   },
   error () {
     clearTimer()
@@ -91,11 +93,5 @@ export default {
     if (options.width) {
       width = options.width
     }
-  },
-  destroy () {
-    const instance = getLoadingBarInstance()
-    clearTimer()
-    loadingBarInstance = null
-    instance.destroy()
   }
 }

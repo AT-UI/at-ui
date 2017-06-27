@@ -34,7 +34,9 @@ const vueMarkdown = {
 }
 
 module.exports = {
-  entry: './docs/main.js',
+  entry: {
+    'main': './docs/main.js',
+  },
   output: {
     path: config.build.assetsRoot,
     publicPath: config.build.assetsPublicPath,
@@ -42,12 +44,16 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.vue'],
+    modules: [
+      'node_modules'
+    ],
     alias: {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
       'components': path.resolve(__dirname, '../src/components'),
       'stylesheet': path.resolve(__dirname, '../src/stylesheet'),
-      'at': path.resolve(__dirname, '../dist/at.js'),
+      'at-ui': path.resolve(__dirname, '../src/index.js'),
+      'at-ui-style': 'stylesheet/src/index.scss',
       'vue': 'vue/dist/vue.js'
     }
   },
@@ -89,6 +95,24 @@ module.exports = {
               ]
             }
           }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        loaders: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('autoprefixer')({
+                  browsers: ['last 2 versions', 'ie > 8']
+                })
+              ]
+            }
+          },
+          'sass-loader'
         ]
       },
       {
