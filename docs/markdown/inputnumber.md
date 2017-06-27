@@ -98,7 +98,7 @@
 | blur | 失去焦点时触发 | event |
 | change | 绑定的值有变化时触发 | 输入框的值 |
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
   .demo-desc {
     margin: 8px 0;
     color: #8DABC4;

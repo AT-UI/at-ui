@@ -167,7 +167,7 @@
 | size | 按钮的大小 | string | `large`, `small` | 正常大小 |
 | gap | 按钮间隔 | number | - | -1 |
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
   .row {
     .at-btn + .at-btn {
       margin-left: 8px;

@@ -82,7 +82,7 @@
 | trigger | 触发的事件类型 | String | `hover`, `focus`, `click` | `click` |
 | placement | 弹出框的位置 | String | `top`, `top-left`, `top-right`, `left`, `left-top`, `left-bottom`, `right`, `right-top`, `right-bottom`, `bottom`, `bottom-left`, `bottom-right` | `top` |
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 .at-popover + .at-popover {
   margin-left: 16px;
 }

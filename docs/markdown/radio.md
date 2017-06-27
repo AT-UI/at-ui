@@ -144,7 +144,7 @@
 |---------- |-------------- |---------- |
 | radio-group-change | 绑定的值变化时触发 | 选择的按钮的 value 值 |
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
   .row + .row {
     margin-top: 8px;
   }

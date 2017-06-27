@@ -117,7 +117,7 @@
 | disabled | 是否禁用 | Boolean | - | false |
 | divided | 是否添加分割线 | Boolean | - | false |
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
   .at-dropdown + .at-dropdown {
     margin-left: 8px;
   }

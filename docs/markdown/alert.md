@@ -101,7 +101,7 @@
 | on-close | 点击关闭按钮时触发 | - |
 
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 .at-alert + .at-alert {
   margin-top: 8px;
 }

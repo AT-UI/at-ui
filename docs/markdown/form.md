@@ -94,7 +94,7 @@
   }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 .at-input {
   width: 200px;
 }

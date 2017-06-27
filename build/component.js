@@ -68,6 +68,6 @@ Object.keys(buildsConfig).map(conf => {
       children: false,
       chunks: false,
       chunkModules: false
-    }))
+    }) + '\n')
   })
 })

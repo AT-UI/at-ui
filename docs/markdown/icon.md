@@ -54,7 +54,7 @@
 <icon-list type="logos"></icon-list>
 
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 .icon {
   font-size: 20px;
   margin-right: 10px;

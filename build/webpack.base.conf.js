@@ -44,6 +44,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.vue'],
+    modules: [
+      'node_modules'
+    ],
     alias: {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),

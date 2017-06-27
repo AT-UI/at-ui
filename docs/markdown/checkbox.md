@@ -61,7 +61,7 @@
 |---------- |-------------- |---------- |
 | checkbox-group-change | 绑定的值变化时触发 | 选中的按钮的 label 值 |
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
   .demo-desc {
     margin: 8px 0;
     color: #8DABC4;

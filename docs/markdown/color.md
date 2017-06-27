@@ -464,7 +464,7 @@
   </ul>
 </div>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
   .at-color-container {
     padding: 16px;
     border-radius: 4px;

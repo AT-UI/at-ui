@@ -66,7 +66,7 @@
 |------------- |-------------- |---------- |
 | on-status-success | 进度到 `100%` 时触发 | 触发时 `percent` 的值 |
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 .at-progress {
   margin-bottom: 8px;
 }

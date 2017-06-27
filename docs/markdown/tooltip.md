@@ -74,7 +74,7 @@
 | content | 提示文字 | String | - | - |
 | placement | 气泡框位置 | String | `top`, `top-left`, `top-right`, `left`, `left-top`, `left-bottom`, `right`, `right-top`, `right-bottom`, `bottom`, `bottom-left`, `bottom-right` | `top` |
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 .at-tooltip {
   & + .at-tooltip {
     margin-left: 16px;

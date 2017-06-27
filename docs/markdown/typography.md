@@ -170,7 +170,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
   </div>
 </div>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
   .type-demo-container {
     .row {
       margin-top: 8px;
