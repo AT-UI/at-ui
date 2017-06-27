@@ -39,7 +39,6 @@ const components = {
   Tooltip,
   Popover,
   Alert,
-  Notification,
   Progress,
   LoadingBar,
   Modal,
@@ -51,8 +50,7 @@ const components = {
   DropdownItem,
   Breadcrumb,
   BreadcrumbItem,
-  Pagination,
-  Message
+  Pagination
 }
 
 function install (Vue) {

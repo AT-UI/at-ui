@@ -46,7 +46,7 @@ routes.push({
 
 const router = new Router({
   routes,
-  mode: 'history',
+  // mode: 'history',
   root: process.env.serverConfig.portalPrefix,
   scrollBehavior (to, from, savedPosition) {
     if (to.hash) {

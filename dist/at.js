@@ -5151,7 +5151,6 @@ var components = {
   Tooltip: _tooltip2.default,
   Popover: _popover2.default,
   Alert: _alert2.default,
-  Notification: _notification2.default,
   Progress: _progress2.default,
   LoadingBar: _loadingBar2.default,
   Modal: _modal.Modal,
@@ -5163,8 +5162,7 @@ var components = {
   DropdownItem: _dropdown.DropdownItem,
   Breadcrumb: _breadcrumb.Breadcrumb,
   BreadcrumbItem: _breadcrumb.BreadcrumbItem,
-  Pagination: _pagination2.default,
-  Message: _message2.default
+  Pagination: _pagination2.default
 };
 
 function install(Vue) {

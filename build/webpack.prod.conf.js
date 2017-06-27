@@ -7,6 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const config = require('./config')
 const utils = require('./utils')
+const RewriteFontUrl = require('./rewrite-font-url')
 const baseWebpackConfig = require('./webpack.base.conf')
 
 process.env.NODE_ENV = 'production'
@@ -37,7 +38,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // }),
     // http://vuejs.github.io/vue-loader/workflow/production.html
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': 'production'
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -46,6 +47,10 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // extract css into its own file
     new ExtractTextPlugin(utils.assetsPath('css/[name].css')),
+    new RewriteFontUrl({
+      fileReg: new RegExp('static/css/main.css'),
+      processor: source => source.replace(/static\/fonts/g, '../fonts')
+    }),
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
