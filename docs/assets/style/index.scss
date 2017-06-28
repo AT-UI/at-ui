@@ -327,7 +327,8 @@ $large-viewport-max-width: 1199px;
  */
 .at-component-typo {
   border: 1px solid $border-color-light;
-  width: 300px;
+  max-width: 300px;
+  min-width: 260px;
   border-radius: $border-radius-base;
   margin-right: 10px;
 
