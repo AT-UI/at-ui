@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
     <m-header></m-header>
-    <div class="at-container">
+    <div class="at-container flex">
       <sidebar :data="navs"></sidebar>
-      <div class="at-content at-markdown">
+      <div class="at-content at-markdown col-md-18">
         <transition name="fade" mode="out-in">
           <router-view></router-view>
         </transition>
@@ -13,7 +13,11 @@
 </template>
 
 <style lang="scss">
-  @import '../assets/style/docs';
+@import '../assets/style/docs.scss';
+
+.page-header {
+  position: relative !important;
+}
 </style>
 
 <script>

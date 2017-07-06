@@ -1,7 +1,6 @@
 <template>
-<div>
   <!--<v-header :isOpenMenu="isOpenMenu" @click="isOpenMenu = !isOpenMenu"></v-header>-->
-  <div class="at-sidebar" :class="{'open': isOpenMenu}">
+  <div class="at-sidebar col-md-6" :class="{'open': isOpenMenu}">
     <header class="at-sidebar__header">
       <img class="at-sidebar__logo" src="../assets/o2logo-doc.png" alt="O2Team">
       <h1 class="at-sidebar__title clearfix">
@@ -38,16 +37,10 @@
       <p><a href="https://github.com/o2team/at-ui">AT-UI v1.0.0</a></p>
     </div>
   </div>
-</div>
 </template>
 
 <script>
-// import VHeader from './header'
-
 export default {
-  // components: {
-  //   VHeader
-  // },
   props: {
     data: {
       type: Array,
@@ -74,13 +67,8 @@ export default {
 
 <style lang="scss">
 .at-sidebar {
-  display: block;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  width: 264px;
+  display: inline-block;
+  // width: 264px;
   padding: 0;
   background-color: #fff;
   z-index: 99;

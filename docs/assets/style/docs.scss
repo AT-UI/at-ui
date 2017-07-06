@@ -20,11 +20,21 @@ $small-viewport-max-width: 767px;
 $medium-viewport-max-width: 991px;
 $large-viewport-max-width: 1199px;
 
+$drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
+
 /**
  * Base
  */
+.at-container {
+  position: relative;
+  margin: 24px auto;
+  width: 90%;
+  background-color: #fff;
+  box-shadow: $drop-shadow;
+  // overflow: auto;
+}
 .at-content {
-  margin: 36px 48px 36px 312px;
+  padding: 36px 48px 36px 48px;
 
   > section {
     margin: 0 auto;

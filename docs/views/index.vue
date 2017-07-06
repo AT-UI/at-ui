@@ -77,7 +77,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../assets/style/index';
 
 $bg-color: #F8FAFF;
@@ -103,7 +103,7 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
   text-align: center;
 
   .logo {
-    margin: 230px auto 0;
+    margin: 200px auto 0;
     width: 160px;
   }
   h1 {
