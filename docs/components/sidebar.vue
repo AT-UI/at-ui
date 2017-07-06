@@ -1,9 +1,9 @@
 <template>
 <div>
-  <v-header :isOpenMenu="isOpenMenu" @click="isOpenMenu = !isOpenMenu"></v-header>
+  <!--<v-header :isOpenMenu="isOpenMenu" @click="isOpenMenu = !isOpenMenu"></v-header>-->
   <div class="at-sidebar" :class="{'open': isOpenMenu}">
     <header class="at-sidebar__header">
-      <img class="at-sidebar__logo" src="../assets/o2logo.png" alt="O2Team">
+      <img class="at-sidebar__logo" src="../assets/o2logo-doc.png" alt="O2Team">
       <h1 class="at-sidebar__title clearfix">
         <a href="https://github.com/o2team/at-ui"><small>AT UI KIT</small></a>
       </h1>
@@ -42,12 +42,12 @@
 </template>
 
 <script>
-import VHeader from './header'
+// import VHeader from './header'
 
 export default {
-  components: {
-    VHeader
-  },
+  // components: {
+  //   VHeader
+  // },
   props: {
     data: {
       type: Array,
@@ -83,7 +83,7 @@ export default {
   width: 264px;
   padding: 0;
   background-color: #fff;
-  z-index: 1000;
+  z-index: 99;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #fff;

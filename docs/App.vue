@@ -1,21 +1,10 @@
 <template>
-  <div class="at-container">
-    <sidebar :data="navs"></sidebar>
-    <div class="at-content at-markdown">
-      <transition name="fade" mode="out-in">
-        <router-view></router-view>
-      </transition>
-    </div>
-  </div>
+  <transition name="fade" mode="out-in">
+    <router-view></router-view>
+  </transition>
 </template>
 
-<style lang="scss">
-  @import './assets/style/index';
-</style>
-
-
 <script>
-// import './components/style'
 import Sidebar from './components/sidebar'
 import navsConfig from './router/nav.config.yml'
 

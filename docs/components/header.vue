@@ -1,142 +1,161 @@
 <template>
-<header class="at-header">
-  <img class="at-header__logo" src="../assets/o2logo.png" alt="O2Team">
-  <h1 class="at-header__title"><small>AT-DESKTOP-UI KIT</small></h1>
-  <div class="at-nav-handle" @click="toggleMenu()" :class="{'open': isOpen}">
-    <div class="at-nav-handle__container">
-      <span></span>
-      <span></span>
-      <span></span>
+  <header
+    class="page-header"
+    :class="[
+      collapse ? 'collapse' : ''
+    ]"
+    id="J-page-header">
+    <div class="nav-container">
+      <div class="nav-left">
+        <router-link :to="{ name: 'Home' }">
+          <div class="logo">
+            <img class="logo-img" src="../assets/logo-at@2x.png" preload="">
+            <span>AT UIKIT</span>
+          </div>
+        </router-link>
+      </div>
+      <div class="nav-right">
+        <ul class="navbar">
+          <li class="active">指南</li>
+          <li><router-link :to="{ name: 'Introduction' }">组件</router-link></li>
+          <li class="disabled">资源</li>
+        </ul>
+        <div class="btn-language">EN</div>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 </template>
 
 <script>
 export default {
   props: {
-    isOpenMenu: {
+    collapse: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
-  data () {
-    return {
-      isOpen: this.isOpenMenu
+  mounted () {
+    if (!this.collapse) {
+      window.addEventListener('scroll', this.headerCollapse)
+    } else {
+      window.removeEventListener('scroll', this.headerCollapse)
     }
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.headerCollapse)
   },
   methods: {
-    toggleMenu () {
-      this.isOpen = !this.isOpen
-      this.$emit('openMenu')
+    headerCollapse () {
+      const header = document.getElementById('J-page-header')
+      const offsetTop = document.body.scrollTop || 0
+
+      if (offsetTop > 50) {
+        header.classList.add('collapse')
+      } else {
+        header.classList.remove('collapse')
+      }
     }
   }
 }
 </script>
 
 <style lang="scss">
-$small-viewport: 767px;
+@import '~stylesheet/src/variables/index.scss';
 
-.at-header {
-  display: none;
+$header-height: 80px;
+
+.page-header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  z-index: 1001;
-  margin: 0 0 36px;
-  padding: 12px;
-  background-color: #fff;
-  background-color: #6191E8;
+  height: $header-height;
+  background-color: transparent;
+  transition: all .3s;
+  z-index: 100;
 
-  &:after {
-    display: none;
-  }
-  &__logo {
-    float: left;
-    height: 28px;
-    margin: 0 6px 0 0;
-  }
-  &__title {
-    float: left;
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 28px;
-
-    a {
-      display: none;
-      display: block;
-    }
-    small {
-      margin-left: 10px;
-      font-size: 80%;
-      font-weight: normal;
-    }
-  }
-}
-
-@media (max-width: 767px) {
-  .at-header {
-    display: block;
-  }
-  .at-header__title a {
-    display: none;
-  }
-}
-
-.at-nav-handle {
-  display: block;
-  position: fixed;
-  top: 15px;
-  right: 0;
-  overflow: hidden;
-  cursor: pointer;
-  height: 27px;
-  width: 48px;
-  transform: rotate(0);
-  transition: .5s ease-in-out;
-  z-index: 1001;
-
-  &.open {
-    position: fixed;
-
-    span:nth-child(1) {
-      top: 11px;
-      transform: rotate(-45deg);
-    }
-    span:nth-child(2) {
-      opacity: 0;
-      right: -60px;
-    }
-    span:nth-child(3) {
-      top: 11px;
-      transform: rotate(45deg);
-    }
-  }
-  span {
-    position: absolute;
-    right: 12px;
-    display: block;
-    width: 27px;
-    height: 3px;
-    opacity: 1;
-    transform: rotate(0);
-    transition: .25s ease-in-out;
-    /*background-color: #303637;*/
+  &.collapse {
     background-color: #fff;
-
-    &:nth-child(1) {
-      top: 0;
-    }
-    &:nth-child(2) {
-      top: 9px;
-    }
-    &:nth-child(3) {
-      top: 18px;
-    }
+    box-shadow: 0 10px 60px 0 rgba(29, 29, 31, 0.07);
+    opacity: 0.98;
   }
 }
-.at-nav-handle__container {
-  padding: 12px 0 0;
+.nav-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1140px;
+  color: #1D1D1F;
+
+  .nav-left {
+    float: left;
+
+    .logo {
+      position: relative;
+      height: $header-height;
+      line-height: $header-height;
+
+      img {
+        position: absolute;
+        top: 50%;
+        margin-top: -15px;
+        width: 30px;
+        height: 30px;
+      }
+      span {
+        margin-left: 40px;
+        color: #3473e7;
+        font-weight: bold;
+      }
+    }
+  }
+  .nav-right {
+    float: right;
+
+    .navbar {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      height: $header-height;
+      font-size: 14px;
+      line-height: $header-height;
+      list-style-type: none;
+
+      li {
+        display: inline-block;
+        margin: 0 24px;
+        cursor: pointer;
+        transition: color .3s;
+
+        &:hover {
+          color: $brand-blue-500;
+
+          a {
+            color: $brand-blue-500;
+          }
+        }
+        &.disabled {
+          color: #C9C9C9;
+          cursor: not-allowed;
+        }
+        a {
+          color: #1D1D1F;
+        }
+      }
+    }
+    .btn-language {
+      display: inline-block;
+      margin: 0 24px;
+      padding: 2px 12px;
+      border: 1px solid #1D1D1F;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: color .3s, border .3s;
+
+      &:hover {
+        color: $brand-blue-500;
+        border-color: $brand-blue-500;
+      }
+    }
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 zh-CN:
   - title: 综述
-    name: ''
+    name: Docs
     items:
       - title: 介绍
         name: Introduction
@@ -9,7 +9,7 @@ zh-CN:
       - title: 更新日志
         name: Changelog
   - title: 组件
-    name: /components
+    name: Docs
     groups:
       - title: 品牌
         items:
@@ -45,10 +45,6 @@ zh-CN:
             name: Slider
           - title: 文本域
             name: Textarea
-          # - title: 表格
-          #   name: Table
-          # - title: 表单
-          #   name: Form
       - title: 视图组件
         items:
           - title: 警告提示
