@@ -16,8 +16,8 @@
       </div>
       <div class="nav-right">
         <ul class="navbar">
-          <li class="active">指南</li>
-          <li><router-link :to="{ name: 'Introduction' }">组件</router-link></li>
+          <router-link :to="{ name: 'Guide' }"><li>指南</li></router-link>
+          <router-link :to="{ name: 'Docs' }"><li>组件</li></router-link>
           <li class="disabled">资源</li>
         </ul>
         <div class="btn-language">EN</div>
@@ -120,7 +120,19 @@ $header-height: 80px;
       line-height: $header-height;
       list-style-type: none;
 
+      a {
+        color: #1D1D1F;
+
+        &.router-link-active {
+          color: $brand-blue-500;
+
+          li::after {
+            display: inline-block;
+          }
+        }
+      }
       li {
+        position: relative;
         display: inline-block;
         margin: 0 24px;
         cursor: pointer;
@@ -133,12 +145,19 @@ $header-height: 80px;
             color: $brand-blue-500;
           }
         }
+        &:after {
+          content: '';
+          display: none;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 2px;
+          width: 100%;
+          background-color: #6190E8;
+        }
         &.disabled {
           color: #C9C9C9;
           cursor: not-allowed;
-        }
-        a {
-          color: #1D1D1F;
         }
       }
     }

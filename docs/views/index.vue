@@ -40,7 +40,7 @@
           </div>
           <div class="title">指南</div>
           <div class="desc">了解设计指南，利用统一的规范进行设计赋能，帮助产品设计师，前端工程师，后台工程师迅速搭建中后台产品。</div>
-          <a href="#"><div class="btn-readmore">查看详情</div></a>
+          <router-link :to="{ name: 'Guide' }"><div class="btn-readmore">查看详情</div></router-link>
         </div>
         <div class="navigation-panel">
           <div class="icon">
@@ -48,7 +48,7 @@
           </div>
           <div class="title">组件</div>
           <div class="desc">基于 Vue 的 UI 组件化，可以通过组件的 Demo 体验交互细节，开发中既可以根据需要单独引用，也可以使用全局方式引入所有组件。</div>
-          <router-link :to="{ name: 'Introduction' }"><div class="btn-readmore">查看详情</div></router-link>
+          <router-link :to="{ name: 'Docs' }"><div class="btn-readmore">查看详情</div></router-link>
         </div>
         <div class="navigation-panel">
           <div class="icon">

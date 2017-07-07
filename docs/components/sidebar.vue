@@ -75,7 +75,7 @@ export default {
   &__group {
     display: block;
     position: relative;
-    padding: 6px 24px;
+    padding: 6px 0 6px 24px;
     color: #2C405A;
     font-weight: normal;
 
@@ -155,7 +155,7 @@ export default {
   &__component {
     display: block;
     position: relative;
-    padding: 5px 24px 5px 30px;
+    padding: 6px 24px 6px 32px;
     color: #616367;
     font-size: 14px;
 
@@ -165,7 +165,7 @@ export default {
       position: absolute;
       top: 0;
       left: 0;
-      width: 5px;
+      width: 6px;
       height: 100%;
       background: #6190E8;
       border-top-right-radius: 4px;

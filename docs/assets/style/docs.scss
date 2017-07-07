@@ -130,7 +130,7 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
   }
   table.table {
     width: 100%;
-    max-width: 1000px;
+    // max-width: 1000px;
     background-color: #fff;
     color: #5e6d82;
     font-size: 14px;
@@ -159,7 +159,7 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
 .at-component {
   &__container {
     margin: 16px 0;
-    max-width: 1000px;
+    // max-width: 1000px;
   }
   &__sample {
     position: relative;

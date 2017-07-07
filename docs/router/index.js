@@ -10,30 +10,31 @@ function regeisterRoute (navConfig) {
 
 
   Object.keys(NavConfig).forEach((lang, idx) => {
-    const navs = NavConfig[lang]
+    const pageNavs = NavConfig[lang]
 
-    navs.forEach(nav => {
-      const parentName = nav.name
-      parentRoutes[parentName] = parentRoutes[parentName] || addParentRoute(parentName)
+    for (const pageName in pageNavs) {
+      pageNavs[pageName].forEach(nav => {
+        const parentName = nav.name
+        parentRoutes[parentName] = parentRoutes[parentName] || addParentRoute(parentName)
 
-      if (nav.groups) {
-        nav.groups.forEach(group => {
-          group.items.forEach(item => {
+        if (nav.groups) {
+          nav.groups.forEach(group => {
+            group.items.forEach(item => {
+              addRoute(parentName, item)
+            })
+          })
+        } else if (nav.items) {
+          nav.items.forEach(item => {
             addRoute(parentName, item)
           })
-        })
-      } else if (nav.items) {
-        nav.items.forEach(item => {
-          addRoute(parentName, item)
-        })
-      }
-    })
+        }
+      })
+    }
   })
 
   function addParentRoute (parentName) {
     return {
       path: `/${parentName.toLowerCase()}`,
-      name: parentName,
       component: require(`../views/${parentName.toLowerCase()}.vue`),
       children: []
     }
@@ -64,19 +65,29 @@ routes.push({
   component: require('../views/index.vue')
 })
 
-// routes.push({
-//   path: '/docs',
-//   component: require('../views/docs.vue')
-// })
+routes.forEach(page => {
+  if (page.path === '/guide') {
+    page.children.push({
+      path: '',
+      name: 'Guide',
+      redirect: { name: page.children[0].name }
+    })
+  } else if (page.path === '/docs') {
+    page.children.push({
+      path: '',
+      name: 'Docs',
+      redirect: { name: page.children[0].name }
+    })
+  }
+})
 
-// routes.push({
-//   path: '*',
-//   redirect: { name: 'Introduction' }
-// })
+routes.push({
+  path: '*',
+  redirect: { name: 'Home' }
+})
 
 const router = new Router({
   routes,
-  // mode: 'history',
   root: process.env.serverConfig.portalPrefix,
   scrollBehavior (to, from, savedPosition) {
     if (to.hash) {

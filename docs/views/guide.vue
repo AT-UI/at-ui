@@ -43,7 +43,7 @@ export default {
   },
   data () {
     return {
-      navs: navsConfig['zh-CN'].components
+      navs: navsConfig['zh-CN'].guide
     }
   },
   methods: {
