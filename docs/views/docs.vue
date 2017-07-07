@@ -3,32 +3,40 @@
     <m-header></m-header>
     <div class="at-container flex">
       <sidebar :data="navs"></sidebar>
-      <div class="at-content at-markdown col-md-18">
+      <div class="at-markdown col-md-18 col-md-20">
         <transition name="fade" mode="out-in">
           <router-view></router-view>
         </transition>
       </div>
     </div>
+    <m-footer></m-footer>
   </div>
 </template>
 
 <style lang="scss">
 @import '../assets/style/docs.scss';
+</style>
 
+<style lang="scss" scoped>
 .page-header {
   position: relative !important;
+}
+.footer {
+  box-shadow: 0 4px 30px 0 rgba(223, 225, 230, .8);
 }
 </style>
 
 <script>
 import MHeader from '../components/header'
+import MFooter from '../components/footer'
 import Sidebar from '../components/sidebar'
 import navsConfig from '../router/nav.config.yml'
 
 export default {
   components: {
     Sidebar,
-    MHeader
+    MHeader,
+    MFooter
   },
   data () {
     return {

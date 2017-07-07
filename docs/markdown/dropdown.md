@@ -5,7 +5,7 @@
 
 展示折叠的下拉菜单
 
-### 基础用法
+## 基础用法
 
 基础的下拉菜单，使用方式是用 `AtDropdown`，`AtDropdownMenu` 和 `AtDropdownItem` 的组合
 
@@ -34,7 +34,7 @@
 ```
 :::
 
-### 激活的方式
+## 激活的方式
 
 下拉菜单默认使用 `hover` 的方式激活，可通过参数 `trigger` 更换激活的方式，支持 `click`，`hover`，`focus`
 
@@ -61,7 +61,7 @@
 ```
 :::
 
-### 菜单的对齐方式
+## 菜单的对齐方式
 
 设置属性 `placement` 更改下拉菜单的对齐方式
 
@@ -79,7 +79,7 @@
 ```
 :::
 
-### 下拉菜单触发的事件
+## 下拉菜单触发的事件
 
 点击菜单选项触发事件 `on-dropdown-command`，返回 `AtDropdownItem` 的 `name` 值
 
@@ -96,20 +96,20 @@
 ```
 :::
 
-### AtDropdown 参数
+## AtDropdown 参数
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | trigger | 触发 `Dropdown` 的方式 | String | `click`, `hover`, `focus` | `hover` |
 | placement | 下拉框的对齐方式 | String | `top`, `top-left`, `top-right`, `bottom`, `bottom-left`, `bottom-right` | `bottom` |
 
-### AtDropdown 事件
+## AtDropdown 事件
 
 | 事件名称      | 说明          | 返回值  |
 |---------- |-------------- |---------- |
 | on-dropdown-command | 菜单项点击的时候触发 | 点击的菜单的 `name` 值 |
 
-### AtDropdownItem 参数
+## AtDropdownItem 参数
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |

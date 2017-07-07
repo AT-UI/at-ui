@@ -82,8 +82,8 @@ $header-height: 80px;
 }
 .nav-container {
   margin: 0 auto;
-  width: 100%;
-  max-width: 1140px;
+  width: 90%;
+  // max-width: 1140px;
   color: #1D1D1F;
 
   .nav-left {

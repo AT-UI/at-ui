@@ -17,13 +17,14 @@
  * Footer
  */
 .footer {
-  background-color: #fff;
-  padding: 40px 0 50px;
-  text-align: center;
+  padding: 30px 0 30px;
   color: #6190E8;
+  text-align: center;
+  background-color: #fff;
 
   .container {
     position: relative;
+    width: 90%;
   }
   &-logo {
     width: 198px;

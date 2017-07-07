@@ -16,41 +16,116 @@
   opacity: 0;
 }
 
+/**
+ * Variables
+ */
 $small-viewport-max-width: 767px;
 $medium-viewport-max-width: 991px;
 $large-viewport-max-width: 1199px;
 
 $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
 
+.bg-c-brand {
+  background-color: $brand-color-light;
+
+  &-light {
+    background-color: tint($brand-color-light, 20%);
+  }
+  &-dark {
+    background-color: shade($brand-color-light, 5%);
+  }
+}
+
 /**
  * Base
  */
 .at-container {
   position: relative;
-  margin: 24px auto;
+  margin: 48px auto;
   width: 90%;
   background-color: #fff;
   box-shadow: $drop-shadow;
-  // overflow: auto;
 }
-.at-content {
-  padding: 36px 48px 36px 48px;
+.at-markdown {
+  padding: 32px 48px 48px;
 
+  img {
+    vertical-align: middle;
+  }
   > section {
     margin: 0 auto;
-    max-width: 1000px;
 
     > h1,
     > h2,
-    > h3 {
-      margin: 24px 0 16px;
-    }
-    > h4 {
+    > h3,
+    > h4, {
       margin: 16px 0;
+      line-height: 1.5;
+    }
+    > h1 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+    > h2,
+    > h3 {
+      margin-top: 24px;
+    }
+    > hr {
+      margin: 1.2em 0;
+      border: 0;
+      border-bottom: 1px solid $border-color-base;
     }
     > p {
-      padding: 4px 0;
-      line-height: 1.5;
+      padding: 0;
+      line-height: 1.7;
+
+      + p {
+        margin-top: 8px;
+      }
+    }
+    code {
+      padding: .3em .5em;
+      font-size: .9em;
+      vertical-align: middle;
+      border: 1px solid $grey-100;
+      border-radius: 2px;
+      background-color: $grey-50;
+    }
+    pre {
+      margin: 16px 0;
+      padding: 16px;
+      background-color: $grey-50;
+      overflow: auto;
+
+      code {
+        padding: 0;
+        font-size: 1em;
+        border: none;
+        border-radius: 0;
+        background-color: transparent;
+      }
+    }
+    > blockquote {
+      margin: 16px 0;
+      padding: 0 15px;
+      color: $grey-400;
+      border-left: 4px solid $grey-100;
+
+      p {
+        color: $grey-900;
+      }
+    }
+    > ul {
+      margin: 16px 0;
+      padding-left: 24px;
+      list-style: disc;
+
+      li {
+        line-height: 1.8;
+      }
+    }
+    > table {
+      margin: 24px 0;
     }
   }
   table.table {
@@ -78,203 +153,20 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
   }
 }
 
-@media screen and (max-width: 767px) {
-  .at-content {
-    padding: 50px 10px;
-
-    h2, h3, p {
-      padding: 0 12px;
-    }
-  }
-}
-
-.at-apply-border {
-  border: 1px solid $border-color-lighter;
-
-  + .at-apply-border {
-    border-top: none;
-  }
-}
-.bg-c-brand {
-  background-color: $brand-color-light;
-
-  &-light {
-    background-color: tint($brand-color-light, 20%);
-  }
-  &-dark {
-    background-color: shade($brand-color-light, 5%);
-  }
-}
-
-/**
- * Grid
- */
-.at-row {
-  margin-bottom: 12px;
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-}
-.at-box-row {
-  height: 36px;
-  border-radius: $border-radius-base;
-}
-
-/**
- * Content
- */
-.at-library {
-  padding-top: 79px;
-
-  &__group {
-    overflow: auto;
-  }
-  &__title {
-    padding: 0;
-    margin-bottom: 24px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .at-library__title {
-    padding: 0 12px;
-  }
-}
-
-/**
- * Group
- */
-.at-group__description {
-  padding: 0;
-  margin-bottom: 48px;
-}
-
-@media screen and (max-width: 767px) {
-  .at-group__description {
-    padding: 0 12px;
-  }
-}
-
-/**
- * Component
- */
-.at-component {
-  margin-bottom: 60px;
-
-  &__container {
-    margin: 12px 0;
-    max-width: 1000px;
-  }
-  &__title, &__description {
-    padding: 0;
-    margin-bottom: 12px;
-  }
-  &__description {
-    padding-bottom: 24px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .at-component__title,
-  .at-component__description {
-    padding: 0 12px;
-  }
-}
-
-/**
- * Colors
- */
-.at-component__colors {
-  padding: 0 12px;
-}
-.at-component__color-container {
-  float: left;
-  margin-top: 24px;
-  width: 100%;
-
-  &:first-of-type {
-    margin-top: 0;
-  }
-  &:nth-child(even) {
-    margin-right: 0;
-  }
-}
-.at-component__color {
-  float: left;
-  width: 50%;
-  text-align: center;
-  padding: 24px 0;
-  line-height: 1;
-
-  &:first-of-type {
-    border-radius: 6px 0 0 6px;
-  }
-  &:last-of-type {
-    border-radius: 0 6px 6px 0;
-  }
-  &:first-of-type:last-of-type {
-    border-radius: 6px;
-    width: 100%;
-  }
-  div {
-    display: inline-block;
-    border: 1px solid #fff;
-    border-radius: 3px;
-    color: #fff;
-    font-size: 13px;
-    letter-spacing: 1px;
-    line-height: 13px;
-    padding: 6px 9px;
-
-    &.at-dark-text {
-      color: #B0B1B3;
-      border-color: #B0B1B3;
-    }
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .at-component__colors {
-    padding: 0;
-  }
-  .at-component__color-container {
-    width: 17.5%;
-    margin-right: 3%;
-
-    &:nth-child(even) {
-      margin-right: 3%;
-    }
-    &:nth-child(5n) {
-      margin-right: 0;
-    }
-    &:nth-child(-n + 5) {
-      margin-top: 0;
-    }
-  }
-  .at-component__color {
-    width: 100%;
-    padding: 48px 0;
-
-    &:first-of-type {
-      border-radius: 6px 6px 0 0;
-    }
-    &:last-of-type {
-      border-radius: 0 0 6px 6px;
-    }
-  }
-}
-
 /**
  * Component - Preview & Code sample
  */
 .at-component {
+  &__container {
+    margin: 16px 0;
+    max-width: 1000px;
+  }
   &__sample {
     position: relative;
-    background-color: $bg-color;
-    padding: 36px;
+    padding: 32px;
     border: 1px solid $border-color-lighter;
-    border-radius: 6px 6px 0 0;
+    border-radius: 4px 4px 0 0;
+    background-color: $bg-color;
 
     .demo-desc {
       margin: 8px 0;
@@ -287,48 +179,28 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
 
     pre {
       margin: 0 !important;
-    }
-    pre code {
-      width: 100%;
-      background: none;
-      overflow-x: scroll;
-      overflow-y: hidden;
-      -ms-overflow-style: -ms-autohiding-scrollbar;
-      white-space: pre;
-      font-size: 15px;
-      line-height: 21px;
+
+      code {
+        width: 100%;
+        font-size: 14px;
+        line-height: 1.5;
+        background: none;
+        white-space: pre;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+      }
     }
   }
   &__code-toggle {
     display: block;
-    padding: 9px 12px 9px 12px;
-    cursor: pointer;
+    padding: 8px 12px;
     color: $border-color-base;
     font-size: 12px;
-    letter-spacing: 1px;
     text-align: center;
+    letter-spacing: 2px;
     background-color: $bg-color-base;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .at-component {
-    &__sample {
-      padding: 36px 12px;
-      border-radius: 0;
-      border-left: none;
-      border-right: none;
-    }
-    &__code {
-      border: none;
-      border-bottom: 1px solid $border-color-lighter;
-
-      pre code {
-        font-size: 12px;
-        line-height: 18px;
-        /*padding: 36px 12px;*/
-      }
-    }
+    cursor: pointer;
   }
 }
 
@@ -336,11 +208,11 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
  * Typography Component
  */
 .at-component-typo {
-  border: 1px solid $border-color-light;
-  max-width: 300px;
-  min-width: 260px;
-  border-radius: $border-radius-base;
   margin-right: 10px;
+  // max-width: 300px;
+  min-width: 260px;
+  border: 1px solid $border-color-light;
+  border-radius: $border-radius-base;
 
   &__show {
     padding: 35px 20px;
@@ -372,46 +244,5 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
     .note {
       font-size: $font-size-base;
     }
-  }
-}
-.at-markdown section {
-  pre {
-    overflow: auto;
-    background-color: #f8f8f8;
-    padding: 20px;
-    margin: 16px 0;
-
-    code {
-      padding: 0;
-      background-color: transparent;
-    }
-  }
-  > blockquote {
-    margin: 20px 0;
-    padding: 0 15px;
-    color: #858585;
-    border-left: 4px solid #e5e5e5;
-  }
-  > hr {
-    border: 0;
-    border-bottom: 1px solid $border-color-base;
-  }
-  > code {
-    background-color: tint($bg-color-light, 30%);
-    padding: .3em .5em;
-    border-radius: $border-radius-base;
-    font-size: .9em;
-    margin: 0 2px;
-  }
-  > ul {
-    list-style: disc;
-    padding: 4px 0 4px 24px;
-
-    li {
-      line-height: 1.8;
-    }
-  }
-  > table {
-    margin: 24px 0;
   }
 }

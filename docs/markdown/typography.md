@@ -4,7 +4,7 @@
 
 统一字体规范，力求在各个操作系统上都有最佳的展示效果
 
-### 字体家族
+## 字体家族
 
 css 代码如下：
 
@@ -12,7 +12,7 @@ css 代码如下：
 font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 ```
 
-### 中文字体
+## 中文字体
 
 <div class="row">
   <div class="at-component__container col-md-8">
@@ -61,7 +61,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
   </div>
 </div>
 
-### 西文字体
+## 西文字体
 
 <div class="row">
   <div class="at-component__container col-md-8">
@@ -97,20 +97,20 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
 
 <div class="type-demo-container">
   <div class="row flex-middle typo-helvetica-neue">
-    <div class="col-md-3 type">Helvetica Neue</div>
+    <div class="col-md-5 type">Helvetica Neue</div>
     <div class="col-md-12 content">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</div>
   </div>
   <div class="row flex-middle typo-helvetica">
-    <div class="col-md-3 type">Helvetica</div>
+    <div class="col-md-5 type">Helvetica</div>
     <div class="col-md-12 content">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</div>
   </div>
   <div class="row flex-middle typo-arial">
-    <div class="col-md-3 type">Arial</div>
+    <div class="col-md-5 type">Arial</div>
     <div class="col-md-12 content">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</div>
   </div>
 </div>
 
-### 字体使用规范
+## 字体使用规范
 
 西文字体的行高通常是字号的 `1.2em` 以上，而中文字体由于字符密实而且高度一致，所以需要更大的行高。通常中文字体的行高在 `1.5em` 和 `1.8em` 之间可以保证比较良好的阅读体验。`AT-UI` 统一使用 `1.5em` 的行高。
 
