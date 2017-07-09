@@ -126,6 +126,8 @@
 
 为了可以更灵活的进行颜色搭配，我们参考了 [Material Design Color Palette](https://material.io/guidelines/style/color.html#color-color-palette) ，使用上述提到的 `品牌色` 和 `辅助色` 作为主色，形成一条条完整的渐变色板。主色使用 `500` 色号
 
+> 渐变色板的生成，使用的工具是：[MATERIAL DESIGN PALETTE GENERATOR](http://mcg.mbitson.com/)
+
 <div class="color-palette row">
   <!-- Brand Blue -->
   <ul class="color-group col-md-4">

@@ -1,4 +1,4 @@
-zh-CN:
+zh:
   guide:
     - title: 品牌
       name: Guide
@@ -13,6 +13,8 @@ zh-CN:
       items:
         - title: 介绍
           name: Introduction
+        - title: 安装
+          name: Install
         - title: 快速上手
           name: Quickstart
         - title: 更新日志
@@ -75,4 +77,84 @@ zh-CN:
             - title: 下拉菜单
               name: Dropdown
             - title: 分页
+              name: Pagination
+en:
+  guide:
+    - title: Brand
+      name: Guide
+      items:
+        - title: Color
+          name: Color
+        - title: Typography
+          name: Typography
+  components:
+    - title: Overview
+      name: Docs
+      items:
+        - title: Introduction
+          name: Introduction
+        - title: Install
+          name: Install
+        - title: Quickstart
+          name: Quickstart
+        - title: Changelog
+          name: Changelog
+    - title: Components
+      name: Docs
+      groups:
+        - title: Base
+          items:
+            - title: Button
+              name: Button
+            - title: Layout
+              name: Layout
+            - title: Tag
+              name: Tag
+            - title: Icon
+              name: Icon
+        - title: Form
+          items:
+            - title: Checkbox
+              name: Checkbox
+            - title: Input
+              name: Input
+            - title: InputNumber
+              name: InputNumber
+            - title: Radio
+              name: Radio
+            - title: Select
+              name: Select
+            - title: Switch
+              name: Switch
+            - title: Slider
+              name: Slider
+            - title: Textarea
+              name: Textarea
+        - title: View
+          items:
+            - title: Alert
+              name: Alert
+            - title: 徽Badge标
+              name: Badge
+            - title: LoadingBar
+              name: LoadingBar
+            - title: Modal
+              name: Modal
+            - title: Message
+              name: Message
+            - title: Notification
+              name: Notification
+            - title: Popover
+              name: Popover
+            - title: Progress
+              name: Progress
+            - title: Tooltip
+              name: Tooltip
+        - title: Navigation
+          items:
+            - title: Breadcrumb
+              name: Breadcrumb
+            - title: Dropdown
+              name: Dropdown
+            - title: Pagination
               name: Pagination

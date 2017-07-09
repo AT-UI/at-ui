@@ -18,10 +18,10 @@
             </g>
           </svg>
         </div>
-        <h1>一款轻量级、模块化的前端 UI 组件库</h1>
+        <h1>A Lightweight and Modular UI Front-End Library</h1>
         <div class="btn-container">
-          <div class="btn btn-begin"><router-link :to="{ name: 'Introduction-zh' }">开始使用</router-link></div>
-          <div class="btn btn-github"><a href="https://github.com/o2team/at-ui">Github</a></div>
+          <div class="btn btn-begin"><router-link :to="{ name: 'Introduction-en' }">GET STARTED</router-link></div>
+          <div class="btn btn-github"><a href="https://github.com/o2team/at-ui">GITHUB</a></div>
         </div>
       </div>
       <div class="prototype-screens flex">
@@ -38,25 +38,25 @@
           <div class="icon-cnt">
             <img src="../assets/icon-navigation-1.png" alt="">
           </div>
-          <div class="title">指南</div>
-          <div class="desc">了解设计指南，利用统一的规范进行设计赋能，帮助产品设计师，前端工程师，后台工程师迅速搭建中后台产品。</div>
-          <router-link :to="{ name: 'Guide' }"><div class="btn-readmore">查看详情 <i class="icon icon-chevron-right"></i></div></router-link>
+          <div class="title">Guide</div>
+          <div class="desc">Understand the design guidelines, makes design and prototype more simple and accessible for all project members.</div>
+          <router-link :to="{ name: 'Guide' }"><div class="btn-readmore">View Details <i class="icon icon-chevron-right"></i></div></router-link>
         </div>
         <div class="navigation-panel">
           <div class="icon-cnt">
             <img src="../assets/icon-navigation-2.png" alt="">
           </div>
-          <div class="title">组件</div>
-          <div class="desc">基于 Vue 的 UI 组件化，可以通过组件的 Demo 体验交互细节，开发中既可以根据需要单独引用，也可以使用全局方式引入所有组件。</div>
-          <router-link :to="{ name: 'Docs' }"><div class="btn-readmore">查看详情 <i class="icon icon-chevron-right"></i></div></router-link>
+          <div class="title">Component</div>
+          <div class="desc">Base on Vue.js, experience interaction details by strolling through component demos. Use the components singleton or global is free.</div>
+          <router-link :to="{ name: 'Docs' }"><div class="btn-readmore">View Details <i class="icon icon-chevron-right"></i></div></router-link>
         </div>
         <div class="navigation-panel">
           <div class="icon-cnt">
             <img src="../assets/icon-navigation-3.png" alt="">
           </div>
-          <div class="title">资源</div>
-          <div class="desc">提供视觉稿原稿下载，产品可直接用 Sketch 工具快速搭建高保真的产品原型稿，减少沟通成本，提升工作效率。</div>
-          <div class="btn-readmore disabled">暂未开放</div>
+          <div class="title">Resource</div>
+          <div class="desc">Provide the design resources, product managers can make prototype more simple and efficient. Save time and improve work efficiency.</div>
+          <div class="btn-readmore disabled">Coming Soon</div>
         </div>
       </div>
     </section>
@@ -257,5 +257,9 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
       }
     }
   }
+}
+
+.navigation-panel {
+  width: 290px !important;
 }
 </style>

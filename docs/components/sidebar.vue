@@ -6,14 +6,15 @@
         <ul class="at-nav__items">
           <template v-if="item.items">
             <li class="at-nav__item" v-for="navItem in item.items" :key="navItem.title">
-              <router-link class="at-nav__page" :to="{ name: navItem.name }">{{ navItem.title }}</router-link>
+              <router-link class="at-nav__page" :to="navItem.name.toLowerCase()">{{ navItem.title }}</router-link>
             </li>
           </template>
           <li class="at-nav__item active" v-for="group in item.groups" :key="group.title">
             <a class="at-nav__group" @click="toggleMenu">{{ group.title }}<i class="icon icon-chevron-down"></i></a>
             <ul class="at-nav__child-items">
               <li class="at-nav__child-item" v-for="navItem in group.items" :key="navItem.title">
-                <router-link class="at-nav__component" :to="{ name: navItem.name }">{{ navItem.name }}<span>{{ navItem.title }}</span></router-link>
+                <router-link v-if="lang === 'zh'" class="at-nav__component" :to="navItem.name.toLowerCase()">{{ navItem.name }}<span>{{ navItem.title }}</span></router-link>
+                <router-link v-else class="at-nav__component" :to="navItem.name.toLowerCase()">{{ navItem.title }}</router-link>
               </li>
             </ul>
           </li>
@@ -29,6 +30,11 @@ export default {
     data: {
       type: Array,
       default: []
+    }
+  },
+  computed: {
+    lang () {
+      return this.$route.path.split('/')[1] || 'zh'
     }
   },
   methods: {

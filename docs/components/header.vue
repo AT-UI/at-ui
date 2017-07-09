@@ -7,20 +7,28 @@
     id="J-page-header">
     <div class="nav-container">
       <div class="nav-left">
-        <router-link :to="{ name: 'Home' }">
+        <router-link :to="{ name: lang === 'en' ? 'Home-en' : 'Home' }">
           <div class="logo">
             <img class="logo-img" src="../assets/logo-at@2x.png" preload="">
             <span>AT UIKIT</span>
           </div>
         </router-link>
       </div>
-      <div class="nav-right">
+      <div v-if="lang === 'en'" class="nav-right">
+        <ul class="navbar">
+          <router-link :to="{ name: 'Guide-en' }"><li>Guide</li></router-link>
+          <router-link :to="{ name: 'Docs-en' }"><li>Component</li></router-link>
+          <li class="disabled">Resource</li>
+        </ul>
+        <div class="btn-language" @click="switchLang('zh')">中文</div>
+      </div>
+      <div v-else class="nav-right">
         <ul class="navbar">
           <router-link :to="{ name: 'Guide' }"><li>指南</li></router-link>
           <router-link :to="{ name: 'Docs' }"><li>组件</li></router-link>
           <li class="disabled">资源</li>
         </ul>
-        <div class="btn-language">EN</div>
+        <div class="btn-language" @click="switchLang('en')">EN</div>
       </div>
     </div>
   </header>
@@ -32,6 +40,11 @@ export default {
     collapse: {
       type: Boolean,
       default: true
+    }
+  },
+  computed: {
+    lang () {
+      return this.$route.path.split('/')[1] || 'zh'
     }
   },
   mounted () {
@@ -53,6 +66,17 @@ export default {
         header.classList.add('collapse')
       } else {
         header.classList.remove('collapse')
+      }
+    },
+    switchLang (targetLang) {
+      if (this.lang === targetLang) return
+
+      localStorage.setItem('at-ui-language', targetLang)
+
+      if (this.$route.name === 'Home') {
+        this.$router.push({ name: 'Home-en' })
+      } else {
+        this.$router.push(this.$route.path.replace(this.lang, targetLang))
       }
     }
   }
@@ -83,7 +107,6 @@ $header-height: 80px;
 .nav-container {
   margin: 0 auto;
   width: 90%;
-  // max-width: 1140px;
   color: #1D1D1F;
 
   .nav-left {
@@ -105,6 +128,7 @@ $header-height: 80px;
         margin-left: 40px;
         color: #3473e7;
         font-weight: bold;
+        font-size: 16px;
       }
     }
   }
