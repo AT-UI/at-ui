@@ -1,0 +1,248 @@
+@import '../../node_modules/highlight.js/styles/atom-one-light.css';
+@import '~stylesheet/src/variables/index.scss';
+@import '~stylesheet/src/mixins/index.scss';
+
+/**
+ * Vue transitions
+ */
+.fade-enter-active {
+  transition: opacity .3s ease-out;
+}
+.fade-leave-active {
+  transition: opacity .2s ease-out;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+/**
+ * Variables
+ */
+$small-viewport-max-width: 767px;
+$medium-viewport-max-width: 991px;
+$large-viewport-max-width: 1199px;
+
+$drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
+
+.bg-c-brand {
+  background-color: $brand-color-light;
+
+  &-light {
+    background-color: tint($brand-color-light, 20%);
+  }
+  &-dark {
+    background-color: shade($brand-color-light, 5%);
+  }
+}
+
+/**
+ * Base
+ */
+.at-container {
+  position: relative;
+  margin: 48px auto;
+  width: 90%;
+  background-color: #fff;
+  box-shadow: $drop-shadow;
+}
+.at-markdown {
+  padding: 32px 48px 48px;
+
+  img {
+    vertical-align: middle;
+  }
+  > section {
+    margin: 0 auto;
+
+    > h1,
+    > h2,
+    > h3,
+    > h4, {
+      margin: 16px 0;
+      line-height: 1.5;
+    }
+    > h1 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+    > h2,
+    > h3 {
+      margin-top: 24px;
+    }
+    > hr {
+      margin: 1.2em 0;
+      border: 0;
+      border-bottom: 1px solid $border-color-base;
+    }
+    > p {
+      padding: 0;
+      line-height: 1.7;
+
+      + p {
+        margin-top: 8px;
+      }
+    }
+    code {
+      padding: .3em .5em;
+      font-size: .9em;
+      vertical-align: middle;
+      border: 1px solid $grey-100;
+      border-radius: 2px;
+      background-color: $grey-50;
+    }
+    pre {
+      margin: 16px 0;
+      padding: 16px;
+      background-color: $grey-50;
+      overflow: auto;
+
+      code {
+        padding: 0;
+        font-size: 1em;
+        border: none;
+        border-radius: 0;
+        background-color: transparent;
+      }
+    }
+    > blockquote {
+      margin: 16px 0;
+      padding: 0 15px;
+      color: $grey-400;
+      border-left: 4px solid $grey-100;
+
+      p {
+        color: $grey-900;
+      }
+    }
+    > ul {
+      margin: 16px 0;
+      padding-left: 24px;
+      list-style: disc;
+
+      li {
+        line-height: 1.8;
+      }
+    }
+    > table {
+      margin: 24px 0;
+    }
+  }
+  table.table {
+    width: 100%;
+    // max-width: 1000px;
+    background-color: #fff;
+    color: #5e6d82;
+    font-size: 14px;
+    // margin-bottom: 45px;
+    border-collapse: collapse;
+
+    th {
+      text-align: left;
+      border-top: 1px solid $border-color-lightest;
+      background-color: #FAFBFC;
+    }
+    td, th {
+      border-bottom: 1px solid $border-color-lightest;
+      padding: 10px 8px;
+
+      &:first-child {
+        padding-left: 10px;
+      }
+    }
+  }
+}
+
+/**
+ * Component - Preview & Code sample
+ */
+.at-component {
+  &__container {
+    margin: 16px 0;
+    // max-width: 1000px;
+  }
+  &__sample {
+    position: relative;
+    padding: 32px;
+    border: 1px solid $border-color-lighter;
+    border-radius: 4px 4px 0 0;
+    background-color: $bg-color;
+
+    .demo-desc {
+      margin: 8px 0;
+      color: #8DABC4;
+    }
+  }
+  &__code {
+    border: 1px solid $border-color-lighter;
+    border-top: none;
+
+    pre {
+      margin: 0 !important;
+
+      code {
+        width: 100%;
+        font-size: 14px;
+        line-height: 1.5;
+        background: none;
+        white-space: pre;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+      }
+    }
+  }
+  &__code-toggle {
+    display: block;
+    padding: 8px 12px;
+    color: $border-color-base;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 2px;
+    background-color: $bg-color-base;
+    cursor: pointer;
+  }
+}
+
+/**
+ * Typography Component
+ */
+.at-component-typo {
+  margin-right: 10px;
+  // max-width: 300px;
+  min-width: 260px;
+  border: 1px solid $border-color-light;
+  border-radius: $border-radius-base;
+
+  &__show {
+    padding: 35px 20px;
+    font-size: 34px;
+  }
+  &__detail {
+    font-size: 13px;
+    color: $text-color;
+    padding: 10px 20px;
+    border-top: 1px solid $border-color-light;
+
+    .note {
+      color: tint($text-color, 30%);
+    }
+  }
+}
+.at-component-typo-list {
+  border: 1px solid $border-color-light;
+  border-radius: $border-radius-base;
+  padding: 30px;
+  line-height: 40px;
+
+  &__item {
+    border-bottom: 1px solid $border-color-lighter;
+
+    .label {
+      color: $roof-color;
+    }
+    .note {
+      font-size: $font-size-base;
+    }
+  }
+}

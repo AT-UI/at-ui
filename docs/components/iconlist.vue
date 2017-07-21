@@ -1,6 +1,6 @@
 <template>
   <ul class="at-icon-list row">
-    <li v-for="name in icons" class="at-icon-list__item col-md-4 col-lg-3 flex flex-middle flex-center" v-clipboard:copy="name">
+    <li v-for="name in icons" :key="name" class="at-icon-list__item col-md-4 col-lg-3 flex flex-middle flex-center" v-clipboard:copy="name">
       <div class="">
         <i class="icon" :class="name"></i>
         <p>{{name}}</p>
@@ -32,13 +32,15 @@ export default {
 $bg-color-light: #ECF5FD;
 
 .at-icon-list__item {
-  text-align: center;
   height: 100px;
+  text-align: center;
   border-radius: 4px;
   cursor: pointer;
+  transition: all .2s;
 
   &:hover {
     background-color: $bg-color-light;
+    transform: scale(1.2);
   }
   i {
     font-size: 26px;
