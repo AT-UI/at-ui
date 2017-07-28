@@ -15,9 +15,6 @@ before_install:
 install:
   - npm install
 
-before_script:
-  - npm install -g webpack
-
 script:
   - npm run build:doc
 
@@ -36,4 +33,4 @@ branches:
 
 env:
   global:
-    - GH_REF: github.com:o2team/at-ui.git
+    - GH_REF: github.com/o2team/at-ui.git
