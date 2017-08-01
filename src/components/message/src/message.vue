@@ -1,5 +1,9 @@
 <template>
-  <div class="at-message__wrapper" :style="{ top: top ? `${top}px` : 'auto' }">
+  <div
+    class="at-message__wrapper"
+    :style="{
+      top: top ? `${top}px` : 'auto'
+    }">
     <transition name="move-up" @after-leave="doDestory">
       <div
         class="at-message"
@@ -7,7 +11,7 @@
           [`at-message--${type}`]: type
         }"
         v-show="visible">
-        <i class="at-message__icon icon" :class="iconClass"></i>
+        <i class="icon at-message__icon" :class="iconClass"></i>
         <span class="at-message__content">{{ message }}</span>
       </div>
     </transition>
@@ -16,24 +20,12 @@
 
 <script>
   export default {
-    props: {
-      message: String,
-      duration: {
-        type: Number,
-        default: 3000
-      },
-      type: {
-        type: String,
-        default: 'info',
-        validator: val => ['info', 'success', 'warning', 'error'].indexOf(val) > -1
-      },
-      icon: {
-        type: String,
-        default: ''
-      }
-    },
     data () {
       return {
+        message: '',
+        duration: 3000,
+        type: 'info',
+        icon: '',
         visible: false,
         timer: null,
         closed: false,
@@ -75,9 +67,7 @@
       startTimer () {
         if (this.duration) {
           this.timer = setTimeout(() => {
-            if (!this.closed) {
-              this.close()
-            }
+            !this.closed && this.close()
           }, this.duration)
         }
       },

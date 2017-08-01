@@ -1,9 +1,0 @@
-/**
- * A quick method for targeting `border-color` on specific sides of a box
- *
- * @parm {arglist} $values [List of border widths]
- */
-
-@mixin border-color($values...) {
-  @include _directional-property(border, color, $values...);
-}

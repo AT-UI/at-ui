@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const config = require('./config')
@@ -50,6 +51,10 @@ const webpackConfig = merge(baseWebpackConfig, {
     new RewriteFontUrl({
       fileReg: new RegExp('static/css/'),
       processor: source => source.replace(/static\/fonts/g, '../fonts')
+    }),
+    new FaviconsWebpackPlugin({
+      logo: path.resolve(config.config.projectRoot, 'docs/assets/favicon.png'),
+      prefix: 'favicons/'
     }),
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html

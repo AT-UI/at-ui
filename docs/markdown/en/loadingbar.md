@@ -17,6 +17,25 @@
 <at-button @click="finish">Finish</at-button>
 <at-button @click="error">Error</at-button>
 <at-button @click="update">Update</at-button>
+
+<script>
+  export default {
+    methods: {
+      start () {
+        this.$Loading.start()
+      },
+      finish () {
+        this.$Loading.finish()
+      },
+      error () {
+        this.$Loading.error()
+      },
+      update () {
+        this.$Loading.update(50)
+      }
+    }
+  }
+</script>
 ```
 :::
 

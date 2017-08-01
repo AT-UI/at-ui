@@ -24,34 +24,16 @@
 
 <script>
 export default {
-  props: {
-    type: {
-      type: String,
-      default: 'info'
-    },
-    title: String,
-    message: String,
-    isShow: {
-      type: Boolean,
-      default: false
-    },
-    duration: {
-      type: Number,
-      default: 4000
-    },
-    icon: String,
-    showIcon: {
-      type: Boolean,
-      default: false
-    },
-    showClose: {
-      type: Boolean,
-      default: true
-    },
-    onClose: Function,
-  },
   data () {
     return {
+      type: '',
+      title: '',
+      message: '',
+      isShow: false,
+      duration: 4000,
+      icon: '',
+      showClose: true,
+      onClose: null,
       top: null,
       timer: null,
       closed: false
@@ -73,6 +55,9 @@ export default {
         'info': 'icon-info'
       }
       return classArr[this.type] || this.icon
+    },
+    showIcon () {
+      return this.type
     }
   },
   methods: {

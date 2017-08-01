@@ -45,6 +45,26 @@
   <at-button @click="descPercent"><i class="icon icon-minus"></i></at-button>
   <at-button @click="inscPercent"><i class="icon icon-plus"></i></at-button>
 </at-button-group>
+
+<script>
+  export default {
+    data () {
+      return {
+        percent: 0
+      }
+    },
+    methods: {
+      descPercent () {
+        this.percent -= 10
+        this.percent = this.percent < 0 ? 0 : this.percent
+      },
+      inscPercent () {
+        this.percent += 10
+        this.percent = this.percent > 100 ? 100 : this.percent
+      }
+    }
+  }
+</script>
 ```
 :::
 

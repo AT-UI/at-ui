@@ -3,7 +3,7 @@
     <m-header></m-header>
     <div class="at-container flex">
       <sidebar :data="navs"></sidebar>
-      <div class="at-markdown col-md-18 col-md-20">
+      <div class="at-markdown col-md-18 col-lg-20">
         <transition name="fade" mode="out-in" @after-leave="afterLeave">
           <router-view></router-view>
         </transition>

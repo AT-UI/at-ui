@@ -97,7 +97,6 @@ const showNextModal = () => {
 
 const Dialog = (options, callback) => {
   if (Vue.prototype.$isServer) return
-
   if (options.callback && !callback) {
     callback = options.callback
   }
@@ -113,14 +112,14 @@ const Dialog = (options, callback) => {
 
       showNextModal()
     })
+  } else {
+    modalQueue.push({
+      options: Object.assign({}, defaults, options),
+      callback
+    })
+
+    showNextModal()
   }
-
-  modalQueue.push({
-    options: Object.assign({}, defaults, options),
-    callback
-  })
-
-  showNextModal()
 }
 
 Dialog.close = () => {

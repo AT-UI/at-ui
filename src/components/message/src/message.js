@@ -5,7 +5,6 @@ const MessageConstructor = Vue.extend(MessageVue)
 
 const messageType = ['info', 'success', 'warning', 'error', 'loading']
 const instances = []
-let instance
 let seed = 1
 let zindexSeed = 1010
 
@@ -26,7 +25,7 @@ const Message = options => {
     Message.close(id, customCloseFunc)
   }
 
-  instance = new MessageConstructor({
+  const instance = new MessageConstructor({
     data: options
   })
 
@@ -58,8 +57,7 @@ const Message = options => {
 
 Message.close = (id, customCloseFunc) => {
   const len = instances.length
-  let index
-  let removedHeight
+  let index, removedHeight
 
   for (let i = 0; i < len; i++) {
     if (id === instances[i].id) {

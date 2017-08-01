@@ -29,30 +29,6 @@
 ```
 :::
 
-## 不同方向的选择器
-
-设置属性 `placement` 可指定 `dropdown` 出现的位置，提供四种取值：`top`，`right`，`bottom`，`left`
-
-:::demo
-```html
-<at-select v-model="model2" style="width:100px" placement="bottom">
-  <at-option value="1">深圳</at-option>
-  <at-option value="2">广州</at-option>
-</at-select>
-<at-select v-model="model2" style="width:100px" placement="top">
-  <at-option value="1">深圳</at-option>
-  <at-option value="2">广州</at-option>
-</at-select>
-<at-select v-model="model2" style="width:100px" placement="left">
-  <at-option value="1">深圳</at-option>
-  <at-option value="2">广州</at-option>
-</at-select>
-<at-select v-model="model2" style="width:100px" placement="right">
-  <at-option value="1">深圳</at-option>
-  <at-option value="2">广州</at-option>
-</at-select>
-```
-:::
 
 ## 不同尺寸
 
@@ -91,7 +67,7 @@
 
 :::demo
 ```html
-<at-select v-model="model4" clearable style="width: 100px">
+<at-select v-model="model4" clearable size="large" style="width: 100px">
   <at-option value="1">深圳</at-option>
   <at-option value="2">广州</at-option>
   <at-option value="3">上海</at-option>
@@ -117,7 +93,7 @@
   <at-option-group label="其他">
     <at-option value="4">上海</at-option>
     <at-option value="5">北京</at-option>
-    <at-option value="6">成都</at-option>
+    <at-option value="6" disabled>成都</at-option>
     <at-option value="7">昆明</at-option>
     <at-option value="8">杭州</at-option>
   </at-option-group>
@@ -166,7 +142,7 @@
 
 :::demo
 ```html
-<at-select v-model="model8" filterable style="width: 240px">
+<at-select v-model="model8" filterable size="large" style="width: 240px">
   <at-option value="1">深圳</at-option>
   <at-option value="2">广州</at-option>
   <at-option value="3">上海</at-option>
@@ -192,6 +168,7 @@
 | size | 设置选择器的尺寸 | String | `large`, `normal`, `small` | normal |
 | notFoundText | 搜索无结果的提示 | String | - | 无匹配数据 |
 | placement | `dropdown` 出现的位置 | String | `up`, `down`, `left`, `right` | down |
+| valueWithLabel | 是否将 `label` 值一并返回，默认只返回 `value` | Boolean | - | false |
 
 ## Select 事件
 

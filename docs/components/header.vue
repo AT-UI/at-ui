@@ -16,16 +16,16 @@
       </div>
       <div v-if="lang === 'en'" class="nav-right">
         <ul class="navbar">
-          <router-link :to="{ name: 'Guide-en' }"><li>Guide</li></router-link>
-          <router-link :to="{ name: 'Docs-en' }"><li>Component</li></router-link>
+          <li><router-link :to="{ name: 'Guide-en' }">Guide</router-link></li>
+          <li><router-link :to="{ name: 'Docs-en' }">Component</router-link></li>
           <li class="disabled">Resource</li>
         </ul>
         <div class="btn-language" @click="switchLang('zh')">中文</div>
       </div>
       <div v-else class="nav-right">
         <ul class="navbar">
-          <router-link :to="{ name: 'Guide' }"><li>指南</li></router-link>
-          <router-link :to="{ name: 'Docs' }"><li>组件</li></router-link>
+          <li><router-link :to="{ name: 'Guide' }">指南</router-link></li>
+          <li><router-link :to="{ name: 'Docs' }">组件</router-link></li>
           <li class="disabled">资源</li>
         </ul>
         <div class="btn-language" @click="switchLang('en')">EN</div>
@@ -145,12 +145,23 @@ $header-height: 80px;
       list-style-type: none;
 
       a {
+        display: inline-block;
         color: #1D1D1F;
 
+        &::after {
+          content: '';
+          display: none;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 2px;
+          width: 100%;
+          background-color: #6190E8;
+        }
         &.router-link-active {
           color: $brand-blue-500;
 
-          li::after {
+          &::after {
             display: inline-block;
           }
         }
@@ -169,16 +180,16 @@ $header-height: 80px;
             color: $brand-blue-500;
           }
         }
-        &:after {
-          content: '';
-          display: none;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          height: 2px;
-          width: 100%;
-          background-color: #6190E8;
-        }
+        // &:after {
+        //   content: '';
+        //   display: none;
+        //   position: absolute;
+        //   bottom: 0;
+        //   left: 0;
+        //   height: 2px;
+        //   width: 100%;
+        //   background-color: #6190E8;
+        // }
         &.disabled {
           color: #C9C9C9;
           cursor: not-allowed;

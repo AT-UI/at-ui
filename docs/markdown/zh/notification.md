@@ -8,12 +8,18 @@
 - 有交互的通知
 - 系统的推送
 
+我们在 `Vue.prototype` 中添加了全局对象 `$Notify`，我们可以直接通过 `this.$Notify` 操作实例
+- `this.$Notify(config)`
+- `this.$Notify.success(config)`
+- `this.$Notify.error(config)`
+- `this.$Notify.warning(config)`
+- `this.$Notify.info(config)`
+
 `AT-UI` 在 `Vue.prototype` 中添加了全局对象 `$Notify`，可以直接通过 `this.$Notify` 使用实例，实例接收如下参数：
 - type - 通知提醒的状态
 - title - 消息标题
 - message - 消息内容
 - duration - 自动关闭的延时
-- showIcon - 是否显示图标
 - showClose - 是否显示关闭按钮
 - icon - 自定义消息提醒的图标
 - onClose - 关闭的回调函数
@@ -25,10 +31,28 @@
 
 :::demo
 ```html
-<p class="demo-desc">this.$Notify({ title: '这里是标题', showIcon: true })</p>
+<p class="demo-desc">this.$Notify({ title: '这里是标题' })</p>
 <at-button @click="open">打开通知（仅标题）</at-button>
 <p class="demo-desc">this.$Notify({ title: '这里是标题', message: '这里是内容，文案~~~' })</p>
 <at-button @click="open2">打开通知（标题和内容）</at-button>
+
+<script>
+  export default {
+    methods: {
+      open () {
+        this.$Notify({
+          title: '这里是标题'
+        })
+      },
+      open2 () {
+        this.$Notify({
+          title: '这里是标题',
+          message: '这里是内容，文案~~~'
+        })
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -43,6 +67,27 @@
 <at-button @click="open3">两秒关闭</at-button>
 <p class="demo-desc">this.$Notify({ title: '这里是标题', message: '这里是内容，文案~~~', duration: 0 })</p>
 <at-button @click="open4">手动关闭</at-button>
+
+<script>
+  export default {
+    methods: {
+      open3 () {
+        this.$Notify({
+          title: '这里是标题',
+          message: '这里是内容，文案~~~',
+          duration: 2000
+        })
+      },
+      open4 () {
+        this.$Notify({
+          title: '这里是标题',
+          message: '这里是内容，文案~~~',
+          duration: 0
+        })
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -57,21 +102,46 @@
 <at-button @click="open5('error')">Error</at-button>
 <at-button @click="open5('warning')">Warning</at-button>
 <at-button @click="open5('info')">Info</at-button>
+
+<script>
+  export default {
+    methods: {
+      open5 (type) {
+        this.$Notify({
+          title: '这里是标题',
+          message: '这里是内容，文案~~~',
+          type: type
+        })
+      }
+    }
+  }
+</script>
 ```
 :::
 
-## 带 ICON 的通知提醒
 
-根据通知提醒框的 `type` 值，显示对应的 ICON
+## 使用 `this.$Notify.success`
 
 :::demo
 ```html
-<at-button @click="open6('success')">Success</at-button>
-<at-button @click="open6('error')">Error</at-button>
-<at-button @click="open6('warning')">Warning</at-button>
-<at-button @click="open6('info')">Info</at-button>
+<p class="demo-desc">this.$Notify.success({ title: '这里是标题', message: '这里是内容，文案~~~' })</p>
+<at-button @click="open6">Success</at-button>
+
+<script>
+  export default {
+    methods: {
+      open6 () {
+        this.$Notify.success({
+          title: '这里是标题',
+          message: '这里是内容，文案~~~'
+        })
+      }
+    }
+  }
+</script>
 ```
 :::
+
 
 ## 使用全局点击关闭
 
@@ -80,6 +150,20 @@
 :::demo
 ```html
 <at-button @click="open7">全局点击关闭</at-button>
+
+<script>
+  export default {
+    methods: {
+      open7 () {
+        this.$Notify({
+          title: '这里是标题',
+          message: '这里是内容，文案~~~',
+          showClose: false
+        })
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -91,7 +175,6 @@
 | title | 必填，通知的标题 | String | - | - |
 | message | 通知的内容 | String | - | - |
 | duration | 自动关闭的延时，单位为毫秒 | Number | - | 4000 |
-| showIcon | 是否显示通知类别的 ICON | Boolean | - | false |
 | showClose | 是否显示关闭按钮 | Boolean | - | false |
 | icon | 自定义消息提醒的 ICON | String | - | - |
 | onClose | 关闭通知提醒框时的回调函数 | Function | - | - |
@@ -99,52 +182,48 @@
 <script>
 export default {
   methods: {
-    open() {
+    open () {
       this.$Notify({
-        title: '这里是标题',
-        showIcon: true
+        title: '这里是标题'
       })
     },
-    open2() {
+    open2 () {
       this.$Notify({
         title: '这里是标题',
         message: '这里是内容，文案~~~'
       })
     },
-    open3() {
+    open3 () {
       this.$Notify({
         title: '这里是标题',
         message: '这里是内容，文案~~~',
         duration: 2000
       })
     },
-    open4() {
+    open4 () {
       this.$Notify({
         title: '这里是标题',
         message: '这里是内容，文案~~~',
         duration: 0
       })
     },
-    open5(type) {
+    open5 (type) {
       this.$Notify({
         title: '这里是标题',
         message: '这里是内容，文案~~~',
         type: type
       })
     },
-    open6(type) {
-      this.$Notify({
+    open6 (type) {
+      this.$Notify.success({
         title: '这里是标题',
-        message: '这里是内容，文案~~~',
-        type: type,
-        showIcon: true
+        message: '这里是内容，文案~~~'
       })
     },
-    open7() {
+    open7 () {
       this.$Notify({
         title: '这里是标题',
         message: '这里是内容，文案~~~',
-        showIcon: true,
         showClose: false
       })
     }

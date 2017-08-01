@@ -22,10 +22,28 @@
 
 弹出会中断用户的对话框，直到用户知晓该信息之后才可以关闭，属于交互比较重的操作。（类似于 `window.alert`）
 
+可以用 `Promise` 的方式捕获操作反馈，也可以用传入 `callback` 参数的方式
+
 :::demo
 ```html
 <p class="demo-desc">this.$Modal.alert()</p>
-<at-button @click="handleClick('alert')">Alert</at-button>
+<at-button @click="modalAlert">Alert</at-button>
+
+<script>
+  export default {
+    methods: {
+      modalAlert () {
+        this.$Modal.alert({
+          title: '这里是标题名称',
+          content: '这里是文本内容',
+          callback: function (action) {
+            this.$Message(action)
+          }
+        })
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -36,7 +54,24 @@
 :::demo
 ```html
 <p class="demo-desc">this.$Modal.confirm()</p>
-<at-button @click="handleClick('confirm')">Confirm</at-button>
+<at-button @click="modalConfirm">Confirm</at-button>
+
+<script>
+  export default {
+    methods: {
+      modalConfirm () {
+        this.$Modal.confirm({
+          title: '提示',
+          content: '此操作需要非常谨慎，您确定要这么做吗？'
+        }).then(() => {
+          this.$Message('点击了「确认」按钮')
+        }).catch(() => {
+          this.$Message('点击了「取消」按钮')
+        })
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -47,7 +82,24 @@
 :::demo
 ```html
 <p class="demo-desc">this.$Modal.prompt({ title: '提示', content: '请输入邮件地址：' })</p>
-<at-button @click="handleClick('prompt')">Prompt</at-button>
+<at-button @click="modalPrompt">Prompt</at-button>
+
+<script>
+  export default {
+    methods: {
+      modalPrompt () {
+        this.$Modal.confirm({
+          title: '提示',
+          content: '此操作需要非常谨慎，您确定要这么做吗？'
+        }).then(() => {
+          this.$Message('点击了「确认」按钮')
+        }).catch(() => {
+          this.$Message('点击了「取消」按钮')
+        })
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -62,6 +114,32 @@
 <at-button @click="handleClick('error')">错误</at-button>
 <at-button @click="handleClick('warning')">警告</at-button>
 <at-button @click="handleClick('info')">消息</at-button>
+
+<script>
+  export default {
+    methods: {
+      handleClick (type) {
+        if (type === 'info') {
+          this.$Modal.info({
+            content: '这里是提示的消息'
+          })
+        } else if (type === 'success') {
+          this.$Modal.success({
+            content: '这里是成功的消息'
+          })
+        } else if (type === 'warning') {
+          this.$Modal.warning({
+            content: '这里是警告的消息'
+          })
+        } else if (type === 'error') {
+          this.$Modal.error({
+            content: '这里是错误的消息'
+          })
+        }
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -76,6 +154,19 @@
   <p>这里是模态框的文本内容!</p>
   <p>这里是模态框的文本内容!</p>
 </at-modal>
+
+<script>
+  export default {
+    methods: {
+      handleConfirm () {
+        this.$Message('Confirm')
+      },
+      handleCancel () {
+        this.$Message('Cancel')
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -101,6 +192,16 @@
 <at-modal v-model="modal3">
   <p>这里是模态框的文本内容!</p>
 </at-modal>
+
+<script>
+  export default {
+    methods: {
+      closeModal2 () {
+        this.modal2 = false
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -176,31 +277,7 @@
     },
     methods: {
       handleClick (type) {
-        if (type === 'alert') {
-          this.$Modal.alert({
-            title: '这里是标题名称',
-            content: '这里是文本内容'
-          })
-        } else if (type === 'confirm') {
-          this.$Modal.confirm({
-            title: '提示',
-            content: '此操作需要非常谨慎，您确定要这么做吗？'
-          }).then(() => {
-            this.$Message('点击了「确认」按钮')
-          }).catch(() => {
-            this.$Message('点击了「取消」按钮')
-          })
-
-        } else if (type === 'prompt') {
-          this.$Modal.prompt({
-            title: '提示',
-            content: '请输入邮件地址：'
-          }).then((data) => {
-            this.$Message(`点击了「确认」按钮，输入框的值为 ${data.value}`)
-          }).catch(() => {
-            this.$Message('点击了「取消」按钮')
-          })
-        } else if (type === 'info') {
+        if (type === 'info') {
           this.$Modal.info({
             content: '这里是提示的消息'
           })
@@ -218,11 +295,40 @@
           })
         }
       },
+      modalAlert () {
+        this.$Modal.alert({
+          title: '这里是标题名称',
+          content: '这里是文本内容',
+          callback: action => {
+            this.$Message(action)
+          }
+        })
+      },
+      modalConfirm () {
+        this.$Modal.confirm({
+          title: '提示',
+          content: '此操作需要非常谨慎，您确定要这么做吗？'
+        }).then(() => {
+          this.$Message('点击了「确认」按钮')
+        }).catch(() => {
+          this.$Message('点击了「取消」按钮')
+        })
+      },
+      modalPrompt () {
+        this.$Modal.prompt({
+          title: '提示',
+          content: '请输入邮件地址：'
+        }).then((data) => {
+          this.$Message(`点击了「确认」按钮，输入框的值为 ${data.value}`)
+        }).catch(() => {
+          this.$Message('点击了「取消」按钮')
+        })
+      },
       handleConfirm () {
-        console.log('Confirm')
+        this.$Message('Confirm')
       },
       handleCancel () {
-        console.log('Cancel')
+        this.$Message('Cancel')
       },
       closeModal2 () {
         this.modal2 = false

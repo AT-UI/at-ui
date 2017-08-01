@@ -9,14 +9,12 @@
 使用 `class="icon"` 来声明图标，具体图标的名称请 `copy` 相应的标签
 
 :::demo
-
 ```html
 <i class="icon icon-zoom-in"></i>
 <i class="icon icon-zoom-out"></i>
 <i class="icon icon-check"></i>
 <i class="icon icon-x"></i>
 ```
-
 :::
 
 ## 图标示例

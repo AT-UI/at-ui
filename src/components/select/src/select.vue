@@ -1,10 +1,22 @@
 <template>
-  <div :class="classes" v-clickoutside="handleClose">
+  <div :class="[
+    'at-select',
+    {
+      'at-select--visible': this.visible,
+      'at-select--disabled': this.disabled,
+      'at-select--multiple': this.multiple,
+      'at-select--single': !this.multiple,
+      'at-select--show-clear': this.showCloseIcon,
+      [`at-select--${this.size}`]: !!this.size
+    }
+    ]"
+    v-clickoutside="handleClose">
+    <!-- S Selection -->
     <div
       class="at-select__selection"
       ref="trigger"
       @click="toggleMenu">
-      <span class="at-tag" v-for="(item, index) in selectedMultiple">
+      <span class="at-tag" v-for="(item, index) in selectedMultiple" :key="item">
         <span class="at-tag__text">{{ item.label }}</span>
         <i class="icon icon-x at-tag__close" @click.stop="removeTag(index)"></i>
       </span>
@@ -19,9 +31,12 @@
         @blur="handleBlur"
         @keydown.delete="handleInputDelete"
         ref="input">
-      <i class="icon icon-x at-select__clear" v-show="showCloseIcon" @click.stop="clearSingleSelect"></i>
       <i class="icon icon-chevron-down at-select__arrow"></i>
+      <i class="icon icon-x at-select__clear" v-show="showCloseIcon" @click.stop="clearSingleSelect"></i>
     </div>
+    <!-- E Selection -->
+
+    <!-- S Dropdown -->
     <transition name="slide-up" @after-leave="doDestory">
       <div
         class="at-select__dropdown"
@@ -38,6 +53,7 @@
         </ul>
       </div>
     </transition>
+    <!-- E Dropdown -->
   </div>
 </template>
 
@@ -85,7 +101,7 @@ export default {
       default: 'normal',
       validator: val => ['normal', 'small', 'large'].indexOf(val) > -1
     },
-    labelInValue: {
+    valueWithLabel: {
       type: Boolean,
       default: false
     },
@@ -112,19 +128,6 @@ export default {
     }
   },
   computed: {
-    classes () {
-      return [
-        'at-select',
-        {
-          'at-select--visible': this.visible,
-          'at-select--disabled': this.disabled,
-          'at-select--multiple': this.multiple,
-          'at-select--single': !this.multiple,
-          'at-select--show-clear': this.showCloseIcon,
-          [`at-select--${this.size}`]: !!this.size
-        }
-      ]
-    },
     showPlaceholder () {
       let status = false
 
@@ -143,6 +146,9 @@ export default {
   watch: {
     value (val) {
       this.model = val
+      if (val === '') {
+        this.query = ''
+      }
     },
     model () {
       this.$emit('input', this.model)
@@ -158,11 +164,16 @@ export default {
       if (val) {
         if (this.multiple && this.filterable) {
           this.$refs.input.focus()
+        } else if (this.filterable) {
+          this.$refs.input.select()
         }
-        this.broadcast('Dropdown', 'on-update-popper')
       } else {
         if (this.filterable) {
           this.$refs.input.blur()
+
+          setTimeout(() => {
+            this.broadcastQuery('')
+          }, 300)
         }
         this.broadcast('Dropdown', 'on-destroy-popper')
       }
@@ -201,27 +212,56 @@ export default {
       if (this.visible) {
         const keyCode = evt.keyCode
 
-        if (keyCode === 27) {   // escape
+        if (keyCode === 27) { // escape
           evt.preventDefault()
           this.hideMenu()
-        } else if (keyCode === 40) {  // down arrow
+        } else if (keyCode === 40) { // down arrow
           evt.preventDefault()
           this.navigateOptions('next')
-        } else if (keyCode === 38) {  // up arrow
+        } else if (keyCode === 38) { // up arrow
           evt.preventDefault()
           this.navigateOptions('prev')
-        } else if (keyCode === 13) {  // enter
+        } else if (keyCode === 13) { // enter
           evt.preventDefault()
+
+          let hasFocus = false
+
           this.findChild(child => {
             if (child.isFocus) {
+              hasFocus = true
               child.select()
             }
           })
+
+          if (!hasFocus) {
+            this.selectFirstOption()
+          }
         }
       }
     },
+    selectFirstOption () {
+      let firstOption
+
+      this.findChild(child => {
+        if (!firstOption && !child.hidden) {
+          firstOption = child
+          child.select()
+        }
+      })
+    },
     findChild (cb) {
-      const find = function (child) {
+      if (this.optionInstances.length) {
+        this.optionInstances.forEach(child => {
+          find(child)
+        })
+      } else {
+        this.$children.forEach(child => {
+          find(child)
+        })
+      }
+
+      // find the children which has the componentName property
+      function find (child) {
         const name = child.$options.componentName
 
         if (name) {
@@ -232,18 +272,8 @@ export default {
           })
         }
       }
-
-      if (this.optionInstances.length) {
-        this.optionInstances.forEach(child => {
-          find(child)
-        })
-      } else {
-        this.$children.forEach(child => {
-          find(child)
-        })
-      }
     },
-    updateOptions (init, slot = false) {
+    updateOptions () {
       const options = []
       let index = 1
 
@@ -254,53 +284,29 @@ export default {
         })
         child.index = index++
 
-        if (init) {
-          this.optionInstances.push(child)
-        }
+        this.optionInstances.push(child)
       })
 
       this.options = options
 
-      if (init) {
-        this.updateSingleSelected(true, slot)
-        this.updateMultipleSelected(true, slot)
-      }
+      this.updateSingleSelected(true)
+      this.updateMultipleSelected(true)
     },
-    updateSingleSelected (init = false, slot = false) {
+    updateSingleSelected (init = false) {
       const type = typeof this.model
 
       if (type === 'string' || type === 'number') {
-        let findModel = false
-
         for (let i = 0; i < this.options.length; i++) {
           if (this.model === this.options[i].value) {
             this.selectedSingle = this.options[i].label
-            findModel = true
             break
           }
-        }
-
-        if (slot && !findModel) {
-          this.model = ''
-          this.query = ''
         }
       }
 
       this.toggleSingleSelected(this.model, init)
     },
-    clearSingleSelect () {
-      if (this.showCloseIcon) {
-        this.findChild(child => {
-          child.selected = false
-        })
-        this.model = ''
-
-        if (this.filterable) {
-          this.query = ''
-        }
-      }
-    },
-    updateMultipleSelected (init = false, slot = false) {
+    updateMultipleSelected (init = false) {
       if (this.multiple && Array.isArray(this.model)) {
         const selected = []
 
@@ -320,19 +326,21 @@ export default {
         }
 
         this.selectedMultiple = selected
-
-        if (slot) {
-          const selectedModel = []
-
-          for (let i = 0; i < selected.length; i++) {
-            selectedModel.push(selected[i].value)
-          }
-
-          this.model = selectedModel
-        }
       }
 
       this.toggleMultipleSelected(this.model, init)
+    },
+    clearSingleSelect () {
+      if (this.showCloseIcon) {
+        this.findChild(child => {
+          child.selected = false
+        })
+        this.model = ''
+
+        if (this.filterable) {
+          this.query = ''
+        }
+      }
     },
     removeTag (index) {
       if (this.disabled) return false
@@ -345,59 +353,59 @@ export default {
       this.broadcast('Dropdown', 'on-update-popper')
     },
     toggleSingleSelected (value, init = false) {
-      if (!this.multiple) {
-        let label = ''
+      if (this.multiple) return
 
-        this.findChild(child => {
-          if (child.value === value) {
-            child.selected = true
-            label = (typeof child.label === 'undefined') ? child.$el.innerHTML : child.label
-          } else {
-            child.selected = false
-          }
-        })
+      let label = ''
 
-        this.hideMenu()
+      this.findChild(child => {
+        if (child.value === value) {
+          child.selected = true
+          label = (typeof child.label === 'undefined') ? child.$el.innerHTML : child.label
+        } else {
+          child.selected = false
+        }
+      })
 
-        if (!init) {
-          if (this.labelInValue) {
-            this.$emit('on-change', {
-              value,
-              label
-            })
-          } else {
-            this.$emit('on-change', value)
-          }
+      this.hideMenu()
+
+      if (!init) {
+        if (this.valueWithLabel) {
+          this.$emit('on-change', {
+            value,
+            label
+          })
+        } else {
+          this.$emit('on-change', value)
         }
       }
     },
-    toggleMultipleSelected (value, init = false) {
-      if (this.multiple) {
-        const valuesArr = []
+    toggleMultipleSelected (values, init = false) {
+      if (!this.multiple) return
 
-        for (let i = 0; i < value.length; i++) {
-          valuesArr.push({
-            value: value[i]
-          })
-        }
+      const valueLabelArr = []
 
-        this.findChild(child => {
-          const index = value.indexOf(child.value)
-
-          if (index > -1) {
-            child.selected = true
-            valuesArr[index].label = (typeof child.label === 'undefined') ? child.$el.innerHTML : child.label
-          } else {
-            child.selected = false
-          }
+      for (let i = 0; i < values.length; i++) {
+        valueLabelArr.push({
+          value: values[i]
         })
+      }
 
-        if (!init) {
-          if (this.labelInValue) {
-            this.$emit('on-change', valuesArr)
-          } else {
-            this.$emit('on-change', value)
-          }
+      this.findChild(child => {
+        const index = values.indexOf(child.value)
+
+        if (index > -1) {
+          child.selected = true
+          valueLabelArr[index].label = (typeof child.label === 'undefined') ? child.$el.innerHTML : child.label
+        } else {
+          child.selected = false
+        }
+      })
+
+      if (!init) {
+        if (this.valueWithLabel) {
+          this.$emit('on-change', valueLabelArr)
+        } else {
+          this.$emit('on-change', values)
         }
       }
     },
@@ -410,19 +418,14 @@ export default {
         this.focusIndex = (this.focusIndex <= 1) ? this.options.length : prev
       }
 
-      const childStatus = {
-        disabled: false,
-        hidden: false
-      }
-
-      let findDeep = false
+      let isValid = false
+      let hasValidOption = false // avoid infinite loops
 
       this.findChild(child => {
         if (child.index === this.focusIndex) {
-          childStatus.disabled = child.disabled
-          childStatus.hidden = child.hidden
+          isValid = !child.disabled && !child.hidden
 
-          if (!child.disabled && !child.hidden) {
+          if (isValid) {
             child.isFocus = true
           }
         } else {
@@ -430,37 +433,32 @@ export default {
         }
 
         if (!child.hidden && !child.disabled) {
-          findDeep = true
+          hasValidOption = true
         }
       })
 
-      this.resetScrollTop()
-
-      if ((childStatus.disabled || childStatus.hidden) && findDeep) {
+      if (!isValid && hasValidOption) {
         this.navigateOptions(direction)
       }
+
+      this.resetScrollTop()
     },
     resetScrollTop () {
       const index = this.focusIndex - 1
       const bottomOverflowDistance = this.optionInstances[index].$el.getBoundingClientRect().bottom - this.$refs.popover.getBoundingClientRect().bottom
-      const topOverflowDistance = this.optionInstances[index].$el.getBoundingClientRect().top - this.$refs.popover.getBoundingClientRect().top
 
       if (bottomOverflowDistance) {
         this.$refs.popover.scrollTop += bottomOverflowDistance
       }
-      if (topOverflowDistance) {
-        this.$refs.popover.scrollTop += topOverflowDistance
-      }
+    },
+    handleFocus () {
+      this.$refs.input.select()
     },
     handleBlur () {
       setTimeout(() => {
-        const model = this.model
-
-        if (this.multiple) {
-          this.query = ''
-        } else if (model !== '') {
+        if (!this.multiple && this.model !== '') {
           this.findChild(child => {
-            if (child.value === model) {
+            if (child.value === this.model) {
               this.query = (typeof child.label === 'undefined') ? child.searchLabel : child.label
             }
           })
@@ -474,29 +472,22 @@ export default {
         this.removeTag(this.model.length - 1)
       }
     },
-    setQuery (query) {
-      if (!this.filterable) return
-      this.query = query
-    },
     modelToQuery () {
-      if (!this.multiple && this.filterable && this.model) {
+      if (!this.multiple && this.filterable && typeof this.model !== 'undefined') {
         this.findChild(child => {
           if (this.model === child.value) {
-            if (child.label) {
-              this.query = child.label
-            } else if (child.searchLabel) {
-              this.query = child.searchLabel
-            } else {
-              this.query = child.value
-            }
+            this.query = child.label || child.searchLabel || child.value
           }
         })
       }
+    },
+    broadcastQuery (val) {
+      this.broadcast('AtOption', 'on-query-change', val)
     }
   },
   mounted () {
     this.modelToQuery()
-    this.updateOptions(true)
+    this.updateOptions()
 
     document.addEventListener('keydown', this.handleKeydown)
 

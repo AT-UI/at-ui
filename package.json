@@ -1,6 +1,6 @@
 {
   "name": "at-ui",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A UI Component Library with Vue.js",
   "homepage": "https://at.aotu.io",
   "main": "dist/at.js",
@@ -11,7 +11,8 @@
     "dev": "node-dev build/dev-server",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "build:doc": "webpack --config build/webpack.prod.conf.js -p",
-    "build:component": "node build/component"
+    "build:component": "node build/component",
+    "prepublish": "npm run build:component"
   },
   "repository": {
     "type": "git",
@@ -57,6 +58,7 @@
     "eslint-plugin-html": "^3.0.0",
     "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.1.2",
+    "favicons-webpack-plugin": "0.0.7",
     "file-loader": "^0.11.2",
     "highlight.js": "^9.12.0",
     "html-webpack-plugin": "^2.29.0",

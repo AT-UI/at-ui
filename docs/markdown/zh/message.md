@@ -10,24 +10,42 @@
 
 我们在 `Vue.prototype` 中添加了全局对象 `$Message`，我们可以直接通过 `this.$Message` 操作实例
 
+- `this.$Message(config)`
 - `this.$Message.info(config)`
 - `this.$Message.success(config)`
 - `this.$Message.warning(config)`
 - `this.$Message.error(config)`
+- `this.$Message.loading(config)`
 
 ## 基础用法
 
 四种类型的消息提示
 
 :::demo
-
 ```html
 <at-button @click="handleClick('info')">Info</at-button>
 <at-button @click="handleClick('success')">Success</at-button>
 <at-button @click="handleClick('warning')">Warning</at-button>
 <at-button @click="handleClick('error')">Error</at-button>
-```
 
+<script>
+  export default {
+    methods: {
+      handleClick (type) {
+        if (type === 'info') {
+          this.$Message.info('这是一条提示信息这是一条提示信息这是一条提示信息这是一条提示信息这是一条提示信息')
+        } else if (type === 'success') {
+          this.$Message.success('这是一条成功信息')
+        } else if (type === 'warning') {
+          this.$Message.warning('这是一条警告信息')
+        } else if (type === 'error') {
+          this.$Message.error('这是一条错误信息')
+        }
+      }
+    }
+  }
+</script>
+```
 :::
 
 ## 修改延时
@@ -35,21 +53,46 @@
 提示默认的显示时长为 `3s`，可传递 `duration` 来自定义时长
 
 :::demo
-
 ```html
 <at-button @click="changeDuration">修改延时</at-button>
-```
 
+<script>
+  export default {
+    methods: {
+      changeDuration () {
+        this.$Message.info({
+          message: '这是一条提示信息，10s 后自动关闭',
+          duration: 10000
+        })
+      }
+    }
+  }
+</script>
+```
 :::
 
 ## 加载中
 
-:::demo
+`this.$Message.loading` 返回关闭方法，可用于手动关闭提示框
 
+:::demo
 ```html
 <at-button @click="showLoading">显示加载中...</at-button>
-```
 
+<script>
+  export default {
+    methods: {
+      showLoading () {
+        const loading = this.$Message.loading({
+          message: '加载中...',
+          duration: 0
+        })
+        setTimeout(loading, 3000)
+      }
+    }
+  }
+</script>
+```
 :::
 
 ## Message 参数
