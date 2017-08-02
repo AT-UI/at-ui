@@ -5,6 +5,11 @@
 
 项目遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范
 
+## v1.1.0 - 2017-08-01
+
+- 修复 Bugs
+- 更改 `Notification`，`Alert` 等组件的样式
+
 ## v1.0.0 - 2017-06-27
 
 - `AT-UI` v1.0.0 发布

@@ -1,6 +1,6 @@
 <template>
   <ul class="at-icon-list row">
-    <li v-for="name in icons" :key="name" class="at-icon-list__item col-md-4 col-lg-3 flex flex-middle flex-center" v-clipboard:copy="name">
+    <li v-for="name in icons" :key="name" class="at-icon-list__item col-sm-6 col-md-4 col-lg-3 flex flex-middle flex-center" v-clipboard:copy="name">
       <div class="">
         <i class="icon" :class="name"></i>
         <p>{{name}}</p>

@@ -15,7 +15,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
 ## 中文字体
 
 <div class="row">
-  <div class="at-component__container col-md-8">
+  <div class="at-component__container col-sm-24 col-md-8">
     <div class="at-component-typo typo-pingfang">
       <div class="at-component-typo__show">凹凸实验室</div>
       <div class="at-component-typo__detail">
@@ -25,7 +25,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
     </div>
   </div>
 
-  <div class="at-component__container col-md-8">
+  <div class="at-component__container col-sm-24 col-md-8">
     <div class="at-component-typo typo-dongqing">
       <div class="at-component-typo__show">凹凸实验室</div>
       <div class="at-component-typo__detail">
@@ -35,7 +35,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
     </div>
   </div>
 
-  <div class="at-component__container col-md-8">
+  <div class="at-component__container col-sm-24 col-md-8">
     <div class="at-component-typo typo-yahei">
       <div class="at-component-typo__show">凹凸实验室</div>
       <div class="at-component-typo__detail">
@@ -64,7 +64,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
 ## 西文字体
 
 <div class="row">
-  <div class="at-component__container col-md-8">
+  <div class="at-component__container col-sm-24 col-md-8">
     <div class="at-component-typo typo-helvetica-neue">
       <div class="at-component-typo__show">O2Team</div>
       <div class="at-component-typo__detail">
@@ -74,7 +74,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
     </div>
   </div>
 
-  <div class="at-component__container col-md-8">
+  <div class="at-component__container col-sm-24 col-md-8">
     <div class="at-component-typo typo-helvetica">
       <div class="at-component-typo__show">O2Team</div>
       <div class="at-component-typo__detail">
@@ -84,7 +84,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
     </div>
   </div>
 
-  <div class="at-component__container col-md-8">
+  <div class="at-component__container col-sm-24 col-md-8">
     <div class="at-component-typo typo-arial">
       <div class="at-component-typo__show">O2Team</div>
       <div class="at-component-typo__detail">

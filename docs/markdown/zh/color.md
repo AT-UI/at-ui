@@ -7,7 +7,7 @@
 ## 主色（用于标识品牌颜色）
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #6190E8;">
       <p class="color-name">Brand Color</p>
       <p class="color-value">#6190E8</p>
@@ -18,25 +18,25 @@
 ## 辅助色（用于标识状态的按钮等）
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #13CE66;">
       <p class="color-name">Green - Positive</p>
       <p class="color-value">#13CE66</p>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #FF4949;">
       <p class="color-name">Red - Negative</p>
       <p class="color-value">#FF4949</p>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #FFC82C;">
       <p class="color-name">Yellow - Warning</p>
       <p class="color-value">#FFC82C</p>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #78A4FA;">
       <p class="color-name">Blue - Info</p>
       <p class="color-value">#78A4FA</p>
@@ -47,25 +47,25 @@
 ## 次辅助色（用于不那么重要的信息等）
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #C2ABC7;">
       <p class="color-name">Roof</p>
       <p class="color-value">#C2ABC7</p>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #F0D0D5;">
       <p class="color-name">Curtain</p>
       <p class="color-value">#F0D0D5</p>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #F1E4ED;">
       <p class="color-name c-dark">Door</p>
       <p class="color-value c-dark">#F1E4ED</p>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #EEF0F0;">
       <p class="color-name c-dark">Wall</p>
       <p class="color-value c-dark">#EEF0F0</p>
@@ -76,31 +76,31 @@
 ## 中性色（用于文本、背景和边框）
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #2C405A;">
       <p class="color-name">Header 标题</p>
       <p class="color-value">#2C405A</p>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #3F536E;">
       <p class="color-name">正文字体 - 黑</p>
       <p class="color-value">#3F536E</p>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #8DABC4;">
       <p class="color-name">正文字体 - 灰</p>
       <p class="color-value">#8DABC4</p>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #A8C6DF;">
       <p class="color-name">图标</p>
       <p class="color-value">#A8C6DF</p>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #C5D9E8;">
       <p class="color-name">边框</p>
       <p class="color-value">#C5D9E8</p>
@@ -108,13 +108,13 @@
   </div>
 </div>
 <div class="row" style="margin-top: 16px;">
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #ECF5FD;">
       <p class="color-name c-dark">背景色 - 浅蓝</p>
       <p class="color-value c-dark">#ECF5FD</p>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <div class="at-color-container" style="background-color: #FAFBFC;">
       <p class="color-name c-dark">背景色 - 米白</p>
       <p class="color-value c-dark">#FAFBFC</p>
@@ -130,7 +130,7 @@
 
 <div class="color-palette row">
   <!-- Brand Blue -->
-  <ul class="color-group col-md-4">
+  <ul class="color-group col-sm-20 col-md-4">
     <li style="background-color: #6190E8;">
       <span class="color-name">Brand Blue</span>
       <span class="color-value">#6190E8</span>
@@ -178,7 +178,7 @@
   </ul>
 
   <!-- Green -->
-  <ul class="color-group col-md-4">
+  <ul class="color-group col-sm-20 col-md-4">
     <li style="background-color: #13CE66;">
       <span class="color-name">Green</span>
       <span class="color-value">#13CE66</span>
@@ -226,7 +226,7 @@
   </ul>
 
   <!-- Red -->
-  <ul class="color-group col-md-4">
+  <ul class="color-group col-sm-20 col-md-4">
     <li style="background-color: #FF4949;">
       <span class="color-name">Red</span>
       <span class="color-value">#FF4949</span>
@@ -274,7 +274,7 @@
   </ul>
 
   <!-- Yellow -->
-  <ul class="color-group col-md-4">
+  <ul class="color-group col-sm-20 col-md-4">
     <li style="background-color: #FFC82C;">
       <span class="color-name">Yellow</span>
       <span class="color-value">#FFC82C</span>
@@ -322,7 +322,7 @@
   </ul>
 
   <!-- Blue -->
-  <ul class="color-group col-md-4">
+  <ul class="color-group col-sm-20 col-md-4">
     <li style="background-color: #78A4FA;">
       <span class="color-name">Blue</span>
       <span class="color-value">#78A4FA</span>
@@ -370,7 +370,7 @@
   </ul>
 
   <!-- Grey -->
-  <ul class="color-group col-md-4">
+  <ul class="color-group col-sm-20 col-md-4">
     <li style="background-color: #BFBFBF;">
       <span class="color-name">Grey</span>
       <span class="color-value">#BFBFBF</span>
@@ -418,7 +418,7 @@
   </ul>
 
   <!-- Black -->
-  <ul class="color-group col-md-4">
+  <ul class="color-group col-sm-20 col-md-4">
     <li style="background-color: #2C405A;">
       <span class="color-name">Black</span>
       <span class="color-value">#2C405A</span>

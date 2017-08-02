@@ -1,5 +1,5 @@
 <template>
-  <div class="at-sidebar col-md-6 col-lg-4">
+  <div class="at-sidebar col-sm-24 col-md-6 col-lg-4">
     <nav class="at-nav">
       <template v-for="item in data">
         <h2 class="at-nav__title">{{ item.title }}</h2>

@@ -71,8 +71,6 @@ export default {
 
 <style lang="scss" scoped>
   .at-textarea {
-    width: 400px;
-
     & + .at-textarea {
       margin-top: 15px;
     }

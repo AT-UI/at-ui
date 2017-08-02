@@ -1,8 +1,8 @@
-const path = require('path')
+// const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+// const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 const utils = require('./utils')
 const config = require('./config')
@@ -26,7 +26,7 @@ module.exports = merge(baseWebpackConfig, {
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new FaviconsWebpackPlugin(path.resolve(config.config.projectRoot, 'docs/assets/favicon.png')),
+    // new FaviconsWebpackPlugin(path.resolve(config.config.projectRoot, 'docs/assets/favicon.png')),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',

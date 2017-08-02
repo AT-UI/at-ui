@@ -24,7 +24,7 @@
 :::demo
 ```html
 <div class="row no-gutter">
-  <div class="col-md-12">
+  <div class="col-sm-24 col-md-12">
     <at-progress :percent="0" :stroke-width="4"></at-progress>
     <at-progress :percent="60" :stroke-width="4"></at-progress>
     <at-progress :percent="100" :stroke-width="4"></at-progress>

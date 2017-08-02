@@ -27,7 +27,7 @@
 <at-tag color="error">标签四</at-tag>
 <at-tag color="warning">标签五</at-tag>
 <at-tag color="info">标签六</at-tag>
-<at-tag color="#3F536E">#3F536E</at-tag>
+<at-tag color="#ecefce">#ecefce</at-tag>
 ```
 :::
 

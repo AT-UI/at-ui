@@ -64,13 +64,13 @@
 :::demo
 ```html
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <at-input-number size="small"></at-input-number>
   </div>
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <at-input-number></at-input-number>
   </div>
-  <div class="col-md-4">
+  <div class="col-sm-12 col-md-4">
     <at-input-number size="large"></at-input-number>
   </div>
 </div>

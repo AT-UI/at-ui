@@ -7,12 +7,13 @@
     id="J-page-header">
     <div class="nav-container">
       <div class="nav-left">
-        <router-link :to="{ name: lang === 'en' ? 'Home-en' : 'Home' }">
-          <div class="logo">
+        <div class="logo">
+          <router-link :to="{ name: lang === 'en' ? 'Home-en' : 'Home' }">
             <img class="logo-img" src="../assets/logo-at@2x.png" preload="">
             <span>AT UIKIT</span>
-          </div>
-        </router-link>
+          </router-link>
+        </div>
+        <i class="icon icon-menu nav-icon" @click="toggleMenu"></i>
       </div>
       <div v-if="lang === 'en'" class="nav-right">
         <ul class="navbar">
@@ -42,6 +43,11 @@ export default {
       default: true
     }
   },
+  data () {
+    return {
+      isOpen: false
+    }
+  },
   computed: {
     lang () {
       return this.$route.path.split('/')[1] || 'zh'
@@ -58,6 +64,17 @@ export default {
     window.removeEventListener('scroll', this.headerCollapse)
   },
   methods: {
+    toggleMenu () {
+      const header = document.getElementById('J-page-header')
+
+      if (this.isOpen) {
+        this.isOpen = false
+        header.classList.remove('open')
+      } else {
+        this.isOpen = true
+        header.classList.add('open')
+      }
+    },
     headerCollapse () {
       const header = document.getElementById('J-page-header')
       const offsetTop = document.body.scrollTop || 0
@@ -103,6 +120,9 @@ $header-height: 80px;
     box-shadow: 0 10px 60px 0 rgba(29, 29, 31, 0.07);
     opacity: 0.98;
   }
+  &.open {
+    background-color: #fff;
+  }
 }
 .nav-container {
   margin: 0 auto;
@@ -130,6 +150,14 @@ $header-height: 80px;
         font-weight: bold;
         font-size: 16px;
       }
+    }
+    .nav-icon {
+      display: none;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: -10px;
+      font-size: 20px;
     }
   }
   .nav-right {
@@ -180,16 +208,6 @@ $header-height: 80px;
             color: $brand-blue-500;
           }
         }
-        // &:after {
-        //   content: '';
-        //   display: none;
-        //   position: absolute;
-        //   bottom: 0;
-        //   left: 0;
-        //   height: 2px;
-        //   width: 100%;
-        //   background-color: #6190E8;
-        // }
         &.disabled {
           color: #C9C9C9;
           cursor: not-allowed;
@@ -208,6 +226,66 @@ $header-height: 80px;
       &:hover {
         color: $brand-blue-500;
         border-color: $brand-blue-500;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-sm-max) {
+  .page-header {
+    height: 60px;
+
+    &.open {
+      .nav-right {
+        height: 220px;
+      }
+    }
+  }
+  .nav-container {
+    width: initial;
+
+    .nav-left {
+      position: relative;
+      margin: 0 20px;
+      float: none;
+      text-align: center;
+
+      .logo {
+        display: inline-block;
+        height: 60px;
+        line-height: 60px;
+      }
+      .nav-icon {
+        display: inline-block;
+      }
+    }
+    .nav-right {
+      float: none;
+      height: 0;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 10px 60px 0 rgba(29, 29, 31, 0.07);
+      transition: all .3s;
+      overflow: hidden;
+
+      .navbar {
+        display: block;
+        height: initial;
+        line-height: 50px;
+
+        li {
+          display: block;
+        }
+        a {
+          width: 100%;
+
+          &.router-link-active::after {
+            display: none;
+          }
+        }
+      }
+      .btn-language {
+        margin: 16px;
       }
     }
   }

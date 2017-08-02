@@ -54,6 +54,7 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
   }
   > section {
     margin: 0 auto;
+    overflow: hidden;
 
     > h1,
     > h2,
@@ -129,6 +130,7 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
     }
   }
   table.table {
+    display: block;
     width: 100%;
     // max-width: 1000px;
     background-color: #fff;
@@ -136,6 +138,8 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
     font-size: 14px;
     // margin-bottom: 45px;
     border-collapse: collapse;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 
     th {
       text-align: left;
@@ -244,5 +248,14 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
     .note {
       font-size: $font-size-base;
     }
+  }
+}
+
+@media screen and (max-width: $screen-sm-max) {
+  .at-markdown {
+    padding: 0 24px 32px;
+  }
+  .at-component__sample {
+    padding: 16px;
   }
 }

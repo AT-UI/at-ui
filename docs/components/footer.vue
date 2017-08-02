@@ -5,12 +5,13 @@
       <div class="footer-desc">
         <div class="footer-copyright">© 2017 Created by<a href="//aotu.io" target="_blank"> 凹凸实验室</a></div>
       </div>
-      <a data-redirect="https://github.com/o2team"><div class="github-logo"></div></a>
+      <div class="github-logo"><a data-redirect="https://github.com/o2team">Github</a></div>
     </div>
   </footer>
 </template>
 
 <style lang="scss">
+@import '~stylesheet/src/variables/index.scss';
 @import '../assets/style/mixin';
 
 /**
@@ -27,10 +28,11 @@
     width: 90%;
   }
   &-logo {
+    margin: 10px 0 14px;
     width: 198px;
     height: 40px;
     @include image2x-background('o2logo');
-    margin: 10px 0 14px;
+    background-size: 100% auto;
   }
   &-desc {
     text-align: left;
@@ -57,6 +59,31 @@
 
     &:hover {
       transform: scale(1.1);
+    }
+    a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      text-indent: -9999px;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-sm-max) {
+  .footer {
+    padding: 20px 0;
+
+    &-logo {
+      margin: 8px 0;
+      height: 20px;
+      width: 100px;
+    }
+    &-desc {
+      font-size: 10px;
+    }
+    .github-logo {
+      top: 0;
+      right: 0;
     }
   }
 }
