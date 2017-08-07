@@ -20,6 +20,7 @@ import { Dropdown, DropdownMenu, DropdownItem } from './components/dropdown'
 import { Breadcrumb, BreadcrumbItem } from './components/breadcrumb'
 import Pagination from './components/pagination'
 import Message from './components/message'
+import { Menu, MenuItem, MenuItemGroup, Submenu } from './components/menu'
 
 const components = {
   Button,
@@ -50,7 +51,11 @@ const components = {
   DropdownItem,
   Breadcrumb,
   BreadcrumbItem,
-  Pagination
+  Pagination,
+  Menu,
+  MenuItem,
+  MenuItemGroup,
+  Submenu
 }
 
 function install (Vue) {
