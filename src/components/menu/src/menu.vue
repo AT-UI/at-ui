@@ -5,13 +5,12 @@
       theme ? `at-menu--${theme}` : '',
       mode ? `at-menu--${mode}` : ''
     ]"
-    :style="{
-      width: width
-    }"><slot></slot></ul>
+    :style="ulStyle"><slot></slot></ul>
 </template>
 
 <script>
   import Emitter from 'src/mixins/emitter'
+  import { findComponentsDownward } from 'src/utils/util'
 
   export default {
     name: 'AtMenu',
@@ -27,8 +26,8 @@
         default: 'light',
         validator: val => ['light', 'dark'].indexOf(val) > -1
       },
-      activeKey: [String, Number],
-      openKeys: {
+      activeName: [String, Number],
+      openNames: {
         type: Array,
         default () {
           return []
@@ -45,79 +44,70 @@
     },
     data () {
       return {
-        currentActiveKey: this.activeKey
+        currentActiveName: this.activeName
+      }
+    },
+    computed: {
+      ulStyle () {
+        const style = {}
+
+        if (this.mode === 'inline' || this.mode === 'vertical') {
+          style.width = this.width
+        }
+
+        return style
       }
     },
     watch: {
-      openKeys () {
-        this.$emit('on-open-change', this.openKeys)
+      openNames () {
+        this.$emit('on-open-change', this.openNames)
       },
-      activeKey (val) {
-        this.currentActiveKey = val
+      activeName (val) {
+        this.currentActiveName = val
       },
-      currentActiveKey () {
-        this.updateActiveKey()
+      currentActiveName () {
+        this.updateActiveName()
       }
     },
     methods: {
-      updateActiveKey () {
-        if (typeof currentActiveKey === 'undefined') {
-          this.currentActiveKey = -1
+      updateActiveName () {
+        if (typeof this.currentActiveName === 'undefined') {
+          this.currentActiveName = -1
         }
-        this.broadcast('Submenu', 'on-update-active', false)
-        this.broadcast('MenuItem', 'on-update-active', this.currentActiveKey)
+        this.broadcast('AtSubmenu', 'on-update-active', false)
+        this.broadcast('AtMenuItem', 'on-update-active', this.currentActiveName)
       },
-      updateOpenKeys (key) {
-        const idx = this.openKeys.indexOf(key)
+      updateOpenNames (name) {
+        const idx = this.openNames.indexOf(name)
 
-        if (key > -1) {
-          this.openKeys.splice(idx, 1)
+        if (name > -1) {
+          this.openNames.splice(idx, 1)
         } else {
-          this.openKeys.push(key)
+          this.openNames.push(name)
           if (this.inlineCollapsed) {
-            this.openKeys.splice(0, this.openKeys.length)
-            this.openKeys.push(key)
+            this.openNames.splice(0, this.openNames.length)
+            this.openNames.push(name)
           }
         }
       },
       updateOpened () {
-        const items = this.findChildren('Submenu')
+        const items = findComponentsDownward(this, 'AtSubmenu')
 
         if (items.length) {
           items.forEach(item => {
-            if (this.openKeys.indexOf(item.name) > -1) {
+            if (this.openNames.indexOf(item.name) > -1) {
               item.opened = true
             }
           })
         }
-      },
-      findChildren (componentName) {
-        let names = []
-        let parent = this.$parent
-        let name = this.$parent.$options.name
-
-        if (typeof componentName === 'string') {
-          names = [componentName]
-        } else {
-          names = componentName
-        }
-
-        while (parent && (!name || names.indexOf(name) < 0)) {
-          parent = parent.$parent
-          if (parent) {
-            name = parent.$options.name
-          }
-        }
-
-        return parent
       }
     },
     mounted () {
-      this.updateActiveKey()
+      this.updateActiveName()
       this.updateOpened()
-      this.$on('on-menu-item-select', key => {
-        this.currentActiveKey = key
-        this.$emit('on-select', key)
+      this.$on('on-menu-item-select', name => {
+        this.currentActiveName = name
+        this.$emit('on-select', name)
       })
     }
   }

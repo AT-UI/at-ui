@@ -7,7 +7,8 @@
       this.disabled ? 'at-menu__submenu--disabled' : ''
     ]"
     @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave">
+    @mouseleave="handleMouseLeave"
+    ref="trigger">
     <div class="at-menu__submenu-title" ref="reference" @click="handleClick">
       <slot name="title"></slot>
       <i class="icon icon-chevron-down at-menu__submenu-icon"></i>
@@ -16,16 +17,16 @@
       <ul class="at-menu" v-show="opened"><slot></slot></ul>
     </collapse-transition>
     <transition name="slide-up" v-else>
-      <Dropdown
-        v-show="opened"
-        placement="bottom"
-        ref="dropdown"
-        style="{
-          min-width: `${dropWidth}px`
-        }"
-        >
-        <ul class="at-menu__dropdown"><slot></slot></ul>
-      </Dropdown>
+      <div
+        class="at-dropdown__popover"
+        placement="placementValue"
+        :style="dropStyle"
+        ref="popover"
+        v-show="opened">
+        <ul class="at-dropdown-menu">
+          <slot></slot>
+        </ul>
+      </div>
     </transition>
   </li>
 </template>
@@ -34,13 +35,14 @@
   import CollapseTransition from 'src/utils/collapse-transition'
   import { getStyle, findComponentUpward } from 'src/utils/util'
   import Emitter from 'src/mixins/emitter'
+  import PopoverMixin from 'src/mixins/popover'
 
   export default {
     name: 'AtSubmenu',
     components: {
       CollapseTransition
     },
-    mixins: [Emitter],
+    mixins: [Emitter, PopoverMixin],
     props: {
       name: {
         type: [String, Number],
@@ -55,7 +57,7 @@
       return {
         active: false,
         opened: false,
-        dropWidth: getStyle(this.$el, 'width') | 0,
+        dropWidth: getStyle(this.$el, 'width'),
         parentMenu: findComponentUpward(this, 'AtMenu')
       }
     },
@@ -65,25 +67,43 @@
       },
       inlineCollapsed () {
         return this.parentMenu.inlineCollapsed
+      },
+      dropStyle () {
+        return {
+          'min-width': this.dropWidth
+        }
+      },
+      placementValue () {
+        return this.mode === 'vertical' ? 'right-top' : 'bottom'
       }
     },
     watch: {
       mode (val) {
         if (val === 'horizontal') {
-          this.$refs.dropdown.update()
+          // this.$refs.popover.update()
         }
       },
       opened (val) {
         if (this.mode === 'inline') return
         if (val) {
-          this.dropWidth = getStyle(this.$el, 'width') | 0
-          this.$refs.dropdown.update()
-        } else {
-          this.$refs.dropdown.destroy()
+          this.dropWidth = getStyle(this.$el, 'width')
+          this.resetDropdownPosition()
         }
       }
     },
     methods: {
+      resetDropdownPosition () {
+        const popover = this.$refs.popover
+        const trigger = this.$refs.trigger
+
+        if (this.mode === 'vertical') {
+          popover.style.right = `-${trigger.offsetWidth + 4}px`
+          popover.style.top = '0'
+        } else {
+          popover.style.left = '0'
+          popover.style.top = `${trigger.offsetHeight + 2}px`
+        }
+      },
       handleClick () {
         if (this.disabled || this.mode !== 'inline' ) return
 
@@ -96,23 +116,26 @@
           })
         }
         this.opened = !opened
-        this.parentMenu.updateOpenKeys(this.name)
+        this.parentMenu.updateOpenNames(this.name)
       },
       handleMouseEnter () {
         if (this.disabled || this.mode === 'inline') return
+
+        // handle mousemove event
         clearTimeout(this.timeout)
         this.timeout = setTimeout(() => {
-          this.parentMenu.updateOpenKeys(this.name)
+          this.parentMenu.updateOpenNames(this.name)
           this.opened = true
-        }, 300)
+        }, 200)
       },
       handleMouseLeave () {
         if (this.disabled || this.mode === 'inline') return
+
         clearTimeout(this.timeout)
-        this.timeout = setTimeout(function () {
-          this.parentMenu.updateOpenKeys(this.name)
+        this.timeout = setTimeout(() => {
+          this.parentMenu.updateOpenNames(this.name)
           this.opened = false
-        }, 300)
+        }, 200)
       }
     },
     mounted () {

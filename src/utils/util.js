@@ -152,3 +152,56 @@ export function findComponentUpward (context, componentName, componentNames) {
 
   return parent
 }
+
+/* istanbul ignore next */
+export function findComponentDownward (context, componentName) {
+  const childrens = context.$children
+  let children
+
+  if (childrens.length) {
+    childrens.forEach(child => {
+      if (child.$options.name === componentName) {
+        children = child
+      }
+    })
+
+    for (let i = 0, len = childrens.length; i < len; i++) {
+      const child = childrens[i]
+      const name = child.$options.name
+
+      if (name === componentName) {
+        children = child
+        break
+      } else {
+        children = findComponentDownward(child, componentName)
+        if (children) break
+      }
+    }
+  }
+
+  return children
+}
+
+/* istanbul ignore next */
+export function findComponentsDownward (context, componentName, components = []) {
+  const childrens = context.$children
+
+  if (childrens.length) {
+    childrens.forEach(child => {
+      const subChildren = child.$children
+      const name = child.$options.name
+
+      if (name === componentName) {
+        components.push(child)
+      }
+      if (subChildren.length) {
+        const findChildren = findComponentsDownward(child, componentName, components)
+        if (findChildren) {
+          components.concat(findChildren)
+        }
+      }
+    })
+  }
+
+  return components
+}

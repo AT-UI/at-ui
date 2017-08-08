@@ -1,8 +1,8 @@
 <template>
-  <li class="at-menu__item-group">
-    <div class="at-menu__item-group-title">{{ title }}</div>
-    <ul><slot></slot></ul>
-  </li>
+  <ul class="at-menu__item-group">
+    <li class="at-menu__item-group-title">{{ title }}</li>
+    <ul class="at-menu__item-group-list"><slot></slot></ul>
+  </ul>
 </template>
 
 <script>
