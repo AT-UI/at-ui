@@ -74,7 +74,14 @@
         if (typeof this.currentActiveName === 'undefined') {
           this.currentActiveName = -1
         }
-        this.broadcast('AtSubmenu', 'on-update-active', false)
+
+        const submenus = findComponentsDownward(this, 'AtSubmenu')
+
+        if (submenus && submenus.length) {
+          submenus.forEach(submenu => {
+            submenu.$emit('on-update-active', false)
+          })
+        }
         this.broadcast('AtMenuItem', 'on-update-active', this.currentActiveName)
       },
       updateOpenNames (name) {
@@ -96,7 +103,7 @@
         if (items.length) {
           items.forEach(item => {
             if (this.openNames.indexOf(item.name) > -1) {
-              item.opened = true
+              item.isOpen = true
             }
           })
         }

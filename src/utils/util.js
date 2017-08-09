@@ -5,7 +5,6 @@
 const SPECIAL_CHARS_REGEXP = /([:\-_]+(.))/g
 const MOZ_HACK_REGEXP = /^moz([A-Z])/
 
-/* istanbul ignore next */
 const trim = function (string) {
   return (string || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
 }
@@ -82,7 +81,6 @@ export function deepCopy (data) {
   return obj
 }
 
-/* istanbul ignore next */
 export function hasClass (el, cls) {
   if (!el || !cls) return false
   if (cls.indexOf(' ') !== -1) throw new Error('className should not contain space.')
@@ -92,7 +90,6 @@ export function hasClass (el, cls) {
   return (` ${el.className} `).indexOf(` ${cls} `) > -1
 }
 
-/* istanbul ignore next */
 export function addClass (el, cls) {
   if (!el) return
 
@@ -114,7 +111,6 @@ export function addClass (el, cls) {
   }
 }
 
-/* istanbul ignore next */
 export function removeClass (el, cls) {
   if (!el || !cls) return
   const classes = cls.split(' ')
@@ -135,7 +131,6 @@ export function removeClass (el, cls) {
   }
 }
 
-/* istanbul ignore next */
 export function findComponentUpward (context, componentName, componentNames) {
   if (typeof componentName === 'string') {
     componentNames = [componentName]
@@ -153,7 +148,24 @@ export function findComponentUpward (context, componentName, componentNames) {
   return parent
 }
 
-/* istanbul ignore next */
+export function findComponentsUpward (context, componentName, components = []) {
+  let parent = context.$parent
+  let name = parent.$options.name
+
+  while (parent && name) {
+    if (componentName === name) {
+      components.push(parent)
+    }
+
+    parent = parent.$parent
+    if (parent) {
+      name = parent.$options.name
+    }
+  }
+
+  return components
+}
+
 export function findComponentDownward (context, componentName) {
   const childrens = context.$children
   let children
@@ -182,7 +194,6 @@ export function findComponentDownward (context, componentName) {
   return children
 }
 
-/* istanbul ignore next */
 export function findComponentsDownward (context, componentName, components = []) {
   const childrens = context.$children
 
