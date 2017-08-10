@@ -5,6 +5,11 @@
 
 项目遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范
 
+## v1.1.1 - 2017-08-01
+
+- 新增 `Menu` 组件
+- 修复 Bugs
+
 ## v1.1.0 - 2017-08-01
 
 - 修复 Bugs
