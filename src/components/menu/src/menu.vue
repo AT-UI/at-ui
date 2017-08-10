@@ -27,12 +27,6 @@
         validator: val => ['light', 'dark'].indexOf(val) > -1
       },
       activeName: [String, Number],
-      openNames: {
-        type: Array,
-        default () {
-          return []
-        }
-      },
       inlineCollapsed: {
         type: Boolean,
         default: false
@@ -59,9 +53,6 @@
       }
     },
     watch: {
-      openNames () {
-        this.$emit('on-open-change', this.openNames)
-      },
       activeName (val) {
         this.currentActiveName = val
       },
@@ -83,35 +74,10 @@
           })
         }
         this.broadcast('AtMenuItem', 'on-update-active', this.currentActiveName)
-      },
-      updateOpenNames (name) {
-        const idx = this.openNames.indexOf(name)
-
-        if (name > -1) {
-          this.openNames.splice(idx, 1)
-        } else {
-          this.openNames.push(name)
-          if (this.inlineCollapsed) {
-            this.openNames.splice(0, this.openNames.length)
-            this.openNames.push(name)
-          }
-        }
-      },
-      updateOpened () {
-        const items = findComponentsDownward(this, 'AtSubmenu')
-
-        if (items.length) {
-          items.forEach(item => {
-            if (this.openNames.indexOf(item.name) > -1) {
-              item.isOpen = true
-            }
-          })
-        }
       }
     },
     mounted () {
       this.updateActiveName()
-      this.updateOpened()
       this.$on('on-menu-item-select', name => {
         this.currentActiveName = name
         this.$emit('on-select', name)

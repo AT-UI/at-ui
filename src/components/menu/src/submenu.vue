@@ -44,10 +44,6 @@
     },
     mixins: [Emitter, PopoverMixin],
     props: {
-      name: {
-        type: [String, Number],
-        require: true
-      },
       disabled: {
         type: Boolean,
         default: false
@@ -83,8 +79,9 @@
     },
     watch: {
       mode (val) {
-        if (val === 'horizontal') {
-          // this.$refs.popover.update()
+        if (val !== 'inline') {
+          this.isOpen = false
+          // this.handleMouseLeave()
         }
       },
       isOpen (val) {
@@ -103,12 +100,15 @@
         const name = parent.$options.name
 
         if (this.mode === 'vertical') {
+          popover.style.left = 'initial'
           popover.style.right = `-${trigger.offsetWidth + 4}px`
           popover.style.top = '0'
         } else if (parent && name !== 'AtSubmenu') {
           popover.style.left = '0'
+          popover.style.right = 'initial'
           popover.style.top = `${trigger.offsetHeight + 2}px`
         } else {
+          popover.style.left = 'initial'
           popover.style.right = `-${trigger.offsetWidth + 4}px`
           popover.style.top = '0'
         }
@@ -125,7 +125,6 @@
           })
         }
         this.isOpen = !opened
-        this.parentMenu.updateOpenNames(this.name)
       },
       handleMouseEnter () {
         if (this.disabled || this.mode === 'inline') return
@@ -133,7 +132,6 @@
         // handle mousemove event
         clearTimeout(this.timeout)
         this.timeout = setTimeout(() => {
-          this.parentMenu.updateOpenNames(this.name)
           this.isOpen = true
         }, 200)
       },
@@ -142,7 +140,6 @@
 
         clearTimeout(this.timeout)
         this.timeout = setTimeout(() => {
-          this.parentMenu.updateOpenNames(this.name)
           this.isOpen = false
         }, 200)
       }

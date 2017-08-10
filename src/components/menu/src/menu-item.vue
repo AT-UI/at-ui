@@ -3,10 +3,11 @@
     class="at-menu__item"
     :class="[
       this.active ? 'at-menu__item--active' : '',
-      this.disabled ? 'at-menu__item-disabled' : ''
-    ]"
-    @click.stop="handleClick">
-    <slot></slot>
+      this.disabled ? 'at-menu__item--disabled' : ''
+    ]" @click="handleClick">
+    <div>
+      <slot></slot>
+    </div>
   </li>
 </template>
 
