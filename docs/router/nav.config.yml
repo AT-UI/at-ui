@@ -76,6 +76,8 @@ zh:
               name: Breadcrumb
             - title: 下拉菜单
               name: Dropdown
+            - title: 导航菜单
+              name: Menu
             - title: 分页
               name: Pagination
 en:
@@ -156,5 +158,7 @@ en:
               name: Breadcrumb
             - title: Dropdown
               name: Dropdown
+            - title: Menu
+              name: Menu
             - title: Pagination
               name: Pagination
