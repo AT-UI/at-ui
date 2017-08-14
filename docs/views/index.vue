@@ -56,7 +56,7 @@
           </div>
           <div class="title">资源</div>
           <div class="desc">提供视觉稿原稿下载，产品可直接用 Sketch 工具快速搭建高保真的产品原型稿，减少沟通成本，提升工作效率。</div>
-          <div class="btn-readmore disabled">暂未开放</div>
+          <router-link :to="{ name: 'Resource' }"><div class="btn-readmore">查看详情 <i class="icon icon-chevron-right"></i></div></router-link>
         </div>
       </div>
     </section>

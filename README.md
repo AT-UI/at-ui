@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://at.aotu.io/">
-    <img width="200" src="docs/assets/logo-at.svg">
+    <img width="200" src="http://storage.360buyimg.com/mtd/home/logo-at1502718221686.svg">
   </a>
 </p>
 

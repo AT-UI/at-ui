@@ -19,7 +19,7 @@
         <ul class="navbar">
           <li><router-link :to="{ name: 'Guide-en' }">Guide</router-link></li>
           <li><router-link :to="{ name: 'Docs-en' }">Component</router-link></li>
-          <li><router-link :to="{ name: 'Resource' }">Resource</router-link></li>
+          <li><router-link :to="{ name: 'Resource-en' }">Resource</router-link></li>
         </ul>
         <div class="btn-language" @click="switchLang('zh')">中文</div>
       </div>
