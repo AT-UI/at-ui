@@ -177,6 +177,7 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
     }
   }
   &__code {
+    position: relative;
     border: 1px solid $border-color-lighter;
     border-top: none;
 

@@ -4,7 +4,7 @@
  */
 export default {
   bind (el, binding) {
-    el._handler = (evt) => {
+    el._handler = evt => {
       if (!el.contains(evt.target) && binding.expression) {
         binding.value(evt)
       }

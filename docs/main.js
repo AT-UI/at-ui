@@ -4,17 +4,12 @@ import App from './App'
 import router from './router'
 import DemoBox from './components/demobox'
 import IconList from './components/iconlist'
+import VueClipboard from './directives/clipboard'
 import AtComponents from 'at-ui'
 import 'at-ui-style'
-// import 'stylesheet/css/at.css'
-
-// 注册组件
-// for (var key of Object.keys(AtComponents)) {
-//   let lowerKey = key.toLocaleLowerCase()
-//   Vue.component(`at-${lowerKey}`, AtComponents[key])
-// }
 
 Vue.use(AtComponents)
+Vue.use(VueClipboard)
 Vue.component('demo-box', DemoBox)
 Vue.component('icon-list', IconList)
 
