@@ -16,10 +16,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:o2team/at-ui.git"
+    "url": "git@github.com:at-ui/at-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/o2team/at-ui/issues"
+    "url": "https://github.com/at-ui/at-ui/issues"
   },
   "keywords": [
     "at",

@@ -21,7 +21,7 @@
         <h1>一款轻量级、模块化的前端 UI 组件库</h1>
         <div class="btn-container">
           <div class="btn btn-begin"><router-link :to="{ name: 'Introduction-zh' }">开始使用</router-link></div>
-          <div class="btn btn-github"><a href="https://github.com/o2team/at-ui">Github</a></div>
+          <div class="btn btn-github"><a href="https://github.com/at-ui/at-ui">Github</a></div>
         </div>
       </div>
       <div class="prototype-screens flex">

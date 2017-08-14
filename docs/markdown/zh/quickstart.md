@@ -18,10 +18,10 @@
 我们提供了一个模板工程，可通过 `vue-cli` 工具初始化模板项目，快速搭建单页应用
 
 ```shell
-vue init o2team/at-template my-project
+vue init at-ui/at-template my-project
 ```
 
-如果不想使用 `vue-cli` 工具，我们也同样提供了可直接使用的模板工程：[at-webpack-boilerplate](https://github.com/o2team/at-webpack-boilerplate)
+如果不想使用 `vue-cli` 工具，我们也同样提供了可直接使用的模板工程：[at-webpack-boilerplate](https://github.com/at-ui/at-webpack-boilerplate)
 
 ## 标准开发
 
@@ -81,4 +81,4 @@ export default {
 
 ## 自定义主题
 
-`AT-UI` 的样式已抽离成单独的项目 [AT-UI-Style](https://github.com/o2team/at-ui-style)，各个组件的样式变量都存放在 `at-ui-style/src/variables/default.scss` 文件中。用户可根据实际需要，自定义组件的样式
+`AT-UI` 的样式已抽离成单独的项目 [AT-UI-Style](https://github.com/at-ui/at-ui-style)，各个组件的样式变量都存放在 `at-ui-style/src/variables/default.scss` 文件中。用户可根据实际需要，自定义组件的样式

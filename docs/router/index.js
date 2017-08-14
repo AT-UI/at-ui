@@ -107,6 +107,18 @@ routes.forEach(page => {
       name: 'Docs-en',
       redirect: { name: page.children[0].name }
     })
+  } else if (page.path === '/zh/resource') {
+    page.children.push({
+      path: '',
+      name: 'Resource',
+      redirect: { name: page.children[0].name }
+    })
+  } else if (page.path === '/en/resource') {
+    page.children.push({
+      path: '',
+      name: 'Resource-en',
+      redirect: { name: page.children[0].name }
+    })
   }
 })
 

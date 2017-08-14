@@ -6,7 +6,7 @@
 
 - 基于 `Vue` 开发的 UI 组件
 - 基于 npm + webpack + babel 的工作流，支持 ES2015
-- CSS 样式独立，保证不同的框架实现都能保持统一的 UI 风格（ 详见：[AT-UI Style](https://github.com/o2team/at-ui-style) ）
+- CSS 样式独立，保证不同的框架实现都能保持统一的 UI 风格（ 详见：[AT-UI Style](https://github.com/at-ui/at-ui-style) ）
 - 提供友好的 API，可灵活的使用组件
 
 ## 浏览器支持
@@ -96,7 +96,7 @@ export default {
 ### 本地开发
 
 ```bash
-$ git clone git@github.com:o2team/at-ui.git
+$ git clone git@github.com:at-ui/at-ui.git
 $ npm install
 $ npm run dev
 ```

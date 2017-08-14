@@ -19,7 +19,7 @@
         <ul class="navbar">
           <li><router-link :to="{ name: 'Guide-en' }">Guide</router-link></li>
           <li><router-link :to="{ name: 'Docs-en' }">Component</router-link></li>
-          <li class="disabled">Resource</li>
+          <li><router-link :to="{ name: 'Resource' }">Resource</router-link></li>
         </ul>
         <div class="btn-language" @click="switchLang('zh')">中文</div>
       </div>
@@ -27,7 +27,7 @@
         <ul class="navbar">
           <li><router-link :to="{ name: 'Guide' }">指南</router-link></li>
           <li><router-link :to="{ name: 'Docs' }">组件</router-link></li>
-          <li class="disabled">资源</li>
+          <li><router-link :to="{ name: 'Resource' }">资源</router-link></li>
         </ul>
         <div class="btn-language" @click="switchLang('en')">EN</div>
       </div>

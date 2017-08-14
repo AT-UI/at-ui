@@ -7,6 +7,12 @@ zh:
           name: Color
         - title: 字体
           name: Typography
+  resource:
+    - title: 资源
+      name: Resource
+      items:
+        - title: 设计资源
+          name: design
   components:
     - title: 综述
       name: Docs
@@ -89,6 +95,12 @@ en:
           name: Color
         - title: Typography
           name: Typography
+  resource:
+    - title: Resource
+      name: Resource
+      items:
+        - title: Design
+          name: design
   components:
     - title: Overview
       name: Docs
