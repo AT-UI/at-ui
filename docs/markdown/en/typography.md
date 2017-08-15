@@ -1,18 +1,18 @@
-# Typography 字体
+# Typography
 
 ----
 
-统一字体规范，力求在各个操作系统上都有最佳的展示效果
+Unified the specification of font, and strive to have the best presentation across all operating system.
 
-## 字体家族
+## Font Family
 
-css 代码如下：
+CSS snippet：
 
 ```css
 font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 ```
 
-## 中文字体
+## Chinese Font
 
 <div class="row">
   <div class="at-component__container col-sm-24 col-md-8">
@@ -61,7 +61,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
   </div>
 </div>
 
-## 西文字体
+## English Font
 
 <div class="row">
   <div class="at-component__container col-sm-24 col-md-8">
@@ -69,7 +69,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
       <div class="at-component-typo__show">O2Team</div>
       <div class="at-component-typo__detail">
         <p>Helvetica Neue</p>
-        <p class="note">优选字体</p>
+        <p class="note">Preferred font</p>
       </div>
     </div>
   </div>
@@ -79,7 +79,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
       <div class="at-component-typo__show">O2Team</div>
       <div class="at-component-typo__detail">
         <p>Helvetica</p>
-        <p class="note">备选字体</p>
+        <p class="note">Alternate font</p>
       </div>
     </div>
   </div>
@@ -89,7 +89,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
       <div class="at-component-typo__show">O2Team</div>
       <div class="at-component-typo__detail">
         <p>Arial</p>
-        <p class="note">次级备选字体</p>
+        <p class="note">Secondary alternate font</p>
       </div>
     </div>
   </div>
@@ -110,11 +110,11 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
   </div>
 </div>
 
-## 字体使用规范
+## Usage Specification
 
-西文字体的行高通常是字号的 `1.2em` 以上，而中文字体由于字符密实而且高度一致，所以需要更大的行高。通常中文字体的行高在 `1.5em` 和 `1.8em` 之间可以保证比较良好的阅读体验。`AT-UI` 统一使用 `1.5em` 的行高。
+The `line-height` of English Font is usually more than `1.2em`. But the Chinese Font needs greater line height because of its dense characters and high consistency. Usually, the `line-height` of Chinese Font is between `1.5em` and `1.8em`, which ensures a better reading experience. `AT-UI` select `1.5em` uniformly.
 
-对于字号，默认使用 `14px`
+Use `14px` for font size by default.
 
 <div class="at-component__container">
   <div class="at-component-typo-list">

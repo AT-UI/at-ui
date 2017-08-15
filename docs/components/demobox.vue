@@ -9,7 +9,8 @@
         <span class="btn-copy" v-clipboard="$slots['source-code'][0] && $slots['source-code'][0].elm && $slots['source-code'][0].elm.innerText" @success="handleCopySuccess"><i class="icon icon-clipboard"></i></span>
       </div>
     </collapse-transition>
-    <a class="at-component__code-toggle" @click="isShow = !isShow">{{ isShow ? '隐藏代码' : '显示代码' }}</a>
+    <a v-if="lang === 'en'" class="at-component__code-toggle" @click="isShow = !isShow">{{ isShow ? 'Hide Code' : 'Show Code' }}</a>
+    <a v-else class="at-component__code-toggle" @click="isShow = !isShow">{{ isShow ? '隐藏代码' : '显示代码' }}</a>
   </div>
 </template>
 
@@ -23,6 +24,11 @@ export default {
   data () {
     return {
       isShow: false
+    }
+  },
+  computed: {
+    lang () {
+      return this.$route.path.split('/')[1] || 'zh'
     }
   },
   methods: {

@@ -1,13 +1,15 @@
-# Color 色彩
+# Color
 
 ----
 
-统一的色彩搭配可以提高品牌的识别度，色彩的运用除了需要考虑品牌的统一性之外，还需要达到信息传递，交互反馈等目的。`AT-UI` 是凹凸实验室出品，品牌颜色为「凹凸蓝」，因此 `AT-UI` 的整体配色风格也是基于「凹凸蓝」展开的。
+Unified color matching can improve brand recognition. Besides the need for brand unity, the use of color also needs to achieve the purpose of information transmission, interactive feedback and so on. `AT-UI` is created by [AOTU Labs](https://github.com/o2team), which the brand color is `Blue`. Therefore, the overall color scheme of `AT-UI` is also based on `Brand Blue #6190E8`.
 
-## 主色（用于标识品牌颜色）
+## Main Color
 
-<div class="row">
-  <div class="col-sm-12 col-md-4">
+Used to identify brand colors.
+
+<div class="row no-gutter">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #6190E8;">
       <p class="color-name">Brand Color</p>
       <p class="color-value">#6190E8</p>
@@ -15,28 +17,30 @@
   </div>
 </div>
 
-## 辅助色（用于标识状态的按钮等）
+## Auxiliary Colors
 
-<div class="row">
-  <div class="col-sm-12 col-md-4">
+Used to identify the state of Button
+
+<div class="row no-gutter">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #13CE66;">
       <p class="color-name">Green - Positive</p>
       <p class="color-value">#13CE66</p>
     </div>
   </div>
-  <div class="col-sm-12 col-md-4">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #FF4949;">
       <p class="color-name">Red - Negative</p>
       <p class="color-value">#FF4949</p>
     </div>
   </div>
-  <div class="col-sm-12 col-md-4">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #FFC82C;">
-      <p class="color-name">Yellow - Warning</p>
-      <p class="color-value">#FFC82C</p>
+      <p class="color-name c-dark">Yellow - Warning</p>
+      <p class="color-value c-dark">#FFC82C</p>
     </div>
   </div>
-  <div class="col-sm-12 col-md-4">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #78A4FA;">
       <p class="color-name">Blue - Info</p>
       <p class="color-value">#78A4FA</p>
@@ -44,28 +48,30 @@
   </div>
 </div>
 
-## 次辅助色（用于不那么重要的信息等）
+## Secondary Auxiliary Colors
 
-<div class="row">
-  <div class="col-sm-12 col-md-4">
+Used to indentify unimportant information.
+
+<div class="row no-gutter">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #C2ABC7;">
-      <p class="color-name">Roof</p>
+      <p class="color-name ">Roof</p>
       <p class="color-value">#C2ABC7</p>
     </div>
   </div>
-  <div class="col-sm-12 col-md-4">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #F0D0D5;">
-      <p class="color-name">Curtain</p>
-      <p class="color-value">#F0D0D5</p>
+      <p class="color-name c-dark">Curtain</p>
+      <p class="color-value c-dark">#F0D0D5</p>
     </div>
   </div>
-  <div class="col-sm-12 col-md-4">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #F1E4ED;">
       <p class="color-name c-dark">Door</p>
       <p class="color-value c-dark">#F1E4ED</p>
     </div>
   </div>
-  <div class="col-sm-12 col-md-4">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #EEF0F0;">
       <p class="color-name c-dark">Wall</p>
       <p class="color-value c-dark">#EEF0F0</p>
@@ -73,50 +79,50 @@
   </div>
 </div>
 
-## 中性色（用于文本、背景和边框）
+## Neutral Colors
 
-<div class="row">
-  <div class="col-sm-12 col-md-4">
+Used to indentify text, border or background.
+
+<div class="row no-gutter">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #2C405A;">
-      <p class="color-name">Header 标题</p>
+      <p class="color-name">Header Title</p>
       <p class="color-value">#2C405A</p>
     </div>
   </div>
-  <div class="col-sm-12 col-md-4">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #3F536E;">
-      <p class="color-name">正文字体 - 黑</p>
+      <p class="color-name">Text - Black</p>
       <p class="color-value">#3F536E</p>
     </div>
   </div>
-  <div class="col-sm-12 col-md-4">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #8DABC4;">
-      <p class="color-name">正文字体 - 灰</p>
+      <p class="color-name">Text - Grey</p>
       <p class="color-value">#8DABC4</p>
     </div>
   </div>
-  <div class="col-sm-12 col-md-4">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #A8C6DF;">
-      <p class="color-name">图标</p>
+      <p class="color-name">ICON</p>
       <p class="color-value">#A8C6DF</p>
     </div>
   </div>
-  <div class="col-sm-12 col-md-4">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #C5D9E8;">
-      <p class="color-name">边框</p>
+      <p class="color-name">Border</p>
       <p class="color-value">#C5D9E8</p>
     </div>
   </div>
-</div>
-<div class="row" style="margin-top: 16px;">
-  <div class="col-sm-12 col-md-4">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #ECF5FD;">
-      <p class="color-name c-dark">背景色 - 浅蓝</p>
+      <p class="color-name c-dark">Background - Light Blue</p>
       <p class="color-value c-dark">#ECF5FD</p>
     </div>
   </div>
-  <div class="col-sm-12 col-md-4">
+  <div class="col-sm-12 col-md-6 col-lg-5">
     <div class="at-color-container" style="background-color: #FAFBFC;">
-      <p class="color-name c-dark">背景色 - 米白</p>
+      <p class="color-name c-dark">Background - CreamyWhite</p>
       <p class="color-value c-dark">#FAFBFC</p>
     </div>
   </div>
@@ -124,9 +130,9 @@
 
 ## 调色板
 
-为了可以更灵活的进行颜色搭配，我们参考了 [Material Design Color Palette](https://material.io/guidelines/style/color.html#color-color-palette) ，使用上述提到的 `品牌色` 和 `辅助色` 作为主色，形成一条条完整的渐变色板。主色使用 `500` 色号
+For more flexible color matching, we refer to the [Material Design Color Palette](https://material.io/guidelines/style/color.html#color-color-palette). Use the mentioned above `Brand Colors` and `Auxiliary Colors` as the main color, forming a complete gradient palette. Choose number `500` as main color.
 
-> 渐变色板的生成，使用的工具是：[MATERIAL DESIGN PALETTE GENERATOR](http://mcg.mbitson.com/)
+> The tool of gradient palette generation is: [MATERIAL DESIGN PALETTE GENERATOR](http://mcg.mbitson.com/)
 
 <div class="color-palette row">
   <!-- Brand Blue -->
@@ -144,8 +150,8 @@
       <span class="color-value c-dark">#D0DEF8</span>
     </li>
     <li style="background-color: #B0C8F4;">
-      <span class="color-name">200</span>
-      <span class="color-value">#B0C8F4</span>
+      <span class="color-name c-dark">200</span>
+      <span class="color-value c-dark">#B0C8F4</span>
     </li>
     <li style="background-color: #90B1EF;">
       <span class="color-name">300</span>
@@ -192,8 +198,8 @@
       <span class="color-value c-dark">#B8F0D1</span>
     </li>
     <li style="background-color: #89E7B3;">
-      <span class="color-name">200</span>
-      <span class="color-value">#89E7B3</span>
+      <span class="color-name c-dark">200</span>
+      <span class="color-value c-dark">#89E7B3</span>
     </li>
     <li style="background-color: #5ADD94;">
       <span class="color-name">300</span>
@@ -240,8 +246,8 @@
       <span class="color-value c-dark">#FFC8C8</span>
     </li>
     <li style="background-color: #FFA4A4;">
-      <span class="color-name">200</span>
-      <span class="color-value">#FFA4A4</span>
+      <span class="color-name c-dark">200</span>
+      <span class="color-value c-dark">#FFA4A4</span>
     </li>
     <li style="background-color: #FF8080;">
       <span class="color-name">300</span>
@@ -288,8 +294,8 @@
       <span class="color-value c-dark">#FFEFC0</span>
     </li>
     <li style="background-color: #FFE496;">
-      <span class="color-name">200</span>
-      <span class="color-value">#FFE496</span>
+      <span class="color-name c-dark">200</span>
+      <span class="color-value c-dark">#FFE496</span>
     </li>
     <li style="background-color: #FFD96B;">
       <span class="color-name">300</span>
@@ -336,8 +342,8 @@
       <span class="color-value c-dark">#D7E4FE</span>
     </li>
     <li style="background-color: #BCD2FD;">
-      <span class="color-name">200</span>
-      <span class="color-value">#BCD2FD</span>
+      <span class="color-name c-dark">200</span>
+      <span class="color-value c-dark">#BCD2FD</span>
     </li>
     <li style="background-color: #A1BFFC;">
       <span class="color-name">300</span>
@@ -384,8 +390,8 @@
       <span class="color-value c-dark">#ECECEC</span>
     </li>
     <li style="background-color: #DFDFDF;">
-      <span class="color-name">200</span>
-      <span class="color-value">#DFDFDF</span>
+      <span class="color-name c-dark">200</span>
+      <span class="color-value c-dark">#DFDFDF</span>
     </li>
     <li style="background-color: #D2D2D2;">
       <span class="color-name">300</span>
@@ -468,6 +474,7 @@
 
 <style lang="scss" scoped>
   .at-color-container {
+    margin: 16px 16px 0 0;
     padding: 16px;
     border-radius: 4px;
 

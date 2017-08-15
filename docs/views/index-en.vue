@@ -18,7 +18,7 @@
             </g>
           </svg>
         </div>
-        <h1>A Lightweight and Modular UI Front-End Library</h1>
+        <h1>A Lightweight and Modular Front-End UI Library</h1>
         <div class="btn-container">
           <div class="btn btn-begin"><router-link :to="{ name: 'Introduction-en' }">GET STARTED</router-link></div>
           <div class="btn btn-github"><a href="https://github.com/at-ui/at-ui">GITHUB</a></div>
@@ -40,7 +40,7 @@
           </div>
           <div class="title">Guide</div>
           <div class="desc">Understand the design guidelines, makes design and prototype more simple and accessible for all project members.</div>
-          <router-link :to="{ name: 'Guide-en' }"><div class="btn-readmore">View Details <i class="icon icon-chevron-right"></i></div></router-link>
+          <div class="btn-readmore"><router-link :to="{ name: 'Guide-en' }">View Details <i class="icon icon-chevron-right"></i></router-link></div>
         </div>
         <div class="navigation-panel">
           <div class="icon-cnt">
@@ -48,7 +48,7 @@
           </div>
           <div class="title">Component</div>
           <div class="desc">Base on Vue.js, experience interaction details by strolling through component demos. Use the components singleton or global is free.</div>
-          <router-link :to="{ name: 'Docs-en' }"><div class="btn-readmore">View Details <i class="icon icon-chevron-right"></i></div></router-link>
+          <div class="btn-readmore"><router-link :to="{ name: 'Docs-en' }">View Details <i class="icon icon-chevron-right"></i></router-link></div>
         </div>
         <div class="navigation-panel">
           <div class="icon-cnt">
@@ -56,7 +56,7 @@
           </div>
           <div class="title">Resource</div>
           <div class="desc">Provide the design resources, product managers can make prototype more simple and efficient. Save time and improve work efficiency.</div>
-          <router-link :to="{ name: 'Resource-en' }"><div class="btn-readmore">View Details <i class="icon icon-chevron-right"></i></div></router-link>
+          <div class="btn-readmore"><router-link :to="{ name: 'Resource-en' }">View Details <i class="icon icon-chevron-right"></i></router-link></div>
         </div>
       </div>
     </section>

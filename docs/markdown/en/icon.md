@@ -1,12 +1,12 @@
-# Icon 图标
+# Icon
 
 ----
 
-语义化的矢量图形，`AT-UI` 使用开源的 [Feather](https://feathericons.com/) 作为图标库，并制作成了 `icon font`。`Feather` 使用的是 `24x24` 的尺寸，拥有一致的圆角，一致的笔画宽度，确保整个图标系统保持视觉上的统一性。
+For semantic vector graphics, `AT-UI` use the open source [Feather](https://feathericons.com/) as the ICON library, and make `Icon Font`. `Feather` use `24x24` sizes, with rounded corners, consistent stroke widths.
 
-## 如何使用
+## How To Use
 
-使用 `class="icon"` 来声明图标，具体图标的名称请 `copy` 相应的标签
+Use `class="icon"` to declare the icon and set the proper classname.
 
 :::demo
 ```html
@@ -17,33 +17,33 @@
 ```
 :::
 
-## 图标示例
+## List of Icons
 
-### 主要
+### Main
 
 <icon-list type="core"></icon-list>
 
-### 媒体控制
+### Media Control
 
 <icon-list type="media"></icon-list>
 
-### 通信
+### Communication
 
 <icon-list type="communication"></icon-list>
 
-### 照片
+### Photo
 
 <icon-list type="photo"></icon-list>
 
-### 地理位置
+### Location
 
 <icon-list type="location"></icon-list>
 
-### 天气
+### Weather
 
 <icon-list type="weather"></icon-list>
 
-### 箭头
+### Arrows
 
 <icon-list type="arrows"></icon-list>
 

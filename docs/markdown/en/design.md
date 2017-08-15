@@ -1,9 +1,9 @@
 
-# 设计资源
+# Design
 
----
+----
 
-提供 `AT-UI` 的视觉相关资源下载
+Provide design resources and tools that shaped AT-UI. More of this is still being collected.
 
 <div class="at-resource">
   <div class="at-resource__item">
@@ -13,7 +13,7 @@
       </span>
       <span class="at-resource__info">
         <span class="at-resource__info-title">Feather</span>
-        <span class="at-resource__info-desc">Feather 字体图标的源文件及 Sketch 原稿</span>
+        <span class="at-resource__info-desc">Icon Font and Sketch Template for Feather</span>
       </span>
     </a>
   </div>

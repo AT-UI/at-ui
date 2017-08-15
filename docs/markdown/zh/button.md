@@ -74,7 +74,7 @@
 
 ## 加载中按钮
 
-可通过添加 `loading` 属性，是按钮处于加载中状态
+可通过添加 `loading` 属性，使按钮处于加载中状态
 
 :::demo
 ```html
@@ -153,19 +153,19 @@
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| type | 按钮的类型 | string | `default`, `primary`, `success`, `error`, `warning`, `info`, `text` | - |
-| size | 按钮的大小 | string | `large`, `small`, `smaller` | - |
-| hollow | 是否为空心按钮 | boolean | - | false |
-| icon | 按钮的图标类名，填入图标的 `classname` | string | 见文档 `Icon 图标` | - |
-| loading | 设置按钮的载入状态 | boolean | - | false |
-| circle | 设置圆形图标按钮 | boolean | - | false |
+| type | 按钮的类型 | String | `default`, `primary`, `success`, `error`, `warning`, `info`, `text` | - |
+| size | 按钮的大小 | String | `large`, `small`, `smaller` | - |
+| hollow | 是否为空心按钮 | Boolean | - | false |
+| icon | 按钮的图标类名，填入图标的 `classname` | String | 见文档 `Icon 图标` | - |
+| loading | 设置按钮的载入状态 | Boolean | - | false |
+| circle | 设置圆形图标按钮 | Boolean | - | false |
 
 ## Button Group 参数
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| size | 按钮的大小 | string | `large`, `small` | 正常大小 |
-| gap | 按钮间隔 | number | - | -1 |
+| size | 按钮的大小 | String | `large`, `small` | 正常大小 |
+| gap | 按钮间隔 | Number | - | -1 |
 
 <style lang="scss" scoped>
   .row {
@@ -175,6 +175,9 @@
 
     & + .row {
       margin-top: 8px;
+    }
+    .at-btn-group .at-btn {
+      margin-left: 0;
     }
   }
   .at-btn-group {
