@@ -1,58 +1,59 @@
 
-# 快速上手
+# Quickstart
 
 ----
 
-## 使用前准备
+## Before Start
 
-> 在使用之前，推荐学习 `Vue` 和 `ES2015` ，并正确配置 `Node.js` v6.x 或以上版本
+> Before using AT-UI, we recommend you to learn `Vue` and `ES2015`, and make sure that you had installed [Node.js](https://nodejs.org/en/) (≥ v6.x) correctly.
 
-`AT-UI` 基于 `Vue.js` 2.x+ 版本开发，所以有必要了解以下基础知识：
-- [Vue 组件](https://cn.vuejs.org/v2/guide/components.html)
-- [单文件组件](https://cn.vuejs.org/v2/guide/single-file-components.html)
+`AT-UI` is based on the `Vue.js` 2.x+ version, so we encourage you to know the basics below:
 
-## 基于模板工程开发
+- [Vue Components](https://cn.vuejs.org/v2/guide/components.html)
+- [Single File Components](https://cn.vuejs.org/v2/guide/single-file-components.html)
 
-> `Vue.js` 提供一个官方命令行工具 `vue-cli`，可用于快速搭建大型单页应用。该工具提供开箱即用的构建工具配置，带来现代化的前端开发流程。只需几分钟即可创建并启动一个带热重载、保存时静态检查以及可用于生产环境的构建配置的项目。
+## Starter Kit
 
-我们提供了一个模板工程，可通过 `vue-cli` 工具初始化模板项目，快速搭建单页应用
+>  `Vue.js` provides an [official CLI](https://github.com/vuejs/vue-cli) for quickly scaffolding ambitious Single Page Applications. It provides batteries-included build setups for a modern frontend workflow. It takes only a few minutes to get up and running with hot-reload, lint-on-save, and production-ready builds.
+
+We provide a `vue cli template` for you to create SPA (Single Page Application) quickly.
 
 ```shell
 vue init at-ui/at-template my-project
 ```
 
-如果不想使用 `vue-cli` 工具，我们也同样提供了可直接使用的模板工程：[at-webpack-boilerplate](https://github.com/at-ui/at-webpack-boilerplate)
+If you prefer not to use `vue-cli`, we also provide Starter Kit: [at-webpack-boilerplate](https://github.com/at-ui/at-webpack-boilerplate)
 
-## 标准开发
+## Standard Development Flow
 
-实际项目中，往往会使用 `webpack`，`rollup` 或者 `gulp` 的工作流，大多可以做到按需加载页面用到的组件，所以不推荐直接使用 `<script>` 标签全局引入的方式使用。
+In Production Project, often use `Webpack`, `Rollup` or `Gulp` workflow, most ot them can achieve loading components on demand. So it's not recommended to use `<script>` for global use.
 
-### 全局组件使用
+### Global Components Usage
 
-可以在项目的入口文件中引入所有组件或所需组件
+Import all components or required components in the entry file of the project.
 
 ```js
 import Vue from 'vue'
 import AtComponents from 'at-ui'
-import 'at-ui-style'    // 引入组件样式
+import 'at-ui-style'    // Import CSS
 
-// import 'at-ui-style/src/index.scss'      // 或者引入未构建版本的 scss 样式
+// import 'at-ui-style/src/index.scss'      // Or import the unbuilt version of SCSS
 
 Vue.use(AtComponents)
 ```
 
-如果全局引入了所有组件，那么可以直接使用 `AT-UI` 的全局实例方法，如：
+If you had imported all the components globally, you can use global instance methods of `AT-UI` directly, such as:
 
 ```js
-this.$Message.success(config)
-this.$Notify(config)
 this.$Loading.start()
+this.$Message.success(config)
 this.$Modal.alert(config)
+this.$Notify(config)
 ```
 
-### 单个组件按需使用
+### Import On Demand
 
-可以局部注册所需的组件，适用于与其他框架组合使用的场景
+The components that can be registered locally are applicable to scenarios that are used to combination with other frameworks.
 
 ```js
 import { AtInput } from 'at-ui'
@@ -69,16 +70,16 @@ export default {
 }
 ```
 
-在模板中，用 `<at-input></at-input>` 自定义标签的方式使用组件，并且可用 `v-model` 语法实现数据的动态绑定
+In template, use components with custom tag as `<at-input></at-input>`, use `v-model` to achieve data binding.
 
 ```html
 <template>
   <div>
-    <at-input v-model="value" placeholder="请输入..."></at-input>
+    <at-input v-model="value" placeholder="Please input..."></at-input>
   </div>
 </template>
 ```
 
-## 自定义主题
+## Customize Theme
 
-`AT-UI` 的样式已抽离成单独的项目 [AT-UI-Style](https://github.com/at-ui/at-ui-style)，各个组件的样式变量都存放在 `at-ui-style/src/variables/default.scss` 文件中。用户可根据实际需要，自定义组件的样式
+The style of `AT-UI` is independent to a separate project [AT-UI-Style](https://github.com/at-ui/at-ui-style), The variables for each component are stored in the file `at-ui-style/src/variables/default.scss`. User can customize the style of components according to actual needs.

@@ -1,61 +1,61 @@
 
-# Textarea 文本域
+# Textarea
 
 ----
 
-文本域输入框，用于输入多行文本，不适用于富文本输入
+Textarea Input for multiline text, not for rich text entry.
 
-## 基础文本域
+## Basic
 
-默认固定为两行的文本域，使用方法类似 `AtInput` 组件
-
-:::demo
-```html
-<at-textarea v-model="inputValue" placeholder="这里是输入框..."></at-textarea>
-```
-:::
-
-## 禁用状态
-
-添加属性 `disabled` 禁用文本域输入框
+The textarea is fixed as two lines default, similear to the `AtInput` component.
 
 :::demo
 ```html
-<at-textarea v-model="inputValue" placeholder="这里是输入框..." disabled></at-textarea>
+<at-textarea v-model="inputValue" placeholder="Please input..."></at-textarea>
 ```
 :::
 
-## 自适应文本高度（限制行数）
+## Disabled
 
-可根据输入文本的行数，自动调整输入框的高度，可分别通过 `minRows` 和 `maxRows` 属性来设置文本域的最小和最大行数
+To make textarea as disabled, add `disabled` property to the Textarea.
+
+:::demo
+```html
+<at-textarea v-model="inputValue" placeholder="Please input..." disabled></at-textarea>
+```
+:::
+
+## Adaptive Text Height (Limited)
+
+Automatically adjusted the height of textarea according to the number of lines. The minimum and maximum number of rows can be set by `minRows` and `maxRows` properties.
 
 :::demo
 ```html
 <p class="demo-desc">minRows=2, maxRows=4</p>
-<at-textarea v-model="inputValue2" min-rows="2" max-rows="4" placeholder="这里输入内容，请输入多行"></at-textarea>
+<at-textarea v-model="inputValue2" min-rows="2" max-rows="4" placeholder="Please input multiline text..."></at-textarea>
 ```
 :::
 
-## 自适应文本高度（不限制行数）
+## Adaptive Text Height (Without Limited)
 
-设置属性 `autosize`，可根据输入文本的行数，自动调整输入框的高度，不限制行数。如果同时使用 `autosize` 和 `minRows`，会优先使用 `autosize`
+Automatically adjusted the height of textarea according to the number of lines without limited. Use `autosize` property.
 
 :::demo
 ```html
-<at-textarea v-model="inputValue3" autosize placeholder="这里输入内容，请输入多行"></at-textarea>
+<at-textarea v-model="inputValue3" autosize placeholder="Please input multiline text..."></at-textarea>
 ```
 :::
 
-## Textarea 参数
+## Textarea Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| name | 原生属性 | String | - | - |
-| value | 文本域的值，可通过 `v-model` 绑定 | String | - | - |
-| autosize | 是否自动调整输入框高度 | Boolean | - | false |
-| placeholder | 占位文本（原生属性） | String | - | - |
-| disabled | 是否禁用（原生属性） | Boolean | - | false |
-| autofocus | 是否自动获取焦点（原生属性） | Boolean | - | false |
+| name | same as native textarea | String | - | - |
+| value | the value of textarea, use `v-model` to enable a two-way binding | String | - | - |
+| autosize | adaptive text height | Boolean | - | false |
+| placeholder | the text of placeholder | String | - | - |
+| disabled | whether the textarea is disabled | Boolean | - | false |
+| autofocus | same as native textarea | Boolean | - | false |
 
 <script>
 export default {

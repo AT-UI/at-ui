@@ -31,14 +31,12 @@
 ```
 :::
 
-## 可选择的标签
-
 ## API
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| color | 类型 | string/hex | 可传入十六进制颜色值，或者 `default`, `primary`, `success`, `error`, `warning`, `info` | default |
-| closable | 是否可关闭 | boolean | — | false |
+| color | 类型 | String / Hex | 可传入十六进制颜色值，或者 `default`, `primary`, `success`, `error`, `warning`, `info` | default |
+| closable | 是否可关闭 | Boolean | — | false |
 
 ## Tag 事件
 

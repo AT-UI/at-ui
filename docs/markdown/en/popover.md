@@ -1,31 +1,31 @@
 
-# Popover 弹出框
+# Popover
 
 ----
 
-## 基本用法
+## Basic
 
-默认显示在正中间，并且以 `click` 方式激活，使用方法跟 `Tooltip` 基本一样
+Display in the middle and activated in `click` event by default, similar to `Tooltip` component.
 
 :::demo
 ```html
 <at-popover placement="top" title="Title" content="Top Placement">
-  <at-button size="small">点击</at-button>
+  <at-button size="small">Click</at-button>
 </at-popover>
 <at-popover content="Top Placement" title="Title">
-  一段文字
+  Please click on me!
 </at-popover>
 ```
 :::
 
-## 更改激活的方式
+## Two Ways to Trigger
 
-默认使用 `click` 方式激活，可设置 `trigger` 更换激活方式
+Use `trigger` property to change the way of trigger. Default is `click`.
 
 :::demo
 ```html
-<at-popover trigger="hover" content="Top Placement">
-  <at-button size="small">Hover</at-button>
+<at-popover trigger="click" content="Top Placement">
+  <at-button size="small">Click</at-button>
 </at-popover>
 <at-popover trigger="hover" title="Title" content="Top Placement">
   <at-button size="small">Hover</at-button>
@@ -33,9 +33,9 @@
 ```
 :::
 
-## 弹出框的位置
+## Placement
 
-设置属性 `placement` 可更改弹出框的位置，默认显示在顶部 `top`
+Specify the position of Popover by `placement` property. Default is `top`.
 
 :::demo
 ```html
@@ -54,33 +54,33 @@
 ```
 :::
 
-## 嵌套内容
+## Nested Content
 
-除了可以使用属性 `title` 和 `conent` 设置弹出框的内容，还可以使用 `slot="title"` 和 `slot="content"` 的方式设置弹出框的嵌套内容
+In addition to using the properties `title` and `content`, you can also use `slot="title"` and `slot="content"` to set the nested content of popover.
 
 :::demo
 ```html
 <at-popover placement="top" v-model="show" @toggle="toggleShow">
-  <at-button size="small">删除</at-button>
+  <at-button size="small">Delete</at-button>
   <template slot="content">
-    <p>这是一段内容，确定删除吗？</p>
+    <p>This is part of the content, sure to delete it?</p>
     <div style="text-align: right; margin-top: 8px;">
-      <at-button size="smaller" @click="show = false">取消</at-button>
-      <at-button type="primary" size="smaller" @click="show = false">确定</at-button>
+      <at-button size="smaller" @click="show = false">Cancel</at-button>
+      <at-button type="primary" size="smaller" @click="show = false">Sure</at-button>
     </div>
   </template>
 </at-popover>
 ```
 :::
 
-## Popover 参数
+## Popover Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| title | 标题文字 | String | - | - |
-| content | 提示文字 | String | - | - |
-| trigger | 触发的事件类型 | String | `hover`, `focus`, `click` | `click` |
-| placement | 弹出框的位置 | String | `top`, `top-left`, `top-right`, `left`, `left-top`, `left-bottom`, `right`, `right-top`, `right-bottom`, `bottom`, `bottom-left`, `bottom-right` | `top` |
+| title | the title of popover | String | - | - |
+| content | the content of popover | String | - | - |
+| trigger | the way to trigger | String | `hover`, `focus`, `click` | `click` |
+| placement | the position of popover | String | `top`, `top-left`, `top-right`, `left`, `left-top`, `left-bottom`, `right`, `right-top`, `right-bottom`, `bottom`, `bottom-left`, `bottom-right` | `top` |
 
 <style lang="scss" scoped>
 .at-popover + .at-popover {

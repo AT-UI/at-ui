@@ -1,50 +1,48 @@
-# Tag 标签
+# Tag
 
 ----
 
-## 基本标签
+## Basic Tag
 
-设置 `closable` 属性可给标签添加关闭按钮，点击关闭按钮触发 `on-close` 事件，按钮不包含逻辑，如需删除 `tag`，请自行添加关闭逻辑
+To make a tag get close button, add `closable` property to `Tag`. Trigger `on-close` event when the button clicked.
 
 :::demo
 ```html
-<at-tag>标签一</at-tag>
-<at-tag>标签二</at-tag>
-<at-tag>标签三</at-tag>
-<at-tag closable v-if="show" @close="handleClose">标签四</at-tag>
+<at-tag>Tag One</at-tag>
+<at-tag>Tag Two</at-tag>
+<at-tag>Tag Three</at-tag>
+<at-tag closable v-if="show" @close="handleClose">Tag Four</at-tag>
 ```
 :::
 
-## 各种颜色的标签
+## With Color Tendency
 
-内置六种颜色的标签，如需其他颜色的标签，可设置 `color` 属性的值为十六进制的色值，例如 `color="#6190E8"`
+Tag with color tendency gives different types. Set property `color`. It also provide Hex value, such as `color="#6190E8"`.
 
 :::demo
 ```html
-<at-tag color="default">标签一</at-tag>
-<at-tag color="primary">标签二</at-tag>
-<at-tag color="success">标签三</at-tag>
-<at-tag color="error">标签四</at-tag>
-<at-tag color="warning">标签五</at-tag>
-<at-tag color="info">标签六</at-tag>
+<at-tag color="default">Tag One</at-tag>
+<at-tag color="primary">Tag Two</at-tag>
+<at-tag color="success">Tag Three</at-tag>
+<at-tag color="error">Tag Four</at-tag>
+<at-tag color="warning">Tag Five</at-tag>
+<at-tag color="info">Tag Six</at-tag>
 <at-tag color="#ecefce">#ecefce</at-tag>
 ```
 :::
 
-## 可选择的标签
+## Tag Props
 
-## API
-
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| color | 类型 | string/hex | 可传入十六进制颜色值，或者 `default`, `primary`, `success`, `error`, `warning`, `info` | default |
-| closable | 是否可关闭 | boolean | — | false |
+| color | type | String / Hex | Hex value or `default`, `primary`, `success`, `error`, `warning`, `info` | default |
+| closable | can be closed | Boolean | — | false |
 
-## Tag 事件
+## Tag Events
 
-| 事件名称      | 说明          | 返回值  |
+| Event Name      | Description          | Return Value  |
 |---------- |-------------- |---------- |
-| on-close | 点击关闭按钮时触发 | event |
+| on-close | Emitted when closed | event |
 
 <script>
   export default {

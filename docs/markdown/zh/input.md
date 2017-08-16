@@ -20,14 +20,12 @@
 添加属性 `status` ，表示不同含义的输入框，只是颜色上的变化，不影响按钮逻辑。默认提供四种状态：`success`，`error`，`warning`，`info`
 
 :::demo
-
 ```html
 <at-input v-model="inputValue2" placeholder="success" status="success" icon="check-circle"></at-input>
 <at-input v-model="inputValue2" placeholder="error" status="error" icon="x-circle"></at-input>
 <at-input v-model="inputValue2" placeholder="warning" status="warning" icon="alert-circle"></at-input>
 <at-input v-model="inputValue2" placeholder="info" status="info" icon="info"></at-input>
 ```
-
 :::
 
 ## 带图标的输入框
@@ -102,7 +100,7 @@
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | type | 输入框类型，原生属性 | String | - | - |
 | name | 原生属性 | String | - | - |
-| value | 绑定的值 | String, Number | - | - |
+| value | 绑定的值 | String / Number | - | - |
 | placeholder | 占位文本（原生属性） | String | - | - |
 | disabled | 是否禁用（原生属性） | Boolean | - | false |
 | readonly | 是否只读（原生属性） | Boolean | - | false |
@@ -115,6 +113,13 @@
 | status | 输入框类型 | String | success, error, warning, info | - |
 | prependButton | 前置元素是否包含可点击的按钮，用于复合型输入框 | Boolean | - | false |
 | appendButton | 后置元素是否包含可点击的按钮，用于复合型输入框 | Boolean | - | false |
+
+## Input slot
+
+| 名称 | 说明          |
+|------ |------------ |
+| prepend | 前置内容，仅在 text 类型下有效 |
+| append | 后置内容，仅在 text 类型下有效 |
 
 ## Input 事件
 

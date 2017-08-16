@@ -1,67 +1,67 @@
-# Button 按钮
+# Button
 
 ----
 
-按钮用于传递用户触摸时会触发的操作
+Clicking a button will trigger an operation.
 
-## 基础按钮
+## Type
 
-基础按钮分三种：`主按钮（实心）` 、 `次按钮（空心）` 、 `文字按钮`
-
-:::demo
-```html
-<at-button type="primary">主要按钮</at-button>
-<at-button>次要按钮</at-button>
-<at-button type="text">文字按钮</at-button>
-```
-:::
-
-## 不可用状态按钮
-
-添加属性 `disabled` 禁用按钮
+There are three basic buttons: `Primary` 、 `Default` 、 `Text`.
 
 :::demo
 ```html
-<at-button type="primary" disabled>主要按钮</at-button>
-<at-button hollow disabled>次要按钮</at-button>
-<at-button type="text" disabled>文字按钮</at-button>
+<at-button type="primary">Primary Button</at-button>
+<at-button>Default Button</at-button>
+<at-button type="text">Text Button</at-button>
 ```
 :::
 
-## 带颜色倾向的按钮
+## Disabled
 
-带有色彩倾向的按钮能给用户带来操作提示
+To make a button as disabled, add `disabled` property to the `Button`.
+
+:::demo
+```html
+<at-button type="primary" disabled>Primary Button</at-button>
+<at-button hollow disabled>Default Button</at-button>
+<at-button type="text" disabled>Text Button</at-button>
+```
+:::
+
+## With Color Tendency
+
+Button with color tendency gives user an operating hint.
 
 :::demo
 ```html
 <div class="row">
-  <at-button hollow>默认按钮</at-button>
-  <at-button type="primary" hollow>主要按钮</at-button>
-  <at-button type="success" hollow>成功按钮</at-button>
-  <at-button type="error" hollow>危险按钮</at-button>
-  <at-button type="warning" hollow>警告按钮</at-button>
-  <at-button type="info" hollow>信息按钮</at-button>
+  <at-button hollow>Default</at-button>
+  <at-button type="primary" hollow>Primary</at-button>
+  <at-button type="success" hollow>Success</at-button>
+  <at-button type="error" hollow>Error</at-button>
+  <at-button type="warning" hollow>Warning</at-button>
+  <at-button type="info" hollow>Info</at-button>
 </div>
 <div class="row">
-  <at-button>默认按钮</at-button>
-  <at-button type="primary">主要按钮</at-button>
-  <at-button type="success">成功按钮</at-button>
-  <at-button type="error">危险按钮</at-button>
-  <at-button type="warning">警告按钮</at-button>
-  <at-button type="info">信息按钮</at-button>
+  <at-button>Default</at-button>
+  <at-button type="primary">Primary</at-button>
+  <at-button type="success">Success</at-button>
+  <at-button type="error">Error</at-button>
+  <at-button type="warning">Warning</at-button>
+  <at-button type="info">Info</at-button>
 </div>
 ```
 :::
 
-## 图标文字按钮
+## With Icon
 
-如需要在在按钮中添加图标，可设置 `icon` 属性，或者自行在 `Button` 中内联 `icon`。通过 `icon` 属性设置的图标，位置固定在文本的前面。
+`Button` components can contain an `Icon`. This is done by setting the `Icon` property or placing an `Icon` within the `Button`. The `Icon` is fixed in front of the text that setted by `icon` property.
 
 :::demo
 ```html
 <div class="row">
-  <at-button icon="icon-download">下载资源</at-button>
-  <at-button icon="icon-user-plus">添加用户</at-button>
+  <at-button icon="icon-download">Download</at-button>
+  <at-button icon="icon-user-plus">Add User</at-button>
   <at-button icon="icon-edit"></at-button>
   <at-button type="primary" icon="icon-search"></at-button>
 </div>
@@ -72,56 +72,56 @@
 ```
 :::
 
-## 加载中按钮
+## Loading
 
-可通过添加 `loading` 属性，是按钮处于加载中状态
+A loading indicator can be added to button by setting the `loading` property.
 
 :::demo
 ```html
-<at-button loading>加载中</at-button>
+<at-button loading>Loading</at-button>
 <at-button loading></at-button>
 <at-button loading circle></at-button>
 ```
 :::
 
-## 组合按钮
+## Button Group
 
-可以将多个按钮放进 `AtButtonGroup` 中形成一个组合按钮
+Buttons can be grouped by placing multiple `Button` components into a `ButtonGroup` component.
 
 :::demo
 ```html
 <at-button-group>
-  <at-button>左</at-button>
-  <at-button>中</at-button>
-  <at-button>右</at-button>
+  <at-button>Left</at-button>
+  <at-button>Center</at-button>
+  <at-button>Right</at-button>
 </at-button-group>
 <br>
 <at-button-group>
-  <at-button icon="icon-edit" title="编辑"></at-button>
-  <at-button icon="icon-copy" title="复制"></at-button>
-  <at-button icon="icon-download" title="下载"></at-button>
+  <at-button icon="icon-edit" title="Edit"></at-button>
+  <at-button icon="icon-copy" title="Copy"></at-button>
+  <at-button icon="icon-download" title="Download"></at-button>
 </at-button-group>
 <br>
 <at-button-group>
-  <at-button><i class="icon icon-chevron-left"></i>后退</at-button>
-  <at-button>往前<i class="icon icon-chevron-right"></i></at-button>
+  <at-button><i class="icon icon-chevron-left"></i>Go back</at-button>
+  <at-button>Go forward<i class="icon icon-chevron-right"></i></at-button>
 </at-button-group>
 ```
 :::
 
-## 按钮尺寸
+## Size
 
-按钮提供四种尺寸：大、中、小、超小，可通过 `size` 属性配置；<br>
-组合按钮提供三种尺寸：大、中、小<br>
-若不设置 `size` 属性，则默认为中等大小
+Size of Button: `large`, `normal`, `small`, `smaller`.<br>
+Size of GroupButton: `large`, `normal`, `small`.<br>
+Set the `size` property to use different size of button, it's `normal` size by default.
 
 :::demo
 ```html
 <div>
-  <at-button type="primary" size="large">变大按钮</at-button>
-  <at-button type="primary">正常按钮</at-button>
-  <at-button type="primary" size="small">变小按钮</at-button>
-  <at-button type="primary" size="smaller">超小按钮</at-button>
+  <at-button type="primary" size="large">Large Button</at-button>
+  <at-button type="primary">Normal Button</at-button>
+  <at-button type="primary" size="small">Small Button</at-button>
+  <at-button type="primary" size="smaller">Smaller Button</at-button>
 </div>
 <div style="margin-top: 8px;">
   <at-button type="primary" size="large" icon="icon-search" circle></at-button>
@@ -131,41 +131,41 @@
 </div>
 <div style="margin-top: 8px;">
   <at-button-group size="large">
-    <at-button>左</at-button>
-    <at-button>中</at-button>
-    <at-button>右</at-button>
+    <at-button>Left</at-button>
+    <at-button>Center</at-button>
+    <at-button>Right</at-button>
   </at-button-group>
   <at-button-group>
-    <at-button>左</at-button>
-    <at-button>中</at-button>
-    <at-button>右</at-button>
+    <at-button>Left</at-button>
+    <at-button>Center</at-button>
+    <at-button>Right</at-button>
   </at-button-group>
   <at-button-group size="small">
-    <at-button>左</at-button>
-    <at-button>中</at-button>
-    <at-button>右</at-button>
+    <at-button>Left</at-button>
+    <at-button>Center</at-button>
+    <at-button>Right</at-button>
   </at-button-group>
 </div>
 ```
 :::
 
-## Button 参数
+## Button Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| type | 按钮的类型 | string | `default`, `primary`, `success`, `error`, `warning`, `info`, `text` | - |
-| size | 按钮的大小 | string | `large`, `small`, `smaller` | - |
-| hollow | 是否为空心按钮 | boolean | - | false |
-| icon | 按钮的图标类名，填入图标的 `classname` | string | 见文档 `Icon 图标` | - |
-| loading | 设置按钮的载入状态 | boolean | - | false |
-| circle | 设置圆形图标按钮 | boolean | - | false |
+| type | type of button | String | `default`, `primary`, `success`, `error`, `warning`, `info`, `text` | - |
+| size | size of button | String | `large`, `small`, `smaller` | normal |
+| hollow | whether a hollow button | Boolean | - | false |
+| icon | set the icon of button, input the `classname` | String | see the document of `Icon` | - |
+| loading | set the loading status of button | Boolean | - | false |
+| circle | set the circle shape of button | Boolean | - | false |
 
-## Button Group 参数
+## Button Group Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| size | 按钮的大小 | string | `large`, `small` | 正常大小 |
-| gap | 按钮间隔 | number | - | -1 |
+| size | size of button | String | `large`, `small` | normal |
+| gap | gap of the buttons | Number | - | -1 |
 
 <style lang="scss" scoped>
   .row {
@@ -175,6 +175,9 @@
 
     & + .row {
       margin-top: 8px;
+    }
+    .at-btn-group .at-btn {
+      margin-left: 0;
     }
   }
   .at-btn-group {

@@ -17,7 +17,7 @@ AT-UI is a modular front-end UI framework for developing fast and powerful web i
 - Based on `Vue`
 - A npm + webpack + babel front-end development workflow
 - Support ES2015
-- CSS Style independent, make consistent user interfaces (See: [AT-UI-Style](https://github.com/at-ui/at-ui-style))
+- CSS Style independent, make consistent user interfaces (See: [AT-UI-Style](https://github.com/at-ui/at-ui-style))
 - Friendly API
 
 ## Environment Support

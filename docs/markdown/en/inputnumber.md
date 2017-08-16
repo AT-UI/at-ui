@@ -1,21 +1,21 @@
 
-# InputNumber 数字输入框
+# InputNumber
 
 ----
 
-## 基础用法
+## Basic
 
-支持传入 `step` 精度，以及指定取值范围 `max` , `min`。默认 `step` 取整数 1
+Supports specifies precision by property `step`, and specifies the range by `max` and `min`. The default `step` takes integer 1.
 
 :::demo
 ```html
-<p class="demo-desc">基本输入框</p>
+<p class="demo-desc">Basic InputNumber</p>
 <div class="row no-gutter">
   <div class="col-md-4">
     <at-input-number v-model="num"></at-input-number><br>
   </div>
 </div>
-<p class="demo-desc">有取值范围的输入框，min=0, max=5</p>
+<p class="demo-desc">With range，min=0, max=5</p>
 <div class="row no-gutter">
   <div class="col-md-4">
     <at-input-number :min="0" :max="5"></at-input-number>
@@ -24,9 +24,9 @@
 ```
 :::
 
-## 不可用状态
+## Disabled
 
-设置属性 `disabled` 禁用输入框
+To make a inputnumber box as disabled, add `disabled` property to the `InputNumber`
 
 :::demo
 ```html
@@ -38,9 +38,9 @@
 ```
 :::
 
-## 小数输入
+## Decimals
 
-参数 `step` 可以配置成小数
+A numeric-only input box whose values can be increased or decreased using a decimal step. The number of decimals (also known as precision) is determined by the `step` prop.
 
 :::demo
 ```html
@@ -53,13 +53,9 @@
 ```
 :::
 
-## 格式化展示
+## Size
 
-开发中
-
-## 不同尺寸
-
-配置属性 `size`，可控制输入框的尺寸，默认支持三种尺寸：`large`，`normal`，`small`
+There are three sizes of an InputNumber box: `large`，`normal`，`small`.
 
 :::demo
 ```html
@@ -77,26 +73,26 @@
 ```
 :::
 
-## InputNumber 参数
+## InputNumber Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| value | 输入框的值，可通过 `v-model` 绑定 | Number | - | - |
-| size | 输入框尺寸 | String | `small`, `normal`, `large` | normal |
-| step | 每次递增或递减的数目 | Number | - | 1 |
-| min | 最小值 | Number | - | Infinity |
-| max | 最大值 | Number | - | Infinity |
-| disabled | 是否禁用输入框 | Boolean | - | false |
-| readonly | 是否设置成只读 | Boolean | - | false |
-| autofocus | 是否自动聚焦到输入框 | Boolean | - | false |
+| value | value of inputnumber，can binding with `v-model` | Number | - | - |
+| size | size of inputnumber | String | `small`, `normal`, `large` | normal |
+| step | The number to which the current value is increased or decreased. It can be an integer or decimal | Number | - | 1 |
+| min | min value | Number | - | -Infinity |
+| max | max value | Number | - | Infinity |
+| disabled | whether inputnumber is disabled | Boolean | - | false |
+| readonly | same as native input | Boolean | - | false |
+| autofocus | same as native input | Boolean | - | false |
 
-## InputNumber 事件
+## InputNumber Events
 
-| 事件名称      | 说明          | 返回值  |
+| Event Name      | Description          | Return Value  |
 |---------- |-------------- |---------- |
-| focus | 获得焦点时触发 | event |
-| blur | 失去焦点时触发 | event |
-| change | 绑定的值有变化时触发 | 输入框的值 |
+| focus | Emitted when focus | event |
+| blur | Emitted when blur | event |
+| change | Emitted when the value of input is changed | the value of input |
 
 <script>
 export default {

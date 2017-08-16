@@ -4,18 +4,21 @@
 ----
 
 在页面的右上角全局显示通知提醒信息，跟 `Message` 有点类似。常用于以下场景：
+
 - 较复杂的通知内容
 - 有交互的通知
 - 系统的推送
 
 我们在 `Vue.prototype` 中添加了全局对象 `$Notify`，我们可以直接通过 `this.$Notify` 操作实例
+
 - `this.$Notify(config)`
 - `this.$Notify.success(config)`
 - `this.$Notify.error(config)`
 - `this.$Notify.warning(config)`
 - `this.$Notify.info(config)`
 
-`AT-UI` 在 `Vue.prototype` 中添加了全局对象 `$Notify`，可以直接通过 `this.$Notify` 使用实例，实例接收如下参数：
+实例接收如下参数：
+
 - type - 通知提醒的状态
 - title - 消息标题
 - message - 消息内容
@@ -175,7 +178,7 @@
 | title | 必填，通知的标题 | String | - | - |
 | message | 通知的内容 | String | - | - |
 | duration | 自动关闭的延时，单位为毫秒 | Number | - | 4000 |
-| showClose | 是否显示关闭按钮 | Boolean | - | false |
+| showClose | 是否显示关闭按钮 | Boolean | - | true |
 | icon | 自定义消息提醒的 ICON | String | - | - |
 | onClose | 关闭通知提醒框时的回调函数 | Function | - | - |
 

@@ -202,7 +202,6 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
     color: $border-color-base;
     font-size: 12px;
     text-align: center;
-    letter-spacing: 2px;
     background-color: $bg-color-base;
     cursor: pointer;
   }
@@ -214,7 +213,7 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
 .at-component-typo {
   margin-right: 10px;
   // max-width: 300px;
-  min-width: 260px;
+  // min-width: 260px;
   border: 1px solid $border-color-light;
   border-radius: $border-radius-base;
 

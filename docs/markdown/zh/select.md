@@ -167,7 +167,7 @@
 | placeholder | 选择器的占位文案 | String | - | 请选择 |
 | size | 设置选择器的尺寸 | String | `large`, `normal`, `small` | normal |
 | notFoundText | 搜索无结果的提示 | String | - | 无匹配数据 |
-| placement | `dropdown` 出现的位置 | String | `up`, `down`, `left`, `right` | down |
+| placement | `dropdown` 出现的位置 | String | `top`, `bottom` | bottom |
 | valueWithLabel | 是否将 `label` 值一并返回，默认只返回 `value` | Boolean | - | false |
 
 ## Select 事件

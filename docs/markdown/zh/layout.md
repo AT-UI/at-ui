@@ -151,9 +151,6 @@
 | .flex | 使用 `flexbox` 布局 |
 
 <style lang="scss" scoped>
-  /**
-   * Grid
-   */
   .row {
     background-color: #f2f8fe;
   }

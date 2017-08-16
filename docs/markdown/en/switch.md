@@ -1,13 +1,13 @@
 
-# Switch 开关
+# Switch
 
 ----
 
-开关用于表示两种状态之间的切换，跟单独使用的 `checkbox` 有点类型，但 `switch` 开关更多的是触发即可改变状态，而 `checkbox` 更多的是用于表格，一般都需要配合表单的提交操作
+Switch is used for switching between two states, it's similar with the singleton `Checkbox`. But the `Switch` button is triggered to change state, while `Checkbox` is used more in form.
 
-## 基础用法
+## Basic
 
-基础用法，状态切换会触发事件
+Basic usage, trigger events when status changed.
 
 :::demo
 ```html
@@ -16,15 +16,15 @@
 ```
 :::
 
-## 内嵌文字或图标
+## Inline Text or Icon
 
-开关内部内容可自定义，例如插入文字或图标，增强视觉效果。通过 `slot="checkedText"` 和 `slot="unCheckedText"` 完成
+The contents of switch button can be customized, such as inserting text or icons to enhance visual effects. Complete by `slot="checkedText"` and `slot="unCheckedText"`
 
 :::demo
 ```html
 <at-switch>
-  <span slot="checkedText">开</span>
-  <span slot="unCheckedText">关</span>
+  <span slot="checkedText">Open</span>
+  <span slot="unCheckedText">Close</span>
 </at-switch>
 <at-switch>
   <span slot="checkedText"><i class="icon icon-left-arrow"></i></span>
@@ -33,70 +33,77 @@
 ```
 :::
 
-## 不可用开关
+## Disabled
 
-添加属性 `disabled` 禁用开关按钮
+To make a switch button as disabled, add `disabled` property to the Switch Button.
 
 :::demo
 ```html
 <at-switch disabled :value="true">
-  <span slot="checkedText">开</span>
-  <span slot="unCheckedText">关</span>
+  <span slot="checkedText">Open</span>
+  <span slot="unCheckedText">Close</span>
 </at-switch>
 <at-switch disabled>
-  <span slot="checkedText">开</span>
-  <span slot="unCheckedText">关</span>
+  <span slot="checkedText">Open</span>
+  <span slot="unCheckedText">Close</span>
 </at-switch>
 <at-switch disabled></at-switch>
 ```
 :::
 
-## 不同尺寸
+## Size
 
-添加属性 `size` 可设置按钮的尺寸大小，默认提供三种尺寸：`small`，`normal`，`large`
+There are three sizes of a Switch Button: `large`，`normal`，`small`.
 
 :::demo
 ```html
 <div>
   <at-switch size="small"></at-switch>
   <at-switch size="small">
-    <span slot="checkedText">开</span>
-    <span slot="unCheckedText">关</span>
+    <span slot="checkedText">Open</span>
+    <span slot="unCheckedText">Close</span>
   </at-switch>
   <at-switch size="small" disabled></at-switch>
 </div>
 <div style="margin-top: 8px;">
   <at-switch></at-switch>
   <at-switch>
-    <span slot="checkedText">开</span>
-    <span slot="unCheckedText">关</span>
+    <span slot="checkedText">Open</span>
+    <span slot="unCheckedText">Close</span>
   </at-switch>
   <at-switch disabled></at-switch>
 </div>
 <div style="margin-top: 8px;">
   <at-switch size="large"></at-switch>
   <at-switch size="large">
-    <span slot="checkedText">开</span>
-    <span slot="unCheckedText">关</span>
+    <span slot="checkedText">Open</span>
+    <span slot="unCheckedText">Close</span>
   </at-switch size="large">
   <at-switch size="large" disabled></at-switch>
 </div>
 ```
 :::
 
-## Switch 参数
+## Switch Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| value | Switch 状态值 | Boolean | - | false |
-| size | 开关的尺寸大小 | String | `small`, `normal`, `large` | normal |
-| disabled | 是否禁用按钮 | Boolean | — | false |
+| value | whether the Switch is checked | Boolean | - | false |
+| size | size of Switch | String | `small`, `normal`, `large` | normal |
+| disabled | whether the Switch is disabled | Boolean | — | false |
 
-## Switch 事件
+## Switch Slots
 
-| 事件名称      | 说明          | 返回值  |
+| Name      | Description          |
+|---------- |-------------- |
+| checkedText | customize content when state is opening |
+| unCheckedText | customize content when state is closed |
+
+## Switch Events
+
+| Event Name      | Description          | Return Value  |
 |---------- |-------------- |---------- |
-| change | 开关状态变化时触发 | 开关的状态 |
+| change | Emitted when the state of the switch changed | true or false |
 
 <script>
 export default {

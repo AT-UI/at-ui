@@ -99,11 +99,11 @@
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| type | 全局提示的类别 | string | `success`, `error`, `warning`, `info` | `info` |
-| message | 提示的内容 | string | - | - |
-| duration | 自动关闭的延时，默认为 `3000` 毫秒 | number | - | 3000 |
-| icon | 自定义类别ICON | string | - | `info` |
-| onClose | 关闭提示框时的回调函数 | function | - | - |
+| type | 全局提示的类别 | String | `success`, `error`, `warning`, `info` | `info` |
+| message | 提示的内容 | String | - | - |
+| duration | 自动关闭的延时，默认为 `3000` 毫秒 | Number | - | 3000 |
+| icon | 自定义类别ICON | String | - | `info` |
+| onClose | 关闭提示框时的回调函数 | Function | - | - |
 
 <script>
   export default {

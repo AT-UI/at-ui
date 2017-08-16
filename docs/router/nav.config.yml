@@ -20,7 +20,7 @@ zh:
         - title: 介绍
           name: Introduction
         - title: 安装
-          name: Install
+          name: Installation
         - title: 快速上手
           name: Quickstart
         - title: 更新日志
@@ -107,11 +107,11 @@ en:
       items:
         - title: Introduction
           name: Introduction
-        - title: Install
-          name: Install
+        - title: Installation
+          name: Installation
         - title: Quickstart
           name: Quickstart
-        - title: Changelog
+        - title: Change Log
           name: Changelog
     - title: Components
       name: Docs
@@ -148,7 +148,7 @@ en:
           items:
             - title: Alert
               name: Alert
-            - title: 徽Badge标
+            - title: Badge
               name: Badge
             - title: LoadingBar
               name: LoadingBar

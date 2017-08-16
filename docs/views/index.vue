@@ -40,7 +40,7 @@
           </div>
           <div class="title">指南</div>
           <div class="desc">了解设计指南，利用统一的规范进行设计赋能，帮助产品设计师，前端工程师，后台工程师迅速搭建中后台产品。</div>
-          <router-link :to="{ name: 'Guide' }"><div class="btn-readmore">查看详情 <i class="icon icon-chevron-right"></i></div></router-link>
+          <div class="btn-readmore"><router-link :to="{ name: 'Guide' }">查看详情 <i class="icon icon-chevron-right"></i></router-link></div>
         </div>
         <div class="navigation-panel">
           <div class="icon-cnt">
@@ -48,7 +48,7 @@
           </div>
           <div class="title">组件</div>
           <div class="desc">基于 Vue 的 UI 组件化，可以通过组件的 Demo 体验交互细节，开发中既可以根据需要单独引用，也可以使用全局方式引入所有组件。</div>
-          <router-link :to="{ name: 'Docs' }"><div class="btn-readmore">查看详情 <i class="icon icon-chevron-right"></i></div></router-link>
+          <div class="btn-readmore"><router-link :to="{ name: 'Docs' }">查看详情 <i class="icon icon-chevron-right"></i></router-link></div>
         </div>
         <div class="navigation-panel">
           <div class="icon-cnt">
@@ -56,7 +56,7 @@
           </div>
           <div class="title">资源</div>
           <div class="desc">提供视觉稿原稿下载，产品可直接用 Sketch 工具快速搭建高保真的产品原型稿，减少沟通成本，提升工作效率。</div>
-          <router-link :to="{ name: 'Resource' }"><div class="btn-readmore">查看详情 <i class="icon icon-chevron-right"></i></div></router-link>
+          <div class="btn-readmore"><router-link :to="{ name: 'Resource' }">查看详情 <i class="icon icon-chevron-right"></i></router-link></div>
         </div>
       </div>
     </section>

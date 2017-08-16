@@ -1,74 +1,74 @@
 
-# Checkbox 多选框
+# Checkbox
 
 ----
 
-## 基本多选框
+## Basic
 
-独立使用时，需要单独绑定 `model`
-
-:::demo
-```html
-<at-checkbox v-model="checkboxValue" label="深圳">深圳</at-checkbox>
-<at-checkbox v-model="checkboxValue" label="北京">北京</at-checkbox>
-<at-checkbox v-model="checkboxValue" label="广州">广州</at-checkbox>
-```
-:::
-
-## 不可用的多选框
-
-添加 `disabled` 属性禁用多选框
+Need to bind `model` separately for standalone use.
 
 :::demo
 ```html
-<at-checkbox v-model="checkboxValue2" label="深圳" disabled>深圳</at-checkbox>
-<at-checkbox v-model="checkboxValue3" label="凹凸实验室" disabled checked>凹凸实验室</at-checkbox>
+<at-checkbox v-model="checkboxValue" label="Shenzhen">Shenzhen</at-checkbox>
+<at-checkbox v-model="checkboxValue" label="Beijing">Beijing</at-checkbox>
+<at-checkbox v-model="checkboxValue" label="Guangzhou">Guangzhou</at-checkbox>
 ```
 :::
 
-## 多选框组
+## Disabled
 
-适用于多个多选框绑定同一个 `model` 的情景
+To make a checkbox as disabled, add `disabled` property to the `Checkbox`.
+
+:::demo
+```html
+<at-checkbox v-model="checkboxValue2" label="Shenzhen" disabled>Shenzhen</at-checkbox>
+<at-checkbox v-model="checkboxValue3" label="O2Team" disabled checked>O2Team</at-checkbox>
+```
+:::
+
+## Checkbox Group
+
+Use `CheckboxGroup` combined with array to generate a combination.
 
 :::demo
 ```html
 <at-checkbox-group v-model="checkboxValue4">
-  <at-checkbox label="深圳">深圳</at-checkbox>
-  <at-checkbox label="北京">北京</at-checkbox>
-  <at-checkbox label="上海">上海</at-checkbox>
-  <at-checkbox label="广州" disabled>广州</at-checkbox>
-  <at-checkbox label="凹凸实验室" disabled>凹凸实验室</at-checkbox>
+  <at-checkbox label="Shenzhen">Shenzhen</at-checkbox>
+  <at-checkbox label="Beijing">Beijing</at-checkbox>
+  <at-checkbox label="Shanghai">Shanghai</at-checkbox>
+  <at-checkbox label="Guangzhou" disabled>Guangzhou</at-checkbox>
+  <at-checkbox label="O2Team" disabled>O2Team</at-checkbox>
 </at-checkbox-group>
 <p class="demo-desc">{{ checkboxValue4 }}</p>
 ```
 :::
 
-## 全选
+## Check All
 
-在实现全选效果时，可能会用到 `indeterminate` 属性
+The `indeterminate` property can help you to achieve a 'check all' effect.
 
-## Checkbox 参数
+## Checkbox Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| label | 选中状态的值 | String | - | - |
-| disabled | 是否禁用按钮 | Boolean | - | false |
-| checked | 是否已勾选 | Boolean | - | false |
+| label | value of selection | String | - | - |
+| disabled | disable selection or not | Boolean | - | false |
+| checked | whether the checkbox is selected | Boolean | - | false |
 
-## Checkbox Group 事件
+## Checkbox Group Events
 
-| 事件名称      | 说明          | 返回值  |
+| Event Name      | Description          | Return Value  |
 |---------- |-------------- |---------- |
-| checkbox-group-change | 绑定的值变化时触发 | 选中的按钮的 label 值 |
+| checkbox-group-change | Emitted when the state of selection is changed | the `lavel` value of selected button |
 
 <script>
 export default {
   data() {
     return {
-      checkboxValue: ['深圳'],
+      checkboxValue: ['Shenzhen'],
       checkboxValue2: [],
-      checkboxValue3: ['深圳'],
-      checkboxValue4: ['深圳', '凹凸实验室']
+      checkboxValue3: ['Shenzhen'],
+      checkboxValue4: ['Shenzhen', 'O2Team']
     }
   }
 }

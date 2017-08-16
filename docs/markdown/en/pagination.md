@@ -1,13 +1,13 @@
 
-# Pagination 分页
+# Pagination
 
 ----
 
-当表格的数据量过多时，可以使用分页组件，每次只加载一页数据
+A long list can be divided into several pages by Pagination, and only one page will be loaded at a time.
 
-## 基础分页
+## Basic
 
-当页数小于 8 页时
+Less than 8 pages.
 
 :::demo
 ```html
@@ -15,9 +15,9 @@
 ```
 :::
 
-## 更多的分页
+## More Pages
 
-当页数大于 8 页时，会显示更多可点击项
+More than 8 pages.
 
 :::demo
 ```html
@@ -25,9 +25,9 @@
 ```
 :::
 
-## 显示总数
+## Show Total Number
 
-设置属性 `show-total` 显示数据总数
+To display the amount of data, add `show-total` property to the Pagination.
 
 :::demo
 ```html
@@ -35,9 +35,9 @@
 ```
 :::
 
-## 快速跳转
+## Quick Jumper
 
-设置属性 `show-quickjump` 显示 `快速跳转` 操作框
+To display the quick-jump button, add `show-quickjump` property to the Pagination.
 
 :::demo
 ```html
@@ -45,9 +45,9 @@
 ```
 :::
 
-## 改变每页显示的数量
+## Items in Each Page
 
-设置属性 `show-sizer` 显示 `改变每页显示数` 操作框
+You can set items amount shown in each page.
 
 :::demo
 ```html
@@ -55,9 +55,9 @@
 ```
 :::
 
-## 完整功能的分页
+## Full Feature
 
-一个完整功能的分页组件
+Full Feature Pagination.
 
 :::demo
 ```html
@@ -65,9 +65,9 @@
 ```
 :::
 
-## 小型分页
+## Mini Pagination
 
-设置属性 `size` 更改分页组件的尺寸，仅支持传入 `small`
+To use mini size pagination, set `size` property to `small`.
 
 :::demo
 ```html
@@ -75,9 +75,9 @@
 ```
 :::
 
-## 极简风格的分页
+## Simple Mode
 
-设置属性 `simple` 使用极简风格的分页组件，功能比较简单，适用于某些特殊场景
+Set `simple` property to use a simple pagination.
 
 :::demo
 ```html
@@ -86,26 +86,26 @@
 ```
 :::
 
-## Pagination 参数
+## Pagination Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |-----------------------------  |-------- |
-| current | 当前页码 | Number | - | 1 |
-| total | 总的数据条目数 | Number | - | 0 |
-| page-size | 每页最多展示的条目数 | Number | - | 10 |
-| page-size-opts | 改变每页显示数量的 `select` 选择框配置项 | Array | - | [10, 20, 30, 40] |
-| show-total | 是否显示总条目数 | Boolean | - | false |
-| show-sizer | 是否显示每页展示数量的 `select` 选择框 | Boolean | - | false |
-| show-quickjump | 是否显示快速跳转 | Boolean | - | false |
-| size | 分页组件的大小 | String | `small` | - |
-| simple | 是否为极简风格 | Boolean | - | false |
+| current | current page number | Number | - | 1 |
+| total | total number of data | Number | - | 0 |
+| page-size | amount shown in each page | Number | - | 10 |
+| page-size-opts | The configuration of switching the amount of data shown in each page | Array | - | [10, 20, 30, 40] |
+| show-total | to display the total number and range | Boolean | - | false |
+| show-sizer | determine whether `page-size` can be changed | Boolean | - | false |
+| show-quickjump | determine whether you can jump to a page directly | Boolean | - | false |
+| size | specify the size of Pagination | String | `small` | - |
+| simple | determine whether to use simple mode | Boolean | - | false |
 
-## Pagination 事件
+## Pagination Events
 
-| 事件名称      | 说明          | 返回值  |
+| Event Name      | Description          | Return Value  |
 |---------- |-------------- |---------- |
-| page-change | 页码改变时触发的回调 | 页码 |
-| pagesize-change | 切换每页显示的条数时触发的回调 | 每页的条目数 |
+| page-change | Emitted when the page was changed | page number |
+| pagesize-change | Emitted when the page sizer was changed | page size |
 
 <style lang="scss" scoped>
   .at-pagination + .at-pagination {

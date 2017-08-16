@@ -1,15 +1,15 @@
 
-# LoadingBar 加载进度条
+# LoadingBar
 
 ----
 
-全局创建了一个用于显示页面加载、异步请求的加载进度条。
+Create a loading progress bar globally to display the status of asynchronous requests.
 
-因为可复用性的关系，`LoadingBar` 只会全局创建一个实例，而且在 `Vue.prototype` 中添加了全局对象 `$Loading`，可以直接通过 `this.$Loading` 操作实例
+Because of reusability, `LoadingBar` creates only one instance globally. You can use the `this.$Loading` instance directly.
 
-## 基础用法
+## Basic
 
-通过调用 `$Loading` 提供的三种方法来控制全局的加载进度条 `start()`、`finish()`、`error()`
+Invoke `$Loading` by thress methods: `start()`、`finish()`、`error()`
 
 :::demo
 ```html
@@ -39,18 +39,18 @@
 ```
 :::
 
-## LoadingBar 函数方法
+## LoadingBar Methods
 
-| 函数名      | 说明          | 参数      |
+| Function Name      | Description          | Parameter      |
 |---------- |-------------- |---------- |
-| start | 开始从 0 显示加载进度条，并自动加载 | - |
-| finish | 完成进度条 | - |
-| error | 显示错误类型的进度条 | - |
-| update | 指定进度的百分比，更新进度条 | percent，指定进度的百分比 |
+| start | start loading the progress from 0, and load automatically | - |
+| finish | complete progress | - |
+| error | display the error type of progress bar | - |
+| update | specify and update the percentage of progress | percentage |
 
-## LoadingBar 配置
+## LoadingBar Configs
 
-提供 `LoadingBar` 的全局配置，使用方法如下：
+Provides the global configuration of `LoadingBar`, usage methods below:
 
 ```js
 this.$Loading.config({
@@ -64,16 +64,18 @@ this.$Loading.config({
 ```
 :::
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+## LoadingBar Props
+
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| width | 进度条的线宽 | Number | - | 2 |
+| width | the width of line | Number | - | 2 |
 
 <script>
 export default {
   data () {
     return {
       isSetWidth: false,
-      btnText: '设置线宽为 4px'
+      btnText: 'Set line width to 4px'
     }
   },
   methods: {
@@ -92,13 +94,13 @@ export default {
     setWidth () {
       if (this.isSetWidth) {
         this.isSetWidth = false
-        this.btnText = '设置线宽为 4px'
+        this.btnText = 'Set line width to 4px'
         this.$Loading.config({
           width: 2
         })
       } else {
         this.isSetWidth = true
-        this.btnText = '取消设置线宽'
+        this.btnText = 'Cancel the line width to 4px'
         this.$Loading.config({
           width: 4
         })

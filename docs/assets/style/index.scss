@@ -161,7 +161,6 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
     .btn-readmore {
       display: inline-block;
       margin-top: 16px;
-      padding: 4px 20px;
       color: #6B798C;
       font-size: 13px;
       border: 1px solid #ECECEC;
@@ -175,6 +174,12 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, .5);
       }
       &.disabled {
         cursor: not-allowed;
+      }
+
+      a {
+        display: block;
+        padding: 4px 20px;
+        color: #6B798C;
       }
     }
   }

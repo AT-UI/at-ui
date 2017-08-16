@@ -1,10 +1,10 @@
-# 安装
+# Installation
 
 ----
 
-## 使用 npm 安装
+## NPM
 
-推荐使用 `npm` 的方式进行开发，享受 `node` 生态圈和 `webpack` 工具链带来的便利。通过 `npm` 安装的模块包，我们可以轻松的使用 `import` 或者 `require` 的方式引用
+Recommended use `npm` to development, enjoy the ecosystem of `node` and the chain tool of `webpack`, which brings convenience of development. With the package modules installed by `NPM`, we can easily refer to it in `import` or `require`.
 
 ```bash
 npm install at-ui
@@ -12,24 +12,24 @@ npm install at-ui
 npm install at-ui-style
 ```
 
-## 浏览器标签引入
+## CDN
 
-可以采用传统的 `<script>` 和 `<link>` 标签的方式引入资源，并且全局使用 `AT-UI`。
+Can use traditional `<script>` and `<link>` tag for global use.
 
-可以在 [UNPKG](https://unpkg.com/at-ui/) 上找到最新版本的资源文件，然后在页面中直接引入
+Get the latest version of `AT-UI` from [UNPKG](https://unpkg.com/at-ui/).
 
 ```html
-<!-- 引入Vue -->
+<!-- import Vue -->
 <script src="//vuejs.org/js/vue.min.js"></script>
-<!-- 引入样式 -->
+<!-- import CSS -->
 <link rel="stylesheet" href="//unpkg.com/at-ui-style/css/at.min.css">
-<!-- 引入组件库 -->
+<!-- import JavaScript -->
 <script src="//unpkg.com/at-ui/dist/at.min.js"></script>
 ```
 
-#### 示例：
+#### DEMO：
 
-通过浏览器资源标签引入的方式，我们可以迅速用 `AT-UI` 写出一个 DEMO 页面，可复制下列代码或者直接查看 [示例页面](https://jsbin.com/dezafos/edit?html,output)
+By using the script tag to import resources, we can quickly write a demo page with `AT-UI`. You can copy the following code or view [Online Demo](https://jsbin.com/dezafos/edit?html,output) directly.
 
 ```html
 <!DOCTYPE html>
