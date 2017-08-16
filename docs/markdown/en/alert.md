@@ -1,104 +1,106 @@
 
-# Alert 警告提示
+# Alert
 
 ----
 
-警告提示用于展示页面中需要提示用户关注的信息，跟 `AtMessage` 组件不同，警告提示采用非浮层的方式呈现，会始终显示在页面中，不会自动消失
+Alert component used to display information that needs to be noticed in the page. Unlike `AtMessage` component, alert component is presented in a non floating layer that will always display on the page and not disappear automatically.
 
 
-## 基本用法
+## Basic
 
-仅用来做信息的展示，默认不带关闭按钮，警告提示一直展示。通过属性 `type` 设置提示类型，默认提供四种类型：`success`，`error`，`warning`，`info`。警告提示的内容通过参数 `message` 传递
+Only used for display information, without close button by default.<br>
+There are four `type` of Alert: `success`，`error`，`warning`，`info`<br>
+The contents of Alert are passed through `message` property.
 
 :::demo
 ```html
-<at-alert message="这里是提示的文案~这里是提示的文案~这里是提示的文案~" type="success"></at-alert>
-<at-alert message="这里是提示的文案~" type="error"></at-alert>
-<at-alert message="这里是提示的文案~" type="warning"></at-alert>
-<at-alert message="这里是提示的文案~" type="info"></at-alert>
+<at-alert message="Here is the information~Here is the information~Here is the information~" type="success"></at-alert>
+<at-alert message="Here is the information~" type="error"></at-alert>
+<at-alert message="Here is the information~" type="warning"></at-alert>
+<at-alert message="Here is the information~" type="info"></at-alert>
 ```
 :::
 
 
-## 不可关闭的警告提示
+## Closable
 
-添加属性 `closable` 展示关闭按钮，点击可隐藏提示
+To make a alert component closable, add `closable` property to the Alert.
 
 :::demo
 ```html
-<at-alert message="这里是不可关闭的警告提示" closable></at-alert>
+<at-alert message="Here is the alert that can be closed." closable></at-alert>
 ```
 :::
 
 
-## 自定义关闭按钮
+## Customize Close Text
 
-设置属性 `close-text`，可自定义关闭按钮为文字或者其他字符，自定义的文字会替换原先的关闭 `Icon`
+Customize the text or icon of close button by `close-text` property.
 
 :::demo
 ```html
-<at-alert message="这里是自定义关闭按钮的警告提示" close-text="关闭"></at-alert>
+<at-alert message="Here is the information~" close-text="Close"></at-alert>
 ```
 :::
 
 
-## 显示警告类别的 Icon
+## With Icon
 
-设置属性 `show-icon`，可在警告提示前添加图标标识，以提高信息的可读性
+Append Icon before text by `show-icon` property, that can improve readability.
 
 :::demo
 ```html
-<at-alert message="显示 ICON 的警告提示" show-icon></at-alert>
+<at-alert message="Here is the information with ICON" show-icon></at-alert>
 ```
 :::
 
 
-## 显示辅助内容
+## Auxiliary Content
 
-警告提示可包含标题和内容，分别通过属性 `message` 和 `description` 配置
+The text of alert component can contain title and content, which are configured by `message` and `description` properties.
 
 :::demo
 ```html
-<at-alert message="成功提示的标题" description="成功提示的详细说明成功提示的详细说明成功提示的详细说明" type="success" closable></at-alert>
-<at-alert message="错误提示的标题" description="错误提示的详细说明错误提示的详细说明错误提示的详细说明" type="error" closable></at-alert>
-<at-alert message="警告提示的标题" description="警告提示的详细说明警告提示的详细说明警告提示的详细说明" type="warning" closable></at-alert>
-<at-alert message="信息提示的标题" description="信息提示的详细说明信息提示的详细说明信息提示的详细说明" type="info" closable></at-alert>
+<at-alert message="Title of Success" description="Here is the information" type="success" closable></at-alert>
+<at-alert message="Title of Error" description="Here is the information" type="error" closable></at-alert>
+<at-alert message="Title of Warning" description="Here is the information" type="warning" closable></at-alert>
+<at-alert message="Title of Info" description="Here is the information" type="info" closable></at-alert>
 ```
 :::
 
 
-## 显示类别 ICON 和辅助内容
+## With Icon and Auxiliary Content
 
-多种属性组合使用
+Multiple properties are used in combination.
 
 :::demo
 ```html
-<at-alert message="成功提示的标题" description="成功提示的详细说明成功提示的详细说明成功提示的详细说明成功提示的详细说明成功提示的详细说明成功提示的详细说明成功提示的详细说明成功提示的详细说明成功提示的详细说明" type="success" show-icon closable></at-alert>
-<at-alert message="错误提示的标题" description="错误提示的详细说明错误提示的详细说明错误提示的详细说明" type="error" show-icon closable></at-alert>
-<at-alert message="警告提示的标题" description="警告提示的详细说明警告提示的详细说明警告提示的详细说明" type="warning" show-icon closable></at-alert>
-<at-alert message="信息提示的标题" description="信息提示的详细说明信息提示的详细说明信息提示的详细说明" type="info" show-icon closable></at-alert>
+<at-alert message="Title of Success" description="Here is the information~Here is the information~Here is the information~Here is the information~Here is the information~Here is the information~Here is the information~" type="success" show-icon closable></at-alert>
+<at-alert message="Title of Error" description="Here is the information" type="error" show-icon closable></at-alert>
+<at-alert message="Title of Warning" description="Here is the information" type="warning" show-icon closable></at-alert>
+<at-alert message="Title of Info" description="Here is the information" type="info" show-icon closable></at-alert>
 ```
 :::
 
 
-## Alert 参数
+## Alert Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| type | 警告提示的类别 | String | `success`, `error`, `warning`, `info` | `info` |
-| message | 必填，警告的主要内容，也可作为标题 | String | - | - |
-| description | 警告的辅助内容 | String | - | - |
-| closable | 是否显示关闭按钮 | Boolean | - | false |
-| showIcon | 是否显示警告类别的 ICON | Boolean | - | false |
-| closeText | 自定义关闭样式 | String | - | - |
-| icon | 自定义类别 ICON | String | - | `info` |
+| type | the type of Alert | String | `success`, `error`, `warning`, `info` | `info` |
+| message | required, main content of Alert | String | - | - |
+| description | auxiliary content of Alert | String | - | - |
+| closable | whether display the close button | Boolean | - | false |
+| showIcon | whether display the type of icon | Boolean | - | false |
+| closeText | customize close text | String | - | - |
+| icon | customize the icon of alert | String | - | `info` |
 
 
-## Alert 事件
+## Alert Events
 
-| 事件名称      | 说明          | 返回值  |
+| Event Name      | Description          | Return Value  |
 |---------- |-------------- |---------- |
-| on-close | 点击关闭按钮时触发 | - |
+| on-close | Emitted when close button clicked | - |
 
 
 <style lang="scss" scoped>

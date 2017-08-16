@@ -98,15 +98,15 @@ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Pi
 <div class="type-demo-container">
   <div class="row flex-middle typo-helvetica-neue">
     <div class="col-md-5 type">Helvetica Neue</div>
-    <div class="col-md-12 content">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</div>
+    <div class=" content">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</div>
   </div>
   <div class="row flex-middle typo-helvetica">
     <div class="col-md-5 type">Helvetica</div>
-    <div class="col-md-12 content">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</div>
+    <div class=" content">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</div>
   </div>
   <div class="row flex-middle typo-arial">
     <div class="col-md-5 type">Arial</div>
-    <div class="col-md-12 content">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</div>
+    <div class=" content">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</div>
   </div>
 </div>
 
@@ -184,6 +184,7 @@ Use `14px` for font size by default.
     .content {
       font-size: 15px;
       padding-left: 24px;
+      word-break: break-all;
     }
   }
 </style>

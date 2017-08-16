@@ -1,82 +1,80 @@
 
-# Input 输入框
+# Input
 
 ----
 
-## 单行输入框
+## Basic
 
-基本输出框，默认宽度 `100%`
+Basic Input Box, default width is `100%`.
 
 :::demo
 ```html
-<at-input v-model="inputValue" placeholder="输入提示"></at-input>
-<at-input v-model="inputValue" placeholder="禁用状态" disabled></at-input>
-<at-input v-model="password" type="password" placeholder="密码"></at-input>
+<at-input v-model="inputValue" placeholder="Please input"></at-input>
+<at-input v-model="inputValue" placeholder="Disabled" disabled></at-input>
+<at-input v-model="password" type="password" placeholder="Password"></at-input>
 ```
 :::
 
-## 带状态的单行输入框
+## With Status
 
-添加属性 `status` ，表示不同含义的输入框，只是颜色上的变化，不影响按钮逻辑。默认提供四种状态：`success`，`error`，`warning`，`info`
+Add the property `status`, which represents the input box with different meanings. It does not affect the button logic. Provide four status by default: `success`，`error`，`warning`，`info`
 
 :::demo
-
 ```html
 <at-input v-model="inputValue2" placeholder="success" status="success" icon="check-circle"></at-input>
 <at-input v-model="inputValue2" placeholder="error" status="error" icon="x-circle"></at-input>
 <at-input v-model="inputValue2" placeholder="warning" status="warning" icon="alert-circle"></at-input>
 <at-input v-model="inputValue2" placeholder="info" status="info" icon="info"></at-input>
 ```
-
 :::
 
-## 带图标的输入框
+## Wich Icon
 
-添加属性 `icon` ，在输入框后面显示提示性的图标。`icon` 属性值为图标的类名，具体请查阅 `品牌/图标` 章节
+To display the tooltip icon after the input box, add `icon` property to Input. Its value is the class name of Icon. Please refer to the section of `Brand/Icon` for details.
 
 :::demo
 ```html
-<at-input v-model="inputValue3" placeholder="请输入链接" icon="link"></at-input>
+<at-input v-model="inputValue3" placeholder="Please input url" icon="link"></at-input>
 ```
 :::
 
-## 前置 / 后置标签型输入框
+## Pre / Post Label
 
-设置 `slot="prepend"` 或者 `slot="append"` ，可自定义复合型输入框
+Set `slot="prepend"` or `slot="append"` to customize the input box.
 
 :::demo
 ```html
-<at-input v-model="inputValue4" placeholder="请输入内容">
+<at-input v-model="inputValue4" placeholder="Please input">
   <template slot="prepend">
     <span>Https://</span>
   </template>
 </at-input>
-<at-input v-model="inputValue4" placeholder="请输入内容" size="small">
+<at-input v-model="inputValue4" placeholder="Please input" size="small">
   <template slot="append">
     <span>@aotu.io</span>
   </template>
 </at-input>
-<at-input v-model="inputValue4" placeholder="请输入内容">
+<at-input v-model="inputValue4" placeholder="Please input">
   <template slot="prepend">
     <i class="icon icon-link"></i>
   </template>
 </at-input>
-<at-input v-model="inputValue4" placeholder="请输入内容" prepend-button>
+<at-input v-model="inputValue4" placeholder="Please input" prepend-button>
   <template slot="prepend">
-    <span>搜索</span>
+    <span>Search</span>
   </template>
 </at-input>
-<at-input v-model="inputValue4" placeholder="请输入内容" append-button>
+<at-input v-model="inputValue4" placeholder="Please input" append-button>
   <template slot="append">
-    <span>搜索</span>
+    <span>Search</span>
   </template>
 </at-input>
-<at-input v-model="inputValue4" placeholder="请输入内容" prepend-button>
+<at-input v-model="inputValue4" placeholder="Please input" prepend-button>
   <template slot="prepend">
     <i class="icon icon-search"></i>
   </template>
 </at-input>
-<at-input v-model="inputValue4" placeholder="请输入内容" append-button>
+<at-input v-model="inputValue4" placeholder="Please input" append-button>
   <template slot="append">
     <i class="icon icon-search"></i>
   </template>
@@ -84,44 +82,51 @@
 ```
 :::
 
-## 不同尺寸
+## Size
 
-设置属性 `size` 指定输入框的尺寸，支持三种尺寸：`large`，`normal`，`small`
+There are three sizes of an Input box: `large`，`normal`，`small`.
 
 :::demo
 ```html
-<at-input v-model="inputValue" size="large" placeholder="大尺寸"></at-input>
-<at-input v-model="inputValue" placeholder="正常尺寸"></at-input>
-<at-input v-model="inputValue" size="small" placeholder="小尺寸"></at-input>
+<at-input v-model="inputValue" size="large" placeholder="Large Size"></at-input>
+<at-input v-model="inputValue" placeholder="Normal Size"></at-input>
+<at-input v-model="inputValue" size="small" placeholder="Small Size"></at-input>
 ```
 :::
 
-## Input 参数
+## Input Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| type | 输入框类型，原生属性 | String | - | - |
-| name | 原生属性 | String | - | - |
-| value | 绑定的值 | String, Number | - | - |
-| placeholder | 占位文本（原生属性） | String | - | - |
-| disabled | 是否禁用（原生属性） | Boolean | - | false |
-| readonly | 是否只读（原生属性） | Boolean | - | false |
-| maxlength | 最大长度（原生属性） | Number | - | - |
-| minlength | 最小长度（原生属性） | Number | - | - |
-| max | 最大值（原生属性） | Number | - | - |
-| min | 最小值（原生属性） | Number | - | - |
-| autofocus | 是否自动获取焦点（原生属性） | Boolean | - | false |
-| size | 输入框尺寸 | String | `small`, `normal`, `large` | normal |
-| status | 输入框类型 | String | success, error, warning, info | - |
-| prependButton | 前置元素是否包含可点击的按钮，用于复合型输入框 | Boolean | - | false |
-| appendButton | 后置元素是否包含可点击的按钮，用于复合型输入框 | Boolean | - | false |
+| type | input type | String | `text`, `passowrd`, `textarea` | - |
+| name | same as `name` in native input | String | - | - |
+| value | binding value | String / Number | - | - |
+| placeholder | placeholder of input | String | - | - |
+| disabled | whether input is disabled | Boolean | - | false |
+| readonly | same as native input | Boolean | - | false |
+| maxlength | maximum input text length | Number | - | - |
+| minlength | minimum input text length | Number | - | - |
+| max | same as native input | Number | - | - |
+| min | same as native input | Number | - | - |
+| autofocus | same as native input | Boolean | - | false |
+| size | size of input, works when type is not 'textarea' | String | `small`, `normal`, `large` | normal |
+| status | status of input | String | `success`, `error`, `warning`, `info` | - |
+| prependButton | whether has prepend button or not | Boolean | - | false |
+| appendButton | whether has append button or not | Boolean | - | false |
 
-## Input 事件
+## Input slot
 
-| 事件名称 | 说明          | 返回参数  |
+| Name | Description          |
+|------ |------------ |
+| prepend | Preposed content, only works in text type |
+| append | Append content, only works in text type |
+
+## Input Events
+
+| Event Name | Description          | Return Value  |
 |---------- |-------------- |---------- |
-| focus | 获得焦点时触发 | event |
-| blur | 失去焦点时触发 | event |
+| focus | Emitted when focus | event |
+| blur | Emitted when blur | event |
 
 <script>
 export default {

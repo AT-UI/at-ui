@@ -88,11 +88,11 @@
   export default {
     methods: {
       modalPrompt () {
-        this.$Modal.confirm({
+        this.$Modal.prompt({
           title: '提示',
-          content: '此操作需要非常谨慎，您确定要这么做吗？'
-        }).then(() => {
-          this.$Message('点击了「确认」按钮')
+          content: '请输入邮件地址：'
+        }).then((data) => {
+          this.$Message(`点击了「确认」按钮，输入框的值为 ${data.value}`)
         }).catch(() => {
           this.$Message('点击了「取消」按钮')
         })
@@ -255,7 +255,7 @@
 | on-cancel | 点击取消的回调事件 | - |
 | on-confirm | 点击确定的回调事件 | - |
 
-## Modal Slot
+## Modal Slots
 
 | 名称     | 说明          |
 |-------- |------------------- |

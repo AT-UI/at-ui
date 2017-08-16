@@ -1,12 +1,12 @@
-# Progress 进度条
+# Progress
 
 ----
 
-用于展示事件的进度和状态
+Used to display the progress and status of events.
 
-## 基本进度条
+## Basic
 
-标准的进度条，当进度达到 `100%` 的时候，会自动将状态设置为 `success`
+Basic progress will set the status to `success` automatically when the progress arrives at `100%`.
 
 :::demo
 ```html
@@ -17,9 +17,9 @@
 ```
 :::
 
-## 小型进度条
+## Mini Progress
 
-在一些狭小的区域，需要使用小型进度条。通过参数 `stroke-width` 可配置进度条的线宽
+In the narrow areas, you need to use a mini progress bar. Set the width of progress bar with `stroke-width` property.
 
 :::demo
 ```html
@@ -34,9 +34,9 @@
 ```
 :::
 
-## 动态展示
+## Dynamic
 
-点击操作按钮，查看进度条的状态变化
+Click the buttons below to see the transition of progress.
 
 :::demo
 ```html
@@ -68,23 +68,19 @@
 ```
 :::
 
-## 环形进度条
+## Progress Props
 
-暂不支持
-
-## Progress 参数
-
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| percent | 百分比 | Number | - | 0 |
-| status | 进度条状态 | String | `success`, `error` | - |
-| stroke-width | 进度条的线宽 | Number | - | 8 |
+| percent | the percentage of Progress | Number | - | 0 |
+| status | the status of Progress | String | `success`, `error` | - |
+| stroke-width | the width of Progress Bar | Number | - | 8 |
 
-## Progress 事件
+## Progress Events
 
-| 事件名称      | 说明          | 返回值  |
+| Event Name      | Description          | Return Value  |
 |------------- |-------------- |---------- |
-| on-status-success | 进度到 `100%` 时触发 | 触发时 `percent` 的值 |
+| on-status-success | Emitted when the percentage of Progress achieved `100%` | event |
 
 <style lang="scss" scoped>
 .at-progress {

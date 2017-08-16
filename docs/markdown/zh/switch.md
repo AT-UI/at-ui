@@ -3,7 +3,7 @@
 
 ----
 
-开关用于表示两种状态之间的切换，跟单独使用的 `checkbox` 有点类型，但 `switch` 开关更多的是触发即可改变状态，而 `checkbox` 更多的是用于表格，一般都需要配合表单的提交操作
+开关用于表示两种状态之间的切换，跟单独使用的 `checkbox` 有点类似，但 `switch` 开关更多的是触发即可改变状态，而 `checkbox` 更多的是用于表格，一般都需要配合表单的提交操作
 
 ## 基础用法
 
@@ -91,6 +91,13 @@
 | value | Switch 状态值 | Boolean | - | false |
 | size | 开关的尺寸大小 | String | `small`, `normal`, `large` | normal |
 | disabled | 是否禁用按钮 | Boolean | — | false |
+
+## Switch Slots
+
+| 名称      | 说明          |
+|---------- |-------------- |
+| checkedText | 自定义打开时的内容 |
+| unCheckedText | 自定义关闭时的内容 |
 
 ## Switch 事件
 

@@ -24,8 +24,8 @@
 
 :::demo
 ```html
-<at-popover trigger="hover" content="Top Placement">
-  <at-button size="small">Hover</at-button>
+<at-popover trigger="click" content="Top Placement">
+  <at-button size="small">Click</at-button>
 </at-popover>
 <at-popover trigger="hover" title="Title" content="Top Placement">
   <at-button size="small">Hover</at-button>
@@ -56,7 +56,7 @@
 
 ## 嵌套内容
 
-除了可以使用属性 `title` 和 `conent` 设置弹出框的内容，还可以使用 `slot="title"` 和 `slot="content"` 的方式设置弹出框的嵌套内容
+除了可以使用属性 `title` 和 `content` 设置弹出框的内容，还可以使用 `slot="title"` 和 `slot="content"` 的方式设置弹出框的嵌套内容
 
 :::demo
 ```html

@@ -41,7 +41,7 @@
 :::demo
 ```html
 <at-dropdown>
-  <at-button size="small">hover菜单 <i class="icon icon-chevron-down"></at-button>
+  <at-button size="small">Hover 菜单 <i class="icon icon-chevron-down"></at-button>
   <at-dropdown-menu slot="menu">
     <at-dropdown-item name="shenzhen">深圳</at-dropdown-item>
     <at-dropdown-item name="guangzhou">广州</at-dropdown-item>
@@ -50,7 +50,7 @@
   </at-dropdown-menu>
 </at-dropdown>
 <at-dropdown trigger="click">
-  <at-button size="small">click菜单 <i class="icon icon-chevron-down"></at-button>
+  <at-button size="small">Click 菜单 <i class="icon icon-chevron-down"></at-button>
   <at-dropdown-menu slot="menu">
     <at-dropdown-item name="shenzhen">深圳</at-dropdown-item>
     <at-dropdown-item name="guangzhou">广州</at-dropdown-item>
@@ -68,7 +68,7 @@
 :::demo
 ```html
 <at-dropdown placement="bottom-right">
-  <at-button size="small">hover菜单 <i class="icon icon-chevron-down"></at-button>
+  <at-button size="small">Hover 菜单 <i class="icon icon-chevron-down"></at-button>
   <at-dropdown-menu slot="menu">
     <at-dropdown-item name="shenzhen">深圳</at-dropdown-item>
     <at-dropdown-item name="guangzhou">广州</at-dropdown-item>
@@ -86,7 +86,7 @@
 :::demo
 ```html
 <at-dropdown placement="bottom-right" @on-dropdown-command="handleCommand">
-  <at-button size="small">hover菜单 <i class="icon icon-chevron-down"></at-button>
+  <at-button size="small">Hover 菜单 <i class="icon icon-chevron-down"></at-button>
   <at-dropdown-menu slot="menu">
     <at-dropdown-item name="shenzhen">深圳</at-dropdown-item>
     <at-dropdown-item name="guangzhou">广州</at-dropdown-item>
@@ -96,20 +96,20 @@
 ```
 :::
 
-## AtDropdown 参数
+## Dropdown 参数
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | trigger | 触发 `Dropdown` 的方式 | String | `click`, `hover`, `focus` | `hover` |
 | placement | 下拉框的对齐方式 | String | `top`, `top-left`, `top-right`, `bottom`, `bottom-left`, `bottom-right` | `bottom` |
 
-## AtDropdown 事件
+## Dropdown 事件
 
 | 事件名称      | 说明          | 返回值  |
 |---------- |-------------- |---------- |
 | on-dropdown-command | 菜单项点击的时候触发 | 点击的菜单的 `name` 值 |
 
-## AtDropdownItem 参数
+## DropdownItem 参数
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |

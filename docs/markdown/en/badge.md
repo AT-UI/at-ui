@@ -1,11 +1,11 @@
 
-# Badge 徽标
+# Badge
 
 ----
 
-## 独立使用
+## Independent Use
 
-不包裹任何元素，类似 `Tag` 标签
+Do not wrap any elements, similar to the `Tag` component.
 
 :::demo
 ```html
@@ -15,9 +15,9 @@
 ```
 :::
 
-## 文本内容
+## Content
 
-徽标既可以数字，也可以是文本内容
+Content can be either digital or text.
 
 :::demo
 ```html
@@ -26,9 +26,10 @@
 ```
 :::
 
-## 不同状态
+## Status
 
-设置属性 `status` 指定不同的状态徽标
+To specify different status of badge, add `status` property to the Badge.<br>
+There are four status of Badge: `primary`, `success`, `warning`, `info`.
 
 :::demo
 ```html
@@ -39,9 +40,9 @@ Info <at-badge value="123" status="info"></at-badge>
 ```
 :::
 
-## 设定最大值
+## Maximum
 
-设置属性 `max-num` 可自定义徽标的最大值，超过最大值则显示 `+`
+Use `max-num` property to customize the maximum of Badge, exceed the maximum value will display as `+`.
 
 :::demo
 ```html
@@ -49,46 +50,46 @@ Info <at-badge value="123" status="info"></at-badge>
 ```
 :::
 
-## 组合用法
+## Combination Usage
 
-与其他组件组合使用，用于展示消息数量等
+Combine with other components to display the amount of messages.
 
 :::demo
 ```html
 <at-badge value="3">
-  <at-button>回复</at-button>
+  <at-button>Reply</at-button>
 </at-badge>
 <at-badge :value="111" :max-num="99">
-  <at-button>回复</at-button>
+  <at-button>Reply</at-button>
 </at-badge>
 <at-badge value="new">
-  <at-button>回复</at-button>
+  <at-button>Reply</at-button>
 </at-badge>
 ```
 :::
 
-## 小红点
+## Red Badge
 
-设置属性 `dot` 不显示具体的数字
+This will simply display a red badge without a specific count.
 
 :::demo
 ```html
 <at-badge :value="12" dot></at-badge>
 <at-badge :value="12" dot>
-  <at-button>回复</at-button>
+  <at-button>Reply</at-button>
 </at-badge>
 <at-badge :value="12" dot>
   <i class="icon icon-inbox"></i>
 </at-badge>
 <at-badge :value="12" dot>
-  <span>消息</span>
+  <span>Message</span>
 </at-badge>
 ```
 :::
 
-## 动态展示
+## Dynamic
 
-动态展示变化的效果
+The count will be animated as it changes.
 
 :::demo
 ```html
@@ -103,19 +104,19 @@ Info <at-badge value="123" status="info"></at-badge>
   <at-button @click="num -= 1">-</at-button>
   <at-button @click="num += 1">+</at-button>
 </at-button-group>
-<at-button size="small" @click="toggleDot">{{show ? '隐藏' : '显示'}}小红点</at-button>
+<at-button size="small" @click="toggleDot">{{show ? 'Hide' : 'Show'}} Badge</at-button>
 ```
 :::
 
-## Badge 参数
+## Badge Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| value | 绑定的值 | String / Number | - | - |
-| maxNum | 允许的最大值，超出则用 `+` 号显示 | Number | - | 99 |
-| dot | 是否显示为小红点 | Boolean | - | false |
-| status | 徽标的类型 | String | `success`, `warning`, `info` | - |
-| show | 是否显示徽标 | Boolean | - | true |
+| value | the content of Badge | String / Number | - | - |
+| maxNum | maximum value, exceed the maximum will display as `+` | Number | - | 99 |
+| dot | whether show red badge | Boolean | - | false |
+| status | type of Badge | String | `success`, `warning`, `info` | - |
+| show | whether show Badge | Boolean | - | true |
 
 <script>
 export default {

@@ -1,14 +1,14 @@
 
-# Message 全局提示
+# Message
 
 ----
 
-相比 `Notification`，`Message` 更轻量，居中显示在页面顶部，用于展示全局消息，例如操作的反馈信息
+Compared to `Notification`, `Message` is lighter,, centered at the top of the page, and used to display global messages, such as the feedback of operations.
 
-- 提供消息、成功、错误、警告等反馈提示
-- 在顶部居中显示，并自动消失，是一种不打断用户操作的轻量级提示
+- Provide four type of Message: `success`, `Error`, `Warning`, `Info`
+- Showing and disappearing at the center of the top is a lightweight cue that does not interrupt user operations.
 
-我们在 `Vue.prototype` 中添加了全局对象 `$Message`，我们可以直接通过 `this.$Message` 操作实例
+`AT-UI` adds the global object `$Message` to `Vue.prototype`. You can use the `$Message` instance directly.
 
 - `this.$Message(config)`
 - `this.$Message.info(config)`
@@ -17,9 +17,9 @@
 - `this.$Message.error(config)`
 - `this.$Message.loading(config)`
 
-## 基础用法
+## Basic
 
-四种类型的消息提示
+There are four type of Message: `success`, `error`, `warning`, `info`.
 
 :::demo
 ```html
@@ -33,13 +33,13 @@
     methods: {
       handleClick (type) {
         if (type === 'info') {
-          this.$Message.info('这是一条提示信息这是一条提示信息这是一条提示信息这是一条提示信息这是一条提示信息')
+          this.$Message.info('This is a info message!')
         } else if (type === 'success') {
-          this.$Message.success('这是一条成功信息')
+          this.$Message.success('This is a success message!')
         } else if (type === 'warning') {
-          this.$Message.warning('这是一条警告信息')
+          this.$Message.warning('This is a warning message!')
         } else if (type === 'error') {
-          this.$Message.error('这是一条错误信息')
+          this.$Message.error('This is a error message!')
         }
       }
     }
@@ -48,20 +48,20 @@
 ```
 :::
 
-## 修改延时
+## Customize Duration
 
-提示默认的显示时长为 `3s`，可传递 `duration` 来自定义时长
+Customize message display duration by `duration` property default `3s`.
 
 :::demo
 ```html
-<at-button @click="changeDuration">修改延时</at-button>
+<at-button @click="changeDuration">Customize Duration</at-button>
 
 <script>
   export default {
     methods: {
       changeDuration () {
         this.$Message.info({
-          message: '这是一条提示信息，10s 后自动关闭',
+          message: 'This is a tooltip that will be closed after 10s automatically.',
           duration: 10000
         })
       }
@@ -71,20 +71,20 @@
 ```
 :::
 
-## 加载中
+## Message of Loading
 
-`this.$Message.loading` 返回关闭方法，可用于手动关闭提示框
+`this.$Message.loading` return the method of close, which can be used to close manually.
 
 :::demo
 ```html
-<at-button @click="showLoading">显示加载中...</at-button>
+<at-button @click="showLoading">Loading...</at-button>
 
 <script>
   export default {
     methods: {
       showLoading () {
         const loading = this.$Message.loading({
-          message: '加载中...',
+          message: 'Loading...',
           duration: 0
         })
         setTimeout(loading, 3000)
@@ -95,39 +95,39 @@
 ```
 :::
 
-## Message 参数
+## Message Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| type | 全局提示的类别 | string | `success`, `error`, `warning`, `info` | `info` |
-| message | 提示的内容 | string | - | - |
-| duration | 自动关闭的延时，默认为 `3000` 毫秒 | number | - | 3000 |
-| icon | 自定义类别ICON | string | - | `info` |
-| onClose | 关闭提示框时的回调函数 | function | - | - |
+| type | the type of Message | String | `success`, `error`, `warning`, `info` | `info` |
+| message | the content of Message | String | - | - |
+| duration | time before auto-dismiss, in seconds, default `3000` | Number | - | 3000 |
+| icon | customize the icon of Message | String | - | `info` |
+| onClose | specify a function that will be called after the message closed | Function | - | - |
 
 <script>
   export default {
     methods: {
       handleClick (type) {
         if (type === 'info') {
-          this.$Message.info('这是一条提示信息这是一条提示信息这是一条提示信息这是一条提示信息这是一条提示信息')
+          this.$Message.info('This is a info message!')
         } else if (type === 'success') {
-          this.$Message.success('这是一条成功信息')
+          this.$Message.success('This is a success message!')
         } else if (type === 'warning') {
-          this.$Message.warning('这是一条警告信息')
+          this.$Message.warning('This is a warning message!')
         } else if (type === 'error') {
-          this.$Message.error('这是一条错误信息')
+          this.$Message.error('This is a error message!')
         }
       },
       changeDuration () {
         this.$Message.info({
-          message: '这是一条提示信息，10s 后自动关闭',
+          message: 'This is a tooltip that will be closed after 10s automatically.',
           duration: 10000
         })
       },
       showLoading () {
         const loading = this.$Message.loading({
-          message: '加载中...',
+          message: 'Loading...',
           duration: 0
         })
         setTimeout(loading, 3000)

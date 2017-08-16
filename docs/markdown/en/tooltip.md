@@ -1,78 +1,78 @@
 
-# Tooltips 文字提示
+# Tooltips
 
 ----
 
-文字提示框类似于 `HTML` 的 `title` 属性，当鼠标悬浮在元素上方时，会出现一个文字提示框
+Tooltips is similar to the `title` attribute of `HTML`. When the mouse is suspended above the element, a tooltip will appears.
 
-## 基本用法
+## Basic
 
-鼠标悬停时，文字提示框默认显示在顶上的位置
+When the mouse hovers, the tooltip box defaults to the top position.
 
 :::demo
 ```html
-<at-tooltip placement="top" content="提示信息">
-  <at-button>按钮</at-button>
+<at-tooltip placement="top" content="information">
+  <at-button>Button</at-button>
 </at-tooltip>
-<at-tooltip content="提示信息"><span>一段文字</span></at-tooltip>
+<at-tooltip content="information"><span>Please hover me!</span></at-tooltip>
 ```
 :::
 
-## 自定义文字提示的内容
+## Customize Content
 
-可通过 `slot="content"` 的方式设置文字提示的内容
+Customize the content of tooltip by `slot="content"` property.
 
 :::demo
 ```html
 <at-tooltip>
-  <span>文字提示</span>
+  <span>Information</span>
   <template slot="content">
-    <p>文字1</p>
-    <p>文字2</p>
+    <p>Text One</p>
+    <p>Text Two</p>
   </template>
 </at-tooltip>
 ```
 :::
 
-## 不同的展示方向
+## Placement
 
-`placement` 属性可设置文字提示框出现的位置，默认提供9种不同的方向
+The ToolTip has 12 placements choice.
 
 :::demo
 ```html
 <div class="show-box">
   <div class="top row col-md-16 flex-center">
-    <at-tooltip class="item" content="Top Left 提示文字" placement="top-left"><at-button>上左</at-button></at-tooltip>
-    <at-tooltip class="item" content="Top 提示文字" placement="top"><at-button>上边</at-button></at-tooltip>
-    <at-tooltip class="item" content="Top Right 提示文字" placement="top-right"><at-button>上右</at-button></at-tooltip>
+    <at-tooltip class="item" content="Top Left Message" placement="top-left"><at-button>Top Left</at-button></at-tooltip>
+    <at-tooltip class="item" content="Top Message" placement="top"><at-button>Top</at-button></at-tooltip>
+    <at-tooltip class="item" content="Top Right Message" placement="top-right"><at-button>Top Right</at-button></at-tooltip>
   </div>
   <div class="center row col-md-16 flex-between">
     <div class="left col-md-4">
-      <at-tooltip class="item" content="Left Top 提示文字" placement="left-top"><at-button>左上</at-button></at-tooltip>
-      <at-tooltip class="item" content="Left 提示文字" placement="left"><at-button>左边</at-button></at-tooltip>
-      <at-tooltip class="item" content="Left Bottom 提示文字" placement="left-bottom"><at-button>左下</at-button></at-tooltip>
+      <at-tooltip class="item" content="Left Top Message" placement="left-top"><at-button>Left Top</at-button></at-tooltip>
+      <at-tooltip class="item" content="Left Message" placement="left"><at-button>Left</at-button></at-tooltip>
+      <at-tooltip class="item" content="Left Bottom Message" placement="left-bottom"><at-button>Left Bottom</at-button></at-tooltip>
     </div>
     <div class="right col-md-4">
-      <at-tooltip class="item" content="Right Top 提示文字" placement="right-top"><at-button>右上</at-button></at-tooltip>
-      <at-tooltip class="item" content="Right 提示文字" placement="right"><at-button>右边</at-button></at-tooltip>
-      <at-tooltip class="item" content="Right Bottom 提示文字" placement="right-bottom"><at-button>右下</at-button></at-tooltip>
+      <at-tooltip class="item" content="Right Top Message" placement="right-top"><at-button>Right Top</at-button></at-tooltip>
+      <at-tooltip class="item" content="Right Message" placement="right"><at-button>Right</at-button></at-tooltip>
+      <at-tooltip class="item" content="Right Bottom Message" placement="right-bottom"><at-button>Right Bottom</at-button></at-tooltip>
     </div>
   </div>
   <div class="bottom row col-md-16 flex-center">
-    <at-tooltip class="item" content="Bottom Left 提示文字" placement="bottom-left"><at-button>下左</at-button></at-tooltip>
-    <at-tooltip class="item" content="Bottom 提示文字" placement="bottom"><at-button>下边</at-button></at-tooltip>
-    <at-tooltip class="item" content="Bottom Right 提示文字" placement="bottom-right"><at-button>下右</at-button></at-tooltip>
+    <at-tooltip class="item" content="Bottom Left Message" placement="bottom-left"><at-button>Bottom Left</at-button></at-tooltip>
+    <at-tooltip class="item" content="Bottom Message" placement="bottom"><at-button>Bottom</at-button></at-tooltip>
+    <at-tooltip class="item" content="Bottom Right Message" placement="bottom-right"><at-button>Bottom Right</at-button></at-tooltip>
   </div>
 </div>
 ```
 :::
 
-## Tooltip 参数
+## Tooltip Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| content | 提示文字 | String | - | - |
-| placement | 气泡框位置 | String | `top`, `top-left`, `top-right`, `left`, `left-top`, `left-bottom`, `right`, `right-top`, `right-bottom`, `bottom`, `bottom-left`, `bottom-right` | `top` |
+| content | the content of tooltip | String | - | - |
+| placement | the position of tooltip | String | `top`, `top-left`, `top-right`, `left`, `left-top`, `left-bottom`, `right`, `right-top`, `right-bottom`, `bottom`, `bottom-left`, `bottom-right` | `top` |
 
 <style lang="scss" scoped>
 .at-tooltip {

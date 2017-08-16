@@ -1,121 +1,121 @@
 
-# Dropdown 下拉菜单
+# Dropdown
 
 ----
 
-展示折叠的下拉菜单
+Show a folded-styled dropdown menu.
 
-## 基础用法
+## Basic
 
-基础的下拉菜单，使用方式是用 `AtDropdown`，`AtDropdownMenu` 和 `AtDropdownItem` 的组合
+The most basic dropdown combines with `AtDropdown`，`AtDropdownMenu` and `AtDropdownItem`.
 
 :::demo
 ```html
 <at-dropdown>
-  <span>下拉菜单 <i class="icon icon-chevron-down"></i></span>
+  <span>Dropdown <i class="icon icon-chevron-down"></i></span>
   <at-dropdown-menu slot="menu">
-    <at-dropdown-item>深圳</at-dropdown-item>
-    <at-dropdown-item>广州</at-dropdown-item>
-    <at-dropdown-item disabled>上海</at-dropdown-item>
-    <at-dropdown-item divided>北京</at-dropdown-item>
-    <at-dropdown-item>杭州</at-dropdown-item>
+    <at-dropdown-item>Shenzhen</at-dropdown-item>
+    <at-dropdown-item>Guangzhou</at-dropdown-item>
+    <at-dropdown-item disabled>Shanghai</at-dropdown-item>
+    <at-dropdown-item divided>Beijing</at-dropdown-item>
+    <at-dropdown-item>hangzhou</at-dropdown-item>
   </at-dropdown-menu>
 </at-dropdown>
 <at-dropdown>
-  <at-button size="small">下拉菜单 <i class="icon icon-chevron-down"></i></at-button>
+  <at-button size="small">Dropdown <i class="icon icon-chevron-down"></i></at-button>
   <at-dropdown-menu slot="menu">
-    <at-dropdown-item>深圳</at-dropdown-item>
-    <at-dropdown-item>广州</at-dropdown-item>
-    <at-dropdown-item disabled>上海</at-dropdown-item>
-    <at-dropdown-item divided>北京</at-dropdown-item>
-    <at-dropdown-item>杭州</at-dropdown-item>
+    <at-dropdown-item>Shenzhen</at-dropdown-item>
+    <at-dropdown-item>Guangzhou</at-dropdown-item>
+    <at-dropdown-item disabled>Shanghai</at-dropdown-item>
+    <at-dropdown-item divided>Beijing</at-dropdown-item>
+    <at-dropdown-item>hangzhou</at-dropdown-item>
   </at-dropdown-menu>
 </at-dropdown>
 ```
 :::
 
-## 激活的方式
+## Two Ways to Trigger
 
-下拉菜单默认使用 `hover` 的方式激活，可通过参数 `trigger` 更换激活的方式，支持 `click`，`hover`，`focus`
+Use `trigger` property to change the way of trigger. Default is `hover`.
 
 :::demo
 ```html
 <at-dropdown>
-  <at-button size="small">hover菜单 <i class="icon icon-chevron-down"></at-button>
+  <at-button size="small">Hover Menu <i class="icon icon-chevron-down"></at-button>
   <at-dropdown-menu slot="menu">
-    <at-dropdown-item name="shenzhen">深圳</at-dropdown-item>
-    <at-dropdown-item name="guangzhou">广州</at-dropdown-item>
-    <at-dropdown-item name="shanghai" disabled>上海</at-dropdown-item>
-    <at-dropdown-item name="beijin" divided>北京</at-dropdown-item>
+    <at-dropdown-item name="shenzhen">Shenzhen</at-dropdown-item>
+    <at-dropdown-item name="guangzhou">Guangzhou</at-dropdown-item>
+    <at-dropdown-item name="shanghai" disabled>Shanghai</at-dropdown-item>
+    <at-dropdown-item name="beijin" divided>Beijing</at-dropdown-item>
   </at-dropdown-menu>
 </at-dropdown>
 <at-dropdown trigger="click">
-  <at-button size="small">click菜单 <i class="icon icon-chevron-down"></at-button>
+  <at-button size="small">Click Menu <i class="icon icon-chevron-down"></at-button>
   <at-dropdown-menu slot="menu">
-    <at-dropdown-item name="shenzhen">深圳</at-dropdown-item>
-    <at-dropdown-item name="guangzhou">广州</at-dropdown-item>
-    <at-dropdown-item name="shanghai" disabled>上海</at-dropdown-item>
-    <at-dropdown-item name="beijin" divided>北京</at-dropdown-item>
+    <at-dropdown-item name="shenzhen">Shenzhen</at-dropdown-item>
+    <at-dropdown-item name="guangzhou">Guangzhou</at-dropdown-item>
+    <at-dropdown-item name="shanghai" disabled>Shanghai</at-dropdown-item>
+    <at-dropdown-item name="beijin" divided>Beijing</at-dropdown-item>
   </at-dropdown-menu>
 </at-dropdown>
 ```
 :::
 
-## 菜单的对齐方式
+## Placement
 
-设置属性 `placement` 更改下拉菜单的对齐方式
+To change the alignment of Dropdown, add `placement` property to the Dropdown.
 
 :::demo
 ```html
 <at-dropdown placement="bottom-right">
-  <at-button size="small">hover菜单 <i class="icon icon-chevron-down"></at-button>
+  <at-button size="small">Hover Menu <i class="icon icon-chevron-down"></at-button>
   <at-dropdown-menu slot="menu">
-    <at-dropdown-item name="shenzhen">深圳</at-dropdown-item>
-    <at-dropdown-item name="guangzhou">广州</at-dropdown-item>
-    <at-dropdown-item name="shanghai" disabled>上海</at-dropdown-item>
-    <at-dropdown-item name="beijin" divided>北京</at-dropdown-item>
+    <at-dropdown-item name="shenzhen">Shenzhen</at-dropdown-item>
+    <at-dropdown-item name="guangzhou">Guangzhou</at-dropdown-item>
+    <at-dropdown-item name="shanghai" disabled>Shanghai</at-dropdown-item>
+    <at-dropdown-item name="beijin" divided>Beijing</at-dropdown-item>
   </at-dropdown-menu>
 </at-dropdown>
 ```
 :::
 
-## 下拉菜单触发的事件
+## Events
 
-点击菜单选项触发事件 `on-dropdown-command`，返回 `AtDropdownItem` 的 `name` 值
+Event `on-dropdown-command` emitted when the dropdown item was clicked, return the name of `DropdownItem`.
 
 :::demo
 ```html
 <at-dropdown placement="bottom-right" @on-dropdown-command="handleCommand">
-  <at-button size="small">hover菜单 <i class="icon icon-chevron-down"></at-button>
+  <at-button size="small">Hover Menu <i class="icon icon-chevron-down"></at-button>
   <at-dropdown-menu slot="menu">
-    <at-dropdown-item name="shenzhen">深圳</at-dropdown-item>
-    <at-dropdown-item name="guangzhou">广州</at-dropdown-item>
-    <at-dropdown-item name="shanghai" disabled>上海</at-dropdown-item>
+    <at-dropdown-item name="shenzhen">Shenzhen</at-dropdown-item>
+    <at-dropdown-item name="guangzhou">Guangzhou</at-dropdown-item>
+    <at-dropdown-item name="shanghai" disabled>Shanghai</at-dropdown-item>
   </at-dropdown-menu>
 </at-dropdown>
 ```
 :::
 
-## AtDropdown 参数
+## Dropdown Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| trigger | 触发 `Dropdown` 的方式 | String | `click`, `hover`, `focus` | `hover` |
-| placement | 下拉框的对齐方式 | String | `top`, `top-left`, `top-right`, `bottom`, `bottom-left`, `bottom-right` | `bottom` |
+| trigger | the way to trigger | String | `click`, `hover`, `focus` | `hover` |
+| placement | placement of popup | String | `top`, `top-left`, `top-right`, `bottom`, `bottom-left`, `bottom-right` | `bottom` |
 
-## AtDropdown 事件
+## Dropdown Events
 
-| 事件名称      | 说明          | 返回值  |
+| Event Name      | Description          | Return Value  |
 |---------- |-------------- |---------- |
-| on-dropdown-command | 菜单项点击的时候触发 | 点击的菜单的 `name` 值 |
+| on-dropdown-command | Emitted when the dropdown item was clicked  | the name of item |
 
-## AtDropdownItem 参数
+## DropdownItem Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| name | 菜单的值 | String | - | - |
-| disabled | 是否禁用 | Boolean | - | false |
-| divided | 是否添加分割线 | Boolean | - | false |
+| name | the value of dropdown item | String | - | - |
+| disabled | whether the Dropdown Item is disabled | Boolean | - | false |
+| divided | whether to show split line | Boolean | - | false |
 
 <style lang="scss" scoped>
   .at-dropdown + .at-dropdown {

@@ -53,10 +53,6 @@
 ```
 :::
 
-## 格式化展示
-
-开发中
-
 ## 不同尺寸
 
 配置属性 `size`，可控制输入框的尺寸，默认支持三种尺寸：`large`，`normal`，`small`
@@ -84,7 +80,7 @@
 | value | 输入框的值，可通过 `v-model` 绑定 | Number | - | - |
 | size | 输入框尺寸 | String | `small`, `normal`, `large` | normal |
 | step | 每次递增或递减的数目 | Number | - | 1 |
-| min | 最小值 | Number | - | Infinity |
+| min | 最小值 | Number | - | -Infinity |
 | max | 最大值 | Number | - | Infinity |
 | disabled | 是否禁用输入框 | Boolean | - | false |
 | readonly | 是否设置成只读 | Boolean | - | false |

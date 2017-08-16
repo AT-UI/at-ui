@@ -38,7 +38,7 @@ Tag with color tendency gives different types. Set property `color`. It also pro
 | color | type | String / Hex | Hex value or `default`, `primary`, `success`, `error`, `warning`, `info` | default |
 | closable | can be closed | Boolean | — | false |
 
-## Tag events
+## Tag Events
 
 | Event Name      | Description          | Return Value  |
 |---------- |-------------- |---------- |

@@ -1,13 +1,13 @@
 
-# Breadcrumb 面包屑
+# Breadcrumb
 
 ----
 
-显示当前页面在网站中的层级位置，点击可切换层级
+Breadcrumb displays the current location within a hierarchy. It provides a navigation to upper nodes.
 
-## 基础用法
+## Basic
 
-使用 `at-breadcrumb` 和 `at-breadcrumb-item` 创建面包屑，使用 `href` 属性添加链接
+Use `at-breadcrumb` and `at-breadcrumb-item` to create breadcrumbs and add links with `href` property.
 
 :::demo
 ```html
@@ -19,9 +19,9 @@
 ```
 :::
 
-## 添加路由链接
+## Vue Router Integration
 
-除了可以使用 `href` 属性配置链接，也可以给 `to` 属性传入 `object` 添加 `vue-router` 的路由。添加 `replace` 属性可设置不给 `history` 添加新记录
+Used together with `vue-router`. Passed an `object` to `to` property. If you don't need a new history, add the `replace` property to `Breadcrumb Item`.
 
 :::demo
 ```html
@@ -34,9 +34,9 @@
 ```
 :::
 
-## 自定义分隔符
+## Configuring the Separator
 
-可以通过设置 `separator` 属性来自定义分隔符，支持 HTML 字符串
+The separator can be customized by setting the `separator` property, which supports `HTML String`.
 
 :::demo
 ```html
@@ -49,16 +49,16 @@
 :::
 
 
-## Breadcrumb 参数
+## Breadcrumb Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| separator | 分隔符，可使用 HTML 字符串 | String | - | `/` |
+| separator | customize separator | String | - | `/` |
 
-## BreadcrumbItem 参数
+## BreadcrumbItem Props
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| href | 链接跳转地址，同 `<a>` 中的 `href` 属性 | String | - | - |
-| to | 路由跳转对象，同 `vue-router` 中的 `to` | String / Object | - | - |
-| replace | 在使用 `to` 时，是否不需要向 `history` 添加新记录 | Boolean | - | false |
+| href | link, same as the `href` property in `<a>` | String | - | - |
+| to | the object of `vue-router`, same as the `to` property in `vue-router` | String / Object | - | - |
+| replace | whether to add new history when using `to` | Boolean | - | false |
