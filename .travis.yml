@@ -16,7 +16,7 @@ install:
   - npm install
 
 script:
-  - npm run build:doc
+  - npm run dist
 
 after_script:
   - cd dist
