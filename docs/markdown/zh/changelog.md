@@ -5,6 +5,10 @@
 
 项目遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范
 
+## <span class="title-version">v1.1.2</span> - 2017-08-17
+
+- 新增 `i18n` 支持
+
 ## <span class="title-version">v1.1.1</span> - 2017-08-10
 
 - 新增 `Menu` 组件

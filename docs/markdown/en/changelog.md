@@ -5,6 +5,10 @@
 
 `AT-UI` strictly follows [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/).
 
+## <span class="title-version">v1.1.2</span> - 2017-08-17
+
+- Add `i18n` support
+
 ## <span class="title-version">v1.1.1</span> - 2017-08-10
 
 - New component `Menu`
