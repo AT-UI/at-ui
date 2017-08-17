@@ -7,7 +7,7 @@
       [`at-pagination--${size}`]: size
     }">
     <li
-      title="上一页"
+      :title="t('at.pagination.prevText')"
       class="at-pagination__prev"
       :class="{
         'at-pagination--disabled': this.currentPage === 1
@@ -21,7 +21,7 @@
       <span class="at-pagination__paging-total">{{ totalPage }}</span>
     </div>
     <li
-      title="下一页"
+      :title="t('at.pagination.nextText')"
       class="at-pagination__next"
       :class="{
         'at-pagination--disabled': this.currentPage === this.totalPage
@@ -39,10 +39,10 @@
       [`at-pagination--${size}`]: size
     }">
     <span class="at-pagination__total" v-show="showTotal">
-      <slot name="total">共 {{ total }} 条</slot>
+      <slot name="total">{{ `${t('at.pagination.total')} ${total} ${t('at.pagination.items')}` }}</slot>
     </span>
     <li
-      title="上一页"
+      :title="t('at.pagination.prevText')"
       class="at-pagination__prev"
       :class="{
         'at-pagination--disabled': this.currentPage === 1
@@ -53,6 +53,7 @@
     <template v-if="totalPage < 9">
       <li
         v-for="num in pageRange"
+        :key="num"
         class="at-pagination__item"
         :class="{
           'at-pagination__item--active': currentPage === num
@@ -61,17 +62,17 @@
     </template>
     <template v-else>
       <li class="at-pagination__item" :class="{ 'at-pagination__item--active': currentPage === 1 }" @click="changePage(1)">1</li>
-      <li class="at-pagination__item at-pagination__item--jump-prev" title="向前5页" v-if="currentPage > 4" @click="handleJumpPrev"><i class="icon icon-chevrons-left"></i></li>
+      <li class="at-pagination__item at-pagination__item--jump-prev" :title="t('at.pagination.prev5Text')" v-if="currentPage > 4" @click="handleJumpPrev"><i class="icon icon-chevrons-left"></i></li>
       <li class="at-pagination__item" v-if="currentPage > 3" @click="changePage(currentPage - 2)">{{ currentPage - 2 }}</li>
       <li class="at-pagination__item" v-if="currentPage > 2" @click="changePage(currentPage - 1)">{{ currentPage - 1 }}</li>
       <li class="at-pagination__item at-pagination__item--active" v-if="currentPage !== 1 && currentPage !== totalPage">{{ currentPage }}</li>
       <li class="at-pagination__item" v-if="currentPage < totalPage - 1" @click="changePage(currentPage + 1)">{{ currentPage + 1 }}</li>
       <li class="at-pagination__item" v-if="currentPage < totalPage - 2" @click="changePage(currentPage + 2)">{{ currentPage + 2 }}</li>
-      <li class="at-pagination__item at-pagination__item--jump-next" title="向后5页" v-if="currentPage < totalPage - 3" @click="handleJumpNext"><i class="icon icon-chevrons-right"></i></li>
+      <li class="at-pagination__item at-pagination__item--jump-next" :title="t('at.pagination.next5Text')" v-if="currentPage < totalPage - 3" @click="handleJumpNext"><i class="icon icon-chevrons-right"></i></li>
       <li class="at-pagination__item" v-if="totalPage > 1" :class="{ 'at-pagination__item--active' : currentPage === totalPage }" @click="changePage(totalPage)">{{ totalPage }}</li>
     </template>
     <li
-      title="下一页"
+      :title="t('at.pagination.nextText')"
       class="at-pagination__next"
       :class="{
         'at-pagination--disabled': this.currentPage === this.totalPage
@@ -81,22 +82,24 @@
     </li>
     <div v-if="showSizer" class="at-pagination__sizer">
       <at-select v-model="currentPageSize" :size="size" @on-change="changeSize">
-        <at-option v-for="item in pageSizeOpts" :key="item" :value="item">{{ item }} 条/页</at-option>
+        <at-option v-for="item in pageSizeOpts" :key="item" :value="item">{{ `${item} ${t('at.pagination.pageSize')}` }}</at-option>
       </at-select>
     </div>
     <div class="at-pagination__quickjump" v-if="showQuickjump">
-      <span>前往</span>
+      <span>{{ t('at.pagination.goto') }}</span>
       <input type="text" class="at-input__original" v-model="jumpPageNum" @keydown="handleKeydown" @keyup.enter="changePage()">
-      <span>页</span>
+      <span>{{ t('at.pagination.pageText') }}</span>
     </div>
   </ul>
   <!-- E 基础分页 -->
 </template>
 
 <script>
+  import Locale from 'src/mixins/locale'
+
   export default {
     name: 'AtPagination',
-    componentName: 'AtPagination',
+    mixins: [Locale],
     props: {
       current: {
         type: Number,

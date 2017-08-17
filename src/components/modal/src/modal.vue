@@ -31,8 +31,8 @@
           </div>
           <div class="at-modal__footer" v-if="showFooter">
             <slot name="footer">
-              <at-button v-show="showCancelButton" @click.native="handleAction('cancel')">{{ cancelText }}</at-button>
-              <at-button type="primary" v-show="showConfirmButton" @click.native="handleAction('confirm')">{{ okText }}</at-button>
+              <at-button v-show="showCancelButton" @click.native="handleAction('cancel')">{{ localeCancelText }}</at-button>
+              <at-button type="primary" v-show="showConfirmButton" @click.native="handleAction('confirm')">{{ localeOKText }}</at-button>
             </slot>
           </div>
           <i v-if="isIconType" class="icon at-modal__icon" :class="iconClass"></i>
@@ -45,6 +45,8 @@
 </template>
 
 <script>
+  import { t } from 'src/locale'
+
   export default {
     name: 'AtModal',
     props: {
@@ -55,12 +57,10 @@
         default: false
       },
       cancelText: {
-        type: String,
-        default: '\u53D6\u6D88'
+        type: String
       },
       okText: {
-        type: String,
-        default: '\u786E\u5B9A'
+        type: String
       },
       maskClosable: {
         type: Boolean,
@@ -133,6 +133,12 @@
         Object.assign(style, styleWidth, this.styles)
 
         return style
+      },
+      localeOKText () {
+        return (typeof this.okText === 'undefined') ? t('at.modal.okText') : this.okText
+      },
+      localeCancelText () {
+        return (typeof this.cancelText === 'undefined') ? t('at.modal.cancelText') : this.cancelText
       }
     },
     watch: {

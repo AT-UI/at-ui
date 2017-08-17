@@ -20,12 +20,12 @@
         <span class="at-tag__text">{{ item.label }}</span>
         <i class="icon icon-x at-tag__close" @click.stop="removeTag(index)"></i>
       </span>
-      <span class="at-select__placeholder" v-show="showPlaceholder && !filterable">{{ placeholder }}</span>
+      <span class="at-select__placeholder" v-show="showPlaceholder && !filterable">{{ localePlaceholder }}</span>
       <span class="at-select__selected" v-show="!showPlaceholder && !multiple && !filterable">{{ selectedSingle }}</span>
       <input
         type="text"
         class="at-select__input"
-        :placeholder="showPlaceholder ? placeholder : ''"
+        :placeholder="showPlaceholder ? localePlaceholder : ''"
         v-if="filterable"
         v-model="query"
         @blur="handleBlur"
@@ -46,7 +46,7 @@
         v-show="visible"
         ref="popover">
         <ul v-show="notFound" class="at-select__not-found">
-          <li>{{ notFoundText }}</li>
+          <li>{{ localeNotFoundText }}</li>
         </ul>
         <ul v-show="!notFound" class="at-select__list" ref="options">
           <slot></slot>
@@ -61,11 +61,11 @@
 import Clickoutside from 'src/directives/clickoutside'
 import Emitter from 'src/mixins/emitter'
 import PopoverMixin from 'src/mixins/popover'
+import Locale from 'src/mixins/locale'
 
 export default {
   name: 'AtSelect',
-  componentName: 'AtSelect',
-  mixins: [Emitter, PopoverMixin],
+  mixins: [Emitter, PopoverMixin, Locale],
   directives: { Clickoutside },
   props: {
     value: {
@@ -89,8 +89,7 @@ export default {
       default: false
     },
     placeholder: {
-      type: String,
-      default: '请选择'
+      type: String
     },
     filterable: {
       type: Boolean,
@@ -106,8 +105,7 @@ export default {
       default: false
     },
     notFoundText: {
-      type: String,
-      default: '无匹配数据'
+      type: String
     },
     placement: {
       type: String,
@@ -141,6 +139,12 @@ export default {
     },
     showCloseIcon () {
       return !this.multiple && this.clearable && !this.showPlaceholder
+    },
+    localePlaceholder () {
+      return (typeof this.placeholder === 'undefined') ? this.t('at.select.placeholder') : this.placeholder
+    },
+    localeNotFoundText () {
+      return (typeof this.notFoundText === 'undefined') ? this.t('at.select.notFoundText') : this.notFoundText
     }
   },
   watch: {
@@ -260,9 +264,9 @@ export default {
         })
       }
 
-      // find the children which has the componentName property
+      // find the children which has the name property
       function find (child) {
-        const name = child.$options.componentName
+        const name = child.$options.name
 
         if (name) {
           cb(child)

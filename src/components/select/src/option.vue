@@ -19,7 +19,6 @@ import Emitter from 'src/mixins/emitter'
 
 export default {
   name: 'AtOption',
-  componentName: 'AtOption',
   mixins: [Emitter],
   props: {
     value: {

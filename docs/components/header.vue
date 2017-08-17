@@ -88,6 +88,7 @@ export default {
     switchLang (targetLang) {
       if (this.lang === targetLang) return
 
+      this.$i18n.locale = targetLang
       localStorage.setItem('at-ui-language', targetLang)
 
       if (this.$route.name === 'Home') {

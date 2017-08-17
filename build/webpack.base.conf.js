@@ -53,6 +53,8 @@ module.exports = {
       'components': path.resolve(__dirname, '../src/components'),
       'stylesheet': path.resolve(__dirname, '../src/stylesheet'),
       'at-ui': path.resolve(__dirname, '../src/index.js'),
+      'at-ui-locale-zh': path.resolve(__dirname, '../src/locale/lang/zh-CN.js'),
+      'at-ui-locale-en': path.resolve(__dirname, '../src/locale/lang/en-US.js'),
       'at-ui-style': 'stylesheet/src/index.scss',
       'vue': 'vue/dist/vue.js'
     }

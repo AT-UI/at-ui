@@ -9,7 +9,6 @@ import Emitter from 'src/mixins/emitter'
 
 export default {
   name: 'AtRadioGroup',
-  componentName: 'AtRadioGroup',
   props: {
     value: [String, Number],
     size: String,

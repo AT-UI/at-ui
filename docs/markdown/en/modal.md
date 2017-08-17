@@ -297,7 +297,7 @@ To customize the style of Modal, add `styles` property.
         this.$Modal.alert({
           title: 'Here is Title',
           content: 'Here is Content',
-          callback: function (action) {
+          callback: action => {
             this.$Message(action)
           }
         })

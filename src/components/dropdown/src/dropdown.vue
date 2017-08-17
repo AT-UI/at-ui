@@ -16,7 +16,6 @@
 
   export default {
     name: 'AtDropdown',
-    componentName: 'AtDropdown',
     directives: { Clickoutside },
     mixins: [PopoverMixin],
     props: {

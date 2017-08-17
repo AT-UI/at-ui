@@ -29,7 +29,6 @@ import Emitter from 'src/mixins/emitter'
 
 export default {
   name: 'AtRadio',
-  componentName: 'AtRadio',
   props: {
     value: [String, Number],
     name: String,

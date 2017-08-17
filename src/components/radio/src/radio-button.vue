@@ -23,7 +23,6 @@
 <script>
 export default {
   name: 'AtRadioButton',
-  componentName: 'AtRadioButton',
   props: {
     name: String,
     label: {

@@ -52,7 +52,6 @@
 
   export default {
     name: 'AtFormItem',
-    componentName: 'AtFormItem',
     mixins: [Emitter],
     props: {
       label: {

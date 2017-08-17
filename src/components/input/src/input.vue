@@ -54,7 +54,6 @@
 
   export default {
     name: 'AtInput',
-    componentName: 'AtInput',
     mixins: [Emitter],
     props: {
       type: {

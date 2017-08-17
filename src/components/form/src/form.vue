@@ -11,7 +11,6 @@
 <script>
   export default {
     name: 'AtForm',
-    componentName: 'AtForm',
     props: {
       model: Object,
       rules: Object,

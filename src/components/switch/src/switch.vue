@@ -19,7 +19,6 @@
 <script>
 export default {
   name: 'AtSwitch',
-  componentName: 'AtSwitch',
   props: {
     value: {
       type: Boolean,

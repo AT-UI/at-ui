@@ -30,7 +30,6 @@ import { calcTextareaHeight } from './utils'
 
 export default {
   name: 'AtTextarea',
-  componentName: 'AtTextarea',
   mixins: [Emitter],
   props: {
     value: String,

@@ -29,7 +29,6 @@ import Emitter from 'src/mixins/emitter'
 
 export default {
   name: 'AtCheckbox',
-  componentName: 'AtCheckbox',
   mixins: [Emitter],
   props: {
     value: {},

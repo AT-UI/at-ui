@@ -54,7 +54,6 @@ import Emitter from 'src/mixins/emitter'
 
 export default {
   name: 'AtInputNumber',
-  componentName: 'AtInputNumber',
   mixins: [Emitter],
   props: {
     value: {

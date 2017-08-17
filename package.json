@@ -12,7 +12,8 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "build:doc": "webpack --config build/webpack.prod.conf.js -p",
     "build:component": "node build/component",
-    "prepublish": "npm run build:component"
+    "build:locale": "node build/locale",
+    "prepublish": "npm run build:locale && npm run build:component"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
   "license": "MIT",
   "dependencies": {
     "vue": "^2.3.4",
+    "vue-i18n": "^7.1.1",
     "vue-router": "^2.5.3",
     "vue-template-compiler": "^2.3.4"
   },
