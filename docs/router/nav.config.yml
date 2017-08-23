@@ -76,6 +76,8 @@ zh:
               name: Progress
             - title: 文字提示
               name: Tooltip
+            - title: 表格
+              name: Table
         - title: 导航组件
           items:
             - title: 面包屑
