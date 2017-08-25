@@ -19,9 +19,8 @@ const colorArr = ['default', 'primary', 'success', 'error', 'warning', 'info']
 export default {
   name: 'AtTag',
   props: {
-    type: {
-      type: String,
-      default: 'default'
+    name: {
+      type: [String, Number]
     },
     color: {
       type: String,
@@ -46,7 +45,11 @@ export default {
   },
   methods: {
     closeAction (evt) {
-      this.$emit('close', evt)
+      if (typeof this.name === 'undefined') {
+        this.$emit('on-close', evt)
+      } else {
+        this.$emit('on-close', evt, this.name)
+      }
     }
   }
 }

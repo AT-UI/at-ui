@@ -19,6 +19,9 @@ export default {
       pageText: '',
       prev5Text: 'Previous 5 Pages',
       next5Text: 'Next 5 Pages'
+    },
+    table: {
+      emptyText: 'No data'
     }
   }
 }

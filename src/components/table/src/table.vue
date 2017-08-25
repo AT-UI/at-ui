@@ -112,8 +112,8 @@
 
           <tbody class="at-table__tbody" v-else>
             <tr>
-              <td class="at-table__cell" :colspan="optional ? columns.length + 1 : columns.length">
-                <slot name="emptyText">No Data.</slot>
+              <td class="at-table__cell at-table__cell--nodata" :colspan="optional ? columns.length + 1 : columns.length">
+                <slot name="emptyText">{{ t('at.table.emptyText') }}</slot>
               </td>
             </tr>
           </tbody>
@@ -141,6 +141,7 @@
 </template>
 
 <script>
+import Locale from 'src/mixins/locale'
 import { getStyle, deepCopy } from 'src/utils/util'
 import Cell from './render'
 import Checkbox from 'src/components/checkbox'
@@ -153,6 +154,7 @@ export default {
     Pagination,
     Cell
   },
+  mixins: [Locale],
   props: {
     size: {
       type: String,

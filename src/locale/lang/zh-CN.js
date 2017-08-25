@@ -19,6 +19,9 @@ export default {
       pageText: '页',
       prev5Text: '向前5页',
       next5Text: '向后5页'
+    },
+    table: {
+      emptyText: '暂无数据'
     }
   }
 }
