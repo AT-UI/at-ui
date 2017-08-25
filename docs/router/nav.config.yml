@@ -166,6 +166,8 @@ en:
               name: Progress
             - title: Tooltip
               name: Tooltip
+            - title: Table
+              name: Table
         - title: Navigation
           items:
             - title: Breadcrumb

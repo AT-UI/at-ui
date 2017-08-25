@@ -14,6 +14,9 @@
       <!-- S Header -->
       <div class="at-table__header" v-if="height">
         <table>
+          <colgroup>
+            <col v-for="(column, index) in columnsData" :width="setCellWidth(column, index)">
+          </colgroup>
           <thead class="at-table__thead" ref="header">
             <tr>
               <!-- S Checkbox -->
@@ -53,6 +56,9 @@
       <!-- S Body -->
       <div class="at-table__body" :style="bodyStyle">
         <table>
+          <colgroup>
+            <col v-for="(column, index) in columnsData" :width="setCellWidth(column, index)">
+          </colgroup>
           <thead class="at-table__thead" v-if="!height" ref="header">
             <tr>
               <!-- S Checkbox -->
@@ -93,7 +99,12 @@
                   <at-checkbox v-model="objData[index].isChecked" @on-change="changeRowSelection"></at-checkbox>
                 </td>
                 <td v-for="(column, cindex) in columns" class="at-table__cell">
-                  {{ item[column.key] }}
+                  <template v-if="column.render">
+                    <Cell :item="item" :column="column" :index="index" :render="column.render"></Cell>
+                  </template>
+                  <template v-else>
+                    {{ item[column.key] }}
+                  </template>
                 </td>
               </tr>
             </template>
@@ -114,7 +125,16 @@
 
     <!-- S Pagination -->
     <div v-if="pagination && total" class="at-table__footer" ref="footer">
-      <at-pagination :total="total" :page-size="pageSize" :show-total="showPageTotal" :show-sizer="showPageSizer" :show-quickjump="showPageQuickJump"></at-pagination>
+      <at-pagination
+        :current="currentPage"
+        :size="size"
+        :total="total"
+        :page-size="pageSize"
+        :show-total="showPageTotal"
+        :show-sizer="showPageSizer"
+        :show-quickjump="showPageQuickjump"
+        @page-change="pageChange"
+        @pagesize-change="pageSizeChange"></at-pagination>
     </div>
     <!-- E Pagination -->
   </div>
@@ -122,15 +142,17 @@
 
 <script>
 import { getStyle, deepCopy } from 'src/utils/util'
-import AtCheckbox from 'src/components/checkbox'
-import AtPagination from 'src/components/pagination'
+import Cell from './render'
+import Checkbox from 'src/components/checkbox'
+import Pagination from 'src/components/pagination'
 
 export default {
   name: 'AtTable',
-  components: [
-    AtCheckbox,
-    AtPagination
-  ],
+  components: {
+    Checkbox,
+    Pagination,
+    Cell
+  },
   props: {
     size: {
       type: String,
@@ -152,7 +174,9 @@ export default {
     },
     columns: {
       type: Array,
-      required: true
+      default () {
+        return []
+      }
     },
     optional: {
       type: Boolean,
@@ -160,7 +184,7 @@ export default {
     },
     pagination: {
       type: Boolean,
-      default: true
+      default: false
     },
     pageSize: {
       type: Number,
@@ -174,11 +198,7 @@ export default {
       type: Boolean,
       default: false
     },
-    showPageQuickJump: {
-      type: Boolean,
-      default: false
-    },
-    rowClickChecked: {
+    showPageQuickjump: {
       type: Boolean,
       default: false
     },
@@ -189,17 +209,28 @@ export default {
   data () {
     return {
       objData: this.makeObjData(), // use for checkbox to select all
-      sortData: [], // use for sort or filter
+      sortData: [], // use for sort or paginate
+      allData: [],
       columnsData: this.makeColumns(),
-      current: [],
       total: 0,
-      scrollbarWidth: 15,
-      bodyHeight: 0
+      bodyHeight: 0,
+      pageCurSize: this.pageSize,
+      columnsWidth: {},
+      currentPage: 1
     }
   },
   watch: {
     height () {
       this.calculateBodyHeight()
+    },
+    allData () {
+      this.total = this.allData.length
+    },
+    sortData () {
+      this.handleResize()
+    },
+    pageCurSize () {
+      this.sortData = this.makeDataWithPaginate()
     }
   },
   computed: {
@@ -293,6 +324,29 @@ export default {
 
       return rowData
     },
+    makeDataWithSortAndPage (pageNum) {
+      let data = []
+      let allData = []
+
+      allData = this.makeDataWithSort()
+      this.allData = allData
+
+      data = this.makeDataWithPaginate(pageNum)
+      return data
+    },
+    makeDataWithPaginate (page) {
+      page = page || 1
+      const pageStart = (page - 1) * this.pageCurSize
+      const pageEnd = pageStart + this.pageCurSize
+      let pageData = []
+
+      if (this.pagination) {
+        pageData = this.allData.slice(pageStart, pageEnd)
+      } else {
+        pageData = this.allData
+      }
+      return pageData
+    },
     makeDataWithSort () {
       let data = this.makeData()
       let sortType = 'normal'
@@ -337,7 +391,7 @@ export default {
           }
         }
         if (type === 'normal') {
-          this.sortData = this.makeDataWithSort()
+          this.sortData = this.makeDataWithSortAndPage(this.currentPage)
         } else {
           this.sortData = this.sort(this.sortData, type, index)
         }
@@ -374,13 +428,62 @@ export default {
     changeRowSelection () {
       const selection = this.getSelection()
       this.$emit('on-selection-change', selection)
+    },
+    pageChange (page) {
+      this.$emit('on-page-change', page)
+      this.currentPage = page
+      this.sortData = this.makeDataWithPaginate(page)
+    },
+    pageSizeChange (size) {
+      this.$emit('on-page-size-change', size)
+      this.pageCurSize = size
+    },
+    handleResize () {
+      this.$nextTick(() => {
+        const columnsWidth = {}
+
+        if (this.data.length) {
+          const $td = this.$refs.body.querySelectorAll('tr')[0].querySelectorAll('td')
+
+          for (let i = 0; i < $td.length; i++) {
+            const column = this.columnsData[i]
+            let width = parseInt(getStyle($td[i], 'width'))
+
+            if (column) {
+              if (column.width) {
+                width = column.width
+              }
+              columnsWidth[column._index] = { width }
+            }
+
+          }
+        }
+
+        this.columnsWidth = columnsWidth
+      })
+    },
+    setCellWidth (column, index) {
+      let width = ''
+
+      if (column.width) {
+        width = column.width
+      } else if (this.columnsWidth[column._index]) {
+        width = this.columnsWidth[column._index].width
+      }
+
+      width = width === '0' ? '' : width
+      return width
     }
   },
   created () {
-    this.sortData = this.makeDataWithSort()
+    this.sortData = this.makeDataWithSortAndPage()
   },
   mounted () {
     this.calculateBodyHeight()
+    window.addEventListener('resize', this.handleResize)
+  },
+  beforeDestory () {
+    window.removeEventListener('resize', this.handleResize)
   }
 }
 </script>
