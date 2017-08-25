@@ -115,8 +115,7 @@
         default: 10
       },
       size: {
-        type: String,
-        validator: val => ['small'].indexOf(val) > -1
+        type: String
       },
       simple: {
         type: Boolean,

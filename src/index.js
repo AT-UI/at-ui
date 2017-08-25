@@ -21,6 +21,7 @@ import { Breadcrumb, BreadcrumbItem } from './components/breadcrumb'
 import Pagination from './components/pagination'
 import Message from './components/message'
 import { Menu, MenuItem, MenuItemGroup, Submenu } from './components/menu'
+import Table from './components/table'
 
 const components = {
   Button,
@@ -55,7 +56,8 @@ const components = {
   Menu,
   MenuItem,
   MenuItemGroup,
-  Submenu
+  Submenu,
+  Table
 }
 
 function install (Vue) {

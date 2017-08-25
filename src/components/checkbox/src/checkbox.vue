@@ -31,7 +31,10 @@ export default {
   name: 'AtCheckbox',
   mixins: [Emitter],
   props: {
-    value: {},
+    value: {
+      type: [String, Number, Boolean, Array],
+      default: false
+    },
     label: [String, Number],
     name: String,
     checked: {
@@ -61,11 +64,15 @@ export default {
     },
   },
   watch: {
+    value (value) {
+      this.store = value
+    },
     store (value) {
       this.$emit('input', value)
+      this.$emit('on-change', value)
 
       if (this.isGroup) {
-        this.dispatch('AtCheckboxGroup', 'input', [value])
+        this.dispatch('AtCheckboxGroup', 'on-change', [value])
       }
     },
   },
