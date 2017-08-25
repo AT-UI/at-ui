@@ -11,7 +11,7 @@ To make a tag get close button, add `closable` property to `Tag`. Trigger `on-cl
 <at-tag>Tag One</at-tag>
 <at-tag>Tag Two</at-tag>
 <at-tag>Tag Three</at-tag>
-<at-tag closable v-if="show" @close="handleClose">Tag Four</at-tag>
+<at-tag name="Tag Four" closable v-if="show" @on-close="handleClose">Tag Four</at-tag>
 ```
 :::
 
@@ -35,6 +35,7 @@ Tag with color tendency gives different types. Set property `color`. It also pro
 
 | Property      | Description          | Type      | Accepted values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
+| name | the name of tag used for close event | Boolean | — | false |
 | color | type | String / Hex | Hex value or `default`, `primary`, `success`, `error`, `warning`, `info` | default |
 | closable | can be closed | Boolean | — | false |
 
@@ -52,7 +53,8 @@ Tag with color tendency gives different types. Set property `color`. It also pro
       }
     },
     methods: {
-      handleClose () {
+      handleClose (evt, name) {
+        this.$Message.info(`Close Tag - ${name}`)
         this.show = false
       }
     }

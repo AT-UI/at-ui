@@ -23,6 +23,8 @@ zh:
           name: Installation
         - title: 快速上手
           name: Quickstart
+        - title: 国际化
+          name: I18n
         - title: 更新日志
           name: Changelog
     - title: 组件
@@ -113,6 +115,8 @@ en:
           name: Installation
         - title: Quickstart
           name: Quickstart
+        - title: Internationalization
+          name: i18n
         - title: Change Log
           name: Changelog
     - title: Components

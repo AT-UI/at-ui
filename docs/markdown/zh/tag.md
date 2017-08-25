@@ -11,7 +11,7 @@
 <at-tag>标签一</at-tag>
 <at-tag>标签二</at-tag>
 <at-tag>标签三</at-tag>
-<at-tag closable v-if="show" @close="handleClose">标签四</at-tag>
+<at-tag name="标签四" closable v-if="show" @on-close="handleClose">标签四</at-tag>
 ```
 :::
 
@@ -35,6 +35,7 @@
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
+| name | 用于触发关闭事件时的回调 | Boolean | — | false |
 | color | 类型 | String / Hex | 可传入十六进制颜色值，或者 `default`, `primary`, `success`, `error`, `warning`, `info` | default |
 | closable | 是否可关闭 | Boolean | — | false |
 
@@ -52,7 +53,8 @@
       }
     },
     methods: {
-      handleClose () {
+      handleClose (evt, name) {
+        this.$Message.info(`关闭标签 - ${name}`)
         this.show = false
       }
     }
