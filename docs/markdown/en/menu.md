@@ -26,7 +26,7 @@ Set `mode` to `horizontal`.
     </at-menu-item-group>
   </at-submenu>
   <at-menu-item name="4"><i class="icon icon-settings"></i>Navigation Four</at-menu-item>
-</at-menu-item-group>
+</at-menu>
 ```
 :::
 
@@ -50,7 +50,7 @@ Nested `Submenu` in `Submenu` can bi combined into multilevel menus.
     </at-submenu>
   </at-submenu>
   <at-menu-item name="4"><i class="icon icon-settings"></i>Navigation Four</at-menu-item>
-</at-menu-item-group>
+</at-menu>
 ```
 :::
 
@@ -75,7 +75,7 @@ Set `mode` to `vertical`.
     </at-menu-item-group>
   </at-submenu>
   <at-menu-item name="4"><i class="icon icon-settings"></i>Navigation Four</at-menu-item>
-</at-menu-item-group>
+</at-menu>
 ```
 :::
 
@@ -107,7 +107,7 @@ Set `mode` to `vertical`.
       <at-menu-item name="4-3-2"><i class="icon icon-settings"></i>Submenu Night</at-menu-item>
     </at-submenu>
   </at-submenu>
-</at-menu-item-group>
+</at-menu>
 ```
 :::
 
@@ -137,7 +137,7 @@ Set `mode` to `inline`.
     <at-menu-item name="5-1">Submenu Six</at-menu-item>
     <at-menu-item name="5-2">Submenu Seven</at-menu-item>
   </at-submenu>
-</at-menu-item-group>
+</at-menu>
 ```
 :::
 
@@ -178,7 +178,7 @@ Set `inline-collapsed` property to open collapsed mode. Which means only one sub
     <at-menu-item name="4-1">Submenu One</at-menu-item>
     <at-menu-item name="4-2">Submenu Two</at-menu-item>
   </at-submenu>
-</at-menu-item-group>
+</at-menu>
 ```
 :::
 

@@ -52,7 +52,7 @@ npm install at-ui-style
 
 ## 贡献
 
-如果你在使用 `AT-UI` 时遇到问题，或者有好的建议，欢迎给我们提 `Issue` 或 `Pull Request`
+如果你在使用 `AT-UI` 时遇到问题，或者有好的建议，欢迎给我们提 `Issue` 或 `Pull Request`。在开始之前，请阅读 [贡献指南](https://github.com/at-ui/at-ui/blob/master/.github/CONTRIBUTING.md)
 
 ## License
 

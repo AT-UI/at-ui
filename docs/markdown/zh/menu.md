@@ -26,7 +26,7 @@
     </at-menu-item-group>
   </at-submenu>
   <at-menu-item name="4"><i class="icon icon-settings"></i>导航菜单四</at-menu-item>
-</at-menu-item-group>
+</at-menu>
 ```
 :::
 
@@ -50,7 +50,7 @@
     </at-submenu>
   </at-submenu>
   <at-menu-item name="4"><i class="icon icon-settings"></i>导航菜单四</at-menu-item>
-</at-menu-item-group>
+</at-menu>
 ```
 :::
 
@@ -75,7 +75,7 @@
     </at-menu-item-group>
   </at-submenu>
   <at-menu-item name="4"><i class="icon icon-settings"></i>导航菜单四</at-menu-item>
-</at-menu-item-group>
+</at-menu>
 ```
 :::
 
@@ -107,7 +107,7 @@
       <at-menu-item name="4-3-2"><i class="icon icon-settings"></i>导航菜单九</at-menu-item>
     </at-submenu>
   </at-submenu>
-</at-menu-item-group>
+</at-menu>
 ```
 :::
 
@@ -137,7 +137,7 @@
     <at-menu-item name="5-1">子菜单一</at-menu-item>
     <at-menu-item name="5-2">子菜单二</at-menu-item>
   </at-submenu>
-</at-menu-item-group>
+</at-menu>
 ```
 :::
 
@@ -178,7 +178,7 @@
     <at-menu-item name="4-1">子菜单一</at-menu-item>
     <at-menu-item name="4-2">子菜单二</at-menu-item>
   </at-submenu>
-</at-menu-item-group>
+</at-menu>
 ```
 :::
 

@@ -55,7 +55,7 @@ or
 
 ## Contribution
 
-Finding bugs, sending pull requests or improving our docs - any contribution is welcome and highly appreciated. To get started, head over to our contribution guidelines. Thanks!
+Finding bugs, sending pull requests or improving our docs - any contribution is welcome and highly appreciated. To get started, head over to our [contribution guidelines](https://github.com/at-ui/at-ui/blob/master/.github/CONTRIBUTING.md). Thanks!
 
 ## License
 

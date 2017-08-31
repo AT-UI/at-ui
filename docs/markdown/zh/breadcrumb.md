@@ -13,7 +13,7 @@
 ```html
 <at-breadcrumb>
   <at-breadcrumb-item>Home</at-breadcrumb-item>
-  <at-breadcrumb-item href="/components">Components</at-breadcrumb-item>
+  <at-breadcrumb-item href="#/zh/docs/introduction">Components</at-breadcrumb-item>
   <at-breadcrumb-item>Breadcrumb</at-breadcrumb-item>
 </at-breadcrumb>
 ```
@@ -27,8 +27,8 @@
 ```html
 <at-breadcrumb>
   <at-breadcrumb-item>Home</at-breadcrumb-item>
-  <at-breadcrumb-item :to="{ name: 'Layout' }">Layout</at-breadcrumb-item>
-  <at-breadcrumb-item :to="{ name: 'Color' }" replace>Color</at-breadcrumb-item>
+  <at-breadcrumb-item :to="{ name: 'Layout-zh' }">Layout</at-breadcrumb-item>
+  <at-breadcrumb-item :to="{ name: 'Color-zh' }" replace>Color</at-breadcrumb-item>
   <at-breadcrumb-item>Breadcrumb</at-breadcrumb-item>
 </at-breadcrumb>
 ```
@@ -42,7 +42,7 @@
 ```html
 <at-breadcrumb separator=">">
   <at-breadcrumb-item>Home</at-breadcrumb-item>
-  <at-breadcrumb-item href="/components">Components</at-breadcrumb-item>
+  <at-breadcrumb-item href="#/zh/docs/introduction">Components</at-breadcrumb-item>
   <at-breadcrumb-item>Breadcrumb</at-breadcrumb-item>
 </at-breadcrumb>
 ```
