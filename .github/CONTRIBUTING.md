@@ -31,7 +31,7 @@ All pull requests are welcome. Thanks for taking the time to contribute.
 - Rebase before creating a PR to keep commit history clear.
 - Provide some description about your PR.
 
-## Develope
+## Develop
 
 Clone and install the respoitory.
 
