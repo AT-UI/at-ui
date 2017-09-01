@@ -13,7 +13,7 @@ Use `at-breadcrumb` and `at-breadcrumb-item` to create breadcrumbs and add links
 ```html
 <at-breadcrumb>
   <at-breadcrumb-item>Home</at-breadcrumb-item>
-  <at-breadcrumb-item href="/components">Components</at-breadcrumb-item>
+  <at-breadcrumb-item href="#/en/docs/introduction">Components</at-breadcrumb-item>
   <at-breadcrumb-item>Breadcrumb</at-breadcrumb-item>
 </at-breadcrumb>
 ```
@@ -27,8 +27,8 @@ Used together with `vue-router`. Passed an `object` to `to` property. If you don
 ```html
 <at-breadcrumb>
   <at-breadcrumb-item>Home</at-breadcrumb-item>
-  <at-breadcrumb-item :to="{ name: 'Layout' }">Layout</at-breadcrumb-item>
-  <at-breadcrumb-item :to="{ name: 'Color' }" replace>Color</at-breadcrumb-item>
+  <at-breadcrumb-item :to="{ name: 'Layout-en' }">Layout</at-breadcrumb-item>
+  <at-breadcrumb-item :to="{ name: 'Color-en' }" replace>Color</at-breadcrumb-item>
   <at-breadcrumb-item>Breadcrumb</at-breadcrumb-item>
 </at-breadcrumb>
 ```
@@ -42,7 +42,7 @@ The separator can be customized by setting the `separator` property, which suppo
 ```html
 <at-breadcrumb separator=">">
   <at-breadcrumb-item>Home</at-breadcrumb-item>
-  <at-breadcrumb-item href="/components">Components</at-breadcrumb-item>
+  <at-breadcrumb-item href="#/en/docs/introduction">Components</at-breadcrumb-item>
   <at-breadcrumb-item>Breadcrumb</at-breadcrumb-item>
 </at-breadcrumb>
 ```
