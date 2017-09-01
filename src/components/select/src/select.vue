@@ -268,7 +268,7 @@ export default {
       function find (child) {
         const name = child.$options.name
 
-        if (name) {
+        if (name && name !== 'AtOptionGroup') {
           cb(child)
         } else if (child.$children.length) {
           child.$children.forEach(innerChild => {
