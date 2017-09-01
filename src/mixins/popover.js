@@ -2,7 +2,10 @@
  * popover mixins
  * https://github.com/yuche/vue-strap/blob/master/src/utils/popoverMixins.js
  */
-import $ from '../utils/NodeList.js'
+let $
+if (typeof window !== 'undefined') {
+  $ = require('../utils/NodeList.js').default
+}
 
 export default {
   props: {
