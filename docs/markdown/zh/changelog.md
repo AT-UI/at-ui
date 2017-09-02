@@ -5,6 +5,15 @@
 
 项目遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范
 
+## <span class="title-version">v1.2.0-beta.2</span> - 2017-09-03
+
+- 新增 `SSR` 支持
+- 修复 Bugs
+
+## <span class="title-version">v1.2.0-beta</span> - 2017-08-25
+
+- 新增 `Table` 组件
+
 ## <span class="title-version">v1.1.2</span> - 2017-08-17
 
 - 新增 `i18n` 支持
