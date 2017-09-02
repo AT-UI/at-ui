@@ -62,6 +62,7 @@ import Clickoutside from 'src/directives/clickoutside'
 import Emitter from 'src/mixins/emitter'
 import PopoverMixin from 'src/mixins/popover'
 import Locale from 'src/mixins/locale'
+import { findComponentsDownward } from 'src/utils/util'
 
 export default {
   name: 'AtSelect',
@@ -188,8 +189,9 @@ export default {
       let isHidden = true
 
       this.$nextTick(() => {
-        this.findChild(child => {
-          if (!child.hidden) {
+        const options = findComponentsDownward(this, 'AtOption')
+        options.forEach(option => {
+          if (!option.hidden) {
             isHidden = false
           }
         })
@@ -230,10 +232,11 @@ export default {
 
           let hasFocus = false
 
-          this.findChild(child => {
-            if (child.isFocus) {
+          const options = findComponentsDownward(this, 'AtOption')
+          options.forEach(option => {
+            if (option.isFocus) {
               hasFocus = true
-              child.select()
+              option.select()
             }
           })
 
@@ -246,49 +249,27 @@ export default {
     selectFirstOption () {
       let firstOption
 
-      this.findChild(child => {
-        if (!firstOption && !child.hidden) {
-          firstOption = child
-          child.select()
+      const options = findComponentsDownward(this, 'AtOption')
+      options.forEach(option => {
+        if (!firstOption && !option.hidden) {
+          firstOption = option
+          option.select()
         }
       })
-    },
-    findChild (cb) {
-      if (this.optionInstances.length) {
-        this.optionInstances.forEach(child => {
-          find(child)
-        })
-      } else {
-        this.$children.forEach(child => {
-          find(child)
-        })
-      }
-
-      // find the children which has the name property
-      function find (child) {
-        const name = child.$options.name
-
-        if (name && name !== 'AtOptionGroup') {
-          cb(child)
-        } else if (child.$children.length) {
-          child.$children.forEach(innerChild => {
-            find(innerChild, cb)
-          })
-        }
-      }
     },
     updateOptions () {
       const options = []
       let index = 1
 
-      this.findChild(child => {
+      const optionsEle = findComponentsDownward(this, 'AtOption')
+      optionsEle.forEach(option => {
         options.push({
-          value: child.value,
-          label: (typeof child.label === 'undefined') ? child.$el.innerHTML : child.label
+          value: option.value,
+          label: (typeof option.label === 'undefined') ? option.$el.innerHTML : option.label
         })
-        child.index = index++
+        option.index = index++
 
-        this.optionInstances.push(child)
+        this.optionInstances.push(option)
       })
 
       this.options = options
@@ -336,9 +317,11 @@ export default {
     },
     clearSingleSelect () {
       if (this.showCloseIcon) {
-        this.findChild(child => {
-          child.selected = false
+        const options = findComponentsDownward(this, 'AtOption')
+        options.forEach(option => {
+          option.selected = false
         })
+
         this.model = ''
 
         if (this.filterable) {
@@ -361,12 +344,13 @@ export default {
 
       let label = ''
 
-      this.findChild(child => {
-        if (child.value === value) {
-          child.selected = true
-          label = (typeof child.label === 'undefined') ? child.$el.innerHTML : child.label
+      const options = findComponentsDownward(this, 'AtOption')
+      options.forEach(option => {
+        if (option.value === value) {
+          option.selected = true
+          label = (typeof option.label === 'undefined') ? option.$el.innerHTML : option.label
         } else {
-          child.selected = false
+          option.selected = false
         }
       })
 
@@ -394,14 +378,16 @@ export default {
         })
       }
 
-      this.findChild(child => {
-        const index = values.indexOf(child.value)
+      const options = findComponentsDownward(this, 'AtOption')
+
+      options.forEach(option => {
+        const index = values.indexOf(option.value)
 
         if (index > -1) {
-          child.selected = true
-          valueLabelArr[index].label = (typeof child.label === 'undefined') ? child.$el.innerHTML : child.label
+          option.selected = true
+          valueLabelArr[index].label = (typeof option.label === 'undefined') ? option.$el.innerHTML : option.label
         } else {
-          child.selected = false
+          option.selected = false
         }
       })
 
@@ -425,18 +411,20 @@ export default {
       let isValid = false
       let hasValidOption = false // avoid infinite loops
 
-      this.findChild(child => {
-        if (child.index === this.focusIndex) {
-          isValid = !child.disabled && !child.hidden
+      const options = findComponentsDownward(this, 'AtOption')
+
+      options.forEach(option => {
+        if (option.index === this.focusIndex) {
+          isValid = !option.disabled && !option.hidden
 
           if (isValid) {
-            child.isFocus = true
+            option.isFocus = true
           }
         } else {
-          child.isFocus = false
+          option.isFocus = false
         }
 
-        if (!child.hidden && !child.disabled) {
+        if (!option.hidden && !option.disabled) {
           hasValidOption = true
         }
       })
@@ -461,9 +449,10 @@ export default {
     handleBlur () {
       setTimeout(() => {
         if (!this.multiple && this.model !== '') {
-          this.findChild(child => {
-            if (child.value === this.model) {
-              this.query = (typeof child.label === 'undefined') ? child.searchLabel : child.label
+          const options = findComponentsDownward(this, 'AtOption')
+          options.forEach(option => {
+            if (option.value === this.model) {
+              this.query = (typeof option.label === 'undefined') ? option.searchLabel : option.label
             }
           })
         } else {
@@ -478,9 +467,10 @@ export default {
     },
     modelToQuery () {
       if (!this.multiple && this.filterable && typeof this.model !== 'undefined') {
-        this.findChild(child => {
-          if (this.model === child.value) {
-            this.query = child.label || child.searchLabel || child.value
+        const options = findComponentsDownward(this, 'AtOption')
+        options.forEach(option => {
+          if (this.model === option.value) {
+            this.query = option.label || option.searchLabel || option.value
           }
         })
       }
@@ -516,9 +506,10 @@ export default {
         this.model = value
 
         if (this.filterable) {
-          this.findChild(child => {
-            if (child.value === value) {
-              this.query = (typeof child.label === 'undefined') ? child.searchLabel : child.label
+          const options = findComponentsDownward(this, 'AtOption')
+          options.forEach(option => {
+            if (option.value === value) {
+              this.query = (typeof option.label === 'undefined') ? option.searchLabel : option.label
             }
           })
         }
