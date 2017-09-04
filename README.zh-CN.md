@@ -21,6 +21,7 @@
 
 - 现代浏览器和 IE9 及以上
 - [Electron](http://electron.atom.io/)
+- [NW.js](http://nwjs.io)
 
 ## 安装
 
