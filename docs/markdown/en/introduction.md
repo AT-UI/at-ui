@@ -16,6 +16,7 @@
 
 - Modern browsers and Internet Explorer 9+
 - [Electron](http://electron.atom.io/)
+- [NW.js](http://nwjs.io)
 
 ## Version
 
