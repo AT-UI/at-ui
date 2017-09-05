@@ -14,7 +14,7 @@ The most basic step bar.
 <at-steps :current='current'>
   <at-step title="Step1" description="This is a description."></at-step>
   <at-step title="Step2" description="This is a description."></at-step>
-  <at-step title="Step3" status="error"></at-step>
+  <at-step title="Step3"></at-step>
 </at-steps>
 
 <at-button type="primary" @click="prev" style="margin-top: 12px;">Prev</at-button>
@@ -45,10 +45,10 @@ You can use your own custom icons by setting the property `icon` for `Step`.
 
 :::demo
 ```html
-<at-steps :current='current' status="error">
-  <at-step title="Step1" description="This is a description." icon="user"></at-step>
-  <at-step title="Step2" description="This is a description." icon="airplay"></at-step>
-  <at-step title="Step3" icon="pocket"></at-step>
+<at-steps :current='current'>
+  <at-step title="Step1" description="This is a description." icon="icon-user"></at-step>
+  <at-step title="Step2" description="This is a description." icon="icon-airplay"></at-step>
+  <at-step title="Step3" icon="icon-pocket"></at-step>
 </at-steps>
 
 <at-button type="primary" @click="prev" style="margin-top: 12px;">Prev</at-button>

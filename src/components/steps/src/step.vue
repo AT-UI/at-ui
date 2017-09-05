@@ -14,7 +14,7 @@
         <div v-if="icon">
           <i :class="[
             'icon',
-            `icon-${icon}`
+            `${icon}`
           ]"></i>
         </div>
         <template v-else>
