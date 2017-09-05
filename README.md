@@ -24,6 +24,7 @@ AT-UI is a modular front-end UI framework for developing fast and powerful web i
 
 - Modern browsers and Internet Explorer 9+
 - [Electron](http://electron.atom.io/)
+- [NW.js](http://nwjs.io)
 
 ## Install
 
