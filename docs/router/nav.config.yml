@@ -90,6 +90,8 @@ zh:
               name: Menu
             - title: 分页
               name: Pagination
+            - title: 步骤条
+              name: Steps
 en:
   guide:
     - title: Brand
@@ -182,3 +184,5 @@ en:
               name: Menu
             - title: Pagination
               name: Pagination
+            - title: Steps
+              name: Steps
