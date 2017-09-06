@@ -23,6 +23,7 @@ import Message from './components/message'
 import { Menu, MenuItem, MenuItemGroup, Submenu } from './components/menu'
 import Table from './components/table'
 import { Steps, Step } from './components/steps'
+import Rate from './components/rate'
 
 const components = {
   Button,
@@ -60,7 +61,8 @@ const components = {
   Submenu,
   Table,
   Steps,
-  Step
+  Step,
+  Rate
 }
 
 function install (Vue) {

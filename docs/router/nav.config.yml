@@ -58,6 +58,8 @@ zh:
               name: Slider
             - title: 文本域
               name: Textarea
+            - title: 评分
+              name: Rate
         - title: 视图组件
           items:
             - title: 警告提示
@@ -152,6 +154,8 @@ en:
               name: Slider
             - title: Textarea
               name: Textarea
+            - title: Rate
+              name: Rate
         - title: View
           items:
             - title: Alert
