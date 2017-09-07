@@ -5,7 +5,10 @@
       this.active ? 'at-menu__item--active' : '',
       this.disabled ? 'at-menu__item--disabled' : ''
     ]" @click="handleClick">
-    <div>
+    <router-link v-if="Object.keys(to).length" class="at-menu__item-link" :to="to">
+      <slot></slot>
+    </router-link>
+    <div v-else class="at-menu__item-link">
       <slot></slot>
     </div>
   </li>
@@ -20,8 +23,17 @@
     mixins: [Emitter],
     props: {
       name: {
-        type: [String, Number],
-        required: true
+        type: [String, Number]
+      },
+      to: {
+        type: [Object, String],
+        default () {
+          return {}
+        }
+      },
+      replace: {
+        type: Boolean,
+        default: false
       },
       disabled: {
         type: Boolean,
@@ -34,16 +46,17 @@
       }
     },
     methods: {
-      handleClick () {
+      handleClick (evt) {
+        evt.preventDefault()
         if (this.disabled) return
         const parents = findComponentsUpward(this, 'AtSubmenu')
 
         if (parents && parents.length) {
           parents.forEach(parent => {
-            parent.$emit('on-menu-item-select', this.name)
+            parent.$emit('on-menu-item-select', this)
           })
         } else {
-          this.dispatch('AtMenu', 'on-menu-item-select', this.name)
+          this.dispatch('AtMenu', 'on-menu-item-select', this)
         }
       }
     },
