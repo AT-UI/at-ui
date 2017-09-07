@@ -50,6 +50,8 @@ zh:
               name: InputNumber
             - title: 单选按钮
               name: Radio
+            - title: 评分
+              name: Rate
             - title: 选择器
               name: Select
             - title: 开关
@@ -58,8 +60,6 @@ zh:
               name: Slider
             - title: 文本域
               name: Textarea
-            - title: 评分
-              name: Rate
         - title: 视图组件
           items:
             - title: 警告提示
@@ -146,6 +146,8 @@ en:
               name: InputNumber
             - title: Radio
               name: Radio
+            - title: Rate
+              name: Rate
             - title: Select
               name: Select
             - title: Switch
@@ -154,8 +156,6 @@ en:
               name: Slider
             - title: Textarea
               name: Textarea
-            - title: Rate
-              name: Rate
         - title: View
           items:
             - title: Alert
