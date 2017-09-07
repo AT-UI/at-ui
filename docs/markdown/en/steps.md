@@ -128,22 +128,24 @@ By using `status` of `Steps`, you can specify the state for current step.
 ```
 :::
 
-## Steps 参数
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+## Steps Props
+
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| current | to set the current step, counting from 0. | Number | - | 0 |
+| current | to set the current step, counting from 0 | Number | - | 0 |
 | status | to specify the status of current step | String | `wait` `process` `finish` `error` | process |
 | size | to specify the size of the step bar | String | `default` `small` | default |
 | direction | to specify the direction of the step bar | String | `horizontal` `vertical` | horizontal |
 
 
-## Step 参数
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+## Step Props
+
+| Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | title | title of the step | String | - | - |
 | description | detail of the step, optional property | String | - | - |
 | icon | icon of the step, optional property | String | - | - |
-| status | to specify the status. It will be automatically set by `current` of `Steps` if not configured.  | String | `wait` `process` `finish` `error` | - |
+| status | to specify the status. It will be automatically set by `current` of `Steps` if not configured  | String | `wait` `process` `finish` `error` | - |
 
 <script>
   export default {
