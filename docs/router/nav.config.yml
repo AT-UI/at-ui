@@ -64,6 +64,8 @@ zh:
               name: Alert
             - title: 徽标
               name: Badge
+            - title: 卡片
+              name: Card
             - title: 加载进度条
               name: LoadingBar
             - title: 模态框
@@ -156,6 +158,8 @@ en:
               name: Alert
             - title: Badge
               name: Badge
+            - title: Card
+              name: Card
             - title: LoadingBar
               name: LoadingBar
             - title: Modal
