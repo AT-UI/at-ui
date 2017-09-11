@@ -12,7 +12,7 @@
 :::demo
 ```html
 <at-menu mode="horizontal" router>
-  <at-menu-item name="1" :to="{ name: 'Button-zh' }"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
+  <at-menu-item name="1" disabled :to="{ name: 'Button-zh' }"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
   <at-menu-item name="2" disabled :to="{ name: 'Menu-zh' }"><i class="icon icon-layers"></i>导航菜单二</at-menu-item>
   <at-submenu>
     <template slot="title"><i class="icon icon-life-buoy"></i>导航菜单三 - 子菜单</template>
@@ -61,7 +61,7 @@
 :::demo
 ```html
 <at-menu mode="vertical" router>
-  <at-menu-item name="1" :to="{ name: 'Button-zh' }"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
+  <at-menu-item name="1" disabled :to="{ name: 'Button-zh' }"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
   <at-menu-item name="2" disabled :to="{ name: 'Menu-zh' }"><i class="icon icon-layers"></i>导航菜单二</at-menu-item>
   <at-submenu>
     <template slot="title"><i class="icon icon-life-buoy"></i>导航菜单三 - 子菜单</template>
@@ -118,7 +118,7 @@
 :::demo
 ```html
 <at-menu router>
-  <at-menu-item name="1" :to="{ name: 'Button-zh' }"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
+  <at-menu-item name="1" :to="{ name: 'Menu-zh' }"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
   <at-menu-item name="2" disabled :to="{ name: 'Button-zh' }"><i class="icon icon-layers"></i>导航菜单二</at-menu-item>
   <at-submenu>
     <template slot="title"><i class="icon icon-life-buoy"></i>导航菜单三 - 子菜单</template>
