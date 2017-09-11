@@ -76,6 +76,8 @@ zh:
               name: Popover
             - title: 进度条
               name: Progress
+            - title: 时间轴
+              name: Timeline
             - title: 文字提示
               name: Tooltip
             - title: 表格
@@ -168,6 +170,8 @@ en:
               name: Popover
             - title: Progress
               name: Progress
+            - title: Timeline
+              name: Timeline
             - title: Tooltip
               name: Tooltip
             - title: Table
