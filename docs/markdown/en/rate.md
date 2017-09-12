@@ -91,6 +91,11 @@ Read only，can't use mouse to interact.
 | on-change | callback when select value | value |
 | on-hover-change | callback when hover item | value |
 
+## Rate slot
+
+| Name      | Description |
+|----------|-------- |
+| None | customize the contents of the copywriting |
 
 <script>
 export default {
