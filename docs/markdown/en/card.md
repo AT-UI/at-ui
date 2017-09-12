@@ -4,6 +4,7 @@
 ---
 
 ## Basic
+
 A basic card containing a title, content and an extra corner content.
 
 :::demo
@@ -19,6 +20,7 @@ A basic card containing a title, content and an extra corner content.
 :::
 
 ## No border
+
 A borderless card.
 
 :::demo
@@ -34,6 +36,7 @@ A borderless card.
 :::
 
 ## Disable hover shadow
+
 Disable mouse hover shadow.
 
 :::demo
@@ -49,6 +52,7 @@ Disable mouse hover shadow.
 :::
 
 ## Simple card
+
 A simple card only containing a content area.
 
 :::demo
@@ -65,6 +69,7 @@ A simple card only containing a content area.
 :::
 
 ## Loading card (defalut)
+
 Shows a loading indicator while the contents of the card is being fetched.
 
 :::demo
@@ -80,6 +85,7 @@ Shows a loading indicator while the contents of the card is being fetched.
 :::
 
 ## Loading card (custom)
+
 Custom loading content.
 
 :::demo
@@ -95,22 +101,23 @@ Custom loading content.
 ```
 :::
 
-## Card 参数
+## Card Props
 
 | Property  | Description   | Type      | Accepted Values                  | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| bordered | Toggles rendering of the border around the card | Boolean | - | true |
-| noHovering | Whether to be disable hovering when mouse over | Boolean | - | false |
-| bodyStyle | Inline style to apply to the card content | Object | - | {} |
-| loading | Shows a loading indicator while the contents of the card are being fetched | Boolean | - | false |
+| bordered | toggles rendering of the border around the card | Boolean | - | true |
+| noHovering | whether to be disable hovering when mouse over | Boolean | - | false |
+| bodyStyle | inline style to apply to the card content | Object | - | {} |
+| loading | shows a loading indicator while the contents of the card are being fetched | Boolean | - | false |
 
 ## Card slot
 
 | Name      | Description |
 |----------|-------- |
-| title | Custoimzed card title |
-| extra | Extra contents |
-| custom-loading | Custoimzed card loading |
+| title | custoimzed card title |
+| extra | extra contents |
+| custom-loading | custoimzed card loading |
+| None | card content |
 
 <script>
 export default {
