@@ -27,14 +27,14 @@ export default {
   methods: {
     setActive () {
       const activeKey = this.getActiveKey()
-      const accordion = window.accordion
+      const accordion = this.accordion
 
       this.$children.forEach((item, index) => {
         const name = item.name || index.toString()
         let isActive = false
 
         isActive = accordion
-          ? activeKey === name
+          ? activeKey[0] === name
           : activeKey.indexOf(name) >= 0
 
         item.isActive = isActive
@@ -82,7 +82,6 @@ export default {
             activeKey.push(name)
           }
         }
-
         newActiveKey = activeKey
       }
 
