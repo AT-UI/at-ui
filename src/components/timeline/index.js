@@ -1,3 +1,7 @@
-import Timeline from './src/Timeline'
+import Timeline from './src/timeline'
+import TimelineItem from './src/timeline-item'
 
-export default Timeline
+export {
+  Timeline,
+  TimelineItem
+}
