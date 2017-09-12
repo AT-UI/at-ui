@@ -55,10 +55,6 @@ export default {
       this.steps.forEach((child, index) => {
         const prevChild = this.steps[index - 1]
 
-        /*if (isInit && child.status === 'error') {
-          prevChild && (prevChild.nextError = true)
-        }*/
-
         if (index === current) {
           if (status === 'error') {
             child.internalStatus = 'error'
