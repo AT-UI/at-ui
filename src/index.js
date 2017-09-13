@@ -22,7 +22,7 @@ import Pagination from './components/pagination'
 import Message from './components/message'
 import { Menu, MenuItem, MenuItemGroup, Submenu } from './components/menu'
 import Table from './components/table'
-import Tabs from './components/tabs'
+import { Tabs, TabPane } from './components/tabs'
 
 const components = {
   Button,
@@ -59,7 +59,8 @@ const components = {
   MenuItemGroup,
   Submenu,
   Table,
-  Tabs
+  Tabs,
+  TabPane
 }
 
 function install (Vue) {
