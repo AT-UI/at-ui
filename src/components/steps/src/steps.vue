@@ -1,7 +1,7 @@
 <template>
   <div
-    class="at-steps"
     :class="[
+      'at-steps',
       direction === 'vertical'
         ? `at-steps--vertical`
         : `at-steps--horizontal`,
@@ -46,11 +46,10 @@ export default {
   },
 
   methods: {
-    updateStepsStatus (isInit) {
+    updateStepsStatus () {
       const total = this.steps.length
       const current = this.current
       const status = this.status
-
 
       this.steps.forEach((child, index) => {
         const prevChild = this.steps[index - 1]
@@ -70,7 +69,6 @@ export default {
 
         if (child.finalStatus !== 'error' && prevChild)
           prevChild.nextError = false
-
       })
     }
   },
@@ -84,11 +82,12 @@ export default {
       steps.forEach((step, index) => {
         step.index = index
       })
+      this.updateStepsStatus()
     }
   },
 
   mounted () {
-    this.updateStepsStatus(true)
+    this.updateStepsStatus()
   }
 }
 </script>

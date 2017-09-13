@@ -12,10 +12,7 @@
           'at-step__icon': icon
         }">
         <div v-if="icon">
-          <i :class="[
-            'icon',
-            `${icon}`
-          ]"></i>
+          <i :class="['icon', `${icon}`]"></i>
         </div>
         <template v-else>
           <div v-if="['process', 'wait'].indexOf(finalStatus) > -1"
@@ -46,7 +43,10 @@ export default {
     title: String,
     icon: String,
     description: String,
-    status: String
+    status: {
+      type: String,
+      validator: val => ['wait', 'process', 'finish', 'error'].indexOf(val) > -1
+    }
   },
 
   data () {
@@ -64,6 +64,7 @@ export default {
   beforeDestroy () {
     const steps = this.$parent.steps
     const index = steps.indexOf(this)
+
     if (index >= 0) {
       steps.splice(index, 1)
     }
@@ -82,6 +83,7 @@ export default {
     stepStatusClass () {
       const status = this.finalStatus
       const className = {}
+
       switch (status) {
         case 'process':
           className['at-step--process'] = true
@@ -99,7 +101,6 @@ export default {
 
       if (this.nextError) {
         className['at-step--next__error'] = true
-        console.log(1)
       }
 
       return className
@@ -107,4 +108,3 @@ export default {
   }
 }
 </script>
-
