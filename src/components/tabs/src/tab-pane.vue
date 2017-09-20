@@ -22,9 +22,9 @@ export default {
       type: Boolean,
       default: false
     },
-    closable: {
+    unclosable: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
 
@@ -36,18 +36,21 @@ export default {
   },
 
   computed: {
-
-  },
-
-  methods: {
-
+    isClosable () {
+      return this.unclosable
+        ? false
+        : this.$parent.closable
+    }
   },
 
   watch: {
     name () {
       this.currentName = this.name
     }
+  },
+
+  mounted () {
+    this.$parent.updateNav()
   }
 }
 </script>
-

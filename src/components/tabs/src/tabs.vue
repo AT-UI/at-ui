@@ -1,32 +1,48 @@
 <template>
   <div class="at-tabs"
     :class="{
-      'at-tabs--small': this.size === 'small',
-      'at-tabs--card': this.type === 'card'
+      'at-tabs--small': size === 'small',
+      'at-tabs--card': type === 'card',
+      'at-tabs--scroll': scrollable
     }">
     <div class="at-tabs__header">
       <div class="at-tabs__extra" v-if="$slots.extra">
         <slot name="extra"></slot>
       </div>
       <div class="at-tabs__nav">
-        <span class="at-tabs__prev at-tabs__prev--disabled"
-          @click="scrollHandle">
+        <!-- S prev btn -->
+        <span class="at-tabs__prev"
+          v-if="scrollable"
+          :class="{
+            'at-tabs__prev--disabled': !prevable
+          }"
+          @click="scrollPrev">
           <i class="icon icon-chevron-left"></i>
         </span>
+        <!-- E prev btn -->
+        <!-- S next btn -->
         <span class="at-tabs__next"
-          @click="scrollHandle">
+          v-if="scrollable"
+          :class="{
+            'at-tabs__next--disabled': !nextable
+          }"
+          @click="scrollNext">
           <i class="icon icon-chevron-right"></i>
         </span>
+        <!-- E next btn -->
+        <!-- S Tab nav -->
         <div class="at-tabs__nav-wrap">
-          <div class="at-tabs__nav-scroll">
-            <div class="at-tabs-nav">
+          <div class="at-tabs__nav-scroll" ref="navScroll">
+            <div class="at-tabs-nav" ref="nav" :style="navStyle">
               <div class="at-tabs-nav__item"
                 :class="{
                   'at-tabs-nav__item--active': index === activeIndex,
-                  'at-tabs-nav__item--disabled': item.disabled
+                  'at-tabs-nav__item--disabled': item.disabled,
+                  'at-tabs-nav__item--closable': item.closable
                 }"
                 v-for="(item, index) in navList" :key="index"
                 @click="setNavByIndex(index)">
+                <!-- S icon -->
                 <i
                   v-if="item.icon"
                   class="at-tabs-nav__icon icon"
@@ -34,10 +50,19 @@
                     [item.icon]: item.icon
                   }">
                 </i>{{ item.label }}
+                <!-- E icon -->
+                <!-- S close btn -->
+                <span class="at-tabs-nav__close"
+                  v-if="item.closable"
+                  @click.stop="removeHandle(index, $event)">
+                  <i class="icon icon-x"></i>
+                </span>
+                <!-- E close btn -->
               </div>
             </div>
           </div>
         </div>
+        <!-- E Tab nav -->
       </div>
     </div>
     <div class="at-tabs__body" :style="tabsBodyTranslateStyle">
@@ -47,6 +72,8 @@
 </template>
 
 <script>
+import { hasClass } from '../../../utils/util'
+
 export default {
   name: 'AtTabs',
 
@@ -56,7 +83,7 @@ export default {
     },
     type: {
       type: String,
-      default: 'line', // card
+      default: 'line',
       validator: val => ['line', 'card'].indexOf(val) > -1
     },
     size: {
@@ -77,22 +104,33 @@ export default {
   data () {
     return {
       navList: [],
-      activeKey: this.value
+      panes: [],
+      activeKey: this.value,
+      navOffset: 0,
+      navStyle: {
+        transform: ''
+      },
+      nextable: false,
+      prevable: false
     }
   },
 
   computed: {
+    scrollable () {
+      return this.prevable || this.nextable
+    },
+
     activeIndex () {
       const navList = this.navList
-      for (var i = 0, len = navList.length; i < len; i++) {
+      for (let i = 0, len = navList.length; i < len; i++) {
         const item = navList[i]
         if (item.name === this.activeKey) {
           return i
         }
       }
-
       return 0
     },
+
     tabsBodyTranslateStyle () {
       const activeIndex = this.activeIndex
       const translateValue = this.animated
@@ -106,14 +144,117 @@ export default {
   },
 
   methods: {
-    scrollHandle () {
+    scrollPrev () {
+      if (!this.prevable) return
 
+      const containerWidth = this.$refs.navScroll.offsetWidth
+      const currentOffset = this.getCurrentScrollOffset()
+
+      if (currentOffset === 0) return
+
+      const newOffset = currentOffset > containerWidth
+        ? currentOffset - containerWidth
+        : 0
+
+      this.setOffset(newOffset)
+    },
+
+    scrollNext () {
+      if (!this.nextable) return
+
+      const currentOffset = this.getCurrentScrollOffset()
+      const containerWidth = this.$refs.navScroll.offsetWidth
+      const navWidth = this.$refs.nav.offsetWidth
+
+      if (navWidth - currentOffset <= containerWidth) return
+
+      const newOffset = navWidth - currentOffset > containerWidth * 2
+        ? currentOffset + containerWidth
+        : navWidth - containerWidth
+
+      this.setOffset(newOffset)
+    },
+
+    scrollToActiveTab () {
+      if (!this.scrollable) return
+
+      const nav = this.$refs.nav
+      const activeTab = this.$el.querySelector('.at-tabs-nav__item--active')
+      const navScroll = this.$refs.navScroll
+      const activeTabBounds = activeTab.getBoundingClientRect()
+      const navScrollBounds = navScroll.getBoundingClientRect()
+      const navBounds = nav.getBoundingClientRect()
+      const currentOffset = this.getCurrentScrollOffset()
+      let newOffset = currentOffset
+
+      if (activeTabBounds.left < navScrollBounds.left) {
+        newOffset = currentOffset - (navScrollBounds.left - activeTabBounds.left)
+      }
+
+      if (activeTabBounds.right > navScrollBounds.right) {
+        newOffset = currentOffset + (activeTabBounds.right - navScrollBounds.right)
+      }
+
+      this.setOffset(newOffset)
+    },
+
+    getCurrentScrollOffset () {
+      return this.navOffset
+    },
+
+    setOffset(value) {
+      value = Math.abs(value)
+      this.navOffset = value
+      this.navStyle.transform = `translate3d(-${value}px, 0, 0)`
     },
 
     getTabs () {
-      return this.$children.filter(item => {
-        return item.$options.name === 'AtTabPane'
+      return this.$children.filter(item =>
+        item.$options.name === 'AtTabPane'
+      )
+    },
+
+    removeHandle (index, event) {
+      const tabs = this.getTabs()
+      const tab = tabs[index]
+      let activeKey = ''
+
+      if (tab.disabled) return
+
+      this.navList.splice(index, 1)
+
+      this.$emit('on-tab-remove', {
+        index,
+        name: tab.currentName
       })
+
+      this.$nextTick(() => {
+        this.updateNav()
+      })
+
+      if (tab.currentName === this.activeKey) {
+        const newTabs = this.getTabs()
+
+        if (newTabs.length) {
+          const nextAbleTabs = tabs.filter((item, itemIndex) =>
+            !item.disabled && itemIndex > index
+          )
+
+          const prevAbleTabs = tabs.filter((item, itemIndex) =>
+            !item.disabled && itemIndex < index
+          )
+
+          if (nextAbleTabs.length) {
+            activeKey = nextAbleTabs[0].currentName
+          } else if (prevAbleTabs.length) {
+            activeKey = prevAbleTabs[prevAbleTabs.length - 1].currentName
+          } else {
+            activeKey = newTabs[0].currentName
+          }
+        }
+
+        this.activeKey = activeKey
+      }
     },
 
     updateNav () {
@@ -124,7 +265,8 @@ export default {
           label: item.label,
           name: item.currentName || index,
           disabled: item.disabled,
-          icon: item.icon
+          icon: item.icon,
+          closable: item.isClosable
         })
 
         if (!item.currentName)
@@ -160,20 +302,52 @@ export default {
       tabs.forEach(item => {
         item.show = (item.currentName === this.activeKey)
       })
+    },
+
+    updateHandle () {
+      const navWidth = this.$refs.nav.offsetWidth
+      const containerWidth = this.$refs.navScroll.offsetWidth
+      const currentOffset = this.getCurrentScrollOffset()
+
+      if (containerWidth < navWidth) {
+        this.prevable = currentOffset !== 0
+        this.nextable = currentOffset + containerWidth < navWidth
+        if (navWidth - currentOffset < containerWidth) {
+          this.setOffset(navWidth - containerWidth)
+        }
+      } else {
+        this.nextable = false
+        this.prevable = false
+        if (currentOffset > 0) {
+          this.setOffset(0)
+        }
+      }
     }
   },
+
   mounted () {
+    window.addEventListener('resize', this.updateHandle, false)
+
     this.updateNav()
+    setTimeout(() => {
+      this.scrollToActiveTab()
+    }, 0)
+  },
+
+  updated () {
+    this.updateHandle()
   },
 
   watch: {
     activeKey () {
       this.$emit('on-change', {
         index: this.activeIndex,
-        key: this.activeKey
+        name: this.activeKey
+      })
+      this.$nextTick(() => {
+        this.scrollToActiveTab()
       })
     }
   }
-
 }
 </script>
