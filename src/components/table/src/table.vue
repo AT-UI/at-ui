@@ -233,6 +233,9 @@ export default {
     },
     pageCurSize () {
       this.sortData = this.makeDataWithPaginate()
+    },
+    data () {
+      this.sortData = this.makeDataWithPaginate()
     }
   },
   computed: {
