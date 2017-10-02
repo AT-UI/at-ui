@@ -235,7 +235,7 @@ export default {
       this.sortData = this.makeDataWithPaginate()
     },
     data () {
-      this.sortData = this.makeDataWithPaginate()
+      this.sortData = this.makeDataWithSortAndPage()
     }
   },
   computed: {
