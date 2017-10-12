@@ -5,7 +5,7 @@
       <div class="footer-desc">
         <div class="footer-copyright">© 2017 Created by<a href="//aotu.io" target="_blank"> 凹凸实验室</a></div>
       </div>
-      <div class="github-logo"><a data-redirect="https://github.com/o2team">Github</a></div>
+      <div class="github-logo"><a href="https://github.com/o2team" target="_blank">Github</a></div>
     </div>
   </footer>
 </template>
