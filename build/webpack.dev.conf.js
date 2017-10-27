@@ -12,7 +12,7 @@ const portalPrefix = config.config.portalPrefix
 const hotMiddleware = `webpack-hot-middleware/client?path=${portalPrefix}__webpack_hmr&noInfo=true&reload=true`
 
 // Add hot-reload related code to entry chunks
-Object.keys(baseWebpackConfig.entry).forEach((name) => {
+Object.keys(baseWebpackConfig.entry).forEach(name => {
   baseWebpackConfig.entry[name] = [hotMiddleware].concat(baseWebpackConfig.entry[name])
 })
 

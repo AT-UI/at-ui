@@ -10,7 +10,7 @@ function CovRewriter (options) {
 }
 
 CovRewriter.prototype.createCssAsset = function (css, originalAsset) {
-  return new webpackSources.RawSource(css);
+  return new webpackSources.RawSource(css)
 }
 
 CovRewriter.prototype.assetFind = function (assets) {

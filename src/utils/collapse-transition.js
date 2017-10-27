@@ -1,7 +1,7 @@
 /**
  * https://github.com/ElemeFE/element/blob/dev/src/transitions/collapse-transition.js
  */
-import { addClass, removeClass } from './util';
+import { addClass, removeClass } from './util'
 
 const Transition = {
   beforeEnter (el) {
