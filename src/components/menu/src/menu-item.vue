@@ -5,7 +5,7 @@
       this.active ? 'at-menu__item--active' : '',
       this.disabled ? 'at-menu__item--disabled' : ''
     ]" @click="handleClick">
-    <router-link v-if="Object.keys(to).length" class="at-menu__item-link" :to="to">
+    <router-link v-if="Object.keys(to).length" class="at-menu__item-link" ref="link" :to="to">
       <slot></slot>
     </router-link>
     <div v-else class="at-menu__item-link">
@@ -62,7 +62,7 @@
     },
     mounted () {
       this.$on('on-update-active', name => {
-        if (this.name === name) {
+        if (this.name === name || (this.$refs.link && this.$refs.link.$el.classList.contains('router-link-active'))) {
           this.active = true
 
           const parents = findComponentsUpward(this, 'AtSubmenu')

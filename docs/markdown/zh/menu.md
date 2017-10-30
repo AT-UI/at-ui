@@ -11,21 +11,21 @@
 
 :::demo
 ```html
-<at-menu mode="horizontal" router>
-  <at-menu-item name="1" disabled :to="{ name: 'Button-zh' }"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
-  <at-menu-item name="2" disabled :to="{ name: 'Menu-zh' }"><i class="icon icon-layers"></i>导航菜单二</at-menu-item>
+<at-menu mode="horizontal" active-name="1">
+  <at-menu-item name="1"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
+  <at-menu-item name="2" disabled><i class="icon icon-layers"></i>导航菜单二</at-menu-item>
   <at-submenu>
     <template slot="title"><i class="icon icon-life-buoy"></i>导航菜单三 - 子菜单</template>
     <at-menu-item-group title="分组一">
-      <at-menu-item name="3-1" :to="{ name: 'Menu-zh' }">子菜单一</at-menu-item>
-      <at-menu-item name="3-2" :to="{ name: 'Button-zh' }" disabled>子菜单二</at-menu-item>
+      <at-menu-item name="3-1">子菜单一</at-menu-item>
+      <at-menu-item name="3-2" disabled>子菜单二</at-menu-item>
     </at-menu-item-group>
     <at-menu-item-group title="分组二">
-      <at-menu-item name="3-3" :to="{ name: 'Badge-zh' }">子菜单三</at-menu-item>
-      <at-menu-item name="3-4" :to="{ name: 'Badge-zh' }">子菜单四</at-menu-item>
+      <at-menu-item name="3-3">子菜单三</at-menu-item>
+      <at-menu-item name="3-4">子菜单四</at-menu-item>
     </at-menu-item-group>
   </at-submenu>
-  <at-menu-item name="4" :to="{ name: 'Badge-zh' }"><i class="icon icon-settings"></i>导航菜单四</at-menu-item>
+  <at-menu-item name="4"><i class="icon icon-settings"></i>导航菜单四</at-menu-item>
 </at-menu>
 ```
 :::
@@ -36,20 +36,20 @@
 
 :::demo
 ```html
-<at-menu mode="horizontal" router>
-  <at-menu-item name="1" :to="{ name: 'Button-zh' }"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
-  <at-menu-item name="2" :to="{ name: 'Button-zh' }"><i class="icon icon-layers"></i>导航菜单二</at-menu-item>
+<at-menu mode="horizontal" active-name="1">
+  <at-menu-item name="1"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
+  <at-menu-item name="2"><i class="icon icon-layers"></i>导航菜单二</at-menu-item>
   <at-submenu>
     <template slot="title"><i class="icon icon-life-buoy"></i>导航菜单三</template>
-    <at-menu-item name="3-1" :to="{ name: 'Button-zh' }"><i class="icon icon-settings"></i>导航菜单四</at-menu-item>
-    <at-menu-item name="3-2" :to="{ name: 'Button-zh' }"><i class="icon icon-settings"></i>导航菜单五</at-menu-item>
+    <at-menu-item name="3-1"><i class="icon icon-settings"></i>导航菜单四</at-menu-item>
+    <at-menu-item name="3-2"><i class="icon icon-settings"></i>导航菜单五</at-menu-item>
     <at-submenu>
       <template slot="title"><i class="icon icon-life-buoy"></i>导航菜单六</template>
-      <at-menu-item name="3-3-1" :to="{ name: 'Button-zh' }"><i class="icon icon-settings"></i>导航菜单七</at-menu-item>
-      <at-menu-item name="3-3-2" :to="{ name: 'Menu-zh' }"><i class="icon icon-settings"></i>导航菜单八</at-menu-item>
+      <at-menu-item name="3-3-1"><i class="icon icon-settings"></i>导航菜单七</at-menu-item>
+      <at-menu-item name="3-3-2"><i class="icon icon-settings"></i>导航菜单八</at-menu-item>
     </at-submenu>
   </at-submenu>
-  <at-menu-item name="4" :to="{ name: 'Menu-zh' }"><i class="icon icon-settings"></i>导航菜单四</at-menu-item>
+  <at-menu-item name="4"><i class="icon icon-settings"></i>导航菜单四</at-menu-item>
 </at-menu>
 ```
 :::
@@ -60,21 +60,21 @@
 
 :::demo
 ```html
-<at-menu mode="vertical" router>
-  <at-menu-item name="1" disabled :to="{ name: 'Button-zh' }"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
-  <at-menu-item name="2" disabled :to="{ name: 'Menu-zh' }"><i class="icon icon-layers"></i>导航菜单二</at-menu-item>
+<at-menu mode="vertical" active-name="1">
+  <at-menu-item name="1"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
+  <at-menu-item name="2" disabled><i class="icon icon-layers"></i>导航菜单二</at-menu-item>
   <at-submenu>
     <template slot="title"><i class="icon icon-life-buoy"></i>导航菜单三 - 子菜单</template>
     <at-menu-item-group title="分组一">
-      <at-menu-item name="3-1" :to="{ name: 'Menu-zh' }">子菜单一</at-menu-item>
-      <at-menu-item name="3-2" disabled :to="{ name: 'Button-zh' }">子菜单二</at-menu-item>
+      <at-menu-item name="3-1">子菜单一</at-menu-item>
+      <at-menu-item name="3-2" disabled>子菜单二</at-menu-item>
     </at-menu-item-group>
     <at-menu-item-group title="分组二">
-      <at-menu-item name="3-3" :to="{ name: 'Button-zh' }">子菜单三</at-menu-item>
-      <at-menu-item name="3-4" :to="{ name: 'Button-zh' }">子菜单四</at-menu-item>
+      <at-menu-item name="3-3">子菜单三</at-menu-item>
+      <at-menu-item name="3-4">子菜单四</at-menu-item>
     </at-menu-item-group>
   </at-submenu>
-  <at-menu-item name="4" :to="{ name: 'Button-zh' }"><i class="icon icon-settings"></i>导航菜单四</at-menu-item>
+  <at-menu-item name="4"><i class="icon icon-settings"></i>导航菜单四</at-menu-item>
 </at-menu>
 ```
 :::
@@ -83,28 +83,28 @@
 
 :::demo
 ```html
-<at-menu mode="vertical" active-Name="1">
-  <at-menu-item name="1" :to="{ name: 'Button-zh' }"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
-  <at-menu-item name="2" :to="{ name: 'Button-zh' }"><i class="icon icon-layers"></i>导航菜单二</at-menu-item>
+<at-menu mode="vertical" active-name="1">
+  <at-menu-item name="1"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
+  <at-menu-item name="2"><i class="icon icon-layers"></i>导航菜单二</at-menu-item>
   <at-submenu>
     <template slot="title"><i class="icon icon-life-buoy"></i>导航菜单三 - 子菜单</template>
     <at-menu-item-group title="分组一">
-      <at-menu-item name="3-1" :to="{ name: 'Button-zh' }">子菜单一</at-menu-item>
-      <at-menu-item name="3-2" :to="{ name: 'Button-zh' }">子菜单二</at-menu-item>
+      <at-menu-item name="3-1">子菜单一</at-menu-item>
+      <at-menu-item name="3-2">子菜单二</at-menu-item>
     </at-menu-item-group>
     <at-menu-item-group title="分组二">
-      <at-menu-item name="3-3" :to="{ name: 'Button-zh' }">子菜单三</at-menu-item>
-      <at-menu-item name="3-4" :to="{ name: 'Button-zh' }">子菜单四</at-menu-item>
+      <at-menu-item name="3-3">子菜单三</at-menu-item>
+      <at-menu-item name="3-4">子菜单四</at-menu-item>
     </at-menu-item-group>
   </at-submenu>
   <at-submenu>
     <template slot="title"><i class="icon icon-life-buoy"></i>导航菜单四</template>
-    <at-menu-item name="4-1" :to="{ name: 'Button-zh' }"><i class="icon icon-settings"></i>导航菜单五</at-menu-item>
-    <at-menu-item name="4-2" :to="{ name: 'Button-zh' }"><i class="icon icon-settings"></i>导航菜单六</at-menu-item>
+    <at-menu-item name="4-1"><i class="icon icon-settings"></i>导航菜单五</at-menu-item>
+    <at-menu-item name="4-2"><i class="icon icon-settings"></i>导航菜单六</at-menu-item>
     <at-submenu>
       <template slot="title"><i class="icon icon-life-buoy"></i>导航菜单七</template>
-      <at-menu-item name="4-3-1" :to="{ name: 'Button-zh' }"><i class="icon icon-settings"></i>导航菜单八</at-menu-item>
-      <at-menu-item name="4-3-2" :to="{ name: 'Button-zh' }"><i class="icon icon-settings"></i>导航菜单九</at-menu-item>
+      <at-menu-item name="4-3-1"><i class="icon icon-settings"></i>导航菜单八</at-menu-item>
+      <at-menu-item name="4-3-2"><i class="icon icon-settings"></i>导航菜单九</at-menu-item>
     </at-submenu>
   </at-submenu>
 </at-menu>
@@ -117,25 +117,25 @@
 
 :::demo
 ```html
-<at-menu router>
-  <at-menu-item name="1" :to="{ name: 'Menu-zh' }"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
-  <at-menu-item name="2" disabled :to="{ name: 'Button-zh' }"><i class="icon icon-layers"></i>导航菜单二</at-menu-item>
+<at-menu active-name="1">
+  <at-menu-item name="1"><i class="icon icon-home"></i>导航菜单一</at-menu-item>
+  <at-menu-item name="2" disabled><i class="icon icon-layers"></i>导航菜单二</at-menu-item>
   <at-submenu>
     <template slot="title"><i class="icon icon-life-buoy"></i>导航菜单三 - 子菜单</template>
     <at-menu-item-group title="分组一">
-      <at-menu-item name="3-1" :to="{ name: 'Menu-zh' }">子菜单一</at-menu-item>
-      <at-menu-item name="3-2" :to="{ name: 'Button-zh' }">子菜单二</at-menu-item>
+      <at-menu-item name="3-1">子菜单一</at-menu-item>
+      <at-menu-item name="3-2">子菜单二</at-menu-item>
     </at-menu-item-group>
     <at-menu-item-group title="分组二">
-      <at-menu-item name="3-3" :to="{ name: 'Button-zh' }">子菜单三</at-menu-item>
-      <at-menu-item name="3-4" disabled :to="{ name: 'Button-zh' }">子菜单四</at-menu-item>
+      <at-menu-item name="3-3">子菜单三</at-menu-item>
+      <at-menu-item name="3-4" disabled>子菜单四</at-menu-item>
     </at-menu-item-group>
   </at-submenu>
-  <at-menu-item name="4" :to="{ name: 'Button-zh' }"><i class="icon icon-settings"></i>导航菜单四</at-menu-item>
+  <at-menu-item name="4"><i class="icon icon-settings"></i>导航菜单四</at-menu-item>
   <at-submenu disabled>
     <template slot="title"><i class="icon icon-life-buoy"></i>导航菜单三 - 子菜单</template>
-    <at-menu-item name="5-1" :to="{ name: 'Button-zh' }">子菜单一</at-menu-item>
-    <at-menu-item name="5-2" :to="{ name: 'Button-zh' }">子菜单二</at-menu-item>
+    <at-menu-item name="5-1">子菜单一</at-menu-item>
+    <at-menu-item name="5-2">子菜单二</at-menu-item>
   </at-submenu>
 </at-menu>
 ```
@@ -147,7 +147,7 @@
 
 :::demo
 ```html
-<at-menu active-Name="1-1" inline-collapsed>
+<at-menu active-name="1-1" inline-collapsed>
   <at-submenu opened>
     <template slot="title"><i class="icon icon-home"></i>导航菜单一</template>
     <at-menu-item-group title="分组一">
@@ -199,7 +199,7 @@
     <at-radio label="vertical">Vertical</at-radio>
   </at-radio-group>
 </div>
-<at-menu :theme="theme" :mode="mode" active-Name="0" >
+<at-menu :theme="theme" :mode="mode" active-name="0" >
   <at-menu-item name="0" disabled><i class="icon icon-box"></i>子菜单</at-menu-item>
   <at-submenu>
     <template slot="title"><i class="icon icon-home"></i>导航菜单一</template>
@@ -241,7 +241,7 @@
 
 :::demo
 ```html
-<at-menu active-Name="1-1" inline-collapsed>
+<at-menu active-name="1-1" inline-collapsed>
   <at-submenu opened>
     <template slot="title"><i class="icon icon-home"></i>导航菜单一</template>
     <at-menu-item-group title="分组一">
@@ -298,6 +298,7 @@
 | mode | 导航菜单的模式 | String | `inline`, `horizontal`, `vertical` | `inline` |
 | theme | 导航菜单的主题 | String | `light`, `dark` | `light` |
 | activeName | 选中的菜单项名称 | String, Number | - | - |
+| router | 是否使用 `vue-router` | Boolean | - | false |
 | inlineCollapsed | 是否允许每次只展开一个菜单 | Boolean | - | false |
 | width | 导航菜单的宽度，仅在 `vertical` 和 `inline` 模式下有效 | String | - | `240px` |
 
@@ -325,6 +326,7 @@
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | name | 菜单项的名称 | String / Number | - | - |
+| to | 	路由跳转对象，同 `vue-router` 中的 `to` | String / Object | - | - |
 | disabled | 是否可用 | Boolean | - | false |
 
 <script>
