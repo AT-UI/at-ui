@@ -9,9 +9,8 @@
 
 :::demo
 ```html
-<at-checkbox v-model="checkboxValue" label="深圳">深圳</at-checkbox>
-<at-checkbox v-model="checkboxValue" label="北京">北京</at-checkbox>
-<at-checkbox v-model="checkboxValue" label="广州">广州</at-checkbox>
+<at-checkbox v-model="checkboxValue1" label="深圳">深圳</at-checkbox>
+<p class="demo-desc">{{ checkboxValue1 }}</p>
 ```
 :::
 
@@ -43,10 +42,6 @@
 ```
 :::
 
-## 全选
-
-在实现全选效果时，可能会用到 `indeterminate` 属性
-
 ## Checkbox 参数
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
@@ -55,19 +50,25 @@
 | disabled | 是否禁用按钮 | Boolean | - | false |
 | checked | 是否已勾选 | Boolean | - | false |
 
+## Checkbox 事件
+
+| 事件名称      | 说明          | 返回值  |
+|---------- |-------------- |---------- |
+| on-change | 绑定的值变化时触发 | 选中的按钮的 label 值 |
+
 ## Checkbox Group 事件
 
 | 事件名称      | 说明          | 返回值  |
 |---------- |-------------- |---------- |
-| checkbox-group-change | 绑定的值变化时触发 | 选中的按钮的 label 值 |
+| on-change | 绑定的值变化时触发 | 选中的按钮的 label 值 |
 
 <script>
 export default {
   data() {
     return {
-      checkboxValue: ['深圳'],
-      checkboxValue2: [],
-      checkboxValue3: ['深圳'],
+      checkboxValue1: true,
+      checkboxValue2: false,
+      checkboxValue3: false,
       checkboxValue4: ['深圳', '凹凸实验室']
     }
   }

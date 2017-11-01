@@ -327,6 +327,7 @@
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | name | 菜单项的名称 | String / Number | - | - |
 | to | 	路由跳转对象，同 `vue-router` 中的 `to` | String / Object | - | - |
+| replace | 在使用 `to` 时，是否不需要向 `history` 添加新记录 | Boolean | - | false |
 | disabled | 是否可用 | Boolean | - | false |
 
 <script>
