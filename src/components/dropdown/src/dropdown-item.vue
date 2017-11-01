@@ -5,7 +5,7 @@
       'at-dropdown-menu__item--disabled': disabled,
       'at-dropdown-menu__item--divided': divided
     }"
-    @click="handleClick">
+    @click.stop="handleClick">
     <slot></slot>
   </li>
 </template>
