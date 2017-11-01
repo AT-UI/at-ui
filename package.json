@@ -1,6 +1,6 @@
 {
   "name": "at-ui",
-  "version": "1.2.0-beta.2",
+  "version": "1.2.0",
   "description": "A UI Component Library with Vue.js",
   "homepage": "https://at.aotu.io",
   "main": "dist/at.js",

@@ -5,6 +5,10 @@
 
 项目遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范
 
+## <span class="title-version">v1.2.0</span> - 2017-11-01
+
+- 修复 Bugs
+
 ## <span class="title-version">v1.2.0-beta.2</span> - 2017-09-03
 
 - 新增 `SSR` 支持
