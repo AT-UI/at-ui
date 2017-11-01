@@ -74,18 +74,6 @@ module.exports = {
       //   exclude: /node_modules/
       // },
       {
-        test: /\.vue$/,
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.js$/,
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      },
-      {
         test: /\.md$/,
         loader: 'vue-markdown-loader',
         options: vueMarkdown
