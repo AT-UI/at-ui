@@ -1,20 +1,32 @@
 <template>
   <label
-  class="at-checkbox"
-  :class="{
-    'at-checkbox--focus': focus,
-    'at-checkbox--checked': isChecked,
-    'at-checkbox--disabled': disabled
-  }">
+    class="at-checkbox"
+    :class="{
+      'at-checkbox--focus': focus,
+      'at-checkbox--checked': currentValue,
+      'at-checkbox--disabled': disabled
+    }">
     <span class="at-checkbox__input">
       <span class="at-checkbox__inner"></span>
       <input
+        v-if="isGroup"
         type="checkbox"
         class="at-checkbox__original"
-        v-model="store"
+        v-model="model"
         :name="name"
         :value="label"
         :disabled="disabled"
+        @change="change"
+        @focus="focus = true"
+        @blur="focus = false">
+      <input
+        v-else
+        type="checkbox"
+        class="at-checkbox__original"
+        :name="name"
+        :disabled="disabled"
+        :checked="currentValue"
+        @change="change"
         @focus="focus = true"
         @blur="focus = false">
     </span>
@@ -25,6 +37,7 @@
 </template>
 
 <script>
+import { findComponentUpward } from 'src/utils/util'
 import Emitter from 'src/mixins/emitter'
 
 export default {
@@ -35,7 +48,7 @@ export default {
       type: [String, Number, Boolean, Array],
       default: false
     },
-    label: [String, Number],
+    label: [String, Number, Boolean],
     name: String,
     checked: {
       type: Boolean,
@@ -48,47 +61,49 @@ export default {
   },
   data () {
     return {
+      model: [],
       focus: false,
       isGroup: false,
-      store: this.value
+      currentValue: this.value
     }
-  },
-  computed: {
-    isChecked () {
-      if ({}.toString.call(this.store) === '[object Boolean]') {
-        return this.store
-      } else if (Array.isArray(this.store)) {
-        return this.store.indexOf(this.label) > -1
-      }
-      return false
-    },
   },
   watch: {
     value (value) {
-      this.store = value
-    },
-    store (value) {
-      this.$emit('input', value)
-      this.$emit('on-change', value)
-
-      if (this.isGroup) {
-        this.dispatch('AtCheckboxGroup', 'on-change', [value])
-      }
-    },
+      this.updateModel()
+    }
   },
   methods: {
-    addToStore () {
-      if (Array.isArray(this.store)) {
-        this.store.indexOf(this.label) === -1 && this.store.push(this.label)
+    updateModel () {
+      this.currentValue = this.value
+    },
+    change (evt) {
+      if (this.disabled) return false
+
+      const checked = evt.target.checked
+      this.currentValue = checked
+
+      const value = checked
+      this.$emit('input', value)
+
+      if (this.isGroup) {
+        this.parent.change(this.model)
+      } else {
+        this.$emit('on-change', value)
       }
     }
   },
   mounted () {
-    this.checked && this.addToStore()
-    this.$on('init-data', data => {
-      this.store = data
+    this.parent = findComponentUpward(this, 'AtCheckboxGroup')
+    if (this.parent) {
       this.isGroup = true
-    })
+      this.parent.updateModel()
+    } else {
+      this.updateModel()
+    }
+
+    if (this.checked) {
+      this.currentValue = this.checked
+    }
   }
 }
 </script>

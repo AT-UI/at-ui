@@ -53,7 +53,6 @@
     <template v-if="totalPage < 9">
       <li
         v-for="num in pageRange"
-        :key="num"
         class="at-pagination__item"
         :class="{
           'at-pagination__item--active': currentPage === num

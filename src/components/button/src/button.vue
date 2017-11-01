@@ -10,7 +10,7 @@
     ]"
     :style="styleList"
     :disabled="disabled"
-    :type="type"
+    :type="nativeType"
     @click="handleClick"
   >
     <i class="at-btn__loading icon icon-loader" v-if="loading"></i>
@@ -26,6 +26,10 @@ export default {
     type: {
       type: String,
       default: 'default'
+    },
+    nativeType: {
+      type: String,
+      default: 'button'
     },
     size: String,
     icon: String,

@@ -9,9 +9,8 @@ Need to bind `model` separately for standalone use.
 
 :::demo
 ```html
-<at-checkbox v-model="checkboxValue" label="Shenzhen">Shenzhen</at-checkbox>
-<at-checkbox v-model="checkboxValue" label="Beijing">Beijing</at-checkbox>
-<at-checkbox v-model="checkboxValue" label="Guangzhou">Guangzhou</at-checkbox>
+<at-checkbox v-model="checkboxValue1" label="Shenzhen">Shenzhen</at-checkbox>
+<p class="demo-desc">{{ checkboxValue1 }}</p>
 ```
 :::
 
@@ -43,10 +42,6 @@ Use `CheckboxGroup` combined with array to generate a combination.
 ```
 :::
 
-## Check All
-
-The `indeterminate` property can help you to achieve a 'check all' effect.
-
 ## Checkbox Props
 
 | Property      | Description          | Type      | Accepted values                           | Default  |
@@ -55,19 +50,25 @@ The `indeterminate` property can help you to achieve a 'check all' effect.
 | disabled | disable selection or not | Boolean | - | false |
 | checked | whether the checkbox is selected | Boolean | - | false |
 
+## Checkbox Events
+
+| Event Name      | Description          | Return Value  |
+|---------- |-------------- |---------- |
+| on-change | Emitted when the state of selection is changed | the `lavel` value of selected button |
+
 ## Checkbox Group Events
 
 | Event Name      | Description          | Return Value  |
 |---------- |-------------- |---------- |
-| checkbox-group-change | Emitted when the state of selection is changed | the `lavel` value of selected button |
+| on-change | Emitted when the state of selection is changed | the `lavel` value of selected button |
 
 <script>
 export default {
   data() {
     return {
-      checkboxValue: ['Shenzhen'],
-      checkboxValue2: [],
-      checkboxValue3: ['Shenzhen'],
+      checkboxValue1: true,
+      checkboxValue2: false,
+      checkboxValue3: false,
       checkboxValue4: ['Shenzhen', 'O2Team']
     }
   }

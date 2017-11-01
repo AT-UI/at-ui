@@ -3,16 +3,6 @@
  */
 let hiddenTextarea
 
-const HIDDEN_STYLE = `
-  height: 0 !important;
-  visibility: hidden !important;
-  overflow: hidden !important;
-  position: absolute !important;
-  z-index: -999 !important;
-  top: 0 !important;
-  left: 0 !important;
-`
-
 const CONTEXT_STYLE = [
   'letter-spacing',
   'line-height',
@@ -55,7 +45,7 @@ export function calcTextareaHeight (targetNode, minRows = null, maxRows = null) 
 
   const { boxSizing, paddingSize, borderSize, contextStyle } = calculateNodeStyling(targetNode)
 
-  hiddenTextarea.setAttribute('style', `${contextStyle}:${HIDDEN_STYLE}`)
+  hiddenTextarea.setAttribute('style', contextStyle)
   hiddenTextarea.value = targetNode.value || targetNode.placeholder || ''
 
   let height = hiddenTextarea.scrollHeight
