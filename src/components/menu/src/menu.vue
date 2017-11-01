@@ -34,6 +34,10 @@
       width: {
         type: String,
         default: '240px'
+      },
+      router: {
+        type: Boolean,
+        default: false
       }
     },
     data () {
@@ -74,13 +78,21 @@
           })
         }
         this.broadcast('AtMenuItem', 'on-update-active', this.currentActiveName)
+      },
+      routeToMenuItem (item) {
+        const route = item.to || {}
+        item.replace ? this.$router.replace(route) : this.$router.push(route)
       }
     },
     mounted () {
       this.updateActiveName()
-      this.$on('on-menu-item-select', name => {
-        this.currentActiveName = name
-        this.$emit('on-select', name)
+      this.$on('on-menu-item-select', item => {
+        this.currentActiveName = item.name
+        this.$emit('on-select', item.name)
+
+        if (this.router) {
+          this.routeToMenuItem(item)
+        }
       })
     }
   }

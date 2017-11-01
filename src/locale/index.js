@@ -13,9 +13,9 @@ const i18nHandler = function (...args) {
   }
 }
 
-export function t (path, options) {
-  const array = path.split('.')
-  let value = i18nHandler.apply(this, arguments)
+export function t (...args) {
+  const array = args[0].split('.')
+  let value = i18nHandler.apply(this, args)
   let current = defaultLang
 
   if (value !== null && typeof value !== 'undefined') {

@@ -39,9 +39,8 @@ exports.cssLoaders = function (options) {
         use: loaders,
         fallback: 'vue-style-loader'
       })
-    } else {
-      return ['vue-style-loader'].concat(loaders)
     }
+    return ['vue-style-loader'].concat(loaders)
   }
 
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
@@ -71,7 +70,7 @@ exports.styleLoaders = function (options) {
   for (const extension in loaders) {
     const loader = loaders[extension]
     output.push({
-      test: new RegExp('\\.' + extension + '$'),
+      test: new RegExp(`\\.${extension}$`),
       use: loader
     })
   }
@@ -81,7 +80,7 @@ exports.styleLoaders = function (options) {
 /**
  * 增加 hljs 的 classname
  */
-exports.wrapCustomClass = render => {
+exports.wrapCustomClass = function (render) {
   return function (...args) {
     return render(...args)
       .replace('<code class="', '<code class="hljs ')
@@ -92,6 +91,6 @@ exports.wrapCustomClass = render => {
 /**
  * Format HTML string
  */
-exports.convertHtml = str => {
+exports.convertHtml = function (str) {
   return str.replace(/(&#x)(\w{4});/gi, $0 => String.fromCharCode(parseInt(encodeURIComponent($0).replace(/(%26%23x)(\w{4})(%3B)/g, '$2'), 16)))
 }

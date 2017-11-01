@@ -11,7 +11,7 @@ Set `mode` to `horizontal`.
 
 :::demo
 ```html
-<at-menu mode="horizontal" active-Name="1">
+<at-menu mode="horizontal" active-name="1">
   <at-menu-item name="1"><i class="icon icon-home"></i>Navigation One</at-menu-item>
   <at-menu-item name="2" disabled><i class="icon icon-layers"></i>Navigation Two</at-menu-item>
   <at-submenu>
@@ -36,7 +36,7 @@ Nested `Submenu` in `Submenu` can bi combined into multilevel menus.
 
 :::demo
 ```html
-<at-menu mode="horizontal" active-Name="1">
+<at-menu mode="horizontal" active-name="1">
   <at-menu-item name="1"><i class="icon icon-home"></i>Navigation One</at-menu-item>
   <at-menu-item name="2"><i class="icon icon-layers"></i>Navigation Two</at-menu-item>
   <at-submenu>
@@ -60,7 +60,7 @@ Set `mode` to `vertical`.
 
 :::demo
 ```html
-<at-menu mode="vertical" active-Name="1">
+<at-menu mode="vertical" active-name="1">
   <at-menu-item name="1"><i class="icon icon-home"></i>Navigation One</at-menu-item>
   <at-menu-item name="2" disabled><i class="icon icon-layers"></i>Navigation Two</at-menu-item>
   <at-submenu>
@@ -83,7 +83,7 @@ Set `mode` to `vertical`.
 
 :::demo
 ```html
-<at-menu mode="vertical" active-Name="1">
+<at-menu mode="vertical" active-name="1">
   <at-menu-item name="1"><i class="icon icon-home"></i>Navigation One</at-menu-item>
   <at-menu-item name="2"><i class="icon icon-layers"></i>Navigation Two</at-menu-item>
   <at-submenu>
@@ -117,7 +117,7 @@ Set `mode` to `inline`.
 
 :::demo
 ```html
-<at-menu active-Name="1">
+<at-menu active-name="1">
   <at-menu-item name="1"><i class="icon icon-home"></i>Navigation One</at-menu-item>
   <at-menu-item name="2" disabled><i class="icon icon-layers"></i>Navigation Two</at-menu-item>
   <at-submenu>
@@ -147,7 +147,7 @@ Set `inline-collapsed` property to open collapsed mode. Which means only one sub
 
 :::demo
 ```html
-<at-menu active-Name="1-1" inline-collapsed>
+<at-menu active-name="1-1" inline-collapsed>
   <at-submenu opened>
     <template slot="title"><i class="icon icon-home"></i>Navigation One</template>
     <at-menu-item-group title="Group One">
@@ -199,7 +199,7 @@ There are two built-in themes: `light` and `dark`. The default value is `light`.
     <at-radio label="vertical">Vertical</at-radio>
   </at-radio-group>
 </div>
-<at-menu :theme="theme" :mode="mode" active-Name="0" >
+<at-menu :theme="theme" :mode="mode" active-name="0" >
   <at-menu-item name="0" disabled><i class="icon icon-box"></i>Submenu</at-menu-item>
   <at-submenu>
     <template slot="title"><i class="icon icon-home"></i>Navigation One</template>
@@ -235,6 +235,21 @@ There are two built-in themes: `light` and `dark`. The default value is `light`.
 ```
 :::
 
+## Vue Router Integration
+
+Used together with `vue-router`. Set `router` property to `at-menu`, and Passed an `object` to `to` property. If you don't need a new history, add the `replace` property to `Menu Item`.
+
+:::demo
+```html
+<at-menu router>
+  <at-menu-item :to="{ name: 'Breadcrumb-en' }">Breadcrumb</at-menu-item>
+  <at-menu-item :to="{ name: 'Dropdown-en' }">Dropdown</at-menu-item>
+  <at-menu-item :to="{ name: 'Menu-en' }">Menu</at-menu-item>
+  <at-menu-item :to="{ name: 'Pagination-en' }">Pagination</at-menu-item>
+</at-menu>
+```
+:::
+
 ## Menu Props
 
 | Property      | Description          | Type      | Accepted Values                           | Default  |
@@ -242,6 +257,7 @@ There are two built-in themes: `light` and `dark`. The default value is `light`.
 | mode | the mode of Menu | String | `inline`, `horizontal`, `vertical` | `inline` |
 | theme | the theme of Menu | String | `light`, `dark` | `light` |
 | activeName | the name of actived item | String, Number | - | - |
+| router | whether to use `vue-router` | Boolean | - | false |
 | inlineCollapsed | enable collapsed mode | Boolean | - | false |
 | width | the width of Menu, only valid in `vertical` and `inline` mode | String | - | `240px` |
 
@@ -269,6 +285,8 @@ There are two built-in themes: `light` and `dark`. The default value is `light`.
 | Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | name | the name of Menu Item | String / Number | - | - |
+| to | the object of `vue-router`, same as the `to` property in `vue-router` | String / Object | - | - |
+| replace | whether to add new history when using `to` | Boolean | - | false |
 | disabled | whether the MenuItem is disabled | Boolean | - | false |
 
 <script>

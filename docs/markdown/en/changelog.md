@@ -5,6 +5,10 @@
 
 `AT-UI` strictly follows [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/).
 
+## <span class="title-version">v1.2.0</span> - 2017-11-01
+
+- Fix bugs
+
 ## <span class="title-version">v1.2.0-beta.2</span> - 2017-09-03
 
 - Add `SSR` support
