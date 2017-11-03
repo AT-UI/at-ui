@@ -1,6 +1,6 @@
 {
   "name": "at-ui",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A UI Component Library with Vue.js",
   "homepage": "https://at.aotu.io",
   "main": "dist/at.js",
@@ -40,7 +40,6 @@
   "author": "Koppt Ho <kopptsoft@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "babel-eslint": "^8.0.1",
     "vue": "^2.3.4",
     "vue-i18n": "^7.1.1",
     "vue-router": "^2.5.3",
@@ -60,7 +59,6 @@
     "css-loader": "^0.28.4",
     "eslint": "^4.1.1",
     "eslint-config-o2team": "^0.1.6",
-    "eslint-config-postcss": "^2.0.2",
     "eslint-loader": "^1.8.0",
     "eslint-plugin-html": "^3.0.0",
     "express": "^4.15.3",
