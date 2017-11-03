@@ -154,6 +154,7 @@ Set the `size` property to use different size of button, it's `normal` size by d
 | Property      | Description          | Type      | Accepted values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | type | type of button | String | `default`, `primary`, `success`, `error`, `warning`, `info`, `text` | - |
+| nativeType | same as native type | String | - | `button` |
 | size | size of button | String | `large`, `small`, `smaller` | normal |
 | hollow | whether a hollow button | Boolean | - | false |
 | icon | set the icon of button, input the `classname` | String | see the document of `Icon` | - |

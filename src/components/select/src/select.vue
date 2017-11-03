@@ -16,7 +16,7 @@
       class="at-select__selection"
       ref="trigger"
       @click="toggleMenu">
-      <span class="at-tag" v-for="(item, index) in selectedMultiple" :key="item">
+      <span class="at-tag" v-for="(item, index) in selectedMultiple">
         <span class="at-tag__text">{{ item.label }}</span>
         <i class="icon icon-x at-tag__close" @click.stop="removeTag(index)"></i>
       </span>

@@ -154,6 +154,7 @@
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | type | 按钮的类型 | String | `default`, `primary`, `success`, `error`, `warning`, `info`, `text` | - |
+| nativeType | 原生按钮的类型 | String | - | `button` |
 | size | 按钮的大小 | String | `large`, `small`, `smaller` | - |
 | hollow | 是否为空心按钮 | Boolean | - | false |
 | icon | 按钮的图标类名，填入图标的 `classname` | String | 见文档 `Icon 图标` | - |

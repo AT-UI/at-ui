@@ -27,7 +27,6 @@
               <!-- S Column th -->
               <th
                 v-for="(column, index) in columnsData"
-                :key="column"
                 class="at-table__cell at-table__column"
                 :class="column.className"
                 :style="{
@@ -69,7 +68,6 @@
               <!-- S Column th -->
               <th
                 v-for="(column, index) in columnsData"
-                :key="column"
                 class="at-table__cell at-table__column"
                 :class="column.className"
                 :style="{
@@ -233,6 +231,9 @@ export default {
     },
     pageCurSize () {
       this.sortData = this.makeDataWithPaginate()
+    },
+    data () {
+      this.sortData = this.makeDataWithSortAndPage()
     }
   },
   computed: {
@@ -457,7 +458,6 @@ export default {
               }
               columnsWidth[column._index] = { width }
             }
-
           }
         }
 

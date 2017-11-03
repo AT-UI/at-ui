@@ -60,19 +60,31 @@ module.exports = {
     }
   },
   module: {
-    // preLoaders: [
-    //   {
-    //     test: /\.vue$/,
-    //     loader: 'eslint',
-    //     exclude: /node_modules/
-    //   },
-    //   {
-    //     test: /\.js$/,
-    //     loader: 'eslint',
-    //     exclude: /node_modules/
-    //   }
-    // ],
     rules: [
+      // {
+      //   test: /\.vue$/,
+      //   enforce: 'pre',
+      //   loader: 'eslint-loader',
+      //   exclude: /node_modules/
+      // },
+      // {
+      //   test: /\.js$/,
+      //   enforce: 'pre',
+      //   loader: 'eslint-loader',
+      //   exclude: /node_modules/
+      // },
+      {
+        test: /\.vue$/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.md$/,
         loader: 'vue-markdown-loader',
@@ -82,41 +94,6 @@ module.exports = {
         test: /\.yml$/,
         loader: 'json-loader!yaml-loader'
       },
-      // {
-      //   test: /\.css$/,
-      //   loaders: [
-      //     'style-loader',
-      //     'css-loader',
-      //     {
-      //       loader: 'postcss-loader',
-      //       options: {
-      //         plugins: () => [
-      //           require('autoprefixer')({
-      //             browsers: ['last 2 versions', 'ie > 8']
-      //           })
-      //         ]
-      //       }
-      //     }
-      //   ]
-      // },
-      // {
-      //   test: /\.scss$/,
-      //   loaders: [
-      //     'style-loader',
-      //     'css-loader',
-      //     {
-      //       loader: 'postcss-loader',
-      //       options: {
-      //         plugins: () => [
-      //           require('autoprefixer')({
-      //             browsers: ['last 2 versions', 'ie > 8']
-      //           })
-      //         ]
-      //       }
-      //     },
-      //     'sass-loader'
-      //   ]
-      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -165,8 +142,5 @@ module.exports = {
         portalPrefix: JSON.stringify(config.portalPrefix)
       }
     })
-  ],
-  // eslint: {
-  //   formatter: require('eslint-friendly-formatter')
-  // },
+  ]
 }

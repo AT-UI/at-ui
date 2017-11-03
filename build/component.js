@@ -70,16 +70,16 @@ function getConfig (options) {
   return config
 }
 
-Object.keys(buildsConfig).map(conf => {
+Object.keys(buildsConfig).map(conf =>
   webpack(getConfig(buildsConfig[conf]), (err, stats) => {
     spinner.stop()
     if (err) throw err
-    process.stdout.write(stats.toString({
+    process.stdout.write(`${stats.toString({
       color: true,
       modules: false,
       children: false,
       chunks: false,
       chunkModules: false
-    }) + '\n')
+    })}\n`)
   })
-})
+)
