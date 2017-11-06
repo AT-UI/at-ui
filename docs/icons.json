@@ -78,6 +78,7 @@
     "icon-mic-off",
     "icon-mic",
     "icon-minimize-2",
+    "icon-minimize",
     "icon-minus-circle",
     "icon-minus-square",
     "icon-minus",
@@ -138,12 +139,21 @@
     "icon-users",
     "icon-watch",
     "icon-wifi",
+    "icon-wifi-off",
     "icon-x-circle",
     "icon-x-square",
     "icon-x",
     "icon-zap",
     "icon-zoom-in",
-    "icon-zoom-out"
+    "icon-zoom-out",
+    "icon-underline",
+    "icon-italic",
+    "icon-bold",
+    "icon-crop",
+    "icon-help-circle",
+    "icon-paperclip",
+    "icon-shopping-cart",
+    "icon-sliders"
   ],
   "media": [
     "icon-fast-forward",
@@ -182,7 +192,8 @@
     "icon-film",
     "icon-image",
     "icon-video-off",
-    "icon-video"
+    "icon-video",
+    "icon-tv"
   ],
   "location": [
     "icon-compass",
@@ -236,6 +247,7 @@
   "logos": [
     "icon-chrome",
     "icon-codepen",
+    "icon-gitlab",
     "icon-facebook",
     "icon-github",
     "icon-instagram",
