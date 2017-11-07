@@ -98,6 +98,8 @@ zh:
               name: Pagination
             - title: 步骤条
               name: Steps
+            - title: 标签页
+              name: Tabs
 en:
   guide:
     - title: Brand
@@ -198,3 +200,5 @@ en:
               name: Pagination
             - title: Steps
               name: Steps
+            - title: Tabs
+              name: Tabs

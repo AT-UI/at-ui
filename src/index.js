@@ -26,6 +26,7 @@ import Card from './components/card'
 import { Collapse, CollapseItem } from './components/collapse'
 import { Steps, Step } from './components/steps'
 import Rate from './components/rate'
+import { Tabs, TabPane } from './components/tabs'
 
 const components = {
   Button,
@@ -67,7 +68,9 @@ const components = {
   CollapseItem,
   Steps,
   Step,
-  Rate
+  Rate,
+  Tabs,
+  TabPane
 }
 
 function install (Vue) {
