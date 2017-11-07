@@ -24,6 +24,8 @@ import { Menu, MenuItem, MenuItemGroup, Submenu } from './components/menu'
 import Table from './components/table'
 import Card from './components/card'
 import { Collapse, CollapseItem } from './components/collapse'
+import { Steps, Step } from './components/steps'
+import Rate from './components/rate'
 
 const components = {
   Button,
@@ -62,7 +64,10 @@ const components = {
   Table,
   Card,
   Collapse,
-  CollapseItem
+  CollapseItem,
+  Steps,
+  Step,
+  Rate
 }
 
 function install (Vue) {

@@ -1,0 +1,110 @@
+<template>
+  <div
+    class="at-step"
+    :class="stepStatusClass"
+    :style="{
+      width: `${1 / stepsTotal * 100}%`
+    }">
+    <div v-if="!isLastStep" class="at-step__line"></div>
+    <div class="at-step__head">
+      <div :class="{
+          'at-step__label': true,
+          'at-step__icon': icon
+        }">
+        <div v-if="icon">
+          <i :class="[
+            'icon',
+            `${icon}`
+          ]"></i>
+        </div>
+        <template v-else>
+          <div v-if="['process', 'wait'].indexOf(finalStatus) > -1"
+            class="at-step__order">
+            {{ index + 1 }}
+          </div>
+          <div v-if="finalStatus === 'finish'">
+            <i class="icon icon-check"></i>
+          </div>
+          <div v-if="finalStatus === 'error'">
+            <i class="icon icon-x"></i>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div class="at-step__main">
+      <div class="at-step__title">{{ title }}</div>
+      <div class="at-step__description">{{ description }}</div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'AtStep',
+
+  props: {
+    title: String,
+    icon: String,
+    description: String,
+    status: String
+  },
+
+  data () {
+    return {
+      index: -1,
+      internalStatus: '',
+      nextError: false
+    }
+  },
+
+  beforeCreate () {
+    this.$parent.steps.push(this)
+  },
+
+  beforeDestroy () {
+    const steps = this.$parent.steps
+    const index = steps.indexOf(this)
+    if (index >= 0) {
+      steps.splice(index, 1)
+    }
+  },
+
+  computed: {
+    stepsTotal () {
+      return this.$parent.steps.length
+    },
+    finalStatus () {
+      return this.status || this.internalStatus
+    },
+    isLastStep () {
+      return this.index === this.stepsTotal - 1
+    },
+    stepStatusClass () {
+      const status = this.finalStatus
+      const className = {}
+      switch (status) {
+        case 'process':
+          className['at-step--process'] = true
+          break
+        case 'wait':
+          className['at-step--wait'] = true
+          break
+        case 'finish':
+          className['at-step--finish'] = true
+          break
+        case 'error':
+          className['at-step--error'] = true
+          break
+      }
+
+      if (this.nextError) {
+        className['at-step--next__error'] = true
+        console.log(1)
+      }
+
+      return className
+    }
+  }
+}
+</script>
+

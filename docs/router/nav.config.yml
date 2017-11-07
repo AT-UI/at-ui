@@ -50,6 +50,8 @@ zh:
               name: InputNumber
             - title: 单选按钮
               name: Radio
+            - title: 评分
+              name: Rate
             - title: 选择器
               name: Select
             - title: 开关
@@ -94,6 +96,8 @@ zh:
               name: Menu
             - title: 分页
               name: Pagination
+            - title: 步骤条
+              name: Steps
 en:
   guide:
     - title: Brand
@@ -146,6 +150,8 @@ en:
               name: InputNumber
             - title: Radio
               name: Radio
+            - title: Rate
+              name: Rate
             - title: Select
               name: Select
             - title: Switch
@@ -190,3 +196,5 @@ en:
               name: Menu
             - title: Pagination
               name: Pagination
+            - title: Steps
+              name: Steps
