@@ -23,6 +23,7 @@ import Message from './components/message'
 import { Menu, MenuItem, MenuItemGroup, Submenu } from './components/menu'
 import Table from './components/table'
 import Card from './components/card'
+import { Collapse, CollapseItem } from './components/collapse'
 
 const components = {
   Button,
@@ -59,7 +60,9 @@ const components = {
   MenuItemGroup,
   Submenu,
   Table,
-  Card
+  Card,
+  Collapse,
+  CollapseItem
 }
 
 function install (Vue) {

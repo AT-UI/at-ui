@@ -66,6 +66,8 @@ zh:
               name: Badge
             - title: 卡片
               name: Card
+            - title: 折叠面板
+              name: Collapse
             - title: 加载进度条
               name: LoadingBar
             - title: 模态框
@@ -160,6 +162,8 @@ en:
               name: Badge
             - title: Card
               name: Card
+            - title: Collapse
+              name: Collapse
             - title: LoadingBar
               name: LoadingBar
             - title: Modal
