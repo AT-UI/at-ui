@@ -27,6 +27,7 @@ import { Collapse, CollapseItem } from './components/collapse'
 import { Steps, Step } from './components/steps'
 import Rate from './components/rate'
 import { Tabs, TabPane } from './components/tabs'
+import { Timeline, TimelineItem } from './components/timeline'
 
 const components = {
   Button,
@@ -70,7 +71,9 @@ const components = {
   Step,
   Rate,
   Tabs,
-  TabPane
+  TabPane,
+  Timeline,
+  TimelineItem
 }
 
 function install (Vue) {
