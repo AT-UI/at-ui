@@ -1,5 +1,5 @@
 
-# Steps
+# Steps 步骤条
 
 ---
 
@@ -82,23 +82,6 @@
 :::demo
 ```html
 <at-steps :current='current' direction="vertical">
-  <at-step title="Step1" description="This is a description."></at-step>
-  <at-step title="Step2" description="This is a description."></at-step>
-  <at-step title="Step3" description="This is a description."></at-step>
-</at-steps>
-
-<at-button type="primary" @click="prev" style="margin-top: 12px;">Prev</at-button>
-<at-button type="primary" @click="next" style="margin-top: 12px;">Next</at-button>
-```
-:::
-
-## 竖直方向的小型步骤条
-
-简单的竖直方向的小型步骤条。
-
-:::demo
-```html
-<at-steps :current='current' size="small" direction="vertical">
   <at-step title="Step1" description="This is a description."></at-step>
   <at-step title="Step2" description="This is a description."></at-step>
   <at-step title="Step3" description="This is a description."></at-step>
