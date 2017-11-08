@@ -73,6 +73,37 @@ Cooperate with the content and buttons, to represent the progress of a process.
 
 <at-button type="primary" @click="prev" style="margin-top: 12px;">Prev</at-button>
 <at-button type="primary" @click="next" style="margin-top: 12px;">Next</at-button>
+
+<script>
+  export default {
+    data() {
+      return {
+        current: 0,
+        steps: [{
+          title: 'First',
+          content: 'First-content'
+        }, {
+          title: 'Second',
+          content: 'Second-content'
+        }, {
+          title: 'Last',
+          content: 'Last-content'
+        }]
+      }
+    },
+
+    methods: {
+      prev () {
+        if (this.current-- <= 0)
+          this.current = 0
+      },
+      next () {
+        if (this.current++ >= 2)
+          this.current = 2
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -133,9 +164,9 @@ By using `status` of `Steps`, you can specify the state for current step.
 | Property      | Description          | Type      | Accepted Values                           | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | current | to set the current step, counting from 0 | Number | - | 0 |
-| status | to specify the status of current step | String | `wait` `process` `finish` `error` | process |
-| size | to specify the size of the step bar | String | `default` `small` | default |
-| direction | to specify the direction of the step bar | String | `horizontal` `vertical` | horizontal |
+| status | to specify the status of current step | String | `wait` `process` `finish` `error` | `process` |
+| size | to specify the size of the step bar | String | `default` `small` | `default` |
+| direction | to specify the direction of the step bar | String | `horizontal` `vertical` | `horizontal` |
 
 
 ## Step Props

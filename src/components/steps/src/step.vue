@@ -2,13 +2,11 @@
   <div
     class="at-step"
     :class="stepStatusClass"
-    :style="{
-      width: `${1 / stepsTotal * 100}%`
-    }">
+    :style="stepStyle">
     <div v-if="!isLastStep" class="at-step__line"></div>
     <div class="at-step__head">
-      <div :class="{
-          'at-step__label': true,
+      <div class="at-step__label"
+        :class="{
           'at-step__icon': icon
         }">
         <div v-if="icon">
@@ -30,7 +28,7 @@
     </div>
     <div class="at-step__main">
       <div class="at-step__title">{{ title }}</div>
-      <div class="at-step__description">{{ description }}</div>
+      <div class="at-step__description" v-if="description">{{ description }}</div>
     </div>
   </div>
 </template>
@@ -38,7 +36,6 @@
 <script>
 export default {
   name: 'AtStep',
-
   props: {
     title: String,
     icon: String,
@@ -48,7 +45,6 @@ export default {
       validator: val => ['wait', 'process', 'finish', 'error'].indexOf(val) > -1
     }
   },
-
   data () {
     return {
       index: -1,
@@ -56,21 +52,14 @@ export default {
       nextError: false
     }
   },
-
-  beforeCreate () {
-    this.$parent.steps.push(this)
-  },
-
-  beforeDestroy () {
-    const steps = this.$parent.steps
-    const index = steps.indexOf(this)
-
-    if (index >= 0) {
-      steps.splice(index, 1)
-    }
-  },
-
   computed: {
+    stepStyle () {
+      const style = {}
+      if (this.$parent.direction !== 'vertical') {
+        style.width = `${1 / this.stepsTotal * 100}%`
+      }
+      return style
+    },
     stepsTotal () {
       return this.$parent.steps.length
     },
@@ -81,10 +70,9 @@ export default {
       return this.index === this.stepsTotal - 1
     },
     stepStatusClass () {
-      const status = this.finalStatus
       const className = {}
 
-      switch (status) {
+      switch (this.finalStatus) {
         case 'process':
           className['at-step--process'] = true
           break
@@ -100,10 +88,21 @@ export default {
       }
 
       if (this.nextError) {
-        className['at-step--next__error'] = true
+        className['at-step--next-error'] = true
       }
 
       return className
+    }
+  },
+  beforeCreate () {
+    this.$parent.steps.push(this)
+  },
+  beforeDestroy () {
+    const steps = this.$parent.steps
+    const index = steps.indexOf(this)
+
+    if (index >= 0) {
+      steps.splice(index, 1)
     }
   }
 }

@@ -72,6 +72,37 @@
 
 <at-button type="primary" @click="prev" style="margin-top: 12px;">Prev</at-button>
 <at-button type="primary" @click="next" style="margin-top: 12px;">Next</at-button>
+
+<script>
+  export default {
+    data() {
+      return {
+        current: 0,
+        steps: [{
+          title: 'First',
+          content: 'First-content'
+        }, {
+          title: 'Second',
+          content: 'Second-content'
+        }, {
+          title: 'Last',
+          content: 'Last-content'
+        }]
+      }
+    },
+
+    methods: {
+      prev () {
+        if (this.current-- <= 0)
+          this.current = 0
+      },
+      next () {
+        if (this.current++ >= 2)
+          this.current = 2
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -130,9 +161,9 @@
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | current | 指定当前步骤，从 0 开始计数 | Number | - | 0 |
-| status | 指定当前步骤的状态，会覆盖子元素 `Step` 的状态 | String | `wait` `process` `finish` `error` | process |
-| size | 指定样式大小 | String | `default` `small` | default |
-| direction | 指定步骤条方向 | String | `horizontal` `vertical` | horizontal |
+| status | 指定当前步骤的状态，会覆盖子元素 `Step` 的状态 | String | `wait` `process` `finish` `error` | `process` |
+| size | 指定样式大小 | String | `default` `small` | `default` |
+| direction | 指定步骤条方向 | String | `horizontal` `vertical` | `horizontal` |
 
 
 ## Steps.Step 参数

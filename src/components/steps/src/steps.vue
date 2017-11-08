@@ -2,12 +2,8 @@
   <div
     :class="[
       'at-steps',
-      direction === 'vertical'
-        ? `at-steps--vertical`
-        : `at-steps--horizontal`,
-      size === 'small'
-        ? `at-steps--small`
-        : ``
+      direction === 'vertical' ? 'at-steps--vertical' : 'at-steps--horizontal',
+      size === 'small' ? 'at-steps--small' : ''
     ]">
     <slot></slot>
   </div>
@@ -38,16 +34,13 @@ export default {
       validator: val => ['horizontal', 'vertical'].indexOf(val) > -1
     }
   },
-
   data () {
     return {
       steps: []
     }
   },
-
   methods: {
     updateStepsStatus () {
-      const total = this.steps.length
       const current = this.current
       const status = this.status
 
@@ -67,17 +60,16 @@ export default {
           child.internalStatus = 'wait'
         }
 
-        if (child.finalStatus !== 'error' && prevChild)
+        if (child.finalStatus !== 'error' && prevChild) {
           prevChild.nextError = false
+        }
       })
     }
   },
-
   watch: {
     current () {
       this.updateStepsStatus()
     },
-
     steps (steps) {
       steps.forEach((step, index) => {
         step.index = index
@@ -85,7 +77,6 @@ export default {
       this.updateStepsStatus()
     }
   },
-
   mounted () {
     this.updateStepsStatus()
   }
