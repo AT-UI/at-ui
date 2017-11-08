@@ -1,5 +1,5 @@
 <template>
-  <div class="at-tab__pane" v-show="show">
+  <div class="at-tabs__pane" v-show="show">
     <slot></slot>
   </div>
 </template>
@@ -7,7 +7,6 @@
 <script>
 export default {
   name: 'AtTabPane',
-
   props: {
     name: {
       type: String
@@ -22,33 +21,27 @@ export default {
       type: Boolean,
       default: false
     },
-    unclosable: {
+    closable: {
       type: Boolean,
       default: true
     }
   },
-
   data () {
     return {
       currentName: this.name,
       show: true
     }
   },
-
   computed: {
     isClosable () {
-      return this.unclosable
-        ? false
-        : this.$parent.closable
+      return this.closable ? this.$parent.closable : false
     }
   },
-
   watch: {
     name () {
       this.currentName = this.name
     }
   },
-
   mounted () {
     this.$parent.updateNav()
   }

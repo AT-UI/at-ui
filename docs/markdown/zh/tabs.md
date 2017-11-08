@@ -81,7 +81,7 @@
     <p>Content of Tab Pane 3</p>
   </at-tab-pane>
   <div slot="extra">
-    <at-button size="small" @click="extraHandle">额外内容</at-button>
+    <at-button size="small">额外内容</at-button>
   </div>
 </at-tabs>
 ```
@@ -104,7 +104,7 @@
     <p>Content of Tab Pane 3</p>
   </at-tab-pane>
   <div slot="extra">
-    <at-button size="small" @click="extraHandle">额外内容</at-button>
+    <at-button size="small">额外内容</at-button>
   </div>
 </at-tabs>
 ```
@@ -127,7 +127,7 @@
     <p>Content of Tab Pane 3</p>
   </at-tab-pane>
   <div slot="extra">
-    <at-button size="small" @click="extraHandle">额外内容</at-button>
+    <at-button size="small">额外内容</at-button>
   </div>
 </at-tabs>
 ```
@@ -150,7 +150,7 @@
     <p>Content of Tab Pane 3</p>
   </at-tab-pane>
   <div slot="extra">
-    <at-button size="small" @click="extraHandle">额外内容</at-button>
+    <at-button size="small">额外内容</at-button>
   </div>
 </at-tabs>
 ```
@@ -162,7 +162,7 @@
 
 :::demo
 ```html
-<at-tabs :animated="false" v-model="activeKey" @on-change="changeHandle">
+<at-tabs :animated="false" v-model="activeKey">
   <at-tab-pane label="Tab1" name="name1">
     <p>Content of Tab Pane 1</p>
   </at-tab-pane>
@@ -178,7 +178,7 @@
 
 ## 新增和关闭页签
 
-可以动态增加或关闭标签。
+可以动态增加或关闭标签，但需要监听 `on-tab-remove` 事件，手动删除 `at-tab-pane`
 
 :::demo
 ```html
@@ -192,6 +192,54 @@
     <at-button size="small" @click="addHandle">添加</at-button>
   </div>
 </at-tabs>
+
+<script>
+  export default {
+    data () {
+      return {
+        tabList: [{
+          label: 'Tab1',
+          name: 'tab1',
+          content: 'tab1 content'
+        }, {
+          label: 'Tab2',
+          name: 'tab2',
+          content: 'tab2 content'
+        }, {
+          label: 'Tab3',
+          name: 'tab3',
+          content: 'tab3 content'
+        }, {
+          label: 'Tab4',
+          name: 'tab4',
+          content: 'tab4 content'
+        }, {
+          label: 'Tab5',
+          name: 'tab5',
+          content: 'tab5 content'
+        }, {
+          label: 'Tab6',
+          name: 'tab6',
+          content: 'tab6 content'
+        }],
+        count: 7
+      }
+    },
+    methods: {
+      addHandle () {
+        const count = this.count++
+        this.tabList.push({
+          label: `Tab${count}`,
+          name: `tab${count}`,
+          content: `Tab${count} content`,
+        })
+      },
+      removeHandle (data) {
+        this.tabList.splice(data.index, 1)
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -217,23 +265,23 @@
 | 名称      | 说明 |
 |----------|-------- |
 | extra | 标签右侧的附件内容 |
-| 无 | tab-pane 组件 和 slot extra 内容 |
+| - | tab-pane 组件 和 slot extra 内容 |
 
 ## TabPane 参数
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| name | 用于标识当前标签 | String \ Number | - | 当前标签的序列号 |
+| name | 用于标识当前标签 | String / Number | - | 当前标签的序列号 |
 | label | 标签的标题 | String | - | - |
 | icon | 标签的图标 | String | - | - |
 | disabled | 是否禁用该标签 | Boolean | - | false |
-| unclosable | 是否可以关闭该标签，优先级高于 Tabs 的 `closable` | Boolean | - | true |
+| closable | 是否可以关闭该标签，优先级高于 Tabs 的 `closable` | Boolean | - | true |
 
 ## TabPane slot
 
 | 名称      | 说明 |
 |----------|-------- |
-| 无 | 当前标签的显示内容 |
+| - | 当前标签的显示内容 |
 
 
 <script>
@@ -270,9 +318,6 @@ export default {
     }
   },
   methods: {
-    extraHandle () {
-      console.log('extra content')
-    },
     addHandle () {
       const count = this.count++
       this.tabList.push({
@@ -280,9 +325,6 @@ export default {
         name: `tab${count}`,
         content: `Tab${count} content`,
       })
-    },
-    changeHandle (data) {
-      console.log(data)
     },
     removeHandle (data) {
       this.tabList.splice(data.index, 1)

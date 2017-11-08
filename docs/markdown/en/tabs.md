@@ -81,7 +81,7 @@ You can add extra actions to the right of Tabs by adding the slot extra.
     <p>Content of Tab Pane 3</p>
   </at-tab-pane>
   <div slot="extra">
-    <at-button size="small" @click="extraHandle">Extra Content</at-button>
+    <at-button size="small">Extra Content</at-button>
   </div>
 </at-tabs>
 ```
@@ -104,7 +104,7 @@ Set the property `size` to `small` can be displayed as a mini-type.
     <p>Content of Tab Pane 3</p>
   </at-tab-pane>
   <div slot="extra">
-    <at-button size="small" @click="extraHandle">Extra Content</at-button>
+    <at-button size="small">Extra Content</at-button>
   </div>
 </at-tabs>
 ```
@@ -127,7 +127,7 @@ Set the property `type` to `card` can display the card style.
     <p>Content of Tab Pane 3</p>
   </at-tab-pane>
   <div slot="extra">
-    <at-button size="small" @click="extraHandle">Extra Content</at-button>
+    <at-button size="small">Extra Content</at-button>
   </div>
 </at-tabs>
 ```
@@ -150,7 +150,7 @@ Mini card tab.
     <p>Content of Tab Pane 3</p>
   </at-tab-pane>
   <div slot="extra">
-    <at-button size="small" @click="extraHandle">Extra Content</at-button>
+    <at-button size="small">Extra Content</at-button>
   </div>
 </at-tabs>
 ```
@@ -162,7 +162,7 @@ Animating can be disabled by setting the property `animated` to `false`.
 
 :::demo
 ```html
-<at-tabs :animated="false" v-model="activeKey" @on-change="changeHandle">
+<at-tabs :animated="false" v-model="activeKey">
   <at-tab-pane label="Tab1" name="name1">
     <p>Content of Tab Pane 1</p>
   </at-tab-pane>
@@ -178,7 +178,7 @@ Animating can be disabled by setting the property `animated` to `false`.
 
 ## Add & close tab
 
-Set the property `closable` to `false` can disable close.
+Set the property `closable` to `false` can disable close. But you should delete `at-tab-pane` manually by listen to `on-tab-remove` event.
 
 :::demo
 ```html
@@ -192,6 +192,54 @@ Set the property `closable` to `false` can disable close.
     <at-button size="small" @click="addHandle">Add</at-button>
   </div>
 </at-tabs>
+
+<script>
+  export default {
+    data () {
+      return {
+        tabList: [{
+          label: 'Tab1',
+          name: 'tab1',
+          content: 'tab1 content'
+        }, {
+          label: 'Tab2',
+          name: 'tab2',
+          content: 'tab2 content'
+        }, {
+          label: 'Tab3',
+          name: 'tab3',
+          content: 'tab3 content'
+        }, {
+          label: 'Tab4',
+          name: 'tab4',
+          content: 'tab4 content'
+        }, {
+          label: 'Tab5',
+          name: 'tab5',
+          content: 'tab5 content'
+        }, {
+          label: 'Tab6',
+          name: 'tab6',
+          content: 'tab6 content'
+        }],
+        count: 7
+      }
+    },
+    methods: {
+      addHandle () {
+        const count = this.count++
+        this.tabList.push({
+          label: `Tab${count}`,
+          name: `tab${count}`,
+          content: `Tab${count} content`,
+        })
+      },
+      removeHandle (data) {
+        this.tabList.splice(data.index, 1)
+      }
+    }
+  }
+</script>
 ```
 :::
 
@@ -217,23 +265,23 @@ Set the property `closable` to `false` can disable close.
 | Name      | Description |
 |----------|-------- |
 | extra | the contents of the attachment on the right side of the tab |
-| None | tab-pane components and extra content |
+| - | tab-pane components and extra content |
 
 ## TabPane Props
 
 | Property     | Description      | Type    | Accepted values            | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| name | identifier corresponding to the activeName of Tabs, representing the alias of the tab-pane | String \ Number | - | ordinal number of the tab-pane in the sequence, e.g. the first tab-pane is 1 |
+| name | identifier corresponding to the activeName of Tabs, representing the alias of the tab-pane | String / Number | - | ordinal number of the tab-pane in the sequence, e.g. the first tab-pane is 1 |
 | label | title of the tab | String | - | - |
 | icon | icon of the tab | String | - | - |
 | disabled | whether to disable the tab | Boolean | - | false |
-| unclosable | whether the tab can be closed, the priority is higher than the Tabs `closable` | Boolean | - | true |
+| closable | whether the tab can be closed, the priority is higher than the Tabs `closable` | Boolean | - | true |
 
 ## TabPane slot
 
 | Name     | Description |
 |----------|-------- |
-| None | content of the tab |
+| - | content of the tab |
 
 
 <script>
@@ -270,9 +318,6 @@ export default {
     }
   },
   methods: {
-    extraHandle () {
-      console.log('extra content')
-    },
     addHandle () {
       const count = this.count++
       this.tabList.push({
@@ -280,9 +325,6 @@ export default {
         name: `tab${count}`,
         content: `Tab${count} content`,
       })
-    },
-    changeHandle (data) {
-      console.log(data)
     },
     removeHandle (data) {
       this.tabList.splice(data.index, 1)

@@ -43,9 +43,8 @@
                 v-for="(item, index) in navList" :key="index"
                 @click="setNavByIndex(index)">
                 <!-- S icon -->
-                <i
-                  v-if="item.icon"
-                  class="at-tabs-nav__icon icon"
+                <i v-if="item.icon"
+                  class="icon at-tabs-nav__icon"
                   :class="{
                     [item.icon]: item.icon
                   }">
@@ -54,7 +53,7 @@
                 <!-- S close btn -->
                 <span class="at-tabs-nav__close"
                   v-if="item.closable"
-                  @click.stop="removeHandle(index, $event)">
+                  @click.stop="removeHandle(index)">
                   <i class="icon icon-x"></i>
                 </span>
                 <!-- E close btn -->
@@ -72,11 +71,8 @@
 </template>
 
 <script>
-import { hasClass } from '../../../utils/util'
-
 export default {
   name: 'AtTabs',
-
   props: {
     value: {
       type: String
@@ -100,11 +96,9 @@ export default {
       default: true
     }
   },
-
   data () {
     return {
       navList: [],
-      panes: [],
       activeKey: this.value,
       navOffset: 0,
       navStyle: {
@@ -114,12 +108,21 @@ export default {
       prevable: false
     }
   },
-
+  watch: {
+    activeKey () {
+      this.$emit('on-change', {
+        index: this.activeIndex,
+        name: this.activeKey
+      })
+      this.$nextTick(() => {
+        this.scrollToActiveTab()
+      })
+    }
+  },
   computed: {
     scrollable () {
       return this.prevable || this.nextable
     },
-
     activeIndex () {
       const navList = this.navList
       for (let i = 0, len = navList.length; i < len; i++) {
@@ -130,19 +133,15 @@ export default {
       }
       return 0
     },
-
     tabsBodyTranslateStyle () {
       const activeIndex = this.activeIndex
-      const translateValue = this.animated
-        ? `${-activeIndex * 100}%`
-        : 0
+      const translateValue = this.animated ? `${-activeIndex * 100}%` : 0
 
       return {
         transform: `translate3d(${translateValue}, 0, 0)`
       }
     }
   },
-
   methods: {
     scrollPrev () {
       if (!this.prevable) return
@@ -152,38 +151,31 @@ export default {
 
       if (currentOffset === 0) return
 
-      const newOffset = currentOffset > containerWidth
-        ? currentOffset - containerWidth
-        : 0
+      const newOffset = currentOffset > containerWidth ? currentOffset - containerWidth : 0
 
       this.setOffset(newOffset)
     },
-
     scrollNext () {
       if (!this.nextable) return
 
-      const currentOffset = this.getCurrentScrollOffset()
       const containerWidth = this.$refs.navScroll.offsetWidth
+      const currentOffset = this.getCurrentScrollOffset()
       const navWidth = this.$refs.nav.offsetWidth
 
       if (navWidth - currentOffset <= containerWidth) return
 
-      const newOffset = navWidth - currentOffset > containerWidth * 2
-        ? currentOffset + containerWidth
-        : navWidth - containerWidth
+      const newOffset = (navWidth - currentOffset > containerWidth * 2) ? currentOffset + containerWidth : navWidth - containerWidth
 
       this.setOffset(newOffset)
     },
-
     scrollToActiveTab () {
       if (!this.scrollable) return
 
-      const nav = this.$refs.nav
       const activeTab = this.$el.querySelector('.at-tabs-nav__item--active')
       const navScroll = this.$refs.navScroll
+
       const activeTabBounds = activeTab.getBoundingClientRect()
       const navScrollBounds = navScroll.getBoundingClientRect()
-      const navBounds = nav.getBoundingClientRect()
       const currentOffset = this.getCurrentScrollOffset()
       let newOffset = currentOffset
 
@@ -197,24 +189,19 @@ export default {
 
       this.setOffset(newOffset)
     },
-
     getCurrentScrollOffset () {
       return this.navOffset
     },
-
-    setOffset(value) {
-      value = Math.abs(value)
-      this.navOffset = value
-      this.navStyle.transform = `translate3d(-${value}px, 0, 0)`
+    setOffset (value) {
+      this.navOffset = Math.abs(value)
+      this.navStyle.transform = `translate3d(-${this.navOffset}px, 0, 0)`
     },
-
     getTabs () {
       return this.$children.filter(item =>
         item.$options.name === 'AtTabPane'
       )
     },
-
-    removeHandle (index, event) {
+    removeHandle (index) {
       const tabs = this.getTabs()
       const tab = tabs[index]
       let activeKey = ''
@@ -256,7 +243,6 @@ export default {
         this.activeKey = activeKey
       }
     },
-
     updateNav () {
       this.navList = []
 
@@ -269,13 +255,12 @@ export default {
           closable: item.isClosable
         })
 
-        if (!item.currentName)
+        if (!item.currentName) {
           item.currentName = index
+        }
 
-        if (index === 0) {
-          if (!this.activeKey) {
-            this.activeKey = item.currentName || index
-          }
+        if (index === 0 && !this.activeKey) {
+          this.activeKey = item.currentName || index
         }
 
         if (!this.animated) {
@@ -283,7 +268,6 @@ export default {
         }
       })
     },
-
     setNavByIndex (index) {
       const currentName = this.navList[index]
 
@@ -295,7 +279,6 @@ export default {
         }
       }
     },
-
     switchTabsWithNoAnimated () {
       const tabs = this.getTabs()
 
@@ -303,7 +286,6 @@ export default {
         item.show = (item.currentName === this.activeKey)
       })
     },
-
     updateHandle () {
       const navWidth = this.$refs.nav.offsetWidth
       const containerWidth = this.$refs.navScroll.offsetWidth
@@ -324,7 +306,6 @@ export default {
       }
     }
   },
-
   mounted () {
     window.addEventListener('resize', this.updateHandle, false)
 
@@ -333,21 +314,8 @@ export default {
       this.scrollToActiveTab()
     }, 0)
   },
-
   updated () {
     this.updateHandle()
-  },
-
-  watch: {
-    activeKey () {
-      this.$emit('on-change', {
-        index: this.activeIndex,
-        name: this.activeKey
-      })
-      this.$nextTick(() => {
-        this.scrollToActiveTab()
-      })
-    }
   }
 }
 </script>
