@@ -1,6 +1,9 @@
 <template>
   <div class="at-card"
-    :class="calcClass">
+    :class="{
+      'at-card--bordered': bordered,
+      'at-card--no-hover': noHover
+    }">
     <div class="at-card__head" v-if="!(!$slots.title && !$slots.extra)">
       <div class="at-card__title" v-if="$slots.title">
         <slot name="title"></slot>
@@ -10,8 +13,8 @@
       </div>
     </div>
     <div class="at-card__body" :style="bodyStyle">
-      <slot v-if="loading === false"></slot>
-      <slot v-else name="custom-loading">
+      <slot v-if="!loading"></slot>
+      <slot v-else name="loading">
         <div class="at-card__body--loading">
           <div>
             <span style="width: 95%"></span>
@@ -42,13 +45,12 @@
 <script>
 export default {
   name: 'AtCard',
-
   props: {
     bordered: {
       type: Boolean,
       default: true
     },
-    noHovering: {
+    noHover: {
       type: Boolean,
       default: false
     },
@@ -58,18 +60,6 @@ export default {
     },
     bodyStyle: {
       type: Object
-    }
-  },
-
-  computed: {
-    calcClass () {
-      const AT_CARD_BORDER = 'at-card--bordered'
-      const AT_CARD_NOHOVERING = 'at-card--nohovering'
-
-      return {
-        [AT_CARD_BORDER]: this.bordered,
-        [AT_CARD_NOHOVERING]: this.noHovering
-      }
     }
   }
 }

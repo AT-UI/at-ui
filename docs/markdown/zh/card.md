@@ -36,11 +36,11 @@
 :::
 
 ## 无阴影
-通过设置属性 `no-hovering: true` 来禁用鼠标悬停时显示的阴影效果。
+通过设置属性 `no-hover: true` 来禁用鼠标悬停时显示的阴影效果。
 
 :::demo
 ```html
-<at-card style="width: 300px;" :no-hovering="true">
+<at-card style="width: 300px;" :no-hover="true">
   <h4 slot="title">Card Title</h4>
   <div slot="extra"><a>Extra</a></div>
   <div>
@@ -56,7 +56,7 @@
 
 :::demo
 ```html
-<at-card style="width: 300px;" :no-hovering="true" :body-style="{ padding: 0 }">
+<at-card style="width: 300px;" :body-style="{ padding: 0 }">
   <div>
     <img style="width: 100%" src="https://misc.aotu.io/koppthe/at-ui/cover.jpg">
     <div style="padding: 14px;">
@@ -93,7 +93,7 @@
 <at-card :loading="loading" style="width: 300px">
   <h4 slot="title">Card Title</h4>
   <div slot="extra"><a>Extra</a></div>
-  <div slot="custom-loading">加载中...</div>
+  <div slot="loading">加载中...</div>
   <div>
     Card Content
   </div>
@@ -106,7 +106,7 @@
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | bordered | 是否有边框 | Boolean | - | true |
-| noHovering | 取消鼠标移过时所显示的阴影 | Boolean | - | false |
+| noHover | 取消鼠标移过时所显示的阴影 | Boolean | - | false |
 | bodyStyle | 自定义内容区域的样式 | Object | - | {} |
 | loading | 当卡片内容还在加载中时，是否显示 loading | Boolean | - | false |
 
@@ -116,8 +116,8 @@
 |----------|-------- |
 | title | 自定义卡片标题 |
 | extra | 自定义额外显示的内容，默认位置是在标题右侧 |
-| custom-loading | 自定义 loading 显示内容 |
-| 无 | 卡片内容 |
+| loading | 自定义 loading 显示内容 |
+| - | 卡片内容 |
 
 <script>
 export default {
@@ -125,11 +125,6 @@ export default {
     return {
       loading: true
     }
-  },
-  mounted () {
-    // setTimeout(() => {
-    //   this.loading = false
-    // }, 3000)
   }
 }
 </script>
