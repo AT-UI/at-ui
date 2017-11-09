@@ -9,12 +9,12 @@ Basic timeline.
 
 :::demo
 ```html
-  <at-timeline>
-    <at-timeline-item
-      v-for="(item, index) in list" :key="index">
-      <p>{{ item.content }}</p>
-    </at-timeline-item>
-  </at-timeline>
+<at-timeline>
+  <at-timeline-item><p>Brush teeth and wash face</p></at-timeline-item>
+  <at-timeline-item><p>Have breakfast</p></at-timeline-item>
+  <at-timeline-item><p>Work</p></at-timeline-item>
+  <at-timeline-item><p>Sleep</p></at-timeline-item>
+</at-timeline>
 ```
 :::
 
@@ -24,13 +24,12 @@ Set the color of circles. green means completed or success status, red means err
 
 :::demo
 ```html
-  <at-timeline>
-    <at-timeline-item
-      v-for="(item, index) in list" :key="index"
-      :color="item.color">
-      <p>{{ item.content }}</p>
-    </at-timeline-item>
-  </at-timeline>
+<at-timeline>
+  <at-timeline-item color="blue"><p>Brush teeth and wash face</p></at-timeline-item>
+  <at-timeline-item color="green"><p>Have breakfast</p></at-timeline-item>
+  <at-timeline-item color="red"><p>Work</p></at-timeline-item>
+  <at-timeline-item color="yellow"><p>Sleep</p></at-timeline-item>
+</at-timeline>
 ```
 :::
 
@@ -40,12 +39,12 @@ When the timeline is incomplete and ongoing, put a ghost item at last.
 
 :::demo
 ```html
-  <at-timeline :pending="pending">
-    <at-timeline-item
-      v-for="(item, index) in list" :key="index">
-      <p>{{ item.content }}</p>
-    </at-timeline-item>
-  </at-timeline>
+<at-timeline pending>
+  <at-timeline-item><p>Brush teeth and wash face</p></at-timeline-item>
+  <at-timeline-item><p>Have breakfast</p></at-timeline-item>
+  <at-timeline-item><p>Work</p></at-timeline-item>
+  <at-timeline-item><p>Sleep</p></at-timeline-item>
+</at-timeline>
 ```
 :::
 
@@ -55,14 +54,24 @@ Accepts a `slot` to customize the timeline item's content, such as the icon.
 
 :::demo
 ```html
-  <at-timeline>
-    <at-timeline-item
-      v-for="(item, index) in list" :key="index"
-      :color="item.color">
-      <i slot="dot" class="icon" :class="item.icon"></i>
-      <p>{{ item.content }}</p>
-    </at-timeline-item>
-  </at-timeline>
+<at-timeline>
+  <at-timeline-item color="blue">
+    <i slot="dot" class="icon icon-github"></i>
+    <p>Brush teeth and wash face</p>
+  </at-timeline-item>
+  <at-timeline-item color="green">
+    <i slot="dot" class="icon icon-zap"></i>
+    <p>Have breakfast</p>
+  </at-timeline-item>
+  <at-timeline-item color="red">
+    <i slot="dot" class="icon icon-award"></i>
+    <p>Work</p>
+  </at-timeline-item>
+  <at-timeline-item color="yellow">
+    <i slot="dot" class="icon icon-watch"></i>
+    <p>Sleep</p>
+  </at-timeline-item>
+</at-timeline>
 ```
 :::
 
@@ -78,26 +87,9 @@ Accepts a `slot` to customize the timeline item's content, such as the icon.
 |-------- |------------ |---------- |-----------------  |-------- |
 | color | circle color | String | `blue`、`red`、`green`、`yellow` | `blue` |
 
-## TimelineItem slot
+## TimelineItem Slot
 
 | Name      | Description |
 |----------|-------- |
 | dot | custom defined timeline item content |
-| None | main content |
-
-
-<script>
-export default {
-  data () {
-    return {
-      list: [
-        { content: 'brush teeth and wash face', color: 'blue', icon: 'icon-github' },
-        { content: 'have breakfast', color: 'green', icon: 'icon-zap' },
-        { content: 'work', color: 'red', icon: 'icon-award' },
-        { content: 'sleep', color: 'yellow', icon: 'icon-watch' }
-      ],
-      pending: true
-    }
-  }
-}
-</script>
+| - | main content |

@@ -9,12 +9,12 @@
 
 :::demo
 ```html
-  <at-timeline>
-    <at-timeline-item
-      v-for="(item, index) in list" :key="index">
-      <p>{{ item.content }}</p>
-    </at-timeline-item>
-  </at-timeline>
+<at-timeline>
+  <at-timeline-item><p>刷牙洗脸</p></at-timeline-item>
+  <at-timeline-item><p>吃早餐</p></at-timeline-item>
+  <at-timeline-item><p>上班</p></at-timeline-item>
+  <at-timeline-item><p>睡觉</p></at-timeline-item>
+</at-timeline>
 ```
 :::
 
@@ -24,13 +24,12 @@
 
 :::demo
 ```html
-  <at-timeline>
-    <at-timeline-item
-      v-for="(item, index) in list" :key="index"
-      :color="item.color">
-      <p>{{ item.content }}</p>
-    </at-timeline-item>
-  </at-timeline>
+<at-timeline>
+  <at-timeline-item color="blue"><p>刷牙洗脸</p></at-timeline-item>
+  <at-timeline-item color="green"><p>吃早餐</p></at-timeline-item>
+  <at-timeline-item color="red"><p>上班</p></at-timeline-item>
+  <at-timeline-item color="yellow"><p>睡觉</p></at-timeline-item>
+</at-timeline>
 ```
 :::
 
@@ -40,12 +39,12 @@
 
 :::demo
 ```html
-  <at-timeline :pending="pending">
-    <at-timeline-item
-      v-for="(item, index) in list" :key="index">
-      <p>{{ item.content }}</p>
-    </at-timeline-item>
-  </at-timeline>
+<at-timeline pending>
+  <at-timeline-item><p>刷牙洗脸</p></at-timeline-item>
+  <at-timeline-item><p>吃早餐</p></at-timeline-item>
+  <at-timeline-item><p>上班</p></at-timeline-item>
+  <at-timeline-item><p>睡觉</p></at-timeline-item>
+</at-timeline>
 ```
 :::
 
@@ -55,14 +54,24 @@
 
 :::demo
 ```html
-  <at-timeline>
-    <at-timeline-item
-      v-for="(item, index) in list" :key="index"
-      :color="item.color">
-      <i slot="dot" class="icon" :class="item.icon"></i>
-      <p>{{ item.content }}</p>
-    </at-timeline-item>
-  </at-timeline>
+<at-timeline>
+  <at-timeline-item color="blue">
+    <i slot="dot" class="icon icon-github"></i>
+    <p>刷牙洗脸</p>
+  </at-timeline-item>
+  <at-timeline-item color="green">
+    <i slot="dot" class="icon icon-zap"></i>
+    <p>吃早餐</p>
+  </at-timeline-item>
+  <at-timeline-item color="red">
+    <i slot="dot" class="icon icon-award"></i>
+    <p>上班</p>
+  </at-timeline-item>
+  <at-timeline-item color="yellow">
+    <i slot="dot" class="icon icon-watch"></i>
+    <p>睡觉</p>
+  </at-timeline-item>
+</at-timeline>
 ```
 :::
 
@@ -78,26 +87,9 @@
 |-------- |------------ |---------- |-----------------  |-------- |
 | color | 圆圈颜色 | String | `blue`、`red`、`green`、`yellow` | `blue` |
 
-## TimelineItem slot
+## TimelineItem Slot
 
 | 名称      | 说明 |
 |----------|-------- |
 | dot | 替换圈圈 |
-| 无 | 主要内容 |
-
-
-<script>
-export default {
-  data () {
-    return {
-      list: [
-        { content: '刷牙洗脸', color: 'blue', icon: 'icon-github' },
-        { content: '吃早餐', color: 'green', icon: 'icon-zap' },
-        { content: '上班', color: 'red', icon: 'icon-award' },
-        { content: '睡觉', color: 'yellow', icon: 'icon-watch' }
-      ],
-      pending: true
-    }
-  }
-}
-</script>
+| - | 主要内容 |

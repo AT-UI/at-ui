@@ -3,11 +3,11 @@
     :class="{
       'at-timeline__item--last': isLastItem,
       'at-timeline__item--pending': isPendingItem,
-      'at-timeline__item--custom': isCustomHead,
-      [`at-timeline__item--${colorName}`]: true
+      'at-timeline__item--custom': !!this.$slots.dot,
+      [`at-timeline__item--${status}`]: status
     }">
     <div class="at-timeline__tail"></div>
-    <div class="at-timeline__head">
+    <div class="at-timeline__dot">
       <slot name="dot"></slot>
     </div>
     <div class="at-timeline__content">
@@ -25,7 +25,6 @@ export default {
       default: 'blue'
     }
   },
-
   data () {
     return {
       colors: {
@@ -37,51 +36,32 @@ export default {
       defaultColor: 'blue',
       isLastItem: false,
       isPendingItem: false,
-      isCustomHead: false
     }
   },
+  computed: {
+    status () {
+      const colorKey = this.color
+      const status = this.colors[colorKey] || this.colors[this.defaultColor]
 
+      return status
+    }
+  },
   methods: {
     checkForLast () {
       const children = this.$parent.$children
-      const childCount = children.length
-      const pending = this.$parent.pending
       const index = children.indexOf(this)
-      const lastItemIndex = pending
-        ? (childCount - 2)
-        : (childCount - 1)
-
+      const isPending = this.$parent.pending
+      const lastItemIndex = isPending ? (children.length - 2) : (children.length - 1)
 
       this.isLastItem = index === lastItemIndex
-        ? true
-        : false
 
-      if (pending) {
-        this.isPendingItem = index === lastItemIndex + 1
-          ? true
-          : false
+      if (isPending) {
+        this.isPendingItem = (index === lastItemIndex + 1)
       }
     }
   },
-
   mounted () {
     this.checkForLast()
-    this.isCustomHead = !!this.$slots.dot
-  },
-
-  computed: {
-    colorName () {
-      const colors = this.colors
-      const colorkey = this.color
-      const color = colors[colorkey] || colors[this.defaultColor]
-
-      return color
-    }
-  },
-  watch: {
-    '$parent.pending' () {
-      this.checkForLast()
-    }
   }
 }
 </script>
