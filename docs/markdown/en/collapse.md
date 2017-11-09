@@ -85,26 +85,23 @@ Besides using the title attribute, you can customize item title with named slots
 ```
 :::
 
-<script>
-  export default {
-    data () {
-      return {
-        list: [
-          { title: 'title 1', content: 'content 1' },
-          { title: 'title 2', content: 'content 2' },
-          { title: 'title 3', content: 'content 3', disabled: true }
-        ],
-        value: 'collapse1'
-      }
-    },
-    methods: {
-      changeHandle (val) {
-        console.log('collapse change event: ', val)
-      }
-    }
-  }
-</script>
+## Simple Mode
 
+Set `simple` property to use a simple collapse.
+
+:::demo
+```html
+<at-collapse simple accordion :value="0">
+  <at-collapse-item
+    v-for="(item, index) in list" :key="index"
+    :title="item.title">
+    <div>
+      {{ item.content }}
+    </div>
+  </at-collapse-item>
+</at-collapse>
+```
+:::
 
 ## Collapse Props
 
@@ -112,6 +109,7 @@ Besides using the title attribute, you can customize item title with named slots
 |---------- |-------------- |---------- |-----------------------  |-------- |
 | accordion | whether to open the accordion mode (ie, expand at most one item) | Boolean | - | false |
 | value | the value of the currently activated item's `name` | Array / String / Number | - | - |
+| simple | whether to use simple mode | Boolean | - | false |
 
 ## Collapse Events
 
@@ -133,3 +131,23 @@ Besides using the title attribute, you can customize item title with named slots
 |----------|-------- |
 | title | title of the item |
 | - | content of the item |
+
+<script>
+  export default {
+    data () {
+      return {
+        list: [
+          { title: 'title 1', content: 'content 1' },
+          { title: 'title 2', content: 'content 2' },
+          { title: 'title 3', content: 'content 3', disabled: true }
+        ],
+        value: 'collapse1'
+      }
+    },
+    methods: {
+      changeHandle (val) {
+        this.$Message.info(`collapse change event: ${val}`)
+      }
+    }
+  }
+</script>

@@ -86,26 +86,23 @@
 ```
 :::
 
-<script>
-  export default {
-    data () {
-      return {
-        list: [
-          { title: '标题1', content: '内容1' },
-          { title: '标题2', content: '内容2' },
-          { title: '标题3', content: '内容3', disabled: true }
-        ],
-        value: 'collapse1'
-      }
-    },
-    methods: {
-      changeHandle (val) {
-        console.log('collapse change event: ', val)
-      }
-    }
-  }
-</script>
+## 极简风格
 
+设置属性 `simple` 使用极简风格的折叠面板
+
+:::demo
+```html
+<at-collapse simple accordion :value="0">
+  <at-collapse-item
+    v-for="(item, index) in list" :key="index"
+    :title="item.title">
+    <div>
+      {{ item.content }}
+    </div>
+  </at-collapse-item>
+</at-collapse>
+```
+:::
 
 ## Collapse 参数
 
@@ -113,6 +110,7 @@
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | accordion | 是否开启手风琴模式（即至多展开一个面板项） | Boolean | - | false |
 | value | 当前激活面板项的 `name` 值 | Array / String / Number | - | - |
+| simple | 是否使用极简风格 | Boolean | - | false |
 
 ## Collapse 事件
 
@@ -133,4 +131,24 @@
 | 名称      | 说明 |
 |----------|-------- |
 | title | 面板项的标题（可传入任意内容） |
-| 无 | 面板项的内容 |
+| - | 面板项的内容 |
+
+<script>
+  export default {
+    data () {
+      return {
+        list: [
+          { title: '标题1', content: '内容1' },
+          { title: '标题2', content: '内容2' },
+          { title: '标题3', content: '内容3', disabled: true }
+        ],
+        value: 'collapse1'
+      }
+    },
+    methods: {
+      changeHandle (val) {
+        this.$Message.info(`collapse change event: ${val}`)
+      }
+    }
+  }
+</script>

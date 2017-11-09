@@ -1,13 +1,13 @@
 <template>
-  <div :class="{
-      'at-collapse__item': true,
+  <div class="at-collapse__item"
+    :class="{
       'at-collapse__item--active': isActive,
       'at-collapse__item--disabled': disabled
     }">
     <div class="at-collapse__header" @click="toggle">
-      <i class="at-collapse__icon icon icon-chevron-right"></i>
+      <i class="icon at-collapse__icon icon-chevron-right"></i>
       <slot name="title" v-if="$slots.title"></slot>
-      <div v-if="title">{{ title }}</div>
+      <div v-else>{{ title }}</div>
     </div>
     <collapse-transition>
       <div class="at-collapse__body" v-show="isActive">
@@ -20,18 +20,17 @@
 </template>
 
 <script>
-import CollapseTransition from '../../../utils/collapse-transition'
+import CollapseTransition from 'src/utils/collapse-transition'
 
 export default {
   name: 'AtCollapseItem',
-
   components: {
     CollapseTransition
   },
-
   props: {
     title: {
-      type: String
+      type: String,
+      default: ''
     },
     name: {
       type: String
@@ -41,14 +40,12 @@ export default {
       default: false
     }
   },
-
   data () {
     return {
-      isActive: false,
-      index: 0
+      index: 0,
+      isActive: false
     }
   },
-
   methods: {
     toggle () {
       if (this.disabled) return false
