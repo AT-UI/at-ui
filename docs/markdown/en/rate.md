@@ -33,7 +33,7 @@ Replace the default star to other icon.
 
 :::demo
 ```html
-<at-rate icon="icon-heart"></at-rate>
+<at-rate icon="icon-heart-on"></at-rate>
 ```
 :::
 
@@ -48,8 +48,7 @@ Support select half star.
     :allow-half="true"
     :show-text="true"
     :value="value1"
-    @on-change="changeHandle"
-    @on-hover-change="hoverHandle">
+    @on-change="changeHandle">
   </at-rate>
 </div>
 ```
@@ -95,7 +94,7 @@ Read only，can't use mouse to interact.
 
 | Name      | Description |
 |----------|-------- |
-| None | customize the contents of the copywriting |
+| - | customize the contents of the copywriting |
 
 <script>
 export default {
@@ -107,10 +106,7 @@ export default {
   },
   methods: {
     changeHandle (val) {
-      console.log('trigger change event: ', val)
-    },
-    hoverHandle (val) {
-      console.log('trigger hover event: ', val)
+      this.$Message.info(`trigger change event: ${val}`)
     }
   }
 }

@@ -33,7 +33,7 @@
 
 :::demo
 ```html
-<at-rate icon="icon-heart"></at-rate>
+<at-rate icon="icon-heart-on"></at-rate>
 ```
 :::
 
@@ -48,8 +48,7 @@
     :allow-half="true"
     :show-text="true"
     :value="value1"
-    @on-change="changeHandle"
-    @on-hover-change="hoverHandle">
+    @on-change="changeHandle">
   </at-rate>
 </div>
 ```
@@ -96,7 +95,7 @@
 
 | 名称      | 说明 |
 |----------|-------- |
-| 无 | 自定义展示文案的内容 |
+| - | 自定义展示文案的内容 |
 
 
 <script>
@@ -109,10 +108,7 @@ export default {
   },
   methods: {
     changeHandle (val) {
-      console.log('trigger change event: ', val)
-    },
-    hoverHandle (val) {
-      console.log('trigger hover event: ', val)
+      this.$Message.info(`trigger change event: ${val}`)
     }
   }
 }
