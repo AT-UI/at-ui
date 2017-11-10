@@ -22,6 +22,7 @@ import Pagination from './components/pagination'
 import Message from './components/message'
 import { Menu, MenuItem, MenuItemGroup, Submenu } from './components/menu'
 import Table from './components/table'
+import TimePicker from './components/time-picker'
 
 const components = {
   Button,
@@ -57,7 +58,8 @@ const components = {
   MenuItem,
   MenuItemGroup,
   Submenu,
-  Table
+  Table,
+  TimePicker
 }
 
 function install (Vue) {

@@ -58,6 +58,8 @@ zh:
               name: Slider
             - title: 文本域
               name: Textarea
+            - title: 时间选择框
+              name: TimePicker
         - title: 视图组件
           items:
             - title: 警告提示
@@ -150,6 +152,8 @@ en:
               name: Slider
             - title: Textarea
               name: Textarea
+            - title: TimePicker
+              name: TimePicker
         - title: View
           items:
             - title: Alert
