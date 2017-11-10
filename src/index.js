@@ -22,6 +22,12 @@ import Pagination from './components/pagination'
 import Message from './components/message'
 import { Menu, MenuItem, MenuItemGroup, Submenu } from './components/menu'
 import Table from './components/table'
+import Card from './components/card'
+import { Collapse, CollapseItem } from './components/collapse'
+import { Steps, Step } from './components/steps'
+import Rate from './components/rate'
+import { Tabs, TabPane } from './components/tabs'
+import { Timeline, TimelineItem } from './components/timeline'
 
 const components = {
   Button,
@@ -57,7 +63,17 @@ const components = {
   MenuItem,
   MenuItemGroup,
   Submenu,
-  Table
+  Table,
+  Card,
+  Collapse,
+  CollapseItem,
+  Steps,
+  Step,
+  Rate,
+  Tabs,
+  TabPane,
+  Timeline,
+  TimelineItem
 }
 
 function install (Vue) {
