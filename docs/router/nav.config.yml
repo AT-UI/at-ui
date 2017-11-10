@@ -50,6 +50,8 @@ zh:
               name: InputNumber
             - title: 单选按钮
               name: Radio
+            - title: 评分
+              name: Rate
             - title: 选择器
               name: Select
             - title: 开关
@@ -64,6 +66,10 @@ zh:
               name: Alert
             - title: 徽标
               name: Badge
+            - title: 卡片
+              name: Card
+            - title: 折叠面板
+              name: Collapse
             - title: 加载进度条
               name: LoadingBar
             - title: 模态框
@@ -76,6 +82,8 @@ zh:
               name: Popover
             - title: 进度条
               name: Progress
+            - title: 时间轴
+              name: Timeline
             - title: 文字提示
               name: Tooltip
             - title: 表格
@@ -90,6 +98,10 @@ zh:
               name: Menu
             - title: 分页
               name: Pagination
+            - title: 步骤条
+              name: Steps
+            - title: 标签页
+              name: Tabs
 en:
   guide:
     - title: Brand
@@ -142,6 +154,8 @@ en:
               name: InputNumber
             - title: Radio
               name: Radio
+            - title: Rate
+              name: Rate
             - title: Select
               name: Select
             - title: Switch
@@ -156,6 +170,10 @@ en:
               name: Alert
             - title: Badge
               name: Badge
+            - title: Card
+              name: Card
+            - title: Collapse
+              name: Collapse
             - title: LoadingBar
               name: LoadingBar
             - title: Modal
@@ -168,6 +186,8 @@ en:
               name: Popover
             - title: Progress
               name: Progress
+            - title: Timeline
+              name: Timeline
             - title: Tooltip
               name: Tooltip
             - title: Table
@@ -182,3 +202,7 @@ en:
               name: Menu
             - title: Pagination
               name: Pagination
+            - title: Steps
+              name: Steps
+            - title: Tabs
+              name: Tabs
