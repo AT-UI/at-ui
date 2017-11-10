@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "node-dev build/dev-server",
-    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
+    "lint": "eslint --ext .js,.vue src docs build --ignore-pattern src/stylesheet test/unit/specs test/e2e/specs",
     "dist": "npm run build:locale && npm run build:component && npm run build:doc",
     "build:doc": "webpack --config build/webpack.prod.conf.js -p",
     "build:component": "node build/component",
