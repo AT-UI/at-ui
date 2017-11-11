@@ -24,8 +24,8 @@
       <p class="head">v1.2.1</p>
       <p class="time"><span>2017-11-03</span></p>
       <ul class="content">
-        <li>修复<span>LoadingBar</span>无法设置宽度的 Bug</li>
-        <li>修复<span>Select</span>的 Bug</li>
+        <li>修复<span>LoadingBar</span>无法设置宽度的 Bug。<a href="https://github.com/AT-UI/at-ui/issues/35">#35</a></li>
+        <li>修复<span>Select</span>disabled 依旧可以获取焦点的 Bug。<a href="https://github.com/AT-UI/at-ui/issues/29">#29</a></li>
       </ul>
     </at-timeline-item>
     <at-timeline-item color="red">
@@ -33,15 +33,17 @@
       <p class="head">v1.2.0</p>
       <p class="time"><span>2017-11-01</span></p>
       <ul class="content">
-        <li>修复 Bugs</li>
+        <li>新增<span>Menu</span>组件对<span>vue-router</span>的支持。<a href="https://github.com/AT-UI/at-ui/issues/26">#26</a></li>
+        <li>修复<span>v-for</span>中用<span>non-primitive</span>作为 key 的 Bug。<a href="https://github.com/AT-UI/at-ui/issues/33">#33</a></li>
+        <li><span>Button</span>组件增加<span>native type</span>的支持。<a href="https://github.com/AT-UI/at-ui/issues/23">#23</a></li>
       </ul>
     </at-timeline-item>
     <at-timeline-item>
       <p class="head">v1.2.0-beta.2</p>
       <p class="time"><span>2017-09-03</span></p>
       <ul class="content">
-        <li>新增<span>SSR</span>支持</li>
-        <li>修复 Bugs</li>
+        <li>新增<span>SSR</span>支持。<a href="https://github.com/AT-UI/at-ui/issues/15">#15</a>（by <a href="https://github.com/Atinux">Atinux</a>）</li>
+        <li>修复<span>Select</span>组件不能使用<span>at-option-group</span>的 Bug。<a href="https://github.com/AT-UI/at-ui/issues/13">#13</a>（by <a href="https://github.com/StevenYuysy">StevenYuysy</a>）</li>
       </ul>
     </at-timeline-item>
     <at-timeline-item>
