@@ -24,8 +24,8 @@
       <p class="head">v1.2.1</p>
       <p class="time"><span>2017-11-03</span></p>
       <ul class="content">
-        <li>Fix the bug of <span>LoadingBar</span> cannot set width</li>
-        <li>Fix bugs of <span>Select</span></li>
+        <li>Fix <span>LoadingBar</span> cannot set width. <a href="https://github.com/AT-UI/at-ui/issues/35">#35</a></li>
+        <li>Fix disabled <span>Select</span>can get focus. <a href="https://github.com/AT-UI/at-ui/issues/29">#29</a></li>
       </ul>
     </at-timeline-item>
     <at-timeline-item color="red">
@@ -33,15 +33,17 @@
       <p class="head">v1.2.0</p>
       <p class="time"><span>2017-11-01</span></p>
       <ul class="content">
-        <li>Fix Bugs</li>
+        <li>Add <span>Menu</span>with<span>vue-router</span>support. <a href="https://github.com/AT-UI/at-ui/issues/26">#26</a></li>
+        <li>Fix <span>v-for</span>use<span>non-primitive</span> value as key. <a href="https://github.com/AT-UI/at-ui/issues/33">#33</a></li>
+        <li>Add <span>Button</span>with<span>native type</span>support. <a href="https://github.com/AT-UI/at-ui/issues/23">#23</a></li>
       </ul>
     </at-timeline-item>
     <at-timeline-item>
       <p class="head">v1.2.0-beta.2</p>
       <p class="time"><span>2017-09-03</span></p>
       <ul class="content">
-        <li>Add<span>SSR</span>support</li>
-        <li>Fix Bugs</li>
+        <li>Add <span>SSR</span>support. <a href="https://github.com/AT-UI/at-ui/issues/15">#15</a> (by <a href="https://github.com/Atinux">Atinux</a>)</li>
+        <li>Fix <span>Select</span>cannot use with<span>at-option-group</span>. <a href="https://github.com/AT-UI/at-ui/issues/13">#13</a> (by <a href="https://github.com/StevenYuysy">StevenYuysy</a>)</li>
       </ul>
     </at-timeline-item>
     <at-timeline-item>
