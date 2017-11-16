@@ -44,6 +44,8 @@ zh:
           items:
             - title: 多选框
               name: Checkbox
+            - title: 日期选择框
+              name: DatePicker
             - title: 输入框
               name: Input
             - title: 数字输入框
@@ -148,6 +150,8 @@ en:
           items:
             - title: Checkbox
               name: Checkbox
+            - title: DatePicker
+              name: DatePicker
             - title: Input
               name: Input
             - title: InputNumber

@@ -28,6 +28,7 @@ import { Steps, Step } from './components/steps'
 import Rate from './components/rate'
 import { Tabs, TabPane } from './components/tabs'
 import { Timeline, TimelineItem } from './components/timeline'
+import DatePicker from './components/datepicker'
 
 const components = {
   Button,
@@ -73,7 +74,8 @@ const components = {
   Tabs,
   TabPane,
   Timeline,
-  TimelineItem
+  TimelineItem,
+  DatePicker
 }
 
 function install (Vue) {
