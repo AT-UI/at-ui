@@ -42,7 +42,7 @@
 
 :::demo
 ```html
-<at-date-picker type="date">
+<at-date-picker type="daterange" class="range">
 </at-date-picker>
 ```
 :::
@@ -88,5 +88,9 @@
     &__input {
       width: 300px;
     }
+  }
+
+  .range {
+    width: 350px;
   }
 </style>
