@@ -53,7 +53,25 @@ this.$Notify(config)
 
 ### Import On Demand
 
-The components that can be registered locally are applicable to scenarios that are used to combination with other frameworks.
+The components that can be registered locally are applicable to scenarios that are used to combination with other frameworks. Firstly, you can load components on demand and reduce the size of files by using the [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) plugin.
+
+```bash
+npm install babel-plugin-component
+```
+
+Then update `.babelrc` file:
+
+```json
+{
+  "presets": ["es2015", "stage-2"],
+  "plugins": [["import", {
+    "libraryName": "at",
+    "libraryDirectory": "src/components"
+  }]]
+}
+```
+
+Now you can import components that you want.
 
 ```js
 import { AtInput } from 'at-ui'
@@ -78,6 +96,63 @@ In template, use components with custom tag as `<at-input></at-input>`, use `v-m
     <at-input v-model="value" placeholder="Please input..."></at-input>
   </div>
 </template>
+```
+
+The following are the complete list of components and the way to be imported:
+
+```js
+import Vue from 'vue'
+import {
+  Button,
+  ButtonGroup,
+  Tag,
+  Radio,
+  RadioGroup,
+  RadioButton,
+  Checkbox,
+  CheckboxGroup,
+  Input,
+  InputNumber,
+  Textarea,
+  Badge,
+  Switch,
+  Slider,
+  Tooltip,
+  Popover,
+  Alert,
+  Progress,
+  LoadingBar,
+  Modal,
+  Select,
+  Option,
+  OptionGroup,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Breadcrumb,
+  BreadcrumbItem,
+  Pagination,
+  Menu,
+  MenuItem,
+  MenuItemGroup,
+  Submenu,
+  Table,
+  Card,
+  Collapse,
+  CollapseItem,
+  Steps,
+  Step,
+  Rate,
+  Tabs,
+  TabPane,
+  Timeline,
+  TimelineItem
+} from 'at-ui'
+
+Vue.prototype.$Notify = Notification
+Vue.prototype.$Loading = LoadingBar
+Vue.prototype.$Modal = Dialog
+Vue.prototype.$Message = Message
 ```
 
 ## Customize Theme

@@ -62,18 +62,20 @@
     },
     mounted () {
       this.$on('on-update-active', name => {
-        if (this.name === name || (this.$refs.link && this.$refs.link.$el.classList.contains('router-link-active'))) {
-          this.active = true
+        this.$nextTick(() => {
+          if (this.name === name || (this.$refs.link && this.$refs.link.$el.classList.contains('router-link-active'))) {
+            this.active = true
 
-          const parents = findComponentsUpward(this, 'AtSubmenu')
-          if (parents && parents.length) {
-            parents.forEach(parent => {
-              parent.$emit('on-update-active', true)
-            })
+            const parents = findComponentsUpward(this, 'AtSubmenu')
+            if (parents && parents.length) {
+              parents.forEach(parent => {
+                parent.$emit('on-update-active', true)
+              })
+            }
+          } else {
+            this.active = false
           }
-        } else {
-          this.active = false
-        }
+        })
       })
     }
   }

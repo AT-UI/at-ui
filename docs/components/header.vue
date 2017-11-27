@@ -77,7 +77,7 @@ export default {
     },
     headerCollapse () {
       const header = document.getElementById('J-page-header')
-      const offsetTop = document.body.scrollTop || 0
+      const offsetTop = window.scrollY || 0
 
       if (offsetTop > 50) {
         header.classList.add('collapse')
