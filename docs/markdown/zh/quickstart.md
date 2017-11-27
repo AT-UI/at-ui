@@ -52,10 +52,28 @@ this.$Modal.alert(config)
 
 ### 单个组件按需使用
 
-可以局部注册所需的组件，适用于与其他框架组合使用的场景
+可以局部注册所需的组件，适用于与其他框架组合使用的场景。首先我们需要借助 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 插件以达到减小项目体积的目的。
+
+```bash
+npm install babel-plugin-component
+```
+
+然后修改 `.babelrc` 配置：
+
+```json
+{
+  "presets": ["es2015", "stage-2"],
+  "plugins": [["import", {
+    "libraryName": "at",
+    "libraryDirectory": "src/components"
+  }]]
+}
+```
+
+接下来引入你需要用的组件
 
 ```js
-import { AtInput } from 'at-ui'
+import { Input as AtInput } from 'at-ui'
 
 export default {
   components: {
@@ -77,6 +95,63 @@ export default {
     <at-input v-model="value" placeholder="请输入..."></at-input>
   </div>
 </template>
+```
+
+以下是完整的组件列表和引入方式：
+
+```js
+import Vue from 'vue'
+import {
+  Button,
+  ButtonGroup,
+  Tag,
+  Radio,
+  RadioGroup,
+  RadioButton,
+  Checkbox,
+  CheckboxGroup,
+  Input,
+  InputNumber,
+  Textarea,
+  Badge,
+  Switch,
+  Slider,
+  Tooltip,
+  Popover,
+  Alert,
+  Progress,
+  LoadingBar,
+  Modal,
+  Select,
+  Option,
+  OptionGroup,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Breadcrumb,
+  BreadcrumbItem,
+  Pagination,
+  Menu,
+  MenuItem,
+  MenuItemGroup,
+  Submenu,
+  Table,
+  Card,
+  Collapse,
+  CollapseItem,
+  Steps,
+  Step,
+  Rate,
+  Tabs,
+  TabPane,
+  Timeline,
+  TimelineItem
+} from 'at-ui'
+
+Vue.prototype.$Notify = Notification
+Vue.prototype.$Loading = LoadingBar
+Vue.prototype.$Modal = Dialog
+Vue.prototype.$Message = Message
 ```
 
 ## 自定义主题
