@@ -73,7 +73,10 @@ const components = {
   Tabs,
   TabPane,
   Timeline,
-  TimelineItem
+  TimelineItem,
+  Notification,
+  Dialog,
+  Message
 }
 
 function install (Vue) {
