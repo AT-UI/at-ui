@@ -11,13 +11,16 @@
       <div class="at-date-picker__input"
         @mouseover="showClearBtnHandle"
         @mouseout="hideClearBtnHandle">
-        <input type="text" class="at-date-picker__original"
+        <input type="text"
+          class="at-date-picker__original"
           :value="curValueString"
           :disabled="disabled"
-          :placeholder="placeholder"
+          :placeholder="Array.isArray(placeholderFinal) ? placeholderFinal[0] : placeholderFinal"
           :readonly="readonly"
+          @keyup.enter="inputByTypingHandle"
           @focus="focusHandle">
-        <i v-if="!isShowClearBtn" class="at-date-picker__icon icon icon-calendar"></i>
+        <i v-if="!isShowClearBtn"
+          class="at-date-picker__icon icon icon-calendar"></i>
         <i class="at-date-picker__icon icon icon-x at-date-picker__clear"
           v-else
           :title="clearText"
@@ -29,22 +32,28 @@
         @mouseover="showClearBtnHandle"
         @mouseout="hideClearBtnHandle"
         @click="focusHandle">
-        <input type="text" class="at-date-picker__original-range"
+        <input type="text"
+          class="at-date-picker__original-range"
           :value="curValueString[0]"
           :disabled="disabled"
-          :placeholder="placeholder[0]"
-          :readonly="readonly">
-        <span class="at-date-picker__range-separator">{{ rangeSeparator }}</span>
-        <input type="text" class="at-date-picker__original-range"
+          :placeholder="placeholderFinal[0]"
+          :readonly="readonly"
+          @keyup.enter="inputByTypingHandle($event, 'start')">
+        <span class="at-date-picker__range-separator">
+          {{ rangeSeparatorFinal }}</span>
+        <input type="text"
+          class="at-date-picker__original-range"
           :value="curValueString[1]"
           :disabled="disabled"
-          :placeholder="placeholder[1]"
-          :readonly="readonly">
-        <i v-if="!isShowClearBtn" class="at-date-picker__icon icon icon-calendar"></i>
-        <i class="at-date-picker__icon icon icon-x at-date-picker__clear"
-          v-else
+          :placeholder="placeholderFinal[1]"
+          :readonly="readonly"
+          @keyup.enter="inputByTypingHandle($event, 'end')">
+        <i v-if="!isShowClearBtn"
+          class="at-date-picker__icon icon icon-calendar"></i>
+        <i v-else
+          class="at-date-picker__icon icon icon-x at-date-picker__clear"
           :title="clearText"
-          @click="clearValueHandle"></i>
+          @click.stop="clearValueHandle"></i>
       </div>
     </template>
     <transition name="slide-up">
@@ -54,11 +63,13 @@
           'at-date-picker__dropdown--open': isOpen,
           [`at-date-picker__${whichPanel}-panel`]: true
         }">
-        <div class="at-date-picker__aside" v-if="isShowAside">
+        <div class="at-date-picker__aside"
+          v-if="isShowAside">
           <button type="button" class="at-date-picker__shortcut"
-            v-for="(item, index) in shortcuts" :key="index"
+            v-for="(item, index) in shortcuts"
+            :key="index"
             :class="{
-              'at-date-picker__shortcut--disabled': shortcutsDisabled[index]
+              'at-date-picker__shortcut--disabled': disabledDate && shortcutsDisabled[index]
             }"
             @click="clickShortcutsHandle(item, index)">
             {{ item.text }}
@@ -67,31 +78,41 @@
         <template v-if="isNotRange">
           <div class="at-date-picker__body">
             <div class="at-date-picker__header">
-              <button class="at-date-picker__prev-year icon icon-chevrons-left" @click="prevYearHandle"></button>
-              <button v-show="whichPanel === 'date'" class="at-date-picker__prev-month icon icon-chevron-left" @click="prevMonthHandle"></button>
-              <button class="at-date-picker__next-year icon icon-chevrons-right" @click="nextYearHandle"></button>
-              <button v-show="whichPanel === 'date'" class="at-date-picker__next-month icon icon-chevron-right" @click="nextMonthHandle"></button>
+              <button class="at-date-picker__prev-year icon icon-chevrons-left"
+                @click="prevYearHandle"></button>
+              <button v-show="whichPanel === 'date'"
+                class="at-date-picker__prev-month icon icon-chevron-left"
+                @click="prevMonthHandle"></button>
+              <button class="at-date-picker__next-year icon icon-chevrons-right"
+                @click="nextYearHandle"></button>
+              <button v-show="whichPanel === 'date'"
+                class="at-date-picker__next-month icon icon-chevron-right"
+                @click="nextMonthHandle"></button>
               <span class="at-date-picker__year-btn"
                 @click="showYearPanel">
                 {{ whichPanel === 'year'
                   ? `${optionYearList[0][0].year} - ${optionYearList[optionYearList.length - 1][optionYearListLength % 4 - 1].year}`
-                  : optionYear }} {{ dateUnit['year'] }}</span>
+                  : optionYear }} {{ dateUnit[0] }}</span>
               <span class="at-date-picker__month-btn"
                 v-show="whichPanel === 'date'"
                 @click="showMonthPanel">
-                {{ optionMonth + 1 }} {{ dateUnit['month'] }}
+                {{ optionMonthNameOfHead[optionMonth] }}
               </span>
             </div>
             <div class="at-date-picker__content">
-              <table v-if="whichPanel === 'date'" class="at-date-picker__date-panel">
+              <table v-if="whichPanel === 'date'"
+                class="at-date-picker__date-panel">
                 <thead>
                   <tr>
-                    <th v-for="(item, index) in weeksName" :key="index">{{ item }}</th>
+                    <th v-for="(item, index) in weeksName"
+                      :key="index">{{ item }}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(row, rowIndex) in dayCells" :key="rowIndex">
-                    <td v-for="(col, colIndex) in row" :key="colIndex"
+                  <tr v-for="(row, rowIndex) in dayCells"
+                    :key="rowIndex">
+                    <td v-for="(col, colIndex) in row"
+                      :key="colIndex"
                       :title="col.fullDate"
                       :class="{
                         'at-date-picker__date-cell': true,
@@ -109,10 +130,13 @@
                   </tr>
                 </tbody>
               </table>
-              <table v-else-if="whichPanel === 'year'" class="at-date-picker__year-panel">
+              <table v-else-if="whichPanel === 'year'"
+                class="at-date-picker__year-panel">
                 <tbody>
-                  <tr v-for="(row, rowIndex) in optionYearList" :key="rowIndex">
-                    <td v-for="(col, colIndex) in row" :key="colIndex"
+                  <tr v-for="(row, rowIndex) in optionYearList"
+                    :key="rowIndex">
+                    <td v-for="(col, colIndex) in row"
+                      :key="colIndex"
                       @click="confirmYearHandle(col)"
                       :class="{
                         'at-date-picker__year-cell': true,
@@ -124,10 +148,13 @@
                   </tr>
                 </tbody>
               </table>
-              <table v-else class="at-date-picker__month-panel">
+              <table v-else
+                class="at-date-picker__month-panel">
                 <tbody>
-                  <tr v-for="(row, rowIndex) in optionMonthList" :key="rowIndex">
-                    <td v-for="(col, colIndex) in row" :key="colIndex"
+                  <tr v-for="(row, rowIndex) in optionMonthList"
+                    :key="rowIndex">
+                    <td v-for="(col, colIndex) in row"
+                      :key="colIndex"
                       @click="confirmMonthHandle(col, rowIndex * 4 + colIndex)"
                       :class="{
                         'at-date-picker__month-cell': true,
@@ -161,21 +188,24 @@
                   }"
                   @click="nextMonthHandle('left')"></button>
                 <span class="at-date-picker__year-btn">
-                  {{ optionYear[0] }} {{ dateUnit['year'] }}</span>
+                  {{ optionYear[0] }} {{ dateUnit[0] }}</span>
                 <span class="at-date-picker__month-btn">
-                  {{ optionMonth[0] + 1 }} {{ dateUnit['month'] }}
+                  {{ optionMonthNameOfHead[optionMonth[0]] }}
                 </span>
               </div>
               <div class="at-date-picker__content">
                 <table class="at-date-picker__date-panel">
                   <thead>
                     <tr>
-                      <th v-for="(item, index) in weeksName" :key="index">{{ item }}</th>
+                      <th v-for="(item, index) in weeksName"
+                        :key="index">{{ item }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(row, rowIndex) in dayCells[0]" :key="rowIndex">
-                      <td v-for="(col, colIndex) in row" :key="colIndex"
+                    <tr v-for="(row, rowIndex) in dayCells[0]"
+                      :key="rowIndex">
+                      <td v-for="(col, colIndex) in row"
+                        :key="colIndex"
                         :title="col.fullDate"
                         :class="{
                           'at-date-picker__date-cell': true,
@@ -218,21 +248,24 @@
                   class="at-date-picker__next-month icon icon-chevron-right"
                   @click="nextMonthHandle('right')"></button>
                 <span class="at-date-picker__year-btn">
-                  {{ optionYear[1] }} {{ dateUnit['year'] }}</span>
+                  {{ optionYear[1] }} {{ dateUnit[0] }}</span>
                 <span class="at-date-picker__month-btn">
-                  {{ optionMonth[1] + 1 }} {{ dateUnit['month'] }}
+                  {{ optionMonthNameOfHead[optionMonth[1]] }}
                 </span>
               </div>
               <div class="at-date-picker__content">
                 <table class="at-date-picker__date-panel">
                   <thead>
                     <tr>
-                      <th v-for="(item, index) in weeksName" :key="index">{{ item }}</th>
+                      <th v-for="(item, index) in weeksName"
+                        :key="index">{{ item }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(row, rowIndex) in dayCells[1]" :key="rowIndex">
-                      <td v-for="(col, colIndex) in row" :key="colIndex"
+                    <tr v-for="(row, rowIndex) in dayCells[1]"
+                      :key="rowIndex">
+                      <td v-for="(col, colIndex) in row"
+                        :key="colIndex"
                         :title="col.fullDate"
                         :class="{
                           'at-date-picker__date-cell': true,
@@ -258,6 +291,10 @@
             </div>
           </div>
         </template>
+        <div class="at-date-picker__extra"
+          v-if="$slots.default">
+          <slot></slot>
+        </div>
       </div>
     </transition>
   </div>
@@ -266,60 +303,46 @@
 <script>
 import moment from 'moment'
 import Clickoutside from 'src/directives/clickoutside'
+import Locale from 'src/mixins/locale'
 
 export default {
   name: 'AtDatePicker',
+  mixins: [Locale],
   directives: { Clickoutside },
   data () {
     return {
-      curValue: this.getInitCurVal(),
-      optionValue: this.getInitOptionVal(),
+      curValue: [],
+      optionValue: [],
       whichPanel: 'date', // 'year month date'
       optionYearListLength: 10,
       isShowClearBtn: false,
       isSetStartOfRange: false,
       tempRangeValue: [],
       selectRangeStart: null,
-      isOpen: this.open
+      isOpen: this.open,
+      weeksName: this.t('at.datepicker.weeksName'),
+      dateUnit: this.t('at.datepicker.dateUnit'),
+      optionMonthName: this.t('at.datepicker.optionMonthName'),
+      optionMonthNameOfHead: this.t('at.datepicker.optionMonthNameOfHead'),
+      defaultPlaceholder: this.t('at.datepicker.placeholder'),
+      defaultPlaceholderOfRange: this.t('at.datepicker.placeholderOfRange'),
+      defaultRangeSeparator: this.t('at.datepicker.rangeSeparator')
     }
   },
   props: {
-    value: {
-      type: String
-    },
-    dateUnit: {
-      type: Object,
-      default () {
-        return {
-          'year': '年',
-          'month': '月',
-          'date': '日'
-        }
-      }
-    },
-    weeksName: {
-      type: Array,
-      default () {
-        return ['日', '一', '二', '三', '四', '五', '六']
-      }
-    },
-    optionMonthName: {
-      type: Array,
-      default () {
-        return ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
-      }
-    },
-    format: {
-      type: String,
-      default () {
-        if (this.type === 'year') return 'YYYY'
-        else if (this.type === 'month') return 'YYYY-MM'
-        else return 'YYYY-MM-DD'
-      }
-    },
     type: {
       type: String,
       default: 'date' // date month year daterange
+    },
+    value: {
+      type: [String, Date, Array]
+    },
+    format: {
+      type: String
+    },
+    autoClose: {
+      type: Boolean,
+      default: true
     },
     showToday: {
       type: Boolean,
@@ -343,11 +366,6 @@ export default {
     },
     placeholder: {
       type: [String, Array],
-      default () {
-        return ['date', 'year', 'month'].indexOf(this.type) > -1
-          ? '请选择日期'
-          : ['开始日期', '结束日期']
-      }
     },
     clearText: {
       type: String,
@@ -365,7 +383,7 @@ export default {
     },
     rangeSeparator: {
       type: String,
-      default: '至'
+      // default: this.defaultRangeSeparator
     },
     disabledDate: {
       type: Function
@@ -375,6 +393,23 @@ export default {
   computed: {
     isNotRange () {
       return ['date', 'year', 'month'].indexOf(this.type) > -1
+    },
+    placeholderFinal () {
+      if (this.isNotRange) {
+        return this.placeholder || this.defaultPlaceholder
+      } else {
+        return this.placeholder || this.defaultPlaceholderOfRange
+      }
+    },
+    rangeSeparatorFinal () {
+      return this.rangeSeparator || this.defaultRangeSeparator
+    },
+    formatByType () {
+      if (this.format) return this.format
+
+      if (this.type === 'year') return 'YYYY'
+      else if (this.type === 'month') return 'YYYY-MM'
+      else return 'YYYY-MM-DD'
     },
     ableToDo () {
       if (this.isNotRange) return false
@@ -410,17 +445,17 @@ export default {
     curValueString () {
       if (this.isNotRange) {
         return moment.isMoment(this.curValue)
-          ? this.curValue.format(this.format)
+          ? this.curValue.format(this.formatByType)
           : ''
       } else if (this.type === 'daterange') {
-        // console.log('this.curValue', this.curValue)
         const startValue = this.curValue[0]
         const endValue = this.curValue[1]
 
         if (startValue === null || endValue === null) {
           return ['', '']
         } else {
-          return [startValue.format(this.format), endValue.format(this.format)]
+          return [startValue.format(this.formatByType),
+            endValue.format(this.formatByType)]
         }
       }
     },
@@ -430,7 +465,8 @@ export default {
           ? this.optionValue.year()
           : moment().year()
       } else {
-        return [this.optionValue[0].year(), this.optionValue[1].year()]
+        return [this.optionValue[0].year(),
+          this.optionValue[1].year()]
       }
     },
     optionMonth () {
@@ -439,7 +475,8 @@ export default {
           ? this.optionValue.month()
           : moment().month()
       } else {
-        return [this.optionValue[0].month(), this.optionValue[1].month()]
+        return [this.optionValue[0].month(),
+          this.optionValue[1].month()]
       }
     },
     optionDate () {
@@ -448,7 +485,8 @@ export default {
           ? this.optionValue.date()
           : moment().date()
       } else {
-        return [this.optionValue[0].date(), this.optionValue[1].date()]
+        return [this.optionValue[0].date(),
+          this.optionValue[1].date()]
       }
     },
     isShowAside () {
@@ -458,31 +496,36 @@ export default {
     shortcutsDisabled () {
       const result = []
 
-      if (this.isNotRange) {
+      if (!this.disabledDate) {
         this.shortcuts.forEach((item, index) => {
-          const date = this.getMoment(item.value())
-          result.push(this.disabledDate(date))
+          result.push(false)
         })
       } else {
-        this.shortcuts.forEach((item, index) => {
-          const range = item.value()
-          const start = this.getMoment(range[0])
-          const end = this.getMoment(range[1])
-          const offset = Math.abs(end.diff(start, 'days'))
-          let isDisabled = false
+        if (this.isNotRange) {
+          this.shortcuts.forEach((item, index) => {
+            const date = this.getMoment(item.value())
+            result.push(this.disabledDate(date))
+          })
+        } else {
+          this.shortcuts.forEach((item, index) => {
+            const range = item.value()
+            const start = this.getMoment(range[0])
+            const end = this.getMoment(range[1])
+            const offset = Math.abs(end.diff(start, 'days'))
+            let isDisabled = false
 
-          let increment = 0
-          for (let i = 0; i < offset; i++) {
-            if (this.disabledDate(start.add(increment, 'days'))) {
-              // console.log(moment(start).format(this.format))
-              result.push(true)
-              isDisabled = true
-              break
+            let increment = 0
+            for (let i = 0; i < offset; i++) {
+              if (this.disabledDate(start.add(increment, 'days'))) {
+                result.push(true)
+                isDisabled = true
+                break
+              }
+              increment = 1
             }
-            increment = 1
-          }
-          !isDisabled && result.push(false)
-        })
+            !isDisabled && result.push(false)
+          })
+        }
       }
       return result
     },
@@ -496,6 +539,7 @@ export default {
         for (let j = 0; j < 4; j++) {
           const colIndex = i * 4 + j
           const fullMonth = `${this.optionYear}-${colIndex + 1}-01`
+
           result[i][j] = {
             month: months[colIndex],
             fullMonth,
@@ -506,7 +550,7 @@ export default {
       return result
     },
     optionYearList () {
-      const firstYear = this.optionYear - this.optionYear % this.optionYearListLength
+      const firstYear = this.optionYear - (this.optionYear % this.optionYearListLength)
       const result = []
       const row = Math.floor(this.optionYearListLength / 4) + 1
       const isNotYearType = ['date', 'month'].indexOf(this.type) > -1
@@ -620,6 +664,12 @@ export default {
 
   watch: {
     curValue (val, oldVal) {
+      if (this.autoClose) {
+        this.$nextTick(() => {
+          this.isOpen = false
+        })
+      }
+
       if (moment.isMoment(val) && moment.isMoment(oldVal)) {
         if (val.isSame(oldVal, 'day')) return
       }
@@ -658,7 +708,6 @@ export default {
       }
     },
     isOpen (val) {
-      // if (val) {}
       this.$emit('on-open-change', val)
     },
     open (val) {
@@ -673,14 +722,13 @@ export default {
 
   methods: {
     getMoment(date, format) {
-      return moment(date || new Date(), format || this.format)
+      return moment(date || new Date(), format || this.formatByType)
     },
-    getInitCurVal () {
-
-      if (['date', 'year', 'month'].indexOf(this.type) > -1) {
+    setInitCurVal () {
+      if (this.isNotRange) {
         const date = this.getMoment(this.value)
 
-        return date.isValid()
+        this.curValue = date.isValid()
           ? date
           : null
       } else {
@@ -688,8 +736,7 @@ export default {
         let end
 
         if (Array.isArray(this.value) && this.value.length >= 2) {
-
-          if (!curValue[0] || !curValue[1]) {
+          if (!this.value[0] || !this.value[1]) {
             start = this.getMoment()
             end = this.getMoment().add(1, 'months')
           } else {
@@ -700,27 +747,73 @@ export default {
           start = null
           end = null
         }
-
-        return [start, end]
+        this.curValue = [start, end]
       }
     },
-    getInitOptionVal () {
-      if (['date', 'year', 'month'].indexOf(this.type) > -1) {
-        return this.getMoment(this.value)
+    setInitOptionVal () {
+      if (this.isNotRange) {
+        this.optionValue = this.getMoment(this.value)
       } else {
-        if (Array.isArray(this.curValue) && this.curValue.length >= 2) {
-          const startVal = this.getMoment(this.curValue[0])
-          const endVal = this.getMoment(this.curValue[1])
+        if (Array.isArray(this.value) && this.value.length >= 2) {
+          const startVal = this.getMoment(this.value[0])
+          const endVal = this.getMoment(this.value[1])
 
           if (startVal.isValid() && endVal.isValid()) {
-            return startVal.isBefore(endVal)
+            this.optionValue = startVal.isBefore(endVal)
               ? [startVal, endVal]
               : [endVal, startVal]
           } else {
-            return [moment(), moment().add(1, 'months')]
+            this.optionValue = [this.getMoment(), this.getMoment().add(1, 'months')]
           }
         } else {
-          return [moment(), moment().add(1, 'months')]
+          this.optionValue = [this.getMoment(), this.getMoment().add(1, 'months')]
+        }
+      }
+    },
+    inputByTypingHandle (event, identifier) {
+      if (this.disabled) return
+
+      if (this.isNotRange) {
+        const val = event.target.value.trim()
+        const date = this.getMoment(val)
+
+        if (!date.isValid() || this.checkIsDisabledDate(date)) {
+          return
+        } else {
+          this.curValue = date
+        }
+      } else {
+        if (identifier === 'start') {
+          const endValue = this.curValue[1]
+          const end = endValue && this.getMoment(endValue)
+
+          const startValue = event.target.value.trim()
+          const start = this.getMoment(startValue)
+
+          if (start.isValid() && !this.checkIsDisabledDate(start)) {
+            if (end && !end.isBefore(start)) {
+              this.curValue.splice(0, 1, start)
+            }
+            if (!end) {
+              this.curValue.splice(0, 1, start)
+              this.curValue.splice(1, 1, this.getMoment(start))
+            }
+          }
+        } else {
+          const startValue = this.curValue[0]
+          const start = startValue && this.getMoment(startValue)
+
+          const endValue = event.target.value.trim()
+          const end = this.getMoment(endValue)
+          if (end.isValid() && !this.checkIsDisabledDate(end)) {
+            if (start && !start.isAfter(end)) {
+              this.curValue.splice(1, 1, end)
+            }
+            if (!start) {
+              this.curValue.splice(0, 1, this.getMoment(end))
+              this.curValue.splice(1, 1, end)
+            }
+          }
         }
       }
     },
@@ -734,6 +827,7 @@ export default {
     },
     checkIsDisabledDate (fullDate) {
       if (!this.disabledDate) return false
+
       return this.disabledDate(this.getMoment(fullDate))
     },
     checkIsCurrentYear (opts) {
@@ -745,8 +839,9 @@ export default {
     checkIsCurrentMonth (opts) {
       if (!moment.isMoment(this.curValue)) return
 
-      const month = this.getMoment(opts.fullMonth)
-      return this.curValue.isSame(month, 'month')
+      const month = this.getMoment(opts.fullMonth).month()
+      // return this.curValue.isSame(month, 'month')
+      return month === this.curValue.month()
     },
     checkIsCurrentDate (opts) {
       if (opts.isCurMotnh && moment.isMoment(this.curValue)) {
@@ -756,6 +851,7 @@ export default {
     },
     checkIsToday (opts) {
       if (!this.showToday) return
+
       return moment().isSame(this.getMoment(opts.fullDate), 'day')
     },
     checkIsInRange (opts) {
@@ -819,7 +915,10 @@ export default {
       }
     },
     clickShortcutsHandle (opts, index) {
-      if (this.disabled || this.shortcutsDisabled[index]) return
+      if (this.disabled
+        || (this.disabledDate && this.shortcutsDisabled[index])) {
+        return
+      }
 
       if (this.isNotRange) {
         if (opts.value) {
@@ -836,7 +935,6 @@ export default {
       }
       opts.onClick && opts.onClick()
     },
-
     showYearPanel () {
       this.whichPanel = 'year'
     },
@@ -876,7 +974,6 @@ export default {
         this.curValue = this.getMoment(this.optionValue)
       }
     },
-
     confirmDateHandle (opts, row, event) {
       if (this.disabled || opts.isDisabled) return
 
@@ -888,8 +985,6 @@ export default {
         this.curValue = this.getMoment(opts.fullDate)
       } else {
         if (!this.isSetStartOfRange) {
-          // this.optionValue.splice(0, 1, moment(this.optionValue[0].date(opts.date)))
-          // this.curValue.splice(0, 1, moment(opts.fullDate))
           this.tempRangeValue = []
           this.tempRangeValue.splice(0, 1, this.getMoment(opts.fullDate))
           this.selectRangeStart = this.getMoment(opts.fullDate)
@@ -907,10 +1002,8 @@ export default {
         if (this.tempRangeValue.length === 2) {
           this.curValue = this.tempRangeValue.concat()
         }
-        // console.log(this.optionValue[0].format(this.format))
       }
     },
-
     prevYearHandle (label) {
       if (this.isNotRange) {
         const offset = (this.whichPanel === 'year' ? 10 : 1)
@@ -966,7 +1059,6 @@ export default {
       }
     },
   },
-
   created () {
     if (this.disabled) {
       this.isOpen = false
@@ -979,11 +1071,11 @@ export default {
         this.whichPanel = 'year'
       }
     }
-  },
 
-  mounted () {
-
+    this.setInitCurVal()
+    this.$nextTick(() => {
+      this.setInitOptionVal()
+    })
   }
 }
 </script>
-

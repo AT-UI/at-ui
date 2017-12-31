@@ -22,6 +22,15 @@ export default {
     },
     table: {
       emptyText: 'No data'
+    },
+    datepicker: {
+      placeholder: 'Select Date',
+      placeholderOfRange: ['Start Date', 'End Date'],
+      rangeSeparator: '-',
+      dateUnit: ['', '', ''],
+      weeksName: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      optionMonthName: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      optionMonthNameOfHead: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     }
   }
 }
