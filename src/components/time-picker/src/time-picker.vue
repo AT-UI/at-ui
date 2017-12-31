@@ -6,7 +6,7 @@
       @mouseover="showClearBtnHandle"
       @mouseout="hideClearBtnHandle">
       <input type="text" class="at-time-picker__original"
-        :placeholder="placeholder"
+        :placeholder="placeholderFinal"
         :disabled="disabled"
         :value="curValueString"
         @keyup.enter="inputByTypingHandle"
@@ -87,9 +87,11 @@
 import moment from 'moment'
 import Clickoutside from 'src/directives/clickoutside'
 import { scrollTop, capitalizeFirstLetter, getStyle } from 'src/utils/util'
+import Locale from 'src/mixins/locale'
 
 export default {
   name: 'AtTimePicker',
+  mixins: [Locale],
   directives: { Clickoutside },
   data () {
     return {
@@ -99,7 +101,8 @@ export default {
       seconds: this.range('second', 0, 60, this.steps[2] || 1),
       curValue: this.getInitCurVal(),
       isOpen: this.open,
-      isShowClearBtn: false
+      isShowClearBtn: false,
+      defaultPlaceholder: this.t('at.timepicker.placeholder')
     }
   },
   props: {
@@ -127,8 +130,7 @@ export default {
       default: true
     },
     placeholder: {
-      type: String,
-      default: '请选择时间'
+      type: String
     },
     clearText: {
       type: String,
@@ -164,6 +166,9 @@ export default {
     }
   },
   computed: {
+    placeholderFinal () {
+      return this.placeholder || this.defaultPlaceholder
+    },
     rootClass () {
       const className = {
         'at-time-picker--small': false,

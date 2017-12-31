@@ -24,7 +24,7 @@ Click TimePicker, and then we could select or input a time in panel.
 <at-time-picker
   :value="inputValue"
   @on-change="changeHandle"
-  @on-open="toggleOpenHandle">
+  @on-open-change="toggleOpenHandle">
 </at-time-picker>
 ```
 :::
@@ -52,7 +52,7 @@ Make part of time unselectable by `disabled-hours` `disabled-minutes` `disabled-
   :disabled-hours="[0, 1, 2, 3]"
   placeholder="Select time"
   @on-change="changeHandle"
-  @on-open="toggleOpenHandle">
+  @on-open-change="toggleOpenHandle">
 </at-time-picker>
 ```
 :::
@@ -129,7 +129,7 @@ Render addon contents to timepicker panel's bottom.
 | format | to set the time format | String | - | 'HH:mm:ss' |
 | size | The size of TimePicker. Optional value | String | `large`, `normal`, `small` | 'normal' |
 | open | whether to popup panel | Boolean | - | false |
-| placeholder | display when there's no value | String | - | '请选择时间' |
+| placeholder | display when there's no value | String | - | 'Select time' |
 | allowClear | allow clearing text | Boolean | - | true |
 | clearText | clear tooltip of icon | String | - | 'clear' |
 | steps | Interval of hours, minutes, and seconds. For example, set [1, 15], the minutes will be displayed as 00, 15, 30, 45. | Array | - | [1, 1, 1] |

@@ -22,6 +22,9 @@ export default {
     },
     table: {
       emptyText: '暂无数据'
+    },
+    timepicker: {
+      placeholder: '请选择时间'
     }
   }
 }

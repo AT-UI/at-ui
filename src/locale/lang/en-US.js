@@ -22,6 +22,9 @@ export default {
     },
     table: {
       emptyText: 'No data'
+    },
+    timepicker: {
+      placeholder: 'Select time'
     }
   }
 }

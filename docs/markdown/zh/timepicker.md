@@ -24,7 +24,7 @@
 <at-time-picker
   :value="inputValue"
   @on-change="changeHandle"
-  @on-open="toggleOpenHandle">
+  @on-open-change="toggleOpenHandle">
 </at-time-picker>
 ```
 :::
@@ -52,7 +52,7 @@
   :disabled-hours="[0, 1, 2, 3]"
   placeholder="请选择时间哦"
   @on-change="changeHandle"
-  @on-open="toggleOpenHandle">
+  @on-open-change="toggleOpenHandle">
 </at-time-picker>
 ```
 :::
