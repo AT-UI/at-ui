@@ -56,6 +56,7 @@ Automatically adjusted the height of textarea according to the number of lines w
 | placeholder | the text of placeholder | String | - | - |
 | disabled | whether the textarea is disabled | Boolean | - | false |
 | autofocus | same as native textarea | Boolean | - | false |
+| resize | whether to be resize by the user | String | `none`, `both`, `horizontal`, `vertical`  | `vertical` |
 
 <script>
 export default {

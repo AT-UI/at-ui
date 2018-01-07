@@ -2,7 +2,7 @@
   <div
     class="at-textarea"
     :class="{
-      'at-textarea--disabled': disabled,
+      'at-textarea--disabled': disabled
     }">
     <textarea
       class="at-textarea__original"
@@ -10,7 +10,7 @@
       :name="name"
       :placeholder="placeholder"
       :disabled="disabled"
-      :style="calculateStyle"
+      :style="textareaStyle"
       :readonly="readonly"
       :rows="rows"
       :autofocus="autofocus"
@@ -49,12 +49,23 @@ export default {
       default: false
     },
     minRows: [Number, String],
-    maxRows: [Number, String]
+    maxRows: [Number, String],
+    resize: {
+      type: String,
+      default: 'vertical' // none, both, horizontal, vertical
+    }
   },
   data () {
     return {
       store: this.value,
       calculateStyle: {}
+    }
+  },
+  computed: {
+    textareaStyle () {
+      return Object.assign({}, this.calculateStyle, {
+        resize: this.resize
+      })
     }
   },
   watch: {
