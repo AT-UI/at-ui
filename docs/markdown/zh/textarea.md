@@ -56,6 +56,7 @@
 | placeholder | 占位文本（原生属性） | String | - | - |
 | disabled | 是否禁用（原生属性） | Boolean | - | false |
 | autofocus | 是否自动获取焦点（原生属性） | Boolean | - | false |
+| resize | 是否能被用户缩放 | String | `none`, `both`, `horizontal`, `vertical`  | `vertical` |
 
 <script>
 export default {
