@@ -17,8 +17,8 @@ export default {
       pageSize: '/ صفحه',
       goto: 'برو به',
       pageText: '',
-      prev5Text: 'پنج صفحه‌ی بعدی',
-      next5Text: 'پنج صفحه‌ی قبلی'
+      prev5Text: 'پنج صفحه‌ی قبلی',
+      next5Text: 'پنج صفحه‌ی بعدی'
     },
     table: {
       emptyText: 'بدون داده'
