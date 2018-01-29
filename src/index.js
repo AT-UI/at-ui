@@ -28,6 +28,7 @@ import { Steps, Step } from './components/steps'
 import Rate from './components/rate'
 import { Tabs, TabPane } from './components/tabs'
 import { Timeline, TimelineItem } from './components/timeline'
+import locale from './locale'
 
 const components = {
   Button,
@@ -79,8 +80,9 @@ const components = {
   Message
 }
 
-function install (Vue) {
-  if (install.installed) return
+function install (Vue, opts = {}) {
+  locale.use(opts.locale)
+  locale.i18n(opts.i18n)
 
   for (const item in components) {
     if (components[item].name) {
@@ -103,6 +105,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 module.exports = {
   install,
+  locale: locale.use,
+  i18n: locale.i18n,
   ...components
 }
 
