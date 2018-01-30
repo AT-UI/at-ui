@@ -7,6 +7,14 @@
 
 <div class="row changelog">
   <at-timeline>
+    <at-timeline-item>
+      <p class="head">v1.3.1</p>
+      <p class="time"><span>2018-01-30</span></p>
+      <ul class="content">
+        <li>修复<span>i18n</span>不适配<span>vue-i18n@7.x</span>的 Bug。<a href="https://github.com/AT-UI/at-ui/issues/90">#90</a></li>
+        <li>修复<span>Textarea</span>显示有误的 Bug</li>
+      </ul>
+    </at-timeline-item>
     <at-timeline-item color="red">
       <i slot="dot" class="icon icon-award"></i>
       <p class="head">v1.3.0</p>
