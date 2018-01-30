@@ -3,6 +3,16 @@
  */
 let hiddenTextarea
 
+const HIDDEN_STYLE = [
+  'position: absolute !important;',
+  'top: 0 !important;',
+  'right: 0 !important;',
+  'height: 0 !important;',
+  'visibility: hidden !important;',
+  'overflow: hidden !important;',
+  'z-index: -1000 !important;'
+]
+
 const CONTEXT_STYLE = [
   'letter-spacing',
   'line-height',
@@ -37,7 +47,7 @@ function calculateNodeStyling (node) {
   return { boxSizing, paddingSize, borderSize, contextStyle }
 }
 
-export function calcTextareaHeight (targetNode, minRows = null, maxRows = null) {
+export function calcTextareaHeight (targetNode, minRows = 1, maxRows = null) {
   if (!hiddenTextarea) {
     hiddenTextarea = document.createElement('textarea')
     document.body.appendChild(hiddenTextarea)
@@ -45,9 +55,10 @@ export function calcTextareaHeight (targetNode, minRows = null, maxRows = null) 
 
   const { boxSizing, paddingSize, borderSize, contextStyle } = calculateNodeStyling(targetNode)
 
-  hiddenTextarea.setAttribute('style', contextStyle)
+  hiddenTextarea.setAttribute('style', `${contextStyle};${HIDDEN_STYLE.join('')}`)
   hiddenTextarea.value = targetNode.value || targetNode.placeholder || ''
 
+  const result = {}
   let height = hiddenTextarea.scrollHeight
 
   if (boxSizing === 'border-box') {
@@ -65,7 +76,8 @@ export function calcTextareaHeight (targetNode, minRows = null, maxRows = null) 
     if (boxSizing === 'border-box') {
       minHeight = minHeight + paddingSize + borderSize
     }
-    height = Math.min(minHeight, height)
+    height = Math.max(minHeight, height)
+    result.minHeight = `${minHeight}px`
   }
 
   if (maxRows !== null) {
@@ -76,7 +88,9 @@ export function calcTextareaHeight (targetNode, minRows = null, maxRows = null) 
     height = Math.min(maxHeight, height)
   }
 
-  return {
-    height: `${height}px`
-  }
+  result.height = `${height}px`
+  hiddenTextarea.parentNode && hiddenTextarea.parentNode.removeChild(hiddenTextarea)
+  hiddenTextarea = null
+
+  return result
 }

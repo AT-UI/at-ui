@@ -6,13 +6,13 @@ import router from './router'
 import DemoBox from './components/demobox'
 import IconList from './components/iconlist'
 import VueClipboard from './directives/clipboard'
-import AtComponents from 'at-ui'
+import AtUI from 'at-ui'
 import zhLocale from 'at-ui-locale-zh'
 import enLocale from 'at-ui-locale-en'
 import 'at-ui-style'
 
 Vue.use(VueI18n)
-Vue.use(AtComponents)
+Vue.use(AtUI)
 Vue.use(VueClipboard)
 Vue.component('demo-box', DemoBox)
 Vue.component('icon-list', IconList)
@@ -27,9 +27,9 @@ if (['en', 'zh'].indexOf(navigatorLang) <= -1) {
 
 const userLang = urlLang || window.localStorage.getItem('at-ui-language') || navigatorLang || 'zh'
 
-
 const i18n = new VueI18n({
   locale: userLang,
+  fallbackLocale: 'en',
   messages: {
     'en': {
       ...enLocale
@@ -39,6 +39,8 @@ const i18n = new VueI18n({
     }
   }
 })
+
+AtUI.i18n((key, value) => i18n.t(key, value))
 
 Vue.config.debug = process.env.NODE_ENV !== 'production'
 
