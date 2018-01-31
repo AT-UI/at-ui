@@ -68,6 +68,8 @@ zh:
               name: Badge
             - title: 卡片
               name: Card
+            - title: 走马灯
+              name: Carousel
             - title: 折叠面板
               name: Collapse
             - title: 加载进度条
@@ -172,6 +174,8 @@ en:
               name: Badge
             - title: Card
               name: Card
+            - title: Carousel
+              name: Carousel
             - title: Collapse
               name: Collapse
             - title: LoadingBar

@@ -28,6 +28,7 @@ import { Steps, Step } from './components/steps'
 import Rate from './components/rate'
 import { Tabs, TabPane } from './components/tabs'
 import { Timeline, TimelineItem } from './components/timeline'
+import { Carousel, CarouselItem } from './components/carousel'
 import locale from './locale'
 
 const components = {
@@ -77,7 +78,9 @@ const components = {
   TimelineItem,
   Notification,
   Dialog,
-  Message
+  Message,
+  Carousel,
+  CarouselItem
 }
 
 function install (Vue, opts = {}) {
