@@ -5,7 +5,7 @@
       selected ? 'at-select__option--selected' : '',
       isFocus ? 'at-select__option--focus' : ''
     ]"
-    @click.stop="select"
+    @click.stop="doSelect"
     @mouseout.stop="blur"
     v-show="!hidden"
     ref="option"
@@ -20,6 +20,7 @@ import Emitter from 'src/mixins/emitter'
 export default {
   name: 'AtOption',
   mixins: [Emitter],
+  inject: ['select'],
   props: {
     value: {
       type: [String, Number],
@@ -48,7 +49,7 @@ export default {
     }
   },
   methods: {
-    select () {
+    doSelect () {
       if (this.disabled) return false
       this.dispatch('AtSelect', 'on-select-selected', this.value)
     },
@@ -61,12 +62,25 @@ export default {
     }
   },
   mounted () {
+    this.select.optionInstances.push(this)
+    this.select.options.push({
+      _instance: this,
+      value: this.value,
+      label: (typeof this.label === 'undefined') ? this.$el.innerHTML : this.label
+    })
     this.searchLabel = this.$el.innerHTML
     this.$on('on-select-close', () => {
       this.isFocus = false
     })
     this.$on('on-query-change', val => {
       this.queryChange(val)
+    })
+  },
+  beforeDestroy () {
+    this.select.options.forEach((option, idx) => {
+      if (option._instance === this) {
+        this.select.onOptionDestroy(idx)
+      }
     })
   }
 }
