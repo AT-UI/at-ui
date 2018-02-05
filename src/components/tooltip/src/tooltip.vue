@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import PopoverMixin from 'src/mixins/popover'
+import PopoverMixin from 'at-ui/src/mixins/popover'
 
 export default {
   name: 'AtTooltip',

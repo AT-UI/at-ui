@@ -32,10 +32,10 @@
 </template>
 
 <script>
-  import CollapseTransition from 'src/utils/collapse-transition'
-  import { getStyle, findComponentUpward } from 'src/utils/util'
-  import Emitter from 'src/mixins/emitter'
-  import PopoverMixin from 'src/mixins/popover'
+  import CollapseTransition from 'at-ui/src/utils/collapse-transition'
+  import { getStyle, findComponentUpward } from 'at-ui/src/utils/util'
+  import Emitter from 'at-ui/src/mixins/emitter'
+  import PopoverMixin from 'at-ui/src/mixins/popover'
 
   export default {
     name: 'AtSubmenu',

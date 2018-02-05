@@ -15,17 +15,12 @@
 <script>
 export default {
   name: 'AtLoadingBar',
-  props: {
-    width: {
-      type: Number,
-      default: 2
-    }
-  },
   data () {
     return {
       show: false,
       status: 'success',
-      percent: 0
+      percent: 0,
+      width: 2
     }
   },
   computed: {
