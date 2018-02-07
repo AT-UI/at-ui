@@ -233,7 +233,8 @@
 ## 关闭前
 
 - 通过属性 `before-close` 监听 `Modal` 关闭前的事件，会暂停 `Modal` 的关闭
-- 参数为回调函数，调用该函数将关闭 `Modal` ，传递 `false` 参数可以阻止 `Modal`的关闭
+- 参数为event事件和回调函数，调用函数将关闭 `Modal` ，传递 `false` 参数可以阻止 `Modal`的关闭
+- 点击按钮、icon、遮罩、esc均会触发该钩子，手动修改value的值不触发
 
 :::demo
 ```html
