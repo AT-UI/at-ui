@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import { findComponentsDownward } from 'src/utils/util'
-import Emitter from 'src/mixins/emitter'
+import { findComponentsDownward } from 'at-ui/src/utils/util'
+import Emitter from 'at-ui/src/mixins/emitter'
 
 export default {
   name: 'AtCheckboxGroup',

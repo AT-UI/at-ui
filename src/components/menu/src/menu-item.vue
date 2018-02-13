@@ -15,8 +15,8 @@
 </template>
 
 <script>
-  import Emitter from 'src/mixins/emitter'
-  import { findComponentsUpward } from 'src/utils/util'
+  import Emitter from 'at-ui/src/mixins/emitter'
+  import { findComponentsUpward } from 'at-ui/src/utils/util'
 
   export default {
     name: 'AtMenuItem',

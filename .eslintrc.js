@@ -8,6 +8,7 @@ module.exports = {
   // add your custom rules here
   'rules': {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-    'prefer-spread': 'off'
+    'prefer-spread': 'off',
+    'class-methods-use-this': 'off'
   }
 }

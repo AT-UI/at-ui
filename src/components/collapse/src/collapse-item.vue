@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import CollapseTransition from 'src/utils/collapse-transition'
+import CollapseTransition from 'at-ui/src/utils/collapse-transition'
 
 export default {
   name: 'AtCollapseItem',

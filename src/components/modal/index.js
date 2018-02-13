@@ -1,7 +1,7 @@
-import Dialog from './src/dialog'
 import Modal from './src/modal.vue'
 
-export {
-  Modal,
-  Dialog
+Modal.install = function (Vue) {
+  Vue.component(Modal.name, Modal)
 }
+
+export default Modal

@@ -138,7 +138,7 @@ Dialog.alert = (content, title, options) => {
     title = options.title || ''
   }
 
-  return new Dialog(Object.assign({
+  return Dialog(Object.assign({
     title,
     content,
     type: 'alert',
@@ -157,7 +157,7 @@ Dialog.confirm = (content, title, options) => {
     title = options.title || ''
   }
 
-  return new Dialog(Object.assign({
+  return Dialog(Object.assign({
     title,
     content,
     type: 'confirm'
@@ -174,7 +174,7 @@ Dialog.prompt = (content, title, options) => {
     title = options.title || ''
   }
 
-  return new Dialog(Object.assign({
+  return Dialog(Object.assign({
     title,
     content,
     type: 'prompt',
@@ -199,7 +199,7 @@ function createStatusDialog (type) {
       title = options.title || statusTitles[type]
     }
 
-    return new Dialog(Object.assign({
+    return Dialog(Object.assign({
       title,
       content,
       type,
