@@ -45,7 +45,7 @@
 </template>
 
 <script>
-  import { t } from 'src/locale'
+  import { t } from 'at-ui/src/locale'
 
   export default {
     name: 'AtModal',

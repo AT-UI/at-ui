@@ -94,7 +94,7 @@
 </template>
 
 <script>
-  import Locale from 'src/mixins/locale'
+  import Locale from 'at-ui/src/mixins/locale'
 
   export default {
     name: 'AtPagination',

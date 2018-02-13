@@ -58,11 +58,11 @@
 </template>
 
 <script>
-import Clickoutside from 'src/directives/clickoutside'
-import Emitter from 'src/mixins/emitter'
-import PopoverMixin from 'src/mixins/popover'
-import Locale from 'src/mixins/locale'
-import { findComponentsDownward } from 'src/utils/util'
+import Clickoutside from 'at-ui/src/directives/clickoutside'
+import Emitter from 'at-ui/src/mixins/emitter'
+import PopoverMixin from 'at-ui/src/mixins/popover'
+import Locale from 'at-ui/src/mixins/locale'
+import { findComponentsDownward } from 'at-ui/src/utils/util'
 
 export default {
   name: 'AtSelect',
@@ -124,6 +124,11 @@ export default {
       query: '',
       notFound: false,
       model: this.value
+    }
+  },
+  provide () {
+    return {
+      'select': this
     }
   },
   computed: {
@@ -236,7 +241,7 @@ export default {
           options.forEach(option => {
             if (option.isFocus) {
               hasFocus = true
-              option.select()
+              option.doSelect()
             }
           })
 
@@ -253,13 +258,12 @@ export default {
       options.forEach(option => {
         if (!firstOption && !option.hidden) {
           firstOption = option
-          option.select()
+          option.doSelect()
         }
       })
     },
     updateOptions () {
       const options = []
-      let index = 1
 
       const optionsEle = findComponentsDownward(this, 'AtOption')
       optionsEle.forEach(option => {
@@ -267,7 +271,6 @@ export default {
           value: option.value,
           label: (typeof option.label === 'undefined') ? option.$el.innerHTML : option.label
         })
-        option.index = index++
 
         this.optionInstances.push(option)
       })
@@ -276,6 +279,10 @@ export default {
 
       this.updateSingleSelected(true)
       this.updateMultipleSelected(true)
+    },
+    onOptionDestroy (index) {
+      this.options.splice(index, 1)
+      this.optionInstances.splice(index, 1)
     },
     updateSingleSelected (init = false) {
       const type = typeof this.model
@@ -413,8 +420,8 @@ export default {
 
       const options = findComponentsDownward(this, 'AtOption')
 
-      options.forEach(option => {
-        if (option.index === this.focusIndex) {
+      options.forEach((option, idx) => {
+        if ((idx + 1) === this.focusIndex) {
           isValid = !option.disabled && !option.hidden
 
           if (isValid) {

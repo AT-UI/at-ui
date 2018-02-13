@@ -1,11 +1,7 @@
-import Menu from './src/menu'
-import MenuItem from './src/menu-item'
-import MenuItemGroup from './src/menu-group'
-import Submenu from './src/submenu'
+import Menu from './src/menu.vue'
 
-export {
-  Menu,
-  MenuItem,
-  MenuItemGroup,
-  Submenu
+Menu.install = function (Vue) {
+  Vue.component(Menu.name, Menu)
 }
+
+export default Menu

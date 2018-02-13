@@ -29,7 +29,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   resolve: {
     alias: {
-      'at-ui': path.resolve(__dirname, '../dist/at.js'),
+      'at-ui-lib': path.resolve(__dirname, '../dist/at.js'),
       'at-ui-style': 'stylesheet/css/at.css',
       'at-ui-locale-zh': path.resolve(__dirname, '../dist/locale/zh-CN.js'),
       'at-ui-locale-en': path.resolve(__dirname, '../dist/locale/en-US.js')

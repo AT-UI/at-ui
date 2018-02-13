@@ -1,7 +1,7 @@
-import Timeline from './src/timeline'
-import TimelineItem from './src/timeline-item'
+import Timeline from './src/timeline.vue'
 
-export {
-  Timeline,
-  TimelineItem
+Timeline.install = function (Vue) {
+  Vue.component(Timeline.name, Timeline)
 }
+
+export default Timeline

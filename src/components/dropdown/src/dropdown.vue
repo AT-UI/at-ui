@@ -11,8 +11,8 @@
 </template>
 
 <script>
-  import Clickoutside from 'src/directives/clickoutside'
-  import PopoverMixin from 'src/mixins/popover'
+  import Clickoutside from 'at-ui/src/directives/clickoutside'
+  import PopoverMixin from 'at-ui/src/mixins/popover'
 
   export default {
     name: 'AtDropdown',

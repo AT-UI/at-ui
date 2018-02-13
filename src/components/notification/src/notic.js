@@ -1,6 +1,7 @@
 import Vue from 'vue'
+import NotificationVue from './notification.vue'
 
-const NotificationConstructor = Vue.extend(require('./notification.vue'))
+const NotificationConstructor = Vue.extend(NotificationVue)
 
 const noticeType = ['success', 'error', 'warning', 'info']
 const instances = []
@@ -8,7 +9,8 @@ let instance
 let seed = 1
 let zindexSeed = 1010
 
-const Notification = function (options) {
+const Notification = options => {
+  if (Vue.prototype.$isServer) return
   options = options || {}
 
   const onClose = options.onClose
