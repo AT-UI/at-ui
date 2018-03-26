@@ -25,18 +25,18 @@
             <slot>
               <p>{{ content }}</p>
               <div class="at-modal__input" v-if="showInput">
-                <at-input v-model="inputValue" :placeholder="inputPlaceholder" @keyup.enter.native="handleAction('confirm')" ref="input"></at-input>
+                <at-input v-model="inputValue" :placeholder="inputPlaceholder" @keyup.enter.native="handleAction('confirm', $event)" ref="input"></at-input>
               </div>
             </slot>
           </div>
           <div class="at-modal__footer" v-if="showFooter">
             <slot name="footer">
-              <at-button v-show="showCancelButton" @click.native="handleAction('cancel')">{{ localeCancelText }}</at-button>
-              <at-button type="primary" v-show="showConfirmButton" @click.native="handleAction('confirm')">{{ localeOKText }}</at-button>
+              <at-button v-show="showCancelButton" @click.native="handleAction('cancel', $event)">{{ localeCancelText }}</at-button>
+              <at-button type="primary" v-show="showConfirmButton" @click.native="handleAction('confirm', $event)">{{ localeOKText }}</at-button>
             </slot>
           </div>
           <i v-if="isIconType" class="icon at-modal__icon" :class="iconClass"></i>
-          <span v-if="showClose" class="at-modal__close" @click="handleAction('cancel')"><i class="icon icon-x"></i></span>
+          <span v-if="showClose" class="at-modal__close" @click="handleAction('cancel', $event)"><i class="icon icon-x"></i></span>
         </div>
       </transition>
     </div>
@@ -96,7 +96,8 @@
           return {}
         }
       },
-      type: String
+      type: String,
+      beforeClose: Function
     },
     data () {
       return {
@@ -159,7 +160,13 @@
       }
     },
     methods: {
-      doClose () {
+      doBeforeClose (evt) {
+        this.beforeClose ? this.beforeClose(evt, this.doClose) : this.doClose()
+      },
+      doClose (result) {
+        if (result === false) {
+          return
+        }
         this.visible = false
         this.$emit('input', false)
         this.$emit('on-cancel')
@@ -170,28 +177,26 @@
       },
       handleMaskClick (evt) {
         if (this.maskClosable) {
-          this.doClose()
+          this.doBeforeClose(evt)
         }
       },
       handleWrapperClick (evt) {
         if (this.maskClosable) {
-          this.doClose()
+          this.doBeforeClose(evt)
         }
       },
-      handleAction (action) {
+      handleAction (action, evt) {
         this.action = action
+        this.doBeforeClose(evt)
 
         if (action === 'confirm') {
-          this.$emit('input', false)
           this.$emit('on-confirm')
         }
-
-        this.doClose()
       },
       handleKeyCode (evt) {
         if (this.visible && this.showClose) {
           if (evt.keyCode === 27) { // Escape
-            this.doClose()
+            this.doBeforeClose()
           }
         }
       }

@@ -230,6 +230,19 @@
 ```
 :::
 
+## 关闭前
+
+- 通过属性 `before-close` 监听 `Modal` 关闭前的事件，会暂停 `Modal` 的关闭
+- 参数为event事件和回调函数，调用函数将关闭 `Modal` ，传递 `false` 参数可以阻止 `Modal`的关闭
+- 点击按钮、icon、遮罩、esc均会触发该钩子，手动修改value的值不触发
+
+:::demo
+```html
+<at-button @click="modal7=true">打开modal</at-button>
+<at-modal v-model="modal7" title="标题" :before-close="handleBeforeClose">这里是文本</at-modal>
+```
+:::
+
 ## Modal 参数
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
@@ -247,6 +260,7 @@
 | width | 模态框的宽度 | Number / String | - | `520` |
 | closeOnPressEsc | 点击 `ESC` 是否可以关闭模态框 | Boolean | - | true |
 | styles | 模态框的自定义样式 | Object | - | - |
+| before-close | 关闭前的回调，会暂停 `Modal` 的关闭，手动修改 `value` 的值不会触发 | Function(event, done)，`done` 用于关闭 `Modal`，传递 `false` 参数可以阻止 `Modal` 关闭 | - | - |
 
 ## Modal 事件
 
@@ -272,7 +286,8 @@
         modal3: false,
         modal4: false,
         modal5: false,
-        modal6: false
+        modal6: false,
+        modal7: false
       }
     },
     methods: {
@@ -332,6 +347,16 @@
       },
       closeModal2 () {
         this.modal2 = false
+      },
+      handleBeforeClose (evt, done) {
+        this.$Modal.confirm({
+          content: '确定关闭吗？',
+          styles: {
+            top: '300px'
+          }
+        }).then(done).catch(() => {
+          done(false)
+        })
       }
     }
   }
