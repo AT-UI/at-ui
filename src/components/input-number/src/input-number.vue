@@ -22,7 +22,8 @@
         @focus="handleFocus"
         @blur="handleBlur"
         @keydown.up.stop.prevent="increaseNum"
-        @keydown.down.stop.prevent="decreaseNum">
+        @keydown.down.stop.prevent="decreaseNum"
+        @input="handleInput">
     </div>
     <!-- E input -->
 
@@ -106,6 +107,11 @@ export default {
     },
     handleBlur (evt) {
       this.$emit('blur', evt)
+    },
+    handleInput (evt) {
+      const value = evt.target.value
+      this.$emit('input', value)
+      this.$emit('change', value)
     },
     increaseNum () {
       const value = this.currentValue || 0
