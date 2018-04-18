@@ -56,7 +56,7 @@ this.$Notify(config)
 The components that can be registered locally are applicable to scenarios that are used to combination with other frameworks. Firstly, you can load components on demand and reduce the size of files by using the [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) plugin.
 
 ```bash
-npm install babel-plugin-component
+npm install babel-plugin-import
 ```
 
 Then update `.babelrc` file:
