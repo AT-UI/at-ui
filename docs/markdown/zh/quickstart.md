@@ -55,7 +55,7 @@ this.$Modal.alert(config)
 可以局部注册所需的组件，适用于与其他框架组合使用的场景。首先我们需要借助 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 插件以达到减小项目体积的目的。
 
 ```bash
-npm install babel-plugin-component
+npm install babel-plugin-import
 ```
 
 然后修改 `.babelrc` 配置：
