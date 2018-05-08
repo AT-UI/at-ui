@@ -67,7 +67,7 @@ Finding bugs, sending pull requests or improving our docs - any contribution is 
 
 ## License
 
-MIT
+[MIT](https://github.com/AT-UI/at-ui/blob/master/LICENSE)
 
 
 [npm-version-image]: https://img.shields.io/npm/v/at-ui.svg?style=flat-square
