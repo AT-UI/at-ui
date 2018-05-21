@@ -288,6 +288,8 @@ Used together with `vue-router`. Set `router` property to `at-menu`, and Passed 
 | to | the object of `vue-router`, same as the `to` property in `vue-router` | String / Object | - | - |
 | replace | whether to add new history when using `to` | Boolean | - | false |
 | disabled | whether the MenuItem is disabled | Boolean | - | false |
+| exact | The default active class matching behavior is inclusive match. For example, `<router-link to="/a">` will get this class applied as long as the current path starts with /a/ or is /a. To force the link into "exact match mode", use the `exact` prop. This prop work when using `to` | Boolean | - | false |
+| event |Specify the event(s) that can trigger the link navigation. This prop work when using `to` | String / Array | - | "click" |
 
 <script>
   export default {
