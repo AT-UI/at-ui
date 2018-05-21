@@ -5,7 +5,12 @@
       this.active ? 'at-menu__item--active' : '',
       this.disabled ? 'at-menu__item--disabled' : ''
     ]" @click="handleClick">
-    <router-link v-if="Object.keys(to).length" class="at-menu__item-link" ref="link" :to="to">
+    <router-link v-if="Object.keys(to).length"
+                 class="at-menu__item-link"
+                 ref="link"
+                 :to="to"
+                 :exact="exact"
+                 :event="event">
       <slot></slot>
     </router-link>
     <div v-else class="at-menu__item-link">
@@ -38,6 +43,14 @@
       disabled: {
         type: Boolean,
         default: false
+      },
+      exact: {
+        type: Boolean,
+        default: false
+      },
+      event: {
+        type: [String,Array],
+        default: 'click'
       }
     },
     data () {
