@@ -13,7 +13,7 @@ export default {
       nextText: 'Следующая страница',
       total: 'Всего',
       item: 'элемент',
-      items: 'элемены',
+      items: 'элементы',
       pageSize: '/ стр.',
       goto: 'Перейти к',
       pageText: '',
