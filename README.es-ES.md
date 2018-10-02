@@ -10,7 +10,7 @@
 
 AT-UI es un marco de interfaz de usuario de front-end modular para desarrollar interfaces web rápidas y potentes basadas en Vue.js.
 
-[中文 README](README.zh-CN.md) | [LEEME README](README.es-ES.md)
+[README en-US](README.md) | [中文 README](README.zh-CN.md) | [LEEME es-ES](README.es-ES.md)
 
 ## Caracteristicas
 
