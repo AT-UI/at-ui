@@ -10,7 +10,7 @@
 
 AT-UI is a modular front-end UI framework for developing fast and powerful web interfaces based on Vue.js.
 
-[中文 README](README.zh-CN.md)
+[README en-US](README.md) | [中文 README](README.zh-CN.md) | [LEEME es-ES](README.es-ES.md)
 
 ## Features
 
@@ -41,6 +41,11 @@ AT-UI is a modular front-end UI framework for developing fast and powerful web i
 npm install at-ui
 ```
 
+- Or use `yarn`
+```bash
+yarn add at-ui
+```
+
 - Or using `<script>` tag for global use
 
 ```html
@@ -53,6 +58,11 @@ Because the style of `AT-UI` is independent. It's a separate project. So we shou
 
 ```bash
 npm install at-ui-style
+```
+
+Or
+```bash
+yarn add at-ui-style
 ```
 
 or
