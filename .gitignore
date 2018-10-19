@@ -6,4 +6,3 @@ test/e2e/reports
 .vscode
 dist/
 test
-/.vs/slnx.sqlite
