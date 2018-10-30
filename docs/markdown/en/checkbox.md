@@ -54,13 +54,13 @@ Use `CheckboxGroup` combined with array to generate a combination.
 
 | Event Name      | Description          | Return Value  |
 |---------- |-------------- |---------- |
-| on-change | Emitted when the state of selection is changed | the `lavel` value of selected button |
+| on-change | Emitted when the state of selection is changed | the `label` value of selected button |
 
 ## Checkbox Group Events
 
 | Event Name      | Description          | Return Value  |
 |---------- |-------------- |---------- |
-| on-change | Emitted when the state of selection is changed | the `lavel` value of selected button |
+| on-change | Emitted when the state of selection is changed | the `label` value of selected button |
 
 <script>
 export default {
