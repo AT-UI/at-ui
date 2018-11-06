@@ -68,6 +68,16 @@ Click the buttons below to see the transition of progress.
 ```
 :::
 
+## Indeterminate
+
+Progress bar has an indeterminate state, that animates forever.
+
+:::demo
+```html
+<at-progress indeterminate></at-progress>
+```
+:::
+
 ## Progress Props
 
 | Property      | Description          | Type      | Accepted Values                           | Default  |
@@ -75,6 +85,7 @@ Click the buttons below to see the transition of progress.
 | percent | the percentage of Progress | Number | - | 0 |
 | status | the status of Progress | String | `success`, `error` | - |
 | stroke-width | the width of Progress Bar | Number | - | 8 |
+| indeterminate | the width of Progress Bar | Boolean | `true`, `false` | `false` |
 
 ## Progress Events
 
