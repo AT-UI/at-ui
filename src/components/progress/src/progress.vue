@@ -11,11 +11,12 @@
 
     <!-- S 条状进度条 -->
     <div class="at-progress-bar" v-else>
-      <div class="at-progress-bar__wraper" :style="barStyle">
-        <div class="at-progress-bar__inner" :style="{ width: percent + '%' }"></div>
+      <div class="at-progress-bar__wraper" :class="{'at-progress--indeterminate': indeterminate} "
+        :style="barStyle">
+        <div class="at-progress-bar__inner" :style="[{ width: percent + '%' }]"></div>
       </div>
     </div>
-    <div class="at-progress__text">
+    <div class="at-progress__text" v-if="!indeterminate">
       <span v-if="!currentStatus">{{ percent }}%</span>
       <i v-else class="icon" :class="statusIconClass"></i>
     </div>
@@ -40,12 +41,15 @@ export default {
     percent: {
       type: Number,
       default: 0,
-      required: true,
       validator: val => val >= 0 && val <= 100
     },
     strokeWidth: {
       type: Number,
       default: 8
+    },
+    indeterminate: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -61,6 +65,11 @@ export default {
     },
     statusIconClass () {
       return this.currentStatus === 'success' ? 'icon-check-circle' : 'icon-x-circle'
+    },
+    progresStyle () {
+      return {
+        width: `${this.percent}%`
+      }
     }
   },
   watch: {
