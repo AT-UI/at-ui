@@ -446,7 +446,13 @@ export default {
         const columnsWidth = {}
 
         if (this.data.length) {
-          const $td = this.$refs.body.querySelectorAll('tr')[0].querySelectorAll('td')
+          const $trs = this.$refs.body.querySelectorAll('tr')
+          
+          if ($trs.length === 0) {
+            return 
+          }
+          
+          const $td = $trs.querySelectorAll('td')
 
           for (let i = 0; i < $td.length; i++) {
             const column = this.columnsData[i]
