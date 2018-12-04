@@ -1,0 +1,27 @@
+export default {
+  at: {
+    select: {
+      placeholder: 'Seleccionar',
+      notFoundText: 'No hay datos que coincidan'
+    },
+    modal: {
+      okText: 'Ok',
+      cancelText: 'Cancelar'
+    },
+    pagination: {
+      prevText: 'Atrás',
+      nextText: 'Siguiente',
+      total: 'Total',
+      item: 'Item',
+      items: 'Items',
+      pageSize: '/ por página',
+      goto: 'Ir a',
+      pageText: '',
+      prev5Text: '5 Páginas anteriores',
+      next5Text: 'Próximas 5 Páginas'
+    },
+    table: {
+      emptyText: 'Sin datos'
+    }
+  }
+}
