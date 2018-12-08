@@ -323,7 +323,7 @@ See how `Documentation` is still considered active even though it's simply a nes
 | to | the object of `vue-router`, same as the `to` property in `vue-router` | String / Object | - | - |
 | replace | whether to add new history when using `to` | Boolean | - | false |
 | disabled | whether the MenuItem is disabled | Boolean | - | false |
-| exactActive | whether the MenuItem is only set to active with exact path matches, for use with `vue-router` | Boolean | - | false
+| exactActive | whether the MenuItem is active for exact path matches, needs Menu to have `router` set as true | Boolean | - | false
 
 <script>
   export default {
