@@ -250,9 +250,12 @@ Used together with `vue-router`. Set `router` property to `at-menu`, and Passed 
 ```
 :::
 
+
+
+---
 You can also use the `exact-active` property to only make an item active if the routes match exactly.
 
-Without `exact-active`:
+#### Without `exact-active`:
 
 See how `Documentation` is still considered active even though it's simply a nested path, this is because `AtMenuItem` by default is set to active by inexact matches (eg. `/` and `/home` are inexact matches).
 
@@ -268,7 +271,7 @@ See how `Documentation` is still considered active even though it's simply a nes
 ```
 :::
 
-With `exact-active`:
+#### With `exact-active`:
 
 :::demo
 ```html
@@ -320,7 +323,7 @@ With `exact-active`:
 | to | the object of `vue-router`, same as the `to` property in `vue-router` | String / Object | - | - |
 | replace | whether to add new history when using `to` | Boolean | - | false |
 | disabled | whether the MenuItem is disabled | Boolean | - | false |
-| exactActive | whether the MenuItem is only set to active for exact path matches (for use with VueRouter) | Boolean | - | false
+| exactActive | whether the MenuItem is only set to active with exact path matches, for use with `vue-router` | Boolean | - | false
 
 <script>
   export default {
