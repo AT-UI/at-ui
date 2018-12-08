@@ -250,6 +250,19 @@ Used together with `vue-router`. Set `router` property to `at-menu`, and Passed 
 ```
 :::
 
+**Nested Paths**
+
+:::demo
+```html
+<at-menu router>
+  <at-menu-item :to="{ name: 'Docs-en' }">Documentation</at-menu-item>
+  <at-menu-item :to="{ name: 'Dropdown-en' }">Dropdown</at-menu-item>
+  <at-menu-item :to="{ name: 'Menu-en' }">Menu</at-menu-item>
+  <at-menu-item :to="{ name: 'Pagination-en' }">Pagination</at-menu-item>
+</at-menu>
+```
+:::
+
 ## Menu Props
 
 | Property      | Description          | Type      | Accepted Values                           | Default  |
