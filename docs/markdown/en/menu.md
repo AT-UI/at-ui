@@ -250,12 +250,13 @@ Used together with `vue-router`. Set `router` property to `at-menu`, and Passed 
 ```
 :::
 
-**Nested Paths**
+You can also use the `exact-active` property to only make an item active if the routes match exactly.
 
 :::demo
 ```html
 <at-menu router>
-  <at-menu-item :to="{ name: 'Docs-en' }">Documentation</at-menu-item>
+  <at-menu-item :to="{ name: 'Docs-en' }" exact-active>Documentation</at-menu-item>
+  <at-menu-item :to="{ name: 'Breadcrumb-en' }">Breadcrumb</at-menu-item>
   <at-menu-item :to="{ name: 'Dropdown-en' }">Dropdown</at-menu-item>
   <at-menu-item :to="{ name: 'Menu-en' }">Menu</at-menu-item>
   <at-menu-item :to="{ name: 'Pagination-en' }">Pagination</at-menu-item>
