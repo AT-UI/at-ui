@@ -38,7 +38,11 @@
       disabled: {
         type: Boolean,
         default: false
-      }
+      },
+      exactActive: {
+        type: Boolean,
+        default: false,
+      },
     },
     data () {
       return {
@@ -58,23 +62,47 @@
         } else {
           this.dispatch('AtMenu', 'on-menu-item-select', this)
         }
+      },
+      emitActiveSelection () {
+        const parents = findComponentsUpward(this, 'AtSubmenu')
+
+        if (parents && parents.length) {
+          parents.forEach(parent => {
+            parent.$emit('on-update-active', true)
+          })
+        }
+      },
+      linkContainsClass (className) {
+        return this.$refs.link.$el.classList.contains(className)
+      },
+      handleActiveState (name) {
+        if (this.name === name) {
+          this.active = true
+          this.emitActiveSelection()
+        } else if (this.$refs.link) {
+          if (this.exactActive) {
+            if (!this.linkContainsClass('router-link-exact-active')) {
+              this.$refs.link.$el.classList.remove('router-link-active')
+              this.active = false
+            } else {
+              this.active = true
+            }
+          } else {
+            if (this.linkContainsClass('router-link-active')) {
+              this.active = true;
+            } else {
+              this.active = false;
+            }
+          }
+        } else {
+          this.active = false
+        }
       }
     },
     mounted () {
       this.$on('on-update-active', name => {
         this.$nextTick(() => {
-          if (this.name === name || (this.$refs.link && this.$refs.link.$el.classList.contains('router-link-active'))) {
-            this.active = true
-
-            const parents = findComponentsUpward(this, 'AtSubmenu')
-            if (parents && parents.length) {
-              parents.forEach(parent => {
-                parent.$emit('on-update-active', true)
-              })
-            }
-          } else {
-            this.active = false
-          }
+          this.handleActiveState(name);
         })
       })
     }
