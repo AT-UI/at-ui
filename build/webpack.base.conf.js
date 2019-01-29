@@ -56,6 +56,7 @@ module.exports = {
       'at-ui-lib': path.resolve(__dirname, '../src/index.js'),
       'at-ui-locale-zh': path.resolve(__dirname, '../src/locale/lang/zh-CN.js'),
       'at-ui-locale-en': path.resolve(__dirname, '../src/locale/lang/en-US.js'),
+      'at-ui-locale-tr': path.resolve(__dirname, '../dist/locale/tr-TR.js'),
       'at-ui-style': 'stylesheet/src/index.scss',
       'vue': 'vue/dist/vue.js'
     }

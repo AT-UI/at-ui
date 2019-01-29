@@ -32,7 +32,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       'at-ui-lib': path.resolve(__dirname, '../dist/at.js'),
       'at-ui-style': 'stylesheet/css/at.css',
       'at-ui-locale-zh': path.resolve(__dirname, '../dist/locale/zh-CN.js'),
-      'at-ui-locale-en': path.resolve(__dirname, '../dist/locale/en-US.js')
+      'at-ui-locale-en': path.resolve(__dirname, '../dist/locale/en-US.js'),
+      'at-ui-locale-tr': path.resolve(__dirname, '../dist/locale/tr-TR.js')
     }
   },
   plugins: [
