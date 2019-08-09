@@ -1,0 +1,27 @@
+export default {
+  at: {
+    select: {
+      placeholder: 'Seç',
+      notFoundText: 'Eşleşen sonuç yok'
+    },
+    modal: {
+      okText: 'Tamam',
+      cancelText: 'İptal'
+    },
+    pagination: {
+      prevText: 'Önceki Sayfa',
+      nextText: 'Sonraki Sayfa',
+      total: 'Toplam',
+      item: 'sonuç',
+      items: 'sonuç',
+      pageSize: '/ sayfa',
+      goto: 'Git',
+      pageText: '',
+      prev5Text: 'Önceki 5 Sayfa',
+      next5Text: 'Sonraki 5 Sayfa'
+    },
+    table: {
+      emptyText: 'Veri yok'
+    }
+  }
+}
