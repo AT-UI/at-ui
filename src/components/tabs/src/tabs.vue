@@ -287,24 +287,28 @@ export default {
       })
     },
     updateHandle () {
-      const navWidth = this.$refs.nav.offsetWidth
-      const containerWidth = this.$refs.navScroll.offsetWidth
-      const currentOffset = this.getCurrentScrollOffset()
+	 if(this.$resf.nav && this.$refs.navScroll) {
+		const navWidth = this.$refs.nav.offsetWidth
+		const containerWidth = this.$refs.navScroll.offsetWidth
+		const currentOffset = this.getCurrentScrollOffset()
 
-      if (containerWidth < navWidth) {
-        this.prevable = currentOffset !== 0
-        this.nextable = currentOffset + containerWidth < navWidth
-        if (navWidth - currentOffset < containerWidth) {
-          this.setOffset(navWidth - containerWidth)
-        }
-      } else {
-        this.nextable = false
-        this.prevable = false
-        if (currentOffset > 0) {
-          this.setOffset(0)
-        }
-      }
-    }
+		if (containerWidth < navWidth) {
+			this.prevable = currentOffset !== 0
+			this.nextable = currentOffset + containerWidth < navWidth
+
+			if (navWidth - currentOffset < containerWidth) {
+				this.setOffset(navWidth - containerWidth)
+			}
+		} else {
+			this.nextable = false
+			this.prevable = false
+			
+				if (currentOffset > 0) {
+		  			this.setOffset(0)
+				}
+			}
+		} 
+     }
   },
   mounted () {
     window.addEventListener('resize', this.updateHandle, false)
