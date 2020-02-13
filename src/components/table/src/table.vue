@@ -445,7 +445,7 @@ export default {
       this.$nextTick(() => {
         const columnsWidth = {}
 
-        if (this.data.length) {
+        if (this.data.length && this.$refs.body) {
           const $td = this.$refs.body.querySelectorAll('tr')[0].querySelectorAll('td')
 
           for (let i = 0; i < $td.length; i++) {
