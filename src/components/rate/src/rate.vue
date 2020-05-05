@@ -113,7 +113,7 @@ export default {
       const STAR_OFF_CLASS_NAME = 'at-rate__item--off'
       const STAR_HALF_CLASS_NAME = 'at-rate__item--half'
 
-      const isHalf = this.isHalf
+      const isHalf = this.disabled ? (this.value > Math.floor(this.value)) : this.isHalf
       const isHoverStar = this.hoverIndex !== -1
       const currentIndex = isHoverStar ? this.hoverIndex : this.currentValue
       const lastItemIndex = Math.ceil(currentIndex)
