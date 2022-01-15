@@ -79,7 +79,7 @@
     "postcss-url": "^7.3.0",
     "resolve-url-loader": "^2.2.1",
     "sass-loader": "^6.0.6",
-    "shelljs": "^0.7.8",
+    "shelljs": "^0.8.5",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "vue-html-loader": "^1.2.4",
